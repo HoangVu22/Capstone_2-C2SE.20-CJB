@@ -7,4 +7,4 @@
 //   line.style.background = change;
 // }
 
-const slide = document.querySelectorAll('.slide')
+
