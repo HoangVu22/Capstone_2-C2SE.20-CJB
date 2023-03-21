@@ -1,8 +1,10 @@
-function img(anything) {
-  document.querySelector(".slide").src = anything;
-}
+// function img(anything) {
+//   document.querySelector(".slide").src = anything;
+// }
 
-function change(change) {
-  const line = document.querySelector(".image");
-  line.style.background = change;
-}
+// function change(change) {
+//   const line = document.querySelector(".image");
+//   line.style.background = change;
+// }
+
+const slide = document.querySelectorAll('.slide')
