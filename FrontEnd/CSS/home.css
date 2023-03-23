@@ -55,8 +55,6 @@ header ul li a {
   height: 100%;
 }
 
-.image-map {}
-
 .image-map>img {
   object-fit: contain;
   width: 51.5%;
@@ -145,8 +143,8 @@ header ul li a {
   margin-right: 20px;
   margin-left: 20px;
   border-radius: 10px;
+  cursor: pointer;
 }
-
 
 .input-guests,
 .input-location {
