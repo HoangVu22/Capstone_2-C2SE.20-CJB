@@ -1,12 +1,3 @@
-// function img(anything) {
-//   document.querySelector(".slide").src = anything;
-// }
-
-// function change(change) {
-//   const line = document.querySelector(".image");
-//   line.style.background = change;
-// }
-
 $('.popular-slides').slick({
     infinite: true,
     slidesToShow: 1,

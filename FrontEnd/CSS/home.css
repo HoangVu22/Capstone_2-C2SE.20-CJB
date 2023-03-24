@@ -277,6 +277,7 @@ header ul li a {
 /* ------------- footer --------- */
 .footer {
   background-color: #1b1b1b;
+  margin-top: 60px;
 }
 
 .wrap-footer {
@@ -341,8 +342,4 @@ header ul li a {
 
 .slick-prev,.slick-next{
   display: none !important;
-}
-
-.slides2 .slick-prev{
-  
 }
