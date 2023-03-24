@@ -1,4 +1,3 @@
-
 * {
   padding: 0;
   margin: 0;
@@ -157,7 +156,8 @@ header ul li a {
   margin: 0 100px;
 }
 
-.popular-heading, .find-heading {
+.popular-heading,
+.find-heading {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -229,6 +229,8 @@ header ul li a {
   font-size: 16px;
 }
 
+
+
 /* --------- find tours-------- */
 .find-tours {
   padding: 20px 0;
@@ -237,7 +239,9 @@ header ul li a {
 
 .find-container-wraper {
   display: flex;
-  justify-content: center;
+  width: 80%;
+  justify-content: space-evenly;
+  margin: 0 auto;
 }
 
 .find-container {
@@ -245,6 +249,7 @@ header ul li a {
   width: 20%;
   padding: 20px;
   border-radius: 10px;
+  margin: 0 10px;
 }
 
 .find-container-top {
@@ -260,7 +265,8 @@ header ul li a {
   line-height: 30px;
 }
 
-.find-bottom-address, .find-bottom-time {
+.find-bottom-address,
+.find-bottom-time {
   display: flex;
 }
 
@@ -271,6 +277,7 @@ header ul li a {
 /* ------------- footer --------- */
 .footer {
   background-color: #1b1b1b;
+  margin-top: 60px;
 }
 
 .wrap-footer {
@@ -333,3 +340,6 @@ header ul li a {
   fill: #FFFFFF;
 } */
 
+.slick-prev,.slick-next{
+  display: none !important;
+}
