@@ -11,9 +11,7 @@ $('.popular-slides').slick({
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
-    speed: 800,
-    autoplay: true,
-    autoplaySpeed: 3000
+    speed: 800
 });
 
 const z = document.querySelector.bind(document)
@@ -42,9 +40,7 @@ $('.slides2').slick({
     infinite: true,
     slidesToShow: 3,
     slidesToScroll: 1,
-    speed: 800,
-    autoplay: true,
-    autoplaySpeed: 2000
+    speed: 800
 });
 
 findSlickPrev.onclick = () => {
