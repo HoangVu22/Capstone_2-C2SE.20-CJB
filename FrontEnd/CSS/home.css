@@ -277,7 +277,9 @@ header ul li a {
 /* ------------- footer --------- */
 .footer {
   background-color: #1b1b1b;
+  position: relative;
   margin-top: 60px;
+  padding-bottom: 100px;
 }
 
 .wrap-footer {
@@ -320,25 +322,25 @@ header ul li a {
   padding-right: 12px;
 }
 
-/* .custom-shape-divider-top-1679564158 {
+.custom-shape-divider-bottom-1679667216 {
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
   width: 100%;
   overflow: hidden;
   line-height: 0;
 }
 
-.custom-shape-divider-top-1679564158 svg {
+.custom-shape-divider-bottom-1679667216 svg {
   position: relative;
   display: block;
   width: calc(100% + 1.3px);
-  height: 82px;
+  height: 133px;
 }
 
-.custom-shape-divider-top-1679564158 .shape-fill {
-  fill: #FFFFFF;
-} */
+.custom-shape-divider-bottom-1679667216 .shape-fill {
+  fill: #2F4E84;
+}
 
 .slick-prev,.slick-next{
   display: none !important;
