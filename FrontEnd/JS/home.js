@@ -6,13 +6,12 @@ $('.popular-slides').slick({
 });
 
 const z = document.querySelector.bind(document)
-const zz = document.querySelectorAll.bind(document)
 const slickPre = z('.fa-chevron-left');
 const slickNext = z('.fa-chevron-right');
 const findSlickPrev = z('.find-slick-left');
 const findSlickNext = z('.find-slick-right');
 const pre = z('.slick-prev');
-const next = z('.slick-next')
+const next = z('.slick-next');
 
 slickPre.onclick = () => {
     pre.click();

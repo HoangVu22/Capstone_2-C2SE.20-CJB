@@ -34,11 +34,11 @@ body {
   padding: 8px 0;
 }
 
-.detail-header > a {
+.detail-header>a {
   width: 16%;
 }
 
-.detail-header > a > img {
+.detail-header>a>img {
   width: 100%;
   object-fit: contain;
 }
@@ -60,7 +60,7 @@ body {
   font-size: 18px;
 }
 
-.detail-header > img {
+.detail-header>img {
   width: 50px;
   height: 50px;
 }
@@ -214,9 +214,9 @@ body {
 }
 
 .detail-member-wraper {
-    display: flex;
-    align-items: center;
-    margin-top: 20px;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
 }
 
 .detail-member-img {
@@ -232,7 +232,7 @@ body {
 }
 
 .detail-member-name {
-    width: 50%;
+  width: 50%;
 }
 
 /* ------- related tours ---------- */
@@ -295,7 +295,7 @@ body {
 .footer {
   background-color: #1b1b1b;
   position: relative;
-  margin-top: 60px;
+  margin-top: 200px;
   padding-bottom: 100px;
 }
 
