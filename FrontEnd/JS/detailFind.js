@@ -1,6 +1,3 @@
-const pre1 = document.getElementsByClassName('slick-prev');
-const next1 = document.getElementsByClassName('slick-next');
-
 $('.slides2').slick({
     infinite: true,
     slidesToShow: 3,
@@ -8,9 +5,18 @@ $('.slides2').slick({
     speed: 800
 });
 
-findSlickPrev.onclick = () => {
-   pre1[1].click();
+const z = document.querySelector.bind(document)
+const pre = z('.slick-prev');
+const next = z('.slick-next');
+const slickPre = z('.fa-chevron-left');
+const slickNext = z('.fa-chevron-right');
+
+console.log(pre +' ' +next +' '+slickPre + ' '+slickNext);
+
+slickPre.onclick = () => {
+    pre.click();
+    
 }
-findSlickNext.onclick = () => {
-    next1[1].click();
+slickNext.onclick = () => {
+    next.click();
 }
