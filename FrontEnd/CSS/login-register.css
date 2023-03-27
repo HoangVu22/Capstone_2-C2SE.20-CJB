@@ -228,7 +228,7 @@ input {
 }
 
 .overlay {
-    background-image: url(image/h1.jpg);
+    background-image: url(../IMAGES/slides/slide-0.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0 0;
