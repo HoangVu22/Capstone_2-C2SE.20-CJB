@@ -170,12 +170,15 @@ body {
 .book-places {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+
 }
 
 .find-container {
   border: 1px solid #333;
   width: 28%;
   border-radius: 10px;
+  margin: 0 20px;
 }
 
 .find-container-top {
@@ -309,3 +312,8 @@ body {
 .custom-shape-divider-bottom-1679667216 .shape-fill {
   fill: #2f4e84;
 }
+
+.slick-prev,.slick-next{
+  display: none !important;
+}
+
