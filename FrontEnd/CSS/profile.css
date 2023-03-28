@@ -64,3 +64,213 @@ body {
   width: 50px;
   height: 50px;
 }
+
+/* --------- profile---------- */
+.profile-container {
+  width: 100%;
+  position: relative;
+  top: 150px;
+  padding: 0 140px;
+}
+
+.container {
+  display: flex;
+}
+
+.profile-avatar {
+  width: 30%;
+  text-align: center;
+  margin-right: 50px;
+  border: 1px solid #333;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.profile-avatar img {
+  width: 40%;
+  cursor: pointer;
+  border: 1px solid #333;
+  padding: 10px;
+  margin-bottom: 14px;
+  border-radius: 50%;
+}
+
+.profile-avatar p {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.form-action {
+  display: flex;
+  align-items: baseline;
+  border: 1px solid #333;
+  padding: 10px 20px;
+  margin: 40px 0;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.form-action i {
+  padding-right: 10px;
+  font-size: 16px;
+}
+
+.form-action p {
+  font-size: 16px;
+}
+
+.profile-information {
+  width: 70%;
+}
+
+.profile-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-title h2 {
+  font-size: 40px;
+}
+
+.profile-title button {
+  padding: 10px 20px;
+  border-radius: 50px;
+  border: 1px solid #333;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #fff;
+  font-weight: 600;
+}
+
+.profile-title button:hover {
+  color: #00bcd4;
+  border: 1px solid #00bcd4;
+}
+
+.form-profile-wraper {
+  margin-top: 50px;
+}
+
+.form-profile-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-profile-info label {
+  margin-right: 40px;
+  font-size: 18px;
+  line-height: 40px;
+  width: 30%;
+  color: #333;
+}
+
+.form-profile-content {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  line-height: 40px;
+  width: 70%;
+}
+
+.form-line {
+  width: 100%;
+  height: 0.1px;
+  background-color: #d6d5d5;
+  margin: 20px 0;
+}
+
+.form-profile-bio h2 {
+  margin-bottom: 14px;
+}
+
+.tag {
+  display: inline-block;
+  color: #333333;
+  margin: 0 15px 15px 0;
+  text-decoration: none;
+  padding: 10px 20px;
+  font-size: 15px;
+  text-shadow: rgba(255, 255, 255, 0.8) 0 1px 0;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 2px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+/* ----- profile edit------- */
+.profile-genaral-edit {
+  display: none;
+}
+
+.profile-save {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.profile-save button {
+  padding: 12px 15px;
+  border-radius: 10px;
+  color: #fff;
+  background-color: #00bcd4;
+  border: none;
+  font-size: 16px;
+}
+
+.profile-save button:hover {
+  color: #fff;
+}
+
+.profile-save p {
+  margin-left: 30px;
+  font-weight: bold;
+  font-size: 17px;
+  text-decoration: underline;
+}
+
+.profile-save p:hover {
+  color: #00bcd4;
+}
+
+.form-profile-input {
+  width: 100%;
+  margin-left: 55px;
+  display: flex;
+}
+
+.form-profile-text {
+  border-radius: 10px;
+  font-size: 16px;
+  padding: 8px 16px;
+  border: 1px solid #d6d5d5;
+  width: 100%;
+}
+
+.form-profile-space {
+  margin-bottom: 10px;
+}
+
+.form-bio {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.choose-hobbies {
+  border-radius: 10px;
+  font-size: 16px;
+  padding: 8px 16px;
+  margin: 20px 0;
+  border: 1px solid #d6d5d5;
+  width: 80%;
+}
+
+.tag i {
+  font-weight: bold;
+  font-size: 16px;
+  padding-right: 5px;
+  cursor: pointer;
+}
