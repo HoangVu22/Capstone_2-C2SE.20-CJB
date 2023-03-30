@@ -67,9 +67,6 @@ body {
 
 /* ----- create trip -------- */
 .createTrip-container {
-  width: 100%;
-  /* top: 80px;
-  position: relative; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -98,6 +95,7 @@ body {
   background-color: #fff;
   padding: 50px 40px;
   border-radius: 20px;
+  margin-top: 30px;
 }
 
 .form-info-wrap {
@@ -106,6 +104,7 @@ body {
 
 .form-info label {
   font-size: 16px;
+  font-weight: 600;
 }
 
 .form-input input {
@@ -122,10 +121,8 @@ body {
   margin-bottom: 30px;
 }
 
-
 iframe {
   width: 100%;
-
 }
 
 .form-next button {
@@ -161,19 +158,18 @@ iframe {
   flex-direction: column;
 }
 
-.button-tranform-tab>h1 {
+.button-tranform-tab > h1 {
   margin-right: 15px;
+  margin-top: 20px;
 }
 
-.button-tranform-tab>div {
+.button-tranform-tab > div {
   display: flex;
   width: 100%;
   justify-content: space-evenly;
   padding: 0 23%;
-  margin-top: 20px;
+  margin-top: 25px;
 }
-
-.button1 {}
 
 .button1 button,
 .button2 button {
@@ -191,37 +187,61 @@ iframe {
   padding-top: 10px;
 }
 
-.button2 {}
-
-
 .form-info-wrap1 {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
-.form-info1 input{
-  padding: 5px 0;
+.form-info1 label {
+  font-size: 16px;
+  font-weight: 600;
 }
 
-.form-info1 input,
+.form-input1 input {
+  width: 100%;
+  padding: 8px 20px;
+  color: 30px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  margin-top: 10px;
+}
+
+.number-people {
+  width: 60% !important;
+  padding: 8px 20px;
+  color: 30px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  margin-top: 10px;
+}
+
 .form-info1 textarea {
   width: 100%;
-  border: 1px solid #31a8a1;
-  text-align: start;
-  outline: #31a8a1;
-  border-radius: 5px;
+  padding: 8px 20px;
+  color: 30px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  margin-top: 10px;
 }
 
 .form-info1 {
-  display: flex;
-  flex-direction: column;
   width: 100%;
-  text-align: start;
-  margin-bottom: 10px;
 }
 
-.form-info1 label{
-  margin-bottom: 5px;
-  padding-left: 10px;
+.form-back-start {
+  display: flex;
+  justify-content: space-around;
 }
+
+.form-back-start button {
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #00bcd4;
+  color: #fff;
+  border-radius: 20px;
+  border: none;
+  font-size: 16px;
+}
+
+
