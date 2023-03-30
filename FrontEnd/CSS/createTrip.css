@@ -67,9 +67,6 @@ body {
 
 /* ----- create trip -------- */
 .createTrip-container {
-  width: 100%;
-  /* top: 80px;
-  position: relative; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -77,58 +74,174 @@ body {
 
 .createTrip-container > img {
   width: 100%;
-  /* height: auto;
-  position: absolute; */
   position: relative;
   height: auto;
+  top: 80px;
 }
 
 .createTrip-wraper {
   position: absolute;
   width: 60%;
-  margin: 100px 0;
   text-align: center;
+  margin-top: 120px;
+  padding-top: 200px;
 }
 
 .createTrip-wraper h1 {
-    color: #fff;
+  color: #fff;
 }
 
 .form-createTrip {
-    background-color: #fff;
-    padding: 50px 40px;
-    border-radius: 20px;
+  background-color: #fff;
+  padding: 50px 40px;
+  border-radius: 20px;
+  margin-top: 30px;
 }
 
 .form-info-wrap {
-    display: flex;
+  display: flex;
 }
 
 .form-info label {
-    font-size: 16px;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .form-input input {
-    width: 90%;
-    padding: 8px 20px;
-    color: 30px;
-    border-radius: 10px;
-    border: 1px solid #333;
-    margin-top: 10px;
+  width: 90%;
+  padding: 8px 20px;
+  color: 30px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  margin-top: 10px;
 }
 
 .form-info {
-    width: 80%;
-    margin-bottom: 30px;
+  width: 80%;
+  margin-bottom: 30px;
+}
+
+iframe {
+  width: 100%;
 }
 
 .form-next button {
-    padding: 10px 20px;
-    cursor: pointer;
-    background-color: #00bcd4;
-    color: #fff;
-    border-radius: 20px;
-    border: none;
-    font-size: 16px;
-    margin-top: 30px;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #00bcd4;
+  color: #fff;
+  border-radius: 20px;
+  border: none;
+  font-size: 16px;
+  margin-top: 30px;
 }
+
+.createTrip-wraper1 {
+  display: none;
+  transition: all 0.9 ease;
+  position: absolute;
+  width: 60%;
+  text-align: center;
+  margin-top: 120px;
+  padding-top: 200px;
+}
+
+.button-tranform-tab {
+  position: absolute;
+  color: #fff;
+  display: flex;
+  top: 100px;
+  z-index: 9;
+  justify-content: space-evenly;
+  width: 100%;
+  text-align: center;
+  flex-direction: column;
+}
+
+.button-tranform-tab > h1 {
+  margin-right: 15px;
+  margin-top: 20px;
+}
+
+.button-tranform-tab > div {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  padding: 0 23%;
+  margin-top: 25px;
+}
+
+.button1 button,
+.button2 button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.button1 p,
+.button2 p {
+  padding-top: 10px;
+}
+
+.form-info-wrap1 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form-info1 label {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.form-input1 input {
+  width: 100%;
+  padding: 8px 20px;
+  color: 30px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  margin-top: 10px;
+}
+
+.number-people {
+  width: 60% !important;
+  padding: 8px 20px;
+  color: 30px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  margin-top: 10px;
+}
+
+.form-info1 textarea {
+  width: 100%;
+  padding: 8px 20px;
+  color: 30px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  margin-top: 10px;
+}
+
+.form-info1 {
+  width: 100%;
+}
+
+.form-back-start {
+  display: flex;
+  justify-content: space-around;
+}
+
+.form-back-start button {
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #00bcd4;
+  color: #fff;
+  border-radius: 20px;
+  border: none;
+  font-size: 16px;
+}
+
+

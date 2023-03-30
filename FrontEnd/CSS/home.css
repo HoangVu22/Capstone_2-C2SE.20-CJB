@@ -164,8 +164,9 @@ header ul li a {
   padding-bottom: 40px;
 }
 
-.popular-heading h1 {
-  font-size: 26px;
+.popular-heading h1,
+.find-heading h1 {
+  font-size: 28px;
 }
 
 .popular-heading-icon {
@@ -222,14 +223,59 @@ header ul li a {
 
 .popular-container-right button {
   padding: 10px 26px;
-  border-radius: 20px;
-  border: none;
-  background-color: #F28074;
-  color: #fff;
+  /* border-radius: 20px; */
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  /* border: none; */
+  background-color: #fff;
+  color: #333;
   font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  
+  position: relative;
+  transition: all 0.5s;
 }
 
+.btn:after, .btn:before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  border: 0px solid #9a1b1b;
+  transition: all 1s;
+}
 
+.btn:after {
+  top: -1px;
+  left: -1px;
+}
+
+.btn:before {
+  bottom: -1px;
+  right: -1px;
+}
+
+#btn1:after {
+  border-top: 5px solid #7edd03;
+  border-left: 5px solid #7edd03;
+}
+
+#btn1:before {
+  border-bottom: 5px solid #7edd03;
+  border-right: 5px solid #7edd03;
+}
+
+.btn:hover {
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  letter-spacing: 3px;
+}
+
+#btn1:hover {
+  background: #011627;
+  color: #7edd03;
+}
 
 /* --------- find tours-------- */
 .find-tours {

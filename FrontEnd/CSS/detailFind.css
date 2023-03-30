@@ -248,6 +248,15 @@ body {
   padding-bottom: 40px;
 }
 
+.find-heading h1 {
+  font-size: 28px;
+}
+
+.popular-heading-icon {
+  font-size: 25px;
+  cursor: pointer;
+}
+
 .find-container-wraper {
   display: flex;
   width: 80%;
