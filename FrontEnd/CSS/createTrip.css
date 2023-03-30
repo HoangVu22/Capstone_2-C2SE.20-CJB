@@ -34,11 +34,11 @@ body {
   padding: 8px 0;
 }
 
-.detail-header > a {
+.detail-header>a {
   width: 16%;
 }
 
-.detail-header > a > img {
+.detail-header>a>img {
   width: 100%;
   object-fit: contain;
 }
@@ -60,7 +60,7 @@ body {
   font-size: 18px;
 }
 
-.detail-header > img {
+.detail-header>img {
   width: 50px;
   height: 50px;
 }
@@ -75,60 +75,153 @@ body {
   align-items: center;
 }
 
-.createTrip-container > img {
+.createTrip-container>img {
   width: 100%;
-  /* height: auto;
-  position: absolute; */
   position: relative;
   height: auto;
+  top: 80px;
 }
 
 .createTrip-wraper {
   position: absolute;
   width: 60%;
-  margin: 100px 0;
   text-align: center;
+  margin-top: 120px;
+  padding-top: 200px;
 }
 
 .createTrip-wraper h1 {
-    color: #fff;
+  color: #fff;
 }
 
 .form-createTrip {
-    background-color: #fff;
-    padding: 50px 40px;
-    border-radius: 20px;
+  background-color: #fff;
+  padding: 50px 40px;
+  border-radius: 20px;
 }
 
 .form-info-wrap {
-    display: flex;
+  display: flex;
 }
 
 .form-info label {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 .form-input input {
-    width: 90%;
-    padding: 8px 20px;
-    color: 30px;
-    border-radius: 10px;
-    border: 1px solid #333;
-    margin-top: 10px;
+  width: 90%;
+  padding: 8px 20px;
+  color: 30px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  margin-top: 10px;
 }
 
 .form-info {
-    width: 80%;
-    margin-bottom: 30px;
+  width: 80%;
+  margin-bottom: 30px;
+}
+
+
+iframe {
+  width: 100%;
+
 }
 
 .form-next button {
-    padding: 10px 20px;
-    cursor: pointer;
-    background-color: #00bcd4;
-    color: #fff;
-    border-radius: 20px;
-    border: none;
-    font-size: 16px;
-    margin-top: 30px;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #00bcd4;
+  color: #fff;
+  border-radius: 20px;
+  border: none;
+  font-size: 16px;
+  margin-top: 30px;
+}
+
+.createTrip-wraper1 {
+  display: none;
+  transition: all 0.9 ease;
+  position: absolute;
+  width: 60%;
+  text-align: center;
+  margin-top: 120px;
+  padding-top: 200px;
+}
+
+.button-tranform-tab {
+  position: absolute;
+  color: #fff;
+  display: flex;
+  top: 100px;
+  z-index: 9;
+  justify-content: space-evenly;
+  width: 100%;
+  text-align: center;
+  flex-direction: column;
+}
+
+.button-tranform-tab>h1 {
+  margin-right: 15px;
+}
+
+.button-tranform-tab>div {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  padding: 0 23%;
+  margin-top: 20px;
+}
+
+.button1 {}
+
+.button1 button,
+.button2 button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.button1 p,
+.button2 p {
+  padding-top: 10px;
+}
+
+.button2 {}
+
+
+.form-info-wrap1 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form-info1 input{
+  padding: 5px 0;
+}
+
+.form-info1 input,
+.form-info1 textarea {
+  width: 100%;
+  border: 1px solid #31a8a1;
+  text-align: start;
+  outline: #31a8a1;
+  border-radius: 5px;
+}
+
+.form-info1 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: start;
+  margin-bottom: 10px;
+}
+
+.form-info1 label{
+  margin-bottom: 5px;
+  padding-left: 10px;
 }
