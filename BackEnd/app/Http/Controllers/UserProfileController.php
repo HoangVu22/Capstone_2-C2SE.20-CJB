@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\UserProfile;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Resources\UserProfileResource;
 
 class UserProfileController extends Controller
 {
@@ -20,7 +22,19 @@ class UserProfileController extends Controller
      */
     public function store(Request $request)
     {
+        echo "abc";
+        // dd(Auth::user());
+        // dd($request->user());
+        dd(Auth::id());
         //
+        // $user_id = Auth::user()->user_id;
+        $user_profile = UserProfile::create([
+            'user_id' => Auth::id(),
+            'gender' => $request->gender,
+            'avatar' => $request->avatar,
+        ]);
+
+        return new UserProfileResource($user_profile);
     }
 
     /**

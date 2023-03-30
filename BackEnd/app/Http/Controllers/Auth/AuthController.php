@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\UserProfile;
 use App\Models\TSProfile;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 
 class AuthController extends Controller
@@ -43,7 +44,89 @@ class AuthController extends Controller
             }
         }
         else{
-            return response()->json(['msg' => 'Đăng nhập thất bại', 'email' => $request->email]);
+            return response()->json(['msg' => 'Đăng nhập thất bại', 'email' => $request->email], 401);
         }
+    }
+
+    public function userRegister(Request $request){
+        try{
+            $email = User::where('email', $request->email)->firstOrFail();
+            return response()->json(['msg' => 'Đăng ký thất bại email của bạn đã tồn tại', 
+                                    'data' =>[
+                                        'email' => $request->email,
+                                        'phone_number' => $request->phone_number,
+                                        'password' => $request->password,
+                                        'name' => $request->name
+                                    ]], 401);
+        }
+        catch(\Exception){
+            $email = $request->email;
+        }
+
+        try{
+            $phone_number = User::where('phone_number', $request->phone_number)->firstOrFail();
+            return response()->json(['msg' => 'Đăng ký thất bại sdt của bạn đã tồn tại', 
+                                    'data' =>[
+                                        'email' => $request->email,
+                                        'phone_number' => $request->phone_number,
+                                        'password' => $request->password,
+                                        'name' => $request->name
+                                    ]], 401);
+        }
+        catch(\Exception){
+            $phone_number = $request->phone_number;
+        }
+        
+        User::create([
+            'name' => $request->name,
+            'email' => $email,
+            'phone_number' => $phone_number,
+            'password' => Hash::make($request->password),
+            'is_Admin' => false,
+            'user_roles' => "user",
+        ]);
+
+        return response()->json(['msg' => "Đăng ký thành công"], 200);
+    }
+
+    public function tsRegister(Request $request){
+        try{
+            $email = User::where('email', $request->email)->firstOrFail();
+            return response()->json(['msg' => 'Đăng ký thất bại email của bạn đã tồn tại', 
+                                    'data' =>[
+                                        'email' => $request->email,
+                                        'phone_number' => $request->phone_number,
+                                        'password' => $request->password,
+                                        'name' => $request->name
+                                    ]], 401);
+        }
+        catch(\Exception){
+            $email = $request->email;
+        }
+
+        try{
+            $phone_number = User::where('phone_number', $request->phone_number)->firstOrFail();
+            return response()->json(['msg' => 'Đăng ký thất bại sdt của bạn đã tồn tại', 
+                                    'data' =>[
+                                        'email' => $request->email,
+                                        'phone_number' => $request->phone_number,
+                                        'password' => $request->password,
+                                        'name' => $request->name
+                                    ]], 401);
+        }
+        catch(\Exception){
+            $phone_number = $request->phone_number;
+        }
+        
+        User::create([
+            'name' => $request->name,
+            'email' => $email,
+            'phone_number' => $phone_number,
+            'password' => Hash::make($request->password),
+            'is_Admin' => false,
+            'user_roles' => "ts",
+        ]);
+
+        return response()->json(['msg' => "Đăng ký thành công"], 200);
     }
 }

@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\UserProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +22,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::controller(AuthController::class)->prefix('auth')->group(function(){
     Route::post('/login', 'login');
+    Route::post('/userRegister', 'userRegister');
+    Route::post('/tsRegister', 'tsRegister');
+
+})->middleware(['auth', 'auth.session']);
+
+Route::controller(UserProfileController::class)->prefix('user/profile')->group(function(){
+    Route::post('/create', 'store');
+    Route::post('/userRegister', 'userRegister');
+
 });
