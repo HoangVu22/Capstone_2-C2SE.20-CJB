@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tours;
 use Illuminate\Http\Request;
+use App\Http\Resources\HomepageToursResource;
 
 class ToursController extends Controller
 {
@@ -45,5 +46,9 @@ class ToursController extends Controller
     public function destroy(Tours $tours)
     {
         //
+    }
+
+    public function homepageTours(){
+        return HomepageToursResource::collection(Tours::where('from_date', '>=', date('y-m-d'))->get());
     }
 }

@@ -48,7 +48,7 @@ class AuthController extends Controller
             $email = $request->email;
         }
         
-        User::create([
+        $user = User::create([
             'name' => $request->name,
             'email' => $email,
             'phone_number' => $request->phone_number,
@@ -56,6 +56,12 @@ class AuthController extends Controller
             'is_Admin' => false,
             'user_roles' => "user",
         ]);
+
+        UserProfile::create([
+            'user_id' => $user->id,
+            'gender' => 'female',
+            'avatar' => ''
+        ]); 
 
         return response()->json(['msg' => "Đăng ký thành công"], 200);
     }
@@ -75,13 +81,18 @@ class AuthController extends Controller
             $email = $request->email;
         }
 
-        User::create([
+        $user = User::create([
             'name' => $request->name,
             'email' => $email,
             'phone_number' => $request->phone_number,
             'password' => Hash::make($request->password),
             'is_Admin' => false,
             'user_roles' => "ts",
+        ]);
+
+        TsProfile::create([
+            'user_id' => $user->id,
+            'avatar' => ''
         ]);
 
         return response()->json(['msg' => "Đăng ký thành công"], 200);

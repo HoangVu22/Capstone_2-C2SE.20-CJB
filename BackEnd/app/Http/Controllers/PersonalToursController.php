@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PersonalTours;
 use Illuminate\Http\Request;
+use App\Http\Resources\HomepageGroupResource;
 
 class PersonalToursController extends Controller
 {
@@ -13,6 +14,7 @@ class PersonalToursController extends Controller
     public function index()
     {
         //
+        return HomepageGroupResource::collection(PersonalTours::all());
     }
 
     /**
@@ -45,5 +47,10 @@ class PersonalToursController extends Controller
     public function destroy(PersonalTours $personalTours)
     {
         //
+    }
+
+    public function homepageGroups()
+    {
+        return HomepageGroupResource::collection(PersonalTours::where('from_date', '>=', date('y-m-d'))->get());
     }
 }

@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use App\Models\UserProfile;
-use App\Models\TSProfile;
-
+use App\Models\PersonalTours;
+use App\Models\Tours;
+ 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -47,11 +47,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // public function userProfile(){
-    //     return $this->hasOne(UserProfile::class);
-    // }
+    public function tours(){
+        return $this->hasMany(Tours::class);
+    }
 
-    // public function tsProfile(){
-    //     return $this->hasOne(TSProfile::class);
-    // }
+    public function personal_tours(){
+        return $this->hasMany(PersonalTours::class);
+    }
+
+    public function rooms(){
+        return $this->belongsToMany(PersonalTours::class, 'rooms', 'user_id', 'pt_id');
+    }
 }

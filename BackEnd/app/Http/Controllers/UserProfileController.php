@@ -38,11 +38,10 @@ class UserProfileController extends Controller
      */
     public function update(Request $request, UserProfile $userProfile)
     {
-        $user_profile = UserProfile::create([
-            'user_id' => $request->id,
-            'gender' => $request->gender,
-            'avatar' => $request->avatar,
-        ]);
+        $user_profile = UserProfile::where('user_id', $request->id)->update([
+                                                                        'gender' => $request->gender,
+                                                                        'avatar' => $request->avatar,
+                                                                    ]);
 
         return new UserProfileResource($user_profile);
     }

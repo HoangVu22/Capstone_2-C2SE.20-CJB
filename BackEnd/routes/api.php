@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\PersonalToursController;
+use App\Http\Controllers\ToursController;
 use App\Http\Controllers\TSProfileController;
 use App\Http\Controllers\UserProfileController;
 
@@ -34,4 +36,9 @@ Route::controller(UserProfileController::class)->prefix('user/profile')->group(f
 
 Route::controller(TSProfileController::class)->prefix('ts/profile')->group(function(){
     Route::post('/update', 'update');
+});
+
+Route::prefix('homepage')->group(function(){
+    Route::get('/group', [PersonalToursController::class, 'homepageGroups']);
+    Route::get('/tour', [ToursController::class, 'homepageTours']);
 });
