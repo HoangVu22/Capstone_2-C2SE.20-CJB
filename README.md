@@ -14,7 +14,7 @@
 <a href="https://www.apachefriends.org/download_success.html">PHP</a>, 
 <a href="https://getcomposer.org/">COMPOSER</a>, 
 
-In xampp start Apache and Mysql
+In xampp start Apache and Mysql <br>
 Go to /Capstone_2_C2SE.20-CJB by terminal and run:
 
 ```bash
