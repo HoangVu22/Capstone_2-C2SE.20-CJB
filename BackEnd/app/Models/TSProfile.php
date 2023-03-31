@@ -12,6 +12,11 @@ class TSProfile extends Model
 
     protected $table = 'ts_profiles';
 
+    protected $fillable = [
+        'user_id',
+        'avatar'
+    ];
+
     public function user(){
         return $this->belongsTo(User::class);
     }

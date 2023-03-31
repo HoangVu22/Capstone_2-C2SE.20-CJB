@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\TSProfileController;
 use App\Http\Controllers\UserProfileController;
 
 /*
@@ -25,10 +26,12 @@ Route::controller(AuthController::class)->prefix('auth')->group(function(){
     Route::post('/userRegister', 'userRegister');
     Route::post('/tsRegister', 'tsRegister');
 
-})->middleware(['auth', 'auth.session']);
+});
 
 Route::controller(UserProfileController::class)->prefix('user/profile')->group(function(){
-    Route::post('/create', 'store');
-    Route::post('/userRegister', 'userRegister');
+    Route::post('/update', 'update');
+});
 
+Route::controller(TSProfileController::class)->prefix('ts/profile')->group(function(){
+    Route::post('/update', 'update');
 });

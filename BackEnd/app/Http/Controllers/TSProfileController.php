@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\UserProfileResource;
 use App\Models\TSProfile;
 use Illuminate\Http\Request;
 
@@ -36,7 +37,12 @@ class TSProfileController extends Controller
      */
     public function update(Request $request, TSProfile $tSProfile)
     {
-        //
+        $user_profile = TSProfile::create([
+            'user_id' => $request->id,
+            'avatar' => $request->avatar,
+        ]);
+
+        return new UserProfileResource($user_profile);
     }
 
     /**
