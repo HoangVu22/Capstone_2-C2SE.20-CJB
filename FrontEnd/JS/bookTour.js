@@ -1,4 +1,22 @@
-let endDate = new Date("3/28/2023 00:00:00").getTime();
+const headerNavForm = document.querySelector(".header-nav-form");
+const headerForm = document.querySelector(".header-form");
+const headerFormLogin = headerNavForm.querySelector(".header-form-login");
+const headerFormLogout = document.querySelector(".header-form-logout");
+const login = window.localStorage.getItem("login");
+
+headerNavForm.onclick = function () {
+  if (headerForm.style.display === "none") {
+    headerForm.style.display = "block";
+  } else {
+    headerForm.style.display = "none";
+  }
+};
+
+// ---------------------------------------
+
+
+
+let endDate = new Date("4/2/2023 00:00:00").getTime();
 let check = setInterval(function(){
     let now = new Date().getTime();
     let distance = endDate - now;
