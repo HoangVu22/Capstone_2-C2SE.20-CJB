@@ -25,6 +25,7 @@ class UserInfoResource extends JsonResource
             'user_profile' => $this->user_roles === 'user'
                 ? UserProfile::where('user_id', Auth::user()->id)->get() 
                 : tsProfile::where('user_id', Auth::user()->id)->get(),
+            'status' => 200,
         ];
     }
 }

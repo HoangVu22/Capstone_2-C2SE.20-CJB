@@ -22,6 +22,7 @@ class HomepageGroupResource extends JsonResource
             'to_where' => $this->to_where,
             'host' => $this->user->name,
             'members' => $this->withCount('rooms')->where('id', $this->id)->get()[0]->rooms_count,
+            'status' => 200,
         ];
     }
 }

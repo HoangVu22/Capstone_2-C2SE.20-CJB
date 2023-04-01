@@ -25,11 +25,12 @@ class AuthController extends Controller
                 return response()->json(['msg' => 'Đăng nhập thành công', 
                                         'user_info' =>
                                             new UserInfoResource(User::find(Auth::user()->id)),
+                                        'status' => 200,
                                         ], 200);
             }
         }
         else{
-            return response()->json(['msg' => 'Đăng nhập thất bại', 'email' => $request->email], 401);
+            return response()->json(['msg' => 'Đăng nhập thất bại', 'email' => $request->email, 'status' => 401], 401);
         }
     }
 
@@ -41,7 +42,8 @@ class AuthController extends Controller
                                         'email' => $request->email,
                                         'phone_number' => $request->phone_number,
                                         'password' => $request->password,
-                                        'name' => $request->name
+                                        'name' => $request->name,
+                                        'status' => 401
                                     ]], 401);
         }
         catch(\Exception){
@@ -63,7 +65,7 @@ class AuthController extends Controller
             'avatar' => ''
         ]); 
 
-        return response()->json(['msg' => "Đăng ký thành công"], 200);
+        return response()->json(['msg' => "Đăng ký thành công", 'status' => 200], 200);
     }
 
     public function tsRegister(Request $request){
@@ -74,7 +76,8 @@ class AuthController extends Controller
                                         'email' => $request->email,
                                         'phone_number' => $request->phone_number,
                                         'password' => $request->password,
-                                        'name' => $request->name
+                                        'name' => $request->name,
+                                        'status' => 401
                                     ]], 401);
         }
         catch(\Exception){
@@ -95,6 +98,6 @@ class AuthController extends Controller
             'avatar' => ''
         ]);
 
-        return response()->json(['msg' => "Đăng ký thành công"], 200);
+        return response()->json(['msg' => "Đăng ký thành công", 'status' => 200], 200);
     }
 }
