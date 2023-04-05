@@ -42,3 +42,15 @@ Route::prefix('homepage')->group(function(){
     Route::get('/group', [PersonalToursController::class, 'homepageGroups']);
     Route::get('/tour', [ToursController::class, 'homepageTours']);
 });
+
+Route::prefix('ts/tour')->group(function(){
+    Route::post('/create', [ToursController::class, 'store']);
+    Route::post('/update/{id}', [ToursController::class, 'update']);
+    Route::get('/delete/{id}', [ToursController::class, 'destroy']);
+});
+
+Route::prefix('personal/tour')->group(function(){
+    Route::post('/create', [PersonalToursController::class, 'store']);
+    Route::post('/update/{id}', [PersonalToursController::class, 'update']);
+    Route::get('/delete/{id}', [PersonalToursController::class, 'destroy']);
+});

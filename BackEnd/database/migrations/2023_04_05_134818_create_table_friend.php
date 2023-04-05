@@ -11,17 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_profiles', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('friends', function (Blueprint $table) {
+            $table->id();
             $table->unsignedInteger('user_id');
-            $table->enum('gender', ['male', 'female', 'other']);
-            $table->string('avatar', 2048);
-            $table->timestamps();
+            $table->unsignedInteger('friend_id');
 
             $table->foreign('user_id')
                   ->references('id')
                   ->on('users')
                   ->onDelete('cascade');
+
+            $table->foreign('friend_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');  
         });
     }
 
@@ -30,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_profiles');
+        Schema::dropIfExists('table_friend');
     }
 };
