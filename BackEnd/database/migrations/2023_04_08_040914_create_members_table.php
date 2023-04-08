@@ -11,20 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('rooms', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('room_owner');
-            
-            $table->string('name', 100);
-            $table->string('description', 200);
+        Schema::create('members', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('room_id');
             $table->timestamps();
 
-            $table->foreign('room_owner')
+            $table->foreign('user_id')
                   ->references('id')
                   ->on('users')
                   ->onDelete('cascade');
-                  
-             
+            $table->foreign('room_id')
+                  ->references('id')
+                  ->on('rooms')
+                  ->onDelete('cascade');
         });
     }
 
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('rooms');
+        Schema::dropIfExists('members');
     }
 };
