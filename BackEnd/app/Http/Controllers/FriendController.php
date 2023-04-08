@@ -52,7 +52,7 @@ class FriendController extends Controller
         Friend::where([
             'user_id' => $request->userId,
             'friend_id' => $request->friendId,
-        ])->destroy();
+        ])->delete();
 
         return response()->json(['msg' => 'Unfriend thành công']);
     }
