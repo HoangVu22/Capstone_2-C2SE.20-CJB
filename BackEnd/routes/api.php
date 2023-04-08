@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\FriendController;
 use App\Http\Controllers\PersonalToursController;
 use App\Http\Controllers\ToursController;
 use App\Http\Controllers\TSProfileController;
@@ -44,6 +45,8 @@ Route::prefix('homepage')->group(function(){
 });
 
 Route::prefix('ts/tour')->group(function(){
+    Route::get('/', [ToursController::class, 'index']);
+    Route::get('/{id}', [ToursController::class, 'show']);
     Route::post('/create', [ToursController::class, 'store']);
     Route::post('/update/{id}', [ToursController::class, 'update']);
     Route::get('/delete/{id}', [ToursController::class, 'destroy']);
@@ -51,6 +54,13 @@ Route::prefix('ts/tour')->group(function(){
 
 Route::prefix('personal/tour')->group(function(){
     Route::post('/create', [PersonalToursController::class, 'store']);
+    Route::get('/show/{id}', [PersonalToursController::class, 'show']);
     Route::post('/update/{id}', [PersonalToursController::class, 'update']);
     Route::get('/delete/{id}', [PersonalToursController::class, 'destroy']);
+});
+
+Route::prefix('friend')->group(function(){
+    Route::post('/create', [FriendController::class, 'store']);
+    Route::get('/show/{id}', [FriendController::class, 'show']);
+    Route::delete('/delete', [FriendController::class, 'destroy']);
 });
