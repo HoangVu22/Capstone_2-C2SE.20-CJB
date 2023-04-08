@@ -15,12 +15,12 @@ return new class extends Migration
             $table->increments('id');
             $table->string('name', 100);
             $table->unsignedInteger('ts_id');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->string('address', 100);
             $table->dateTime('from_date');
             $table->dateTime('to_date');
-            $table->double('price', 10, 4);
-            $table->integer('slot');
+            $table->double('price', 15, 2)->nullable();
+            $table->integer('slot')->nullable();
             $table->string('lon',20);
             $table->string('lat',20);
             $table->timestamps();

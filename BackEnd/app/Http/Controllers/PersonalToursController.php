@@ -22,7 +22,20 @@ class PersonalToursController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        PersonalTours::create([
+            'name' => $request->name,
+            'owner_id' => $request->owner_id,
+            'description' => $request->description,
+            'address' => $request->address,
+            'from_date' => $request->from_date,
+            'to_date' => $request->to_date,
+            'lat' => $request->lat,
+            'lon' => $request->lon,
+            'from_where' => $request->from_where,
+            'to_where' => $request->to_where,
+        ]);
+
+        return response()->json(['msg' => "Tạo personal tour thành công", 'status' => 200], 200);
     }
 
     /**
@@ -38,15 +51,48 @@ class PersonalToursController extends Controller
      */
     public function update(Request $request, PersonalTours $personalTours)
     {
-        //
+        if(PersonalTours::find($request->id) == null){
+            return response()->json(['msg' => "Tour không tồn tại", 'status' => 404], 404);
+        }
+        else{
+            if($request->owner_id != PersonalTours::find($request->id)->owner_id){
+                return response()->json(['msg' => "Đây không phải là tour của bạn", 'status' => 403], 403);
+            }
+            else{
+                PersonalTours::find($request->id)->update([
+                    'name' => $request->name,
+                    'owner_id' => $request->owner_id,
+                    'description' => $request->description,
+                    'address' => $request->address,
+                    'from_date' => $request->from_date,
+                    'to_date' => $request->to_date,
+                    'lat' => $request->lat,
+                    'lon' => $request->lon,
+                    'from_where' => $request->from_where,
+                    'to_where' => $request->to_where,
+                ]);
+                return response()->json(['msg' => "Update tour thành công", 'status' => 200], 200);
+            }
+        } 
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(PersonalTours $personalTours)
+    public function destroy(Request $request, PersonalTours $personalTours)
     {
-        //
+        if(PersonalTours::find($request->id) == null){
+            return response()->json(['msg' => "Tour không tồn tại", 'status' => 404], 404);
+        }
+        else{
+            if($request->owner_id != PersonalTours::find($request->id)->owner_id){
+                return response()->json(['msg' => "Đây không phải là tour của bạn", 'status' => 403], 403);
+            }
+            else{
+                PersonalTours::find($request->id)->delete();
+                return response()->json(['msg' => "Delete tour thành công", 'status' => 200], 200);
+            }
+        }
     }
 
     public function homepageGroups()
