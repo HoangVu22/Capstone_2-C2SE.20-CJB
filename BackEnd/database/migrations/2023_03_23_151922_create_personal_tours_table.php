@@ -15,7 +15,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('name', 100);
             $table->unsignedInteger('owner_id');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->string('address', 100);
             $table->dateTime('from_date');
             $table->dateTime('to_date');
