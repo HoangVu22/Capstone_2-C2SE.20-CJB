@@ -13,7 +13,7 @@ class ToursController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(Tours::all());
     }
 
     /**
@@ -43,9 +43,9 @@ class ToursController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Tours $tours)
+    public function show($id)
     {
-        //
+        return response()->json(Tours::find($id));
     }
 
     /**
