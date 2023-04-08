@@ -44,6 +44,8 @@ Route::prefix('homepage')->group(function(){
 });
 
 Route::prefix('ts/tour')->group(function(){
+    Route::get('/', [ToursController::class, 'index']);
+    Route::get('/{id}', [ToursController::class, 'show']);
     Route::post('/create', [ToursController::class, 'store']);
     Route::post('/update/{id}', [ToursController::class, 'update']);
     Route::get('/delete/{id}', [ToursController::class, 'destroy']);
