@@ -41,9 +41,9 @@ class PersonalToursController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(PersonalTours $personalTours)
+    public function show($id)
     {
-        //
+        return response()->json(PersonalTours::find($id));
     }
 
     /**
