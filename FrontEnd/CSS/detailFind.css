@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
+
 * {
   margin: 0;
   padding: 0;
@@ -182,6 +184,8 @@ body {
 
 .detail-map {
   width: 45%;
+  position: relative;
+  z-index: 1;
 }
 
 .detail-map iframe {
@@ -583,4 +587,10 @@ body {
 .form-logout:hover {
   background-color: #e3e0e077;
   color: var(--main-color);
+}
+
+
+#map { 
+  height: 362px;
+  width: 100%;
 }

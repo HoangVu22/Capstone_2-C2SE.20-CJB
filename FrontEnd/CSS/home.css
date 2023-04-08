@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
+
 * {
   padding: 0;
   margin: 0;
@@ -6,9 +8,9 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  background-image: url(../IMAGES/background/bg4.png);
+  /* background-image: url(../IMAGES/background/bg4.png);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
 }
 
 .main {
@@ -299,6 +301,8 @@ header ul li a {
   overflow: hidden;
   margin: 0 10px;
   background-color: #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 2px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
 }
 
 .find-container-top {
@@ -613,3 +617,4 @@ header ul li a {
   background-color: #e3e0e077;
   color: var(--main-color);
 }
+

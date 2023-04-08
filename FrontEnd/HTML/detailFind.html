@@ -9,6 +9,12 @@
     <link rel="stylesheet" href="../CSS/detailFind.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+    crossorigin=""></script>
 </head>
 
 <body>
@@ -116,11 +122,13 @@
                 </div>
 
                 <div class="detail-map">
-                    <iframe
+                    <div id="map"></div>
+
+                    <!-- <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d245427.202253111!2d108.07605262450348!3d16.02392166225702!2m3!1f0!2f0!3f0!3m2!
                     1i1024!2i768!4f13.1!3m3!1m2!1s0x314219c792252a13%3A0x1df0cb4b86727e06!2zxJDDoCBO4bq1bmcsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1679646974460!5m2!1svi!2s"
                         width="600" height="320" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        referrerpolicy="no-referrer-when-downgrade"></iframe> -->
                     <div class="detail-inf-action">
                         <div class="detail-action detail-book">
                             <button>JOIN</button>
@@ -331,7 +339,7 @@
                         <li><a href="">Quy định bảo mật</a></li>
                     </ul>
                 </div>
-    
+
                 <div class="footer-content">
                     <div class="footer-title">
                         Đối tác
@@ -342,7 +350,7 @@
                         <li><a href="">Quy chế trả góp</a></li>
                     </ul>
                 </div>
-    
+
                 <div class="footer-content">
                     <div class="footer-title">
                         Điểm du lịch
@@ -355,7 +363,7 @@
                         <li><a href="">Thành phố Cần Thơ</a></li>
                     </ul>
                 </div>
-    
+
                 <div class="footer-content">
                     <div class="footer-title">
                         Theo dõi chúng tôi trên
@@ -389,8 +397,11 @@
                 </div>
             </div>
             <div class="custom-shape-divider-bottom-1679667216">
-                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                    <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                    preserveAspectRatio="none">
+                    <path
+                        d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
+                        class="shape-fill"></path>
                 </svg>
             </div>
         </footer>
@@ -399,6 +410,7 @@
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="../JS/map.js"></script>
     <script src="../JS/detailFind.js"></script>
 </body>
 

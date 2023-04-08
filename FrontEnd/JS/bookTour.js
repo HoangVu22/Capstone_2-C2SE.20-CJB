@@ -1,3 +1,10 @@
+
+// ----- my trip----------
+new Swiper(".blog-slider", {
+  effect: "fade",
+});
+// ---------------------------
+
 const headerNavForm = document.querySelector(".header-nav-form");
 const headerForm = document.querySelector(".header-form");
 const headerFormLogin = headerNavForm.querySelector(".header-form-login");
@@ -33,6 +40,8 @@ let check = setInterval(function(){
     }
 }, 1000);
 
+// ------------ slide 1 --------------
+
 $('.slides2').slick({
     infinite: true,
     slidesToShow: 3,
@@ -50,9 +59,10 @@ const next = z('.slick-next');
 
 slickPre.onclick = () => {
     pre.click();
-    
 }
+
 slickNext.onclick = () => {
-    next.click();
-    
+    next.click();  
 }
+
+// ------------ slide 2 --------------
