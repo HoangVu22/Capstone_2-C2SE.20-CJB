@@ -20,7 +20,10 @@ class FriendController extends Controller
      */
     public function store(Request $request)
     {
-        Friend::create($request);
+        Friend::create([
+            'user_id' => $request->user_id,
+            'friend_id' => $request->friend_id,
+        ]);
 
         return response()->json(['msg' => 'Make friend thành công']);
     }
