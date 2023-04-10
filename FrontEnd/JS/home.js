@@ -52,3 +52,6 @@ findSlickPrev.onclick = () => {
 findSlickNext.onclick = () => {
   next1[1].click();
 };
+
+
+console.log(pre1);
