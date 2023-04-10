@@ -52,3 +52,17 @@ findSlickPrev.onclick = () => {
 findSlickNext.onclick = () => {
   next1[1].click();
 };
+
+
+const logout = z('.form-logout');
+logout.onclick = () => {
+  alert('1')
+  window.localStorage.clear();
+  window.location.reload(true);
+  window.location.href = 'http://127.0.0.1:5500/FrontEnd/HTML/login-register.html';
+}
+
+
+const names = document.getElementsByClassName('header-name1');
+names[0].innerText = window.localStorage.getItem("name");
+console.log(names[0].innerText);

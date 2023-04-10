@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,16 +11,17 @@
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
     <div class="container" id="container">
         <div class="form-container register-container">
-            <form action="#">
+            <form>
                 <h1>Register here.</h1>
-                <input type="text" placeholder="Name">
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Password">
-                <input type="number" placeholder="Phone">
-                <button>Register</button>
+                <input type="text" placeholder="Name" name="name" class="form-input">
+                <input type="email" placeholder="Email" name="email" class="form-input">
+                <input type="password" placeholder="Password" name="password" class="form-input">
+                <input type="number" placeholder="Phone" name="phone_number" class="form-input">
+                <button class="resgister-1">Register</button>
                 <span>or use your account</span>
                 <div class="social-container">
                     <a href="#"><i class="fa-brands fa-facebook"></i></a>
@@ -27,26 +29,28 @@
                 </div>
             </form>
         </div>
-
         <div class="form-container login-container">
-            <form action="#">
-                <h1>Login here.</h1>
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Password">
-                <div class="content">
-                    <div class="checkbox">
-                        <input type="checkbox" name="checkbox" id="checkbox">
-                        <label>Remember me</label>
+            <form>
+                <div>
+                    <h1>Login here.</h1>
+                    <input type="email" placeholder="Email / Phone" class="form-control" name="email">
+                    <input type="password" placeholder="Password" class="form-control" name="password">
+                    <div class="content">
+                        <div class="checkbox">
+                            <input type="checkbox" name="checkbox" id="checkbox">
+                            <label>Remember me</label>
+                        </div>
+                        <div class="pass-link">
+                            <a href="#">Forgot password?</a>
+                        </div>
                     </div>
-                    <div class="pass-link">
-                        <a href="#">Forgot password?</a>
+                    <button id="login-1" type="button">Login</button>
+                    <br>
+                    <span>or use your account</span>
+                    <div class="social-container">
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
                     </div>
-                </div>
-                <button>Login</button>
-                <span>or use your account</span>
-                <div class="social-container">
-                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
                 </div>
             </form>
         </div>
@@ -72,7 +76,7 @@
             </div>
         </div>
     </div>
-
     <script src="../JS/login-register.js"></script>
 </body>
+
 </html>
