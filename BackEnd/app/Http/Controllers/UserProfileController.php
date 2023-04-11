@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\UserProfile;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Resources\UserProfileResource;
@@ -38,12 +39,22 @@ class UserProfileController extends Controller
      */
     public function update(Request $request, UserProfile $userProfile)
     {
-        $user_profile = UserProfile::where('user_id', $request->id)->update([
-                                                                        'gender' => $request->gender,
-                                                                        'avatar' => $request->avatar,
-                                                                    ]);
+        User::where('id', $request->id)->update([
+            'name' => $request->name,
+            'phone_number' => $request->phone_number,
+        ]);
 
-        return new UserProfileResource($user_profile);
+        UserProfile::where('user_id', $request->id)->update([
+            'gender' => $request->gender,
+            'avatar' => $request->avatar,
+        ]);
+
+        return response()->json([
+            'msg' => "Update thành công",
+            'status' => 200,
+            'user' => User::find($request->id),
+            'profile' => UserProfile::where('user_id', $request->id)->get(),
+        ]);
     }
 
     /**

@@ -15,6 +15,7 @@ class PersonalTours extends Model
     protected $fillable = [
         'name',
         'owner_id',
+        'room_id',
         'description',
         'address',
         'from_date',

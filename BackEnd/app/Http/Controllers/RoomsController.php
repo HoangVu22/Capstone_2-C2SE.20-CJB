@@ -20,15 +20,27 @@ class RoomsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Rooms::create([
+            'room_owner' => $request->owner_id,
+            'name' => $request->name,
+            'description' => $request->description,
+        ]);
+
+        return response()->json([
+            'msg' => "Tạo room thành công",
+            'status' => 200,
+        ]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Rooms $rooms)
+    public function show($id)
     {
-        //
+        return response()->json([
+            'room' => Rooms::find($id),
+            'status' => 200,
+        ]);
     }
 
     /**
@@ -36,14 +48,39 @@ class RoomsController extends Controller
      */
     public function update(Request $request, Rooms $rooms)
     {
-        //
+        if(Rooms::find($request->id) == null){
+            return response()->json(['msg' => "Room không tồn tại", 'status' => 404], 404);
+        }
+        else{
+            if($request->room_owner != Rooms::find($request->id)->room_owner){
+                return response()->json(['msg' => "Đây không phải là room của bạn", 'status' => 403], 403);
+            }
+            else{
+                Rooms::find($request->id)->update([
+                    'name' => $request->name,
+                    'description' => $request->description,
+                ]);
+                return response()->json(['msg' => "Update room thành công", 'status' => 200], 200);
+            }
+        } 
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Rooms $rooms)
+    public function destroy(Request $request, Rooms $rooms)
     {
-        //
+        if(Rooms::find($request->id) == null){
+            return response()->json(['msg' => "Room không tồn tại", 'status' => 404], 404);
+        }
+        else{
+            if($request->room_owner != Rooms::find($request->id)->room_owner){
+                return response()->json(['msg' => "Đây không phải là room của bạn", 'status' => 403], 403);
+            }
+            else{
+                Rooms::find($request->id)->delete();
+                return response()->json(['msg' => "Delete room thành công", 'status' => 200], 200);
+            }
+        }
     }
 }

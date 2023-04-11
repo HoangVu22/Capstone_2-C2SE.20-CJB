@@ -25,6 +25,7 @@ class PersonalToursController extends Controller
         PersonalTours::create([
             'name' => $request->name,
             'owner_id' => $request->owner_id,
+            'room_id' => $request->room_id,
             'description' => $request->description,
             'address' => $request->address,
             'from_date' => $request->from_date,
@@ -62,6 +63,7 @@ class PersonalToursController extends Controller
                 PersonalTours::find($request->id)->update([
                     'name' => $request->name,
                     'owner_id' => $request->owner_id,
+                    'room_id' => $request->room_id,
                     'description' => $request->description,
                     'address' => $request->address,
                     'from_date' => $request->from_date,

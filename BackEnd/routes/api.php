@@ -8,6 +8,7 @@ use App\Http\Controllers\PersonalToursController;
 use App\Http\Controllers\ToursController;
 use App\Http\Controllers\TSProfileController;
 use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\RoomsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +58,13 @@ Route::prefix('personal/tour')->group(function(){
     Route::get('/show/{id}', [PersonalToursController::class, 'show']);
     Route::post('/update/{id}', [PersonalToursController::class, 'update']);
     Route::get('/delete/{id}', [PersonalToursController::class, 'destroy']);
+});
+
+Route::prefix('personal/room')->group(function(){
+    Route::post('/create', [RoomsController::class, 'store']);
+    Route::get('/show/{id}', [RoomsController::class, 'show']);
+    Route::post('/update/{id}', [RoomsController::class, 'update']);
+    Route::get('/delete/{id}', [RoomsController::class, 'destroy']);
 });
 
 Route::prefix('friend')->group(function(){

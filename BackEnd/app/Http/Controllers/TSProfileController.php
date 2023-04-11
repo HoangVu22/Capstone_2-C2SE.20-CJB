@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\UserProfileResource;
 use App\Models\TSProfile;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TSProfileController extends Controller
@@ -37,11 +38,21 @@ class TSProfileController extends Controller
      */
     public function update(Request $request, TSProfile $tSProfile)
     {
-        $user_profile = TSProfile::where('user_id', $request->id)->update([
-                                                                    'avatar' => $request->avatar,
-                                                                ]);
+        User::where('id', $request->id)->update([
+            'name' => $request->name,
+            'phone_number' => $request->phone_number,
+        ]);
 
-        return new UserProfileResource($user_profile);
+        TSProfile::where('user_id', $request->id)->update([
+            'avatar' => $request->avatar,
+        ]);
+
+        return response()->json([
+            'msg' => "Update thành công",
+            'status' => 200,
+            'user' => User::find($request->id),
+            'profile' => TSProfile::where('user_id', $request->id)->get(),
+        ]);
     }
 
     /**
