@@ -6,7 +6,7 @@ use App\Models\UserProfile;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Http\Resources\UserProfileResource;
+use App\Http\Resources\UIResource;
 
 class UserProfileController extends Controller
 {
@@ -53,8 +53,7 @@ class UserProfileController extends Controller
         return response()->json([
             'msg' => "Update thành công",
             'status' => 200,
-            'user' => User::find($request->id),
-            'profile' => UserProfile::where('user_id', $request->id)->get(),
+            'user_info' => new UIResource(User::find($request->id)),
         ]);
     }
 
