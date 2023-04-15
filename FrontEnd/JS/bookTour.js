@@ -20,7 +20,7 @@ headerNavForm.onclick = function () {
 
 // ---------------------------------------
 
-let endDate = new Date("4/12/2023 00:00:00").getTime();
+let endDate = new Date("4/20/2023 00:00:00").getTime();
 let check = setInterval(function () {
   let now = new Date().getTime();
   let distance = endDate - now;

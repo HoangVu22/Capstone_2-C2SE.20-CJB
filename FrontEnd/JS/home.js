@@ -56,7 +56,7 @@ findSlickNext.onclick = () => {
 
 const logout = z('.form-logout');
 logout.onclick = () => {
-  alert('1')
+  alert('Bạn chắc chắn muốn thoát ?')
   window.localStorage.clear();
   window.location.reload(true);
   window.location.href = 'http://127.0.0.1:5503/Capstone_2-C2SE.20-CJB/FrontEnd/HTML/login-register.html';
@@ -64,9 +64,10 @@ logout.onclick = () => {
 
 const names = $('.header-name1');
 const avatarUser = document.getElementsByClassName("avatar_user");
-names[0].innerText = login.name;
-avatarUser[0].src = login.user_profile[0].avatar;
-
- console.log(avatarUser);
-
-console.log(login.user_profile[0].avatar);
+if(login.msg === "Đăng nhập thành công"){
+  names[0].innerText = login.user_info.name;
+  avatarUser[0].src = login.user_info.user_profile[0].avatar;
+} else {
+  names[0].innerText = login.user.name;
+  avatarUser[0].src = "https://scontent.fdad1-2.fna.fbcdn.net/v/t39.30808-6/323952197_567233611560466_7304591525322997827_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=PdWsTXpElkEAX9IVL9U&_nc_ht=scontent.fdad1-2.fna&oh=00_AfBGaaF1sKuii3DajDaAxGsPyrPBf8lHeo2HgE45lER7hA&oe=643E53C4";
+}
