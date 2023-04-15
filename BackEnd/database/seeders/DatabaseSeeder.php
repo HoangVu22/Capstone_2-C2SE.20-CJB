@@ -196,52 +196,52 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Images::create([
             'image_name' => "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSt1wLLHHU4HtAz4JZmBDdF8RWbih0eFfQ7A&usqp=CAU",
-            'tour_id' => 1,
+            'tour_id' => 2,
         ]);
 
         \App\Models\Images::create([
             'image_name' => "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6CI2DUQeZnMIXjpsbjshPh6i9TtfnA1CCTQ&usqp=CAU",
-            'tour_id' => 1,
+            'tour_id' => 2,
         ]);
 
         \App\Models\Images::create([
             'image_name' => "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR43C7pCHhsCNMH9l7lViH1OEcaWiAScqX2xO7gEtKVM31t_pS3yngWderyOokTTbk5Hm8&usqp=CAU",
-            'tour_id' => 1,
+            'tour_id' => 2,
         ]);
 
         \App\Models\Images::create([
             'image_name' => "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSx8U5QtZkqP6RYstwTRwsMkBg1kmXHCWzPvfbjwrRbWcCteyhj9_osuVfjFztXsJzEEXE&usqp=CAU",
-            'tour_id' => 1,
+            'tour_id' => 2,
         ]);
 
         \App\Models\Images::create([
             'image_name' => "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMslPzJGOhZ9aKN_h3NMhX_NFJwVZ9yM5R2w&usqp=CAU",
-            'tour_id' => 1,
+            'tour_id' => 2,
         ]);
 
         \App\Models\Images::create([
             'image_name' => "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4pmKfAFN4FIRnwijPVeFQwIqiDAhHWtF2Ng&usqp=CAU",
-            'tour_id' => 1,
+            'tour_id' => 3,
         ]);
 
         \App\Models\Images::create([
             'image_name' => "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStL7ay5eagcZf9C_6-Ks8sjBzVhPxc6aVBcw&usqp=CAU",
-            'tour_id' => 1,
+            'tour_id' => 3,
         ]);
 
         \App\Models\Images::create([
             'image_name' => "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQY24E2PIBiu9Q4XnK-gSqeXpKGfWrVoGv5tg&usqp=CAU",
-            'tour_id' => 1,
+            'tour_id' => 3,
         ]);
 
         \App\Models\Images::create([
             'image_name' => "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxWE3xIAqHHhTLPYXdp4IrB-3w0b2VXLoJVQ&usqp=CAU",
-            'tour_id' => 1,
+            'tour_id' => 3,
         ]);
 
         \App\Models\Images::create([
             'image_name' => "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9ztAPzTva9jhfaCZY-l6LeJVo62JQPln6Ig&usqp=CAU",
-            'tour_id' => 1,
+            'tour_id' => 3,
         ]);
     }
 }
