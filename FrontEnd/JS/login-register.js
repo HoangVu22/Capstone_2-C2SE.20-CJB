@@ -31,13 +31,13 @@ loginButton.onclick = () => {
         .then(data => {
             console.log(data.status);
             if (data.status === 200) {
-                alert("success");
-                localStorage.setItem("name", JSON.stringify(data.user_info.name));
-                window.localStorage.setItem("login", JSON.stringify(data.user_info.email));
+                window.localStorage.setItem("login", JSON.stringify(data.user_info));
                 window.localStorage.getItem("login");
-                window.location.href = 'http://127.0.0.1:5500/FrontEnd/HTML/home.html';
+                window.location.href = 'http://127.0.0.1:5503/Capstone_2-C2SE.20-CJB/FrontEnd/HTML/home.html';
+                console.log(data);
             } else {
-                alert(data.msg)
+                // alert(data.msg)
+                console.log("1");
             }
         })
 }
