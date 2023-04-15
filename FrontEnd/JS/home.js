@@ -2,7 +2,7 @@ const headerNavForm = document.querySelector(".header-nav-form");
 const headerForm = document.querySelector(".header-form");
 const headerFormLogin = headerNavForm.querySelector(".header-form-login");
 const headerFormLogout = document.querySelector(".header-form-logout");
-const login = window.localStorage.getItem("login");
+const login = JSON.parse(window.localStorage.getItem("login"));
 
 headerNavForm.onclick = function () {
   if (headerForm.style.display === "none") {
@@ -59,10 +59,14 @@ logout.onclick = () => {
   alert('1')
   window.localStorage.clear();
   window.location.reload(true);
-  window.location.href = 'http://127.0.0.1:5500/FrontEnd/HTML/login-register.html';
+  window.location.href = 'http://127.0.0.1:5503/Capstone_2-C2SE.20-CJB/FrontEnd/HTML/login-register.html';
 }
 
+const names = $('.header-name1');
+const avatarUser = document.getElementsByClassName("avatar_user");
+names[0].innerText = login.name;
+avatarUser[0].src = login.user_profile[0].avatar;
 
-const names = document.getElementsByClassName('header-name1');
-names[0].innerText = window.localStorage.getItem("name");
-console.log(names[0].innerText);
+ console.log(avatarUser);
+
+console.log(login.user_profile[0].avatar);
