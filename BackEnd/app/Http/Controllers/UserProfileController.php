@@ -42,6 +42,7 @@ class UserProfileController extends Controller
         User::where('id', $request->id)->update([
             'name' => $request->name,
             'phone_number' => $request->phone_number,
+            'about' => $request->about,
         ]);
 
         UserProfile::where('user_id', $request->id)->update([

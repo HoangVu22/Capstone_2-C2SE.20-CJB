@@ -41,6 +41,7 @@ class TSProfileController extends Controller
         User::where('id', $request->id)->update([
             'name' => $request->name,
             'phone_number' => $request->phone_number,
+            'about' => $request->about,
         ]);
 
         TSProfile::where('user_id', $request->id)->update([
