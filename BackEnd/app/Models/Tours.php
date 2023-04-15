@@ -24,9 +24,6 @@ class Tours extends Model
         'slot',
         'lat',
         'lon',
-        'transport',
-        'cuisine',
-        'sight_seeing'
     ];
 
     protected $hidden = [

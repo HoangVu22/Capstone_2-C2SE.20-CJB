@@ -11,6 +11,11 @@ class Images extends Model
 
     protected $table = "images";
 
+    protected $fillable = [
+        'image_name',
+        'tour_id',
+    ];
+
     protected $hidden = [
         'created_at',
         'updated_at',
