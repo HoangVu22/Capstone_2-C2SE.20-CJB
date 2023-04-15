@@ -9,5 +9,10 @@ class Transactions extends Model
 {
     use HasFactory;
 
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
+
     protected $table = 'transactions';
 }

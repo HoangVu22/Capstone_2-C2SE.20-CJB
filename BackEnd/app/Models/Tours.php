@@ -29,6 +29,11 @@ class Tours extends Model
         'sight_seeing'
     ];
 
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
+
     public function tsProfile(){
         return $this->belongsTo(TSProfile::class, 'ts_id');
     }

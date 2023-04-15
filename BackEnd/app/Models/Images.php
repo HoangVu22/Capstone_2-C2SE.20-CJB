@@ -10,4 +10,9 @@ class Images extends Model
     use HasFactory;
 
     protected $table = "images";
+
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
 }

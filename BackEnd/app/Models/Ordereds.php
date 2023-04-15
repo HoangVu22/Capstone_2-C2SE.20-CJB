@@ -10,4 +10,9 @@ class Ordereds extends Model
     use HasFactory;
 
     protected $table = 'ordereds';
+
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
 }
