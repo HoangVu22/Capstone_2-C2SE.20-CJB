@@ -20,6 +20,7 @@ const profileSaveBtn = document.querySelector(".profile-save button");
 const profileSaveP = document.querySelector(".profile-save p");
 
 const btnUpdate = $('.profile_update');
+const btnProfileCancel = $('.profile_cancel');
 const inputUserName = $('.input-username');
 const inputPhoneNumber = $('.input-phonenumber');
 const inputEmail = $('.input-email');
@@ -53,20 +54,9 @@ if (!login) {
   headerFormLogout.style.display = "block";
   headerFormLogin.style.display = "none";
 }
-console.log(login);
-
 const names = $('#header-name1');
-const avatarUser = $('.avatar_user');
-
-if (login.msg === "Update thành công") {
-  names.innerText = login.user.name;
-  avatarUser.src = login.profile.avatar;
-} else {
-  names.innerText = login.name;
-  avatarUser.src = login.user_profile[0].avatar;
-}
-
-
+const avatarUser = $('#avatar_user');
+const avatarUser1 = $('.avatar_user_header');
 
 headerNavForm.onclick = function () {
   if (headerForm.style.display === "none") {
@@ -75,6 +65,22 @@ headerNavForm.onclick = function () {
     headerForm.style.display = "none";
   }
 };
+if(login.msg === "Đăng nhập thành công"){
+  names.innerText = login.user_info.name;
+  avatarUser.src = login.user_info.user_profile[0].avatar;
+  avatarUser1.src = login.user_info.user_profile[0].avatar;
+} else {
+  
+}
+if(login.msg === "Đăng nhập thành công"){
+  names.innerText = login.user_info.name;
+  avatarUser.src = login.user_info.user_profile[0].avatar;
+  avatarUser1.src = login.user_info.user_profile[0].avatar;
+} else {
+  names.innerText = login.user.name;
+  avatarUser.src = "https://scontent.fdad1-2.fna.fbcdn.net/v/t39.30808-6/323952197_567233611560466_7304591525322997827_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=PdWsTXpElkEAX9IVL9U&_nc_ht=scontent.fdad1-2.fna&oh=00_AfBGaaF1sKuii3DajDaAxGsPyrPBf8lHeo2HgE45lER7hA&oe=643E53C4";
+  avatarUser1.src = "https://scontent.fdad1-2.fna.fbcdn.net/v/t39.30808-6/323952197_567233611560466_7304591525322997827_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=PdWsTXpElkEAX9IVL9U&_nc_ht=scontent.fdad1-2.fna&oh=00_AfBGaaF1sKuii3DajDaAxGsPyrPBf8lHeo2HgE45lER7hA&oe=643E53C4";
+}
 
 // ---------------------------------------
 
@@ -96,18 +102,29 @@ function edit() {
   profileGenaral.style.display = "block";
 }
 
-if (login.msg === 'Update thành công') {
+btnProfileCancel.onclick = () => {
+  if (profileGenaralEdit.style.display === "block") {
+    profileGenaralEdit.style.display = "none";
+    profileGenaral.style.display = "block";
+  }
+}
+
+console.log(login);
+
+if (login.msg === 'Đăng nhập thành công') {
+  userName[0].innerText = login.user_info.name;
+  userName[1].innerText = login.user_info.name;
+  userPhone.innerText = login.user_info.phone_number;
+  userEmail.innerText = login.user_info.email;
+  userGender.innerText = login.user_info.user_profile[0].gender;
+  // userAbout.innerText = login.about;  
+} else {
   userName[0].innerText = login.user.name;
   userName[1].innerText = login.user.name;
   userPhone.innerText = login.user.phone_number;
   userEmail.innerText = login.user.email;
-  userGender.innerText = login.profile.gender;
-} else {
-  userName[0].innerText = login.name;
-  userName[1].innerText = login.name;
-  userPhone.innerText = login.phone_number;
-  userEmail.innerText = login.email;
-  userGender.innerText = login.user_profile[0].gender;
+  userGender.innerText = "male";//login.profile[0].gender;
+  // userAbout.innerText = login.user.about;
 }
 
 // ------------------- logout -----------------------------
@@ -120,83 +137,139 @@ logout.onclick = () => {
 
 // -----------------------------------------------------------
 
+console.log(login);
+// console.log(login.user_info.user_profile[0].id);
+
 const apiTSProfile = "http://127.0.0.1:8000/api/ts/profile/update";
 const apiUserProfile = "http://127.0.0.1:8000/api/user/profile/update";
 
-function getInfoUser(e) {
-  if (login.user_roles === 'user') {
-    fetch(apiUserProfile, {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        id: login.user_profile[0].id,
-        name: inputUserName.value,
-        phone_number: inputPhoneNumber.value,
-        avatar: "https://scontent.fdad1-2.fna.fbcdn.net/v/t39.30808-6/323952197_567233611560466_7304591525322997827_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=PdWsTXpElkEAX9IVL9U&_nc_ht=scontent.fdad1-2.fna&oh=00_AfBGaaF1sKuii3DajDaAxGsPyrPBf8lHeo2HgE45lER7hA&oe=643E53C4",
-        gender: inputGender.value,
-      }),
-      data: ({
-        id: login.user_profile[0].id,
-        name: inputUserName.value,
-        phone_number: inputPhoneNumber.value,
-        avatar: "https://scontent.fdad1-2.fna.fbcdn.net/v/t39.30808-6/323952197_567233611560466_7304591525322997827_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=PdWsTXpElkEAX9IVL9U&_nc_ht=scontent.fdad1-2.fna&oh=00_AfBGaaF1sKuii3DajDaAxGsPyrPBf8lHeo2HgE45lER7hA&oe=643E53C4",
-        gender: inputGender.value,
-      }),
-    })
-      .then(response => { return response.json() })
-      .then(data => {
-        if (data.status === 200 || data.msg === "Update thành công") {
-          window.localStorage.setItem("login", JSON.stringify(data));
-          const profile = JSON.parse(window.localStorage.getItem("login", JSON.stringify(data)));
-          renderUserInfo(profile);
-        } else {
-          console.log("Fail !!!!!!!!!");
+function getInfoUser() {
+  if(login.user_info)
+  {
+    if (login.user_info.user_roles === 'user') {
+      fetch(apiTSProfile, { 
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: login.user_info.user_profile[0].id,
+          name: inputUserName.value,
+          phone_number: inputPhoneNumber.value,
+          avatar: "https://scontent.fdad1-2.fna.fbcdn.net/v/t39.30808-6/323952197_567233611560466_7304591525322997827_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=PdWsTXpElkEAX9IVL9U&_nc_ht=scontent.fdad1-2.fna&oh=00_AfBGaaF1sKuii3DajDaAxGsPyrPBf8lHeo2HgE45lER7hA&oe=643E53C4",
+          gender: inputGender.value,
+          about: inputAbout.value,
+        }),
+        data: ({
+          id: login.user_info.user_profile[0].id,
+          name: inputUserName.value,
+          phone_number: inputPhoneNumber.value,
+          avatar: "https://scontent.fdad1-2.fna.fbcdn.net/v/t39.30808-6/323952197_567233611560466_7304591525322997827_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=PdWsTXpElkEAX9IVL9U&_nc_ht=scontent.fdad1-2.fna&oh=00_AfBGaaF1sKuii3DajDaAxGsPyrPBf8lHeo2HgE45lER7hA&oe=643E53C4",
+          gender: inputGender.value,
+          about: inputAbout.value,
+        }),
+      })
+        .then(response => { return response.json() })
+        .then(data => {
+          console.log('29387');
+          if (data.status === 200 || data.msg === "Update thành công") {
+            window.localStorage.setItem("login", JSON.stringify(data));
+            const profile = JSON.parse(window.localStorage.getItem("login"));
+            console.log(login);
+            renderUserInfo(profile)
+            alert("1");
+          }else {
+            console.log("Fail !!!!!!!!!");
         }
-      }
-      )
-  } else {
-    fetch(apiTSProfile, {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        id: login.user.id,
-        name: inputUserName.value,
-        phone_number: inputPhoneNumber.value,
-        avatar: "https://scontent.fdad1-2.fna.fbcdn.net/v/t39.30808-6/323952197_567233611560466_7304591525322997827_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=PdWsTXpElkEAX9IVL9U&_nc_ht=scontent.fdad1-2.fna&oh=00_AfBGaaF1sKuii3DajDaAxGsPyrPBf8lHeo2HgE45lER7hA&oe=643E53C4",
-      }),
-      data: ({
-        id: login.user.id,
-        name: inputUserName.value,
-        phone_number: inputPhoneNumber.value,
-        avatar: "https://scontent.fdad1-2.fna.fbcdn.net/v/t39.30808-6/323952197_567233611560466_7304591525322997827_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=PdWsTXpElkEAX9IVL9U&_nc_ht=scontent.fdad1-2.fna&oh=00_AfBGaaF1sKuii3DajDaAxGsPyrPBf8lHeo2HgE45lER7hA&oe=643E53C4",
-      }),
-    })
-      .then(response => { return response.json() })
-      .then(data => {
-        if (data.status === 200 || data.msg === "Update thành công") {
-          window.localStorage.setItem("login", JSON.stringify(data))
-          const profile = JSON.parse(window.localStorage.getItem("login", JSON.stringify(data)));
-          renderUserInfo(profile);
-        } else {
-          console.log("Fail !!!!!!!!!");
+        })
+    }
+    window.location.reload();
+  } else if (login.user){
+    if (login.user.user_roles === 'user') {
+      fetch(apiTSProfile, { 
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: login.user.id,
+          name: inputUserName.value,
+          phone_number: inputPhoneNumber.value,
+          avatar: "https://scontent.fdad1-2.fna.fbcdn.net/v/t39.30808-6/323952197_567233611560466_7304591525322997827_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=PdWsTXpElkEAX9IVL9U&_nc_ht=scontent.fdad1-2.fna&oh=00_AfBGaaF1sKuii3DajDaAxGsPyrPBf8lHeo2HgE45lER7hA&oe=643E53C4",
+          gender: inputGender.value,
+          about: inputAbout.value,
+        }),
+        data: ({
+          id: login.user.id,
+          name: inputUserName.value,
+          phone_number: inputPhoneNumber.value,
+          avatar: "https://scontent.fdad1-2.fna.fbcdn.net/v/t39.30808-6/323952197_567233611560466_7304591525322997827_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=PdWsTXpElkEAX9IVL9U&_nc_ht=scontent.fdad1-2.fna&oh=00_AfBGaaF1sKuii3DajDaAxGsPyrPBf8lHeo2HgE45lER7hA&oe=643E53C4",
+          gender: inputGender.value,
+          about: inputAbout.value,
+        }),
+      })
+        .then(response => { return response.json() })
+        .then(data => {
+          console.log('29387');
+          if (data.status === 200 || data.msg === "Update thành công") {
+            window.localStorage.setItem("login", JSON.stringify(data));
+            const profile = JSON.parse(window.localStorage.getItem("login"));
+            console.log(login);
+            renderUserInfo(profile)
+            alert("1");
+          }else {
+            console.log("Fail !!!!!!!!!");
         }
-      }
-      )
+        })
+    
   }
+  // } else {
+  //   fetch(apiTSProfile, {
+  //     method: 'POST',
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       id: login.user.id,
+  //       name: inputUserName.value,
+  //       phone_number: inputPhoneNumber.value,
+  //       avatar: "https://scontent.fdad1-2.fna.fbcdn.net/v/t39.30808-6/323952197_567233611560466_7304591525322997827_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=PdWsTXpElkEAX9IVL9U&_nc_ht=scontent.fdad1-2.fna&oh=00_AfBGaaF1sKuii3DajDaAxGsPyrPBf8lHeo2HgE45lER7hA&oe=643E53C4",
+  //     }),
+  //     data: ({
+  //       id: login.user.id,
+  //       name: inputUserName.value,
+  //       phone_number: inputPhoneNumber.value,
+  //       avatar: "https://scontent.fdad1-2.fna.fbcdn.net/v/t39.30808-6/323952197_567233611560466_7304591525322997827_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=PdWsTXpElkEAX9IVL9U&_nc_ht=scontent.fdad1-2.fna&oh=00_AfBGaaF1sKuii3DajDaAxGsPyrPBf8lHeo2HgE45lER7hA&oe=643E53C4",
+  //     }),
+  //   })
+  //     .then(response => { return response.json() })
+  //     .then(data => {
+  //       if (data.status === 200 || data.msg === "Update thành công") {
+  //         window.localStorage.setItem("login", JSON.stringify(data))
+  //         const profile = JSON.parse(window.localStorage.getItem("login", JSON.stringify(data)));
+  //         renderUserInfo(profile);
+  //       } else {
+  //         console.log("Fail !!!!!!!!!");
+  //       }
+  //     }
+  //     )
+  // }
   window.location.reload();
 }
+}
 var html_UserInfo = $('.profile-genaral');
+
+
 function renderUserInfo(obj) {
   console.log(html_UserInfo);
   const html = `
-    <div class="profile-title">
-       <h2>Hồ sơ của tôi</h2>
-      <button>Chỉnh sửa</button>
-    </div>
+  <div class="profile-title">
+  <h2>Hồ sơ của tôi</h2>
+  <div class="profile-save">
+      <button class="profile_update">Lưu</button>
+      <p class="profile_cancel">Hủy</p>
+  </div>
+</div>
     <div class="form-profile-wraper">
     <form class="form-profile">
       <div class="form-profile-info">
@@ -216,7 +289,6 @@ function renderUserInfo(obj) {
           <div class="form-profile-content user_gender">${obj.profile[0].gender}</div>
       </div>
       <div class="form-line"></div>
-
       <div class="form-profile-bio">
           <h2>About:</h2>
           <p class="user_about">Write your bio...</p>
@@ -247,8 +319,6 @@ btnUpdate.onclick = () => {
   getInfoUser();
 }
 
-
-
 inputUserName.onchange = (e) => {
   console.log(e.target.value);
 }
@@ -257,10 +327,13 @@ inputPhoneNumber.onchange = (e) => {
 }
 inputEmail.disabled = true;
 
-if(login.msg === "Update thành công")
+if(login.msg === "Update thành công" || login.status === 200)
 {
   inputEmail.value = login.user.email;
 } else {
   inputEmail.value = login.email;
 }
 
+inputGender.onchange  = (e) => {
+  console.log(e.target.value);  
+}
