@@ -312,5 +312,15 @@ input {
     border: 1px solid #4bb6b7;
 }
 
+#login-1{
+    cursor: pointer;
+}
 
+.resgister-1{
+    cursor: pointer;
+}
+
+.ghost{
+    cursor: pointer;
+}
 
