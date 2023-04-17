@@ -26,6 +26,11 @@ class PersonalTours extends Model
         'to_where',
     ];
 
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
+
     public function user(){
         return $this->belongsTo(User::class, 'owner_id');
     }

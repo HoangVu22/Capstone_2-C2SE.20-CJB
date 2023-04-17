@@ -9,10 +9,21 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\PersonalTours;
 use App\Models\Tours;
+use App\Models\UserProfile;
+
+// use App\Models\Scopes\ExceptScope;
  
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    /**
+     * The "booted" method of the model.
+     */
+    // protected static function booted(): void
+    // {
+    //     static::addGlobalScope(new ExceptScope);
+    // }
 
     /**
      * The attributes that are mass assignable.
@@ -37,6 +48,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'created_at',
+        'updated_at',
+        'email_verified_at'
     ];
 
     /**
@@ -58,5 +72,9 @@ class User extends Authenticatable
 
     public function rooms(){
         return $this->belongsToMany(PersonalTours::class, 'rooms', 'user_id', 'pt_id');
+    }
+
+    public function userProfile(){
+        return $this->hasOne(UserProfile::class, 'user_id', 'id');
     }
 }

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Auth;
 
-class UserInfoResource extends JsonResource
+class UIResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -24,8 +24,8 @@ class UserInfoResource extends JsonResource
             'user_roles' => $this->user_roles,
             'about' => $this->about,
             'user_profile' => $this->user_roles === 'user'
-                ? UserProfile::where('user_id', Auth::user()->id)->get() 
-                : tsProfile::where('user_id', Auth::user()->id)->get(),
+                ? UserProfile::where('user_id', $request->id)->get() 
+                : tsProfile::where('user_id', $request->id)->get(),
             'status' => 200,
         ];
     }

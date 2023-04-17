@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\UserProfileResource;
+use App\Http\Resources\UIResource;
 use App\Models\TSProfile;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -51,8 +51,7 @@ class TSProfileController extends Controller
         return response()->json([
             'msg' => "Update thành công",
             'status' => 200,
-            'user' => User::find($request->id),
-            'profile' => TSProfile::where('user_id', $request->id)->get(),
+            'user_info' => new UIResource(User::find($request->id)),
         ]);
     }
 

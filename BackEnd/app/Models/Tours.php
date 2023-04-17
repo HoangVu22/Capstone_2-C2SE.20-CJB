@@ -24,9 +24,11 @@ class Tours extends Model
         'slot',
         'lat',
         'lon',
-        'transport',
-        'cuisine',
-        'sight_seeing'
+    ];
+
+    protected $hidden = [
+        'created_at',
+        'updated_at',
     ];
 
     public function tsProfile(){
