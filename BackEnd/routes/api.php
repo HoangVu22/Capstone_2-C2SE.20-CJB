@@ -33,11 +33,11 @@ Route::controller(AuthController::class)->prefix('auth')->group(function(){
 });
 
 Route::controller(UserProfileController::class)->prefix('user/profile')->group(function(){
-    Route::post('/update', 'update');
+    Route::put('/update', 'update');
 });
 
 Route::controller(TSProfileController::class)->prefix('ts/profile')->group(function(){
-    Route::post('/update', 'update');
+    Route::put('/update', 'update');
 });
 
 Route::prefix('homepage')->group(function(){
@@ -49,22 +49,22 @@ Route::prefix('ts/tour')->group(function(){
     Route::get('/', [ToursController::class, 'index']);
     Route::get('/{id}', [ToursController::class, 'show']);
     Route::post('/create', [ToursController::class, 'store']);
-    Route::post('/update/{id}', [ToursController::class, 'update']);
-    Route::get('/delete/{id}', [ToursController::class, 'destroy']);
+    Route::put('/update/{id}', [ToursController::class, 'update']);
+    Route::delete('/delete/{id}', [ToursController::class, 'destroy']);
 });
 
 Route::prefix('personal/tour')->group(function(){
     Route::post('/create', [PersonalToursController::class, 'store']);
     Route::get('/show/{id}', [PersonalToursController::class, 'show']);
-    Route::post('/update/{id}', [PersonalToursController::class, 'update']);
-    Route::get('/delete/{id}', [PersonalToursController::class, 'destroy']);
+    Route::put('/update/{id}', [PersonalToursController::class, 'update']);
+    Route::delete('/delete/{id}', [PersonalToursController::class, 'destroy']);
 });
 
 Route::prefix('personal/room')->group(function(){
     Route::post('/create', [RoomsController::class, 'store']);
     Route::get('/show/{id}', [RoomsController::class, 'show']);
-    Route::post('/update/{id}', [RoomsController::class, 'update']);
-    Route::get('/delete/{id}', [RoomsController::class, 'destroy']);
+    Route::put('/update/{id}', [RoomsController::class, 'update']);
+    Route::delete('/delete/{id}', [RoomsController::class, 'destroy']);
 });
 
 Route::prefix('friend')->group(function(){

@@ -37,8 +37,9 @@ class UserProfileController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, UserProfile $userProfile)
+    public function update(Request $request)
     {
+        // return $request;
         User::where('id', $request->id)->update([
             'name' => $request->name,
             'phone_number' => $request->phone_number,
