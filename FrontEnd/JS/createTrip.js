@@ -12,50 +12,87 @@ headerNavForm.onclick = function () {
   }
 };
 
-// ---------------------------------------
+// ---------------create trip --------------------
+// const $ = document.querySelector.bind(document);
+// const $$ = document.querySelectorAll.bind(document);
 
+// const tab = $(".createTrip-wraper");
+// const tab1 = $(".createTrip-wraper1");
+// const btn = $(".button1-btn");
+// const btn1 = $(".button2-btn");
+// const goBack = $(".goBack");
+// const startCreateTrip = $(".startCreateTrip");
+// btn.style.backgroundColor = "rgba(2, 127, 255, 1)";
 
+// btn.onclick = () => {
+//   tab.style.display = "block";
+//   tab1.style.display = "none";
+//   btn.style.backgroundColor = "rgba(2, 127, 255, 1)";
+//   btn1.style.backgroundColor = "white";
+// };
 
-const $ = document.querySelector.bind(document);
-const $$ = document.querySelectorAll.bind(document);
+// const formNextBtn = $(".form-next button");
+// formNextBtn.onclick = () => {
+//   tab.style.display = "none";
+//   tab1.style.display = "block";
+//   btn.style.backgroundColor = "white";
+//   btn1.style.backgroundColor = "rgba(2, 127, 255, 1)";
+//   tab1.style.transition = "all 0.9 ease";
+//   tab1.style.marginTop = "90px";
+// };
 
-const tab = $(".createTrip-wraper");
-const tab1 = $(".createTrip-wraper1");
-const btn = $(".button1-btn");
-const btn1 = $(".button2-btn");
-const goBack = $(".goBack");
-const startCreateTrip = $(".startCreateTrip");
-btn.style.backgroundColor = "#0000ff4a";
+// goBack.onclick = () => {
+//   tab.style.display = "block";
+//   tab1.style.display = "none";
+//   btn.style.backgroundColor = "rgba(2, 127, 255, 1)";
+//   btn1.style.backgroundColor = "white";
+// };
 
-btn.onclick = () => {
-  tab.style.display = "block";
-  tab1.style.display = "none";
-  btn.style.backgroundColor = "#0000ff4a";
-  btn1.style.backgroundColor = "white";
-};
+// btn1.onclick = () => {
+//   tab.style.display = "none";
+//   tab1.style.display = "block";
+//   btn.style.backgroundColor = "white";
+//   btn1.style.backgroundColor = "rgba(2, 127, 255, 1)";
+//   tab1.style.transition = "all 0.9 ease";
+//   tab1.style.marginTop = "102px";
+// };
 
-const formNextBtn = $(".form-next button");
-formNextBtn.onclick = () => {
-  tab.style.display = "none";
-  tab1.style.display = "block";
-  btn.style.backgroundColor = "white";
-  btn1.style.backgroundColor = "#0000ff4a";
-  tab1.style.transition = "all 0.9 ease";
-  tab1.style.marginTop = "90px";
-};
+const button1 = document.querySelector('.button1 button')
+const button2 = document.querySelector('.button2 button')
+const formTrip1 = document.querySelector('.form-trip-1')
+const formTrip2 = document.querySelector('.form-trip-2')
+const formNext = document.querySelector('.form-next button')
+const goBack = document.querySelector('.goBack')
+const startCreateTrip = document.querySelector('.startCreateTrip')
 
-goBack.onclick = () => {
-  tab.style.display = "block";
-  tab1.style.display = "none";
-  btn.style.backgroundColor = "#0000ff4a";
-  btn1.style.backgroundColor = "white";
-};
+button1.onclick = function () {
+  formTrip1.style.display = 'block'
+  formTrip2.style.display = 'none'
+  button1.style.backgroundColor = 'rgba(2, 127, 255, 1)'
+  button1.style.color = '#fff'
+  button1.style.border = 'none'
+  button2.style.border = '1px solid #333'
+  button2.style.color = '#333'
+  button2.style.backgroundColor = '#fff'
+}
 
-btn1.onclick = () => {
-  tab.style.display = "none";
-  tab1.style.display = "block";
-  btn.style.backgroundColor = "white";
-  btn1.style.backgroundColor = "#0000ff4a";
-  tab1.style.transition = "all 0.9 ease";
-  tab1.style.marginTop = "102px";
-};
+button2.onclick = function () {
+  formTrip2.style.display = 'block'
+  formTrip1.style.display = 'none'
+  button2.style.backgroundColor = 'rgba(2, 127, 255, 1)'
+  button2.style.color = '#fff'
+  button2.style.border = 'none'
+  button1.style.border = '1px solid #333'
+  button1.style.color = '#333'
+  button1.style.backgroundColor = '#fff'
+}
+
+formNext.onclick = function () {
+  formTrip2.style.display = 'block'
+  formTrip1.style.display = 'none'
+}
+
+goBack.onclick = function () {
+  formTrip1.style.display = 'block'
+  formTrip2.style.display = 'none'
+}
