@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class Rooms extends Model
 {
@@ -21,4 +22,12 @@ class Rooms extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class, 'room_owner');
+    }
+
+    public function members(){
+        return $this->belongsToMany(User::class, 'members', 'room_id', 'user_id');
+    }
 }

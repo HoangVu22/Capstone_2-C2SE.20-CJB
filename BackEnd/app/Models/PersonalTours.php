@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use App\Models\Rooms;
 
 class PersonalTours extends Model
 {
@@ -33,6 +34,10 @@ class PersonalTours extends Model
 
     public function user(){
         return $this->belongsTo(User::class, 'owner_id');
+    }
+
+    public function room(){
+        return $this->belongsTo(Rooms::class, 'owner_id');
     }
 
     public function rooms(){
