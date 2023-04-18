@@ -23,7 +23,7 @@ body {
 }
 
 .detail-header {
-  background-color: #2255a4;
+  background-color: rgba(2, 127, 255, 1);
   justify-content: space-around;
   height: 80px;
 }
@@ -276,6 +276,77 @@ body {
 }
 
 /* ------------- footer --------- */
+.footer {
+  background-color: #1b1b1b;
+  position: relative;
+  margin-top: 200px;
+  padding-bottom: 100px;
+}
+
+.wrap-footer {
+  padding: 60px 100px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-title {
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding-bottom: 15px;
+}
+
+.footer-list {
+  list-style: none;
+}
+
+.footer-list li a {
+  color: rgba(142, 144, 145, 1);
+  text-decoration: none;
+  line-height: 2;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.footer-list li a:hover {
+  text-decoration: underline;
+  color: white;
+}
+
+.footer-list-connect {
+  display: flex;
+  align-items: center;
+}
+
+.footer-list-icon {
+  font-size: 18px;
+  padding-right: 12px;
+}
+
+.custom-shape-divider-bottom-1679667216 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-bottom-1679667216 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 133px;
+}
+
+.custom-shape-divider-bottom-1679667216 .shape-fill {
+  fill: #2f4e84;
+}
+
+.slick-prev,
+.slick-next {
+  display: none !important;
+}/* ------------- footer --------- */
 .footer {
   background-color: #1b1b1b;
   position: relative;

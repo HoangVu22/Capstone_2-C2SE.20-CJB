@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/css/swiper.min.css"
+        integrity="sha512-FCU4ZL4ubM4eDxvQQ9SqMmH+UQ9t0noKHj/cfky4whdWnyBgp+NF2ykUBgsyx8Iv+XtM3aXZ8jmFs4uLnT+Vng=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../CSS/TS-managerTours.css">
+    <title>CJB</title>
+</head>
+
+<body>
+    <div class="main">
+        <div class="wrapper-header">
+            <div class="detail-header">
+                <a href="./home.html" class="logo"> <img src="../IMAGES/logo/final_logo.png" alt=""> </a>
+                <ul class="nav-menu">
+                    <li> <a href="./TS-home.html" class="nav-link">Home</a> </li>
+                    <li> <a href="./TS-postTour.html" class="nav-link">Đăng tours</a> </li>
+                    <li> <a href="./TS-managerTours.html" class="nav-link">Quản lý tours</a> </li>
+                    <li> <a href="./home.html" class="nav-link">Trở thành người dùng</a> </li>
+                    <li> <a href="#" class="nav-link"><i class="fa-regular fa-bell"></i></a> </li>
+
+                    <div class="header-nav-form">
+                        <div class="header-nav-icon">
+                            <i class="fa-solid fa-user user-icon"></i>
+                            <i class="fa-solid fa-bars"></i>
+                        </div>
+                        <div class="header-form">
+                            <div class="header-form-login">
+                                <ul>
+                                    <li><a href="./login-register.html">Đăng nhập</a></li>
+                                    <li><a href="./login-register.html">Đăng ký</a></li>
+                                </ul>
+                            </div>
+                            <div style="display: none;" class="header-form-logout">
+                                <div class="content-logout">
+                                    <a href="./profile.html" class="avatar-login">
+                                        <div class="header-form-avatar">
+                                            <img src="../image/avatars/avatar_1.jpg" alt="">
+                                            <div class="header-name">
+                                                <span>NguyenHoangVu</span>
+                                                <p>Xem hồ sơ</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <span class="drop-line"></span>
+                                    <div class="header-form-booked">
+                                        <i class="fa-sharp fa-solid fa-clock-rotate-left"></i>
+                                        <span>Chuyến đi của tôi</span>
+                                    </div>
+                                    <div class="header-form-loved">
+                                        <i class="fa-regular fa-heart"></i>
+                                        <span>Lịch sử chuyến đi</span>
+                                    </div>
+                                    <div class="form-logout">Đăng xuất</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+        </div>
+
+        <div class="manager-tours card_wrap">
+            <div class="container-residence">
+                <div class="container-header">
+                    <h1>4 tours</h1>
+                    <div class="btn-toolbar">
+                        <a class="postNew-residence" href="./TS-postTour.html">
+                            <i class="fa-solid fa-plus"></i>
+                            <p>Thêm tour mới</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="container-search">
+                    <div class="search-input">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" name="" id="search" placeholder="Tìm chỗ tours..."
+                            onkeyup="searchResidence()">
+                    </div>
+                </div>
+
+                <table class="container-nav">
+                    <tr>
+                        <th>LISTING TITLE</th>
+                        <th>NGÀY ĐĂNG</th>
+                        <th>ĐÃ THAM GIA</th>
+                        <th>HÀNH ĐỘNG</th>
+                    </tr>
+                    <tr class="list-residence">
+                        <td class="list-content list-info">
+                            <div class="list-info-img">
+                                <img src="../IMAGES/slides/slide-5.png" alt="">
+                            </div>
+                            <div class="list-info-content">
+                                <h3>Chuyến đi tử thần</h3>
+                                <span>
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <p>Nơi khởi hành: TP HCM</p>
+                                </span>
+                                <span>
+                                    <i class="fa-solid fa-street-view"></i>
+                                    <p>Số lượng người: 30</p>
+                                </span>
+                                <span>
+                                    <i class="fa-solid fa-sack-dollar"></i>
+                                    <p>Giá tiền: 1.000.000 / người</p>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="list-content list-date">
+                            <p>12 tháng 3 , 2023</p>
+                        </td>
+                        <td class="list-content list-jojned">
+                            <p>100</p>
+                        </td>
+                        <td class="list-content list-action">
+                            <a href="./TS-postTour.html">
+                                <i class="fa-solid fa-pencil"></i>
+                            </a>
+                            <i class="fa-solid fa-trash-can"></i>
+                        </td>
+                    </tr>
+                    <tr class="list-residence">
+                        <td class="list-content list-info">
+                            <div class="list-info-img">
+                                <img src="../IMAGES/slides/slide-5.png" alt="">
+                            </div>
+                            <div class="list-info-content">
+                                <h3>Chuyến đi tử thần</h3>
+                                <span>
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <p>Nơi khởi hành: TP HCM</p>
+                                </span>
+                                <span>
+                                    <i class="fa-solid fa-street-view"></i>
+                                    <p>Số lượng người: 30</p>
+                                </span>
+                                <span>
+                                    <i class="fa-solid fa-sack-dollar"></i>
+                                    <p>Giá tiền: 1.000.000 / người</p>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="list-content list-date">
+                            <p>12 tháng 3 , 2023</p>
+                        </td>
+                        <td class="list-content list-jojned">
+                            <p>100</p>
+                        </td>
+                        <td class="list-content list-action">
+                            <a href="./TS-postTour.html">
+                                <i class="fa-solid fa-pencil"></i>
+                            </a>
+                            <i class="fa-solid fa-trash-can"></i>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="pagination">
+                <li class="page-item previous-page disable"><a class="page-link" href="#">Prev</a></li>
+                <li class="page-item current-page active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item current-page"><a class="page-link" href="#">2</a></li>
+                <li class="page-item current-page"><a class="page-link" href="#">3</a></li>
+                <li class="page-item current-page"><a class="page-link" href="#">4</a></li>
+                <li class="page-item next-page"><a class="page-link" href="#">Next</a></li>
+            </div>
+        </div>
+
+        <!-- ----------- FOOTER -------------- -->
+        <footer class="footer">
+            <div class="wrap-footer">
+                <div class="footer-content">
+                    <div class="footer-title">
+                        Về CJB
+                    </div>
+                    <ul class="footer-list">
+                        <li><a href="">Về chúng tôi</a></li>
+                        <li><a href="">Liên hệ</a></li>
+                        <li><a href="">Trợ giúp</a></li>
+                        <li><a href="">Quy chế hoạt động</a></li>
+                        <li><a href="">Quy định bảo mật</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-content">
+                    <div class="footer-title">
+                        Đối tác
+                    </div>
+                    <ul class="footer-list">
+                        <li><a href="">Đối tác liên kết</a></li>
+                        <li><a href="">Đối tác kết nối</a></li>
+                        <li><a href="">Quy chế trả góp</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-content">
+                    <div class="footer-title">
+                        Điểm du lịch
+                    </div>
+                    <ul class="footer-list">
+                        <li><a href="">Thành phố Hà Nội</a></li>
+                        <li><a href="">Thành phố Hải Phòng</a></li>
+                        <li><a href="">Thành phố Đà Nẵng</a></li>
+                        <li><a href="">Thành phố Hồ Chí Minh</a></li>
+                        <li><a href="">Thành phố Cần Thơ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-content">
+                    <div class="footer-title">
+                        Theo dõi chúng tôi trên
+                    </div>
+                    <ul class="footer-list">
+                        <li>
+                            <a href="https://www.facebook.com/ngayay.emcua/" class="footer-list-connect">
+                                <div class="footer-list-icon">
+                                    <i class="fa-brands fa-facebook"></i>
+                                </div>
+                                Facebook
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="footer-list-connect">
+                                <div class="footer-list-icon">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </div>
+                                Instagram
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="footer-list-connect">
+                                <div class="footer-list-icon">
+                                    <i class="fa-brands fa-youtube"></i>
+                                </div>
+                                Youtube
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="custom-shape-divider-bottom-1679667216">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                    preserveAspectRatio="none">
+                    <path
+                        d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
+                        class="shape-fill"></path>
+                </svg>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+        integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.min.js"
+        integrity="sha512-NdZyIQYjul6RuB0vCoq9ec+xqTO2riVTZAZf9YM3BHkkcJxFTq7z9FAK3PXP+XYs5zQRuOycmL5GdwD85t2T+Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="../JS/TS-managerTours.js"></script>
+</body>
+
+</html>
