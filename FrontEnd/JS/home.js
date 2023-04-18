@@ -87,10 +87,10 @@ console.log(login);
 
 const becomeSupplier = document.getElementsByClassName("become-supplier");
 console.log(becomeSupplier);
-const apiTSProfile = "http://127.0.0.1:8000/api/ts/profile/update";
-becomeSupplier[0].onclick  = (e) => {
+const apiTSProfile = "http://127.0.0.1:8000/api/user/profile/update";
+becomeSupplier  .onclick  = (e) => {
   fetch(apiTSProfile,{
-    method: 'POST',
+    method: 'PUT',
       headers: {
         "Content-Type": "application/json",
       },
@@ -102,12 +102,23 @@ becomeSupplier[0].onclick  = (e) => {
         gender: login.user_info.user_profile[0].gender,
         about: login.user_info,
       }),
+      data: ({
+        id: login.user_info.user_profile[0].id,
+        name: login.user_info.name,
+        phone_number: login.user_info.phone_number,
+        avatar: login.user_info.user_profile[0].avatar,
+        gender: login.user_info.user_profile[0].gender,
+        about: login.user_info,
+      }),
   })
   .then(res => res.json())
   .then((data)=>{
     data.user_info.user_roles = "ts";
+    window.localStorage.setItem("login",JSON.stringify(data));
     console.log(data);
     alert(1)
   })
 }
+
+console.log(login);
 

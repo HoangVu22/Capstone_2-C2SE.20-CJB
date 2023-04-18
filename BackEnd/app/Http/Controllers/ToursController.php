@@ -32,9 +32,6 @@ class ToursController extends Controller
             'slot' => $request->slot,
             'lat' => $request->lat,
             'lon' => $request->lon,
-            'transport' => $request->transport,
-            'cuisine' => $request->cuisine,
-            'sight_seeing' => $request->sight_seeing,
         ]);
 
         return response()->json(['msg' => "Tạo tour thành công", 'status' => 200], 200);
@@ -72,9 +69,6 @@ class ToursController extends Controller
                     'slot' => $request->slot,
                     'lat' => $request->lat,
                     'lon' => $request->lon,
-                    'transport' => $request->transport,
-                    'cuisine' => $request->cuisine,
-                    'sight_seeing' => $request->sight_seeing,
                 ]);
                 return response()->json(['msg' => "Update tour thành công", 'status' => 200], 200);
             }

@@ -147,8 +147,8 @@ console.log(login.user_info.user_roles);
 
 function getInfoUser() {
   if (login.user_info.user_roles === 'user') {
-    fetch(apiTSProfile, {
-      method: 'POST',
+    fetch(apiUserProfile, {
+      method: 'PUT',
       headers: {
         "Content-Type": "application/json",
       },
@@ -175,14 +175,14 @@ function getInfoUser() {
         const profile = JSON.parse(window.localStorage.getItem("login"));
         console.log(data);
         renderUserInfo(profile);
-        alert("1");
+        alert("Cập nhật thông tin thành công");
       })
       .catch(error)(
         alert(error)
       )
   } else {
     fetch(apiTSProfile, {
-      method: 'POST',
+      method: 'PUT',
       headers: {
         "Content-Type": "application/json",
       },
