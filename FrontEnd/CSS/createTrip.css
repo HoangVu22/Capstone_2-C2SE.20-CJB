@@ -16,6 +16,10 @@
 
 body {
   font-family: "Poppins", sans-serif;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-image: url(http://bit.ly/2gPLxZ4);
 }
 
 .main {
@@ -45,7 +49,7 @@ body {
   object-fit: contain;
 }
 
-.detail-header> ul {
+.detail-header > ul {
   width: 55%;
   justify-content: space-evenly;
   margin-left: -140px;
@@ -68,7 +72,7 @@ body {
 }
 
 /* ----- create trip -------- */
-.createTrip-container {
+/* .createTrip-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -244,9 +248,7 @@ iframe {
   border-radius: 20px;
   border: none;
   font-size: 16px;
-}
-
-
+} */
 
 /* ------------login------------- */
 .header-form {
@@ -463,4 +465,175 @@ iframe {
   color: var(--main-color);
 }
 
+/* -------- create trip ----------*/
+.container {
+  width: 70%;
+  position: relative;
+  top: 140px;
+  padding: 0 100px;
+  margin: 0 auto;
+}
 
+.create-trip-container {
+  margin-bottom: 30px;
+  box-shadow: 2px 4px 20px #0003;
+  border-radius: 20px;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.create-trip-container h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.create-trip-control {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.button1 button {
+  background-color: rgba(2, 127, 255, 1);
+  color: #fff;
+}
+
+.button2 button {
+  color: #333;
+  background-color: #fff;
+  border: 1px solid #333 !important;
+}
+
+.button1 button,
+.button2 button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.button1 p,
+.button2 p {
+  padding-top: 10px;
+  font-size: 18px;
+}
+
+.form-trip-1,
+.form-trip-2 {
+  box-shadow: 2px 4px 20px #0003;
+  border-radius: 20px;
+  padding: 30px 40px;
+  background-color: #fff;
+}
+
+.form-info-wrap {
+  display: flex;
+}
+
+.form-info label {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.form-input input {
+  width: 90%;
+  padding: 8px 20px;
+  color: 30px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  margin-top: 10px;
+}
+
+.form-info {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+iframe {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.form-next {
+  display: flex;
+  justify-content: center;
+}
+
+.form-next button {
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: rgba(2, 127, 255, 1);
+  color: #fff;
+  border-radius: 20px;
+  border: none;
+  font-size: 16px;
+  margin-top: 30px;
+}
+
+.trip-2-content {
+  display: flex;
+}
+
+.trip-2-img {
+  width: 100%;
+}
+
+.trip-2-img img {
+  width: 100%;
+  height: 200px;
+  border-radius: 10px;
+}
+
+.form-info1 label {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.form-input1 input {
+  width: 90%;
+  padding: 8px 20px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  margin-top: 10px;
+}
+
+.number-people {
+  width: 100% !important;
+  padding: 8px 20px;
+  color: 30px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  margin-top: 10px;
+}
+
+.form-info1 textarea {
+  width: 100%;
+  padding: 8px 20px;
+  color: 30px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  margin-top: 10px;
+}
+
+.form-info1 {
+  width: 100%;
+}
+
+.form-back-start {
+  display: flex;
+  justify-content: space-around;
+}
+
+.form-back-start button {
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: rgba(2, 127, 255, 1);
+  color: #fff;
+  border-radius: 20px;
+  border: none;
+  font-size: 16px;
+  margin-top: 30px;
+}
