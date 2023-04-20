@@ -8,7 +8,7 @@
     <title>CJB</title>
     <link rel="stylesheet" href="../CSS/detailFind.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" /> -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
     crossorigin=""/>
@@ -23,10 +23,12 @@
             <div class="detail-header">
                 <a href="./home.html" class="logo"> <img src="../IMAGES/logo/final_logo.png" alt=""> </a>
                 <ul class="nav-menu">
-                    <li> <a href="./home.html" class="nav-link">HOME</a> </li>
-                    <li> <a href="./bookTour.html" class="nav-link">BOOK TOUR</a> </li>
-                    <li> <a href="#findBuddies" class="nav-link">FIND BUDDIES</a> </li>
-                    <li> <a href="./createTrip.html" class="nav-link">CREATE A TRIP</a> </li>
+                    <li> <a href="./home.html" class="nav-link">Home</a> </li>
+                    <li> <a href="./bookTour.html" class="nav-link">Tours</a> </li>
+                    <li> <a href="./createTrip.html" class="nav-link">Tạo chuyến đi</a> </li>
+                    <li> <a href="./group.html" class="nav-link">Group</a> </li>
+                    <li> <a href="./TS-home.html" class="nav-link">Trở thành nhà cung cấp</a> </li>
+                    <li> <a href="#" class="nav-link"><ion-icon name="notifications-outline"></ion-icon></a> </li>
 
                     <div class="header-nav-form">
                         <div class="header-nav-icon">
@@ -44,9 +46,9 @@
                                 <div class="content-logout">
                                     <a href="./profile.html" class="avatar-login">
                                         <div class="header-form-avatar">
-                                            <img src="../image/avatars/avatar_1.jpg" alt="">
+                                            <img src="" alt="" id="avatar_user">
                                             <div class="header-name">
-                                                <span>NguyenHoangVu</span>
+                                                <span class="header-name1">NguyenHoangVu</span>
                                                 <p>Xem hồ sơ</p>
                                             </div>
                                         </div>
@@ -69,7 +71,10 @@
             </div>
         </div>
 
+        
+
         <div class="detail-container">
+            <p class="abc">render</p>
             <div class="detail-inf-tour">
                 <div class="detail-inf-wraper">
                     <div class="detail-inf">
@@ -128,16 +133,16 @@
                 </div>
 
                 <div class="detail-map">
-                    <div id="map"></div>
-
-                    <!-- <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d245427.202253111!2d108.07605262450348!3d16.02392166225702!2m3!1f0!2f0!3f0!3m2!
-                    1i1024!2i768!4f13.1!3m3!1m2!1s0x314219c792252a13%3A0x1df0cb4b86727e06!2zxJDDoCBO4bq1bmcsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1679646974460!5m2!1svi!2s"
-                        width="600" height="320" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+                    <div id="map">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d245427.202253111!2d108.07605262450348!3d16.02392166225702!2m3!1f0!2f0!3f0!3m2!
+                        1i1024!2i768!4f13.1!3m3!1m2!1s0x314219c792252a13%3A0x1df0cb4b86727e06!2zxJDDoCBO4bq1bmcsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1679646974460!5m2!1svi!2s"
+                            width="600" height="320" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
                     <div class="detail-inf-action">
                         <div class="detail-action detail-book">
-                            <button>JOIN</button>
+                            <button>Join</button>
                         </div>
                     </div>
 
@@ -202,7 +207,7 @@
                     <h1>RELATED TOURS</h1>
                     <i class="fa-solid fa-chevron-right popular-heading-icon find-slick-right"></i>
                 </div>
-                <div class="find-container-wraper slides2">
+                <!-- <div class="find-container-wraper slides2">
                     <div class="find-container">
                         <div class="find-container-top">
                             <img src="../IMAGES/slides/slide-0.png" alt="">
@@ -323,7 +328,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
 
@@ -410,10 +415,10 @@
         </footer>
     </div>
 
-    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <!-- <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script src="../JS/map.js"></script>
+    <script src="../JS/map.js"></script> -->
     <script src="../JS/detailFind.js"></script>
 </body>
 

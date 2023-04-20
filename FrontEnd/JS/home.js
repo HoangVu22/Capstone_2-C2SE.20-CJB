@@ -3,15 +3,43 @@ const headerForm = document.querySelector(".header-form");
 const headerFormLogin = headerNavForm.querySelector(".header-form-login");
 const headerFormLogout = document.querySelector(".header-form-logout");
 const login = JSON.parse(window.localStorage.getItem("login"));
+  
+if(login){
+  headerNavForm.onclick = function () {
+    if (headerForm.style.display === "none") {
+      headerForm.style.display = "block";
+      headerFormLogout.style.display = "block";
+    } else {
+      headerForm.style.display = "none";
+      headerFormLogout.style.display = "none";
+    }
+  };
+} else {
+  headerNavForm.onclick = function () {
+    if (headerForm.style.display === "none") {
+      headerForm.style.display = "block";
+      headerFormLogin.style.display = "block";
+    } else {
+      headerForm.style.display = "none";
+      headerFormLogin.style.display = "none";
+    }
+  };
+}
 
-headerNavForm.onclick = function () {
-  if (headerForm.style.display === "none") {
-    headerForm.style.display = "block";
-  } else {
-    headerForm.style.display = "none";
-  }
-};
+const logout = document.getElementsByClassName('form-logout');
+logout.onclick = () => {
+  alert('Bạn chắc chắn muốn thoát ?')
+  window.localStorage.clear();
+  window.location.reload(true);
+  window.location.href = 'http://127.0.0.1:5503/Capstone_2-C2SE.20-CJB/FrontEnd/HTML/login-register.html';
+}
 
+// const names = document.getElementsByClassName('header-name1');
+// const avatarUser = document.getElementById("avatar_user");
+if(login){
+  names[0].innerText = login.user_info.name;
+  avatarUser.src = login.user_info.user_profile[0].avatar;
+}
 // ---------------------------------------
 
 $(".popular-slides").slick({
@@ -22,6 +50,8 @@ $(".popular-slides").slick({
 });
 
 const z = document.querySelector.bind(document);
+const zz = document.querySelectorAll.bind(document);
+
 const slickPre = z(".fa-chevron-left");
 const slickNext = z(".fa-chevron-right");
 const findSlickPrev = z(".find-slick-left");
@@ -53,21 +83,64 @@ findSlickNext.onclick = () => {
   next1[1].click();
 };
 
+console.log(login);
 
-const logout = z('.form-logout');
-logout.onclick = () => {
-  alert('Bạn chắc chắn muốn thoát ?')
-  window.localStorage.clear();
-  window.location.reload(true);
-  window.location.href = 'http://127.0.0.1:5503/Capstone_2-C2SE.20-CJB/FrontEnd/HTML/login-register.html';
+const becomeSupplier = document.getElementsByClassName("become-supplier");
+console.log(becomeSupplier);
+const apiTSProfile = "http://127.0.0.1:8000/api/user/profile/update";
+becomeSupplier  .onclick  = (e) => {
+  fetch(apiTSProfile,{
+    method: 'PUT',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: login.user_info.user_profile[0].id,
+        name: login.user_info.name,
+        phone_number: login.user_info.phone_number,
+        avatar: login.user_info.user_profile[0].avatar,
+        gender: login.user_info.user_profile[0].gender,
+        about: login.user_info,
+      }),
+      data: ({
+        id: login.user_info.user_profile[0].id,
+        name: login.user_info.name,
+        phone_number: login.user_info.phone_number,
+        avatar: login.user_info.user_profile[0].avatar,
+        gender: login.user_info.user_profile[0].gender,
+        about: login.user_info,
+      }),
+  })
+  .then(res => res.json())
+  .then((data)=>{
+    data.user_info.user_roles = "ts";
+    window.localStorage.setItem("login",JSON.stringify(data));
+    console.log(data);
+    alert(1)
+  })
 }
 
 const names = $('.header-name1');
 const avatarUser = document.getElementsByClassName("avatar_user");
-if(login.msg === "Đăng nhập thành công"){
-  names[0].innerText = login.user_info.name;
-  avatarUser[0].src = login.user_info.user_profile[0].avatar;
-} else {
-  names[0].innerText = login.user.name;
-  avatarUser[0].src = "https://scontent.fdad1-2.fna.fbcdn.net/v/t39.30808-6/323952197_567233611560466_7304591525322997827_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=PdWsTXpElkEAX9IVL9U&_nc_ht=scontent.fdad1-2.fna&oh=00_AfBGaaF1sKuii3DajDaAxGsPyrPBf8lHeo2HgE45lER7hA&oe=643E53C4";
+// if(login.msg === "Đăng nhập thành công"){
+//   names[0].innerText = login.user_info.name;
+//   avatarUser[0].src = login.user_info.user_profile[0].avatar;
+// } else {
+//   names[0].innerText = login.user.name;
+//   avatarUser[0].src = "https://scontent.fdad1-2.fna.fbcdn.net/v/t39.30808-6/323952197_567233611560466_7304591525322997827_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=PdWsTXpElkEAX9IVL9U&_nc_ht=scontent.fdad1-2.fna&oh=00_AfBGaaF1sKuii3DajDaAxGsPyrPBf8lHeo2HgE45lER7hA&oe=643E53C4";
+// }
+
+
+// --------- ẩn hiện thông báo----------
+const faBell = document.querySelector('.fa-bell')
+const containerNotification = document.querySelector('.container-notification')
+
+faBell.onclick = function () {
+  if (containerNotification.style.display === 'none') {
+    containerNotification.style.display = 'block'
+  }
+  else {
+    containerNotification.style.display = 'none'
+  }
 }
+

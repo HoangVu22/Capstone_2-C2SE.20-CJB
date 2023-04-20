@@ -19,10 +19,12 @@
                 <a href="./home.html" class="logo"> <img src="../IMAGES/logo/final_logo.png" alt=""> </a>
 
                 <ul class="nav-menu">
-                    <li> <a href="./home.html" class="nav-link">HOME</a> </li>
-                    <li> <a href="./bookTour.html" class="nav-link">BOOK TOUR</a> </li>
-                    <li> <a href="#findBuddies" class="nav-link">FIND BUDDIES</a> </li>
-                    <li> <a href="./createTrip.html" class="nav-link">CREATE A TRIP</a> </li>
+                    <li> <a href="./home.html" class="nav-link">Home</a> </li>
+                    <li> <a href="./bookTour.html" class="nav-link">Tours</a> </li>
+                    <li> <a href="./createTrip.html" class="nav-link">Tạo chuyến đi</a> </li>
+                    <li> <a href="./group.html" class="nav-link">Group</a> </li>
+                    <li> <a href="./TS-home.html" class="nav-link">Trở thành nhà cung cấp</a> </li>
+                    <li> <a href="#" class="nav-link"><ion-icon name="notifications-outline"></ion-icon></a> </li>
 
                     <div class="header-nav-form">
                         <div class="header-nav-icon">
@@ -40,9 +42,9 @@
                                 <div class="content-logout">
                                     <a href="./profile.html" class="avatar-login">
                                         <div class="header-form-avatar">
-                                            <img src="../image/avatars/avatar_1.jpg" alt="">
+                                            <img src="" alt="" id="avatar_user">
                                             <div class="header-name">
-                                                <span>NguyenHoangVu</span>
+                                                <span class="header-name1">NguyenHoangVu</span>
                                                 <p>Xem hồ sơ</p>
                                             </div>
                                         </div>
@@ -118,9 +120,14 @@
     <!-- -------- DETAIL TOURS -------------- -->
     <div class="detail-tours-container">
         <div class="detail-tour-image">
-            <div class="detail-tour-title">
-                <i class="fa-solid fa-location-dot"></i>
-                <h1>Quy Nhơn - Eo Gió - Phú Yên</h1>
+            <div class="detail-tour-header">
+                <div class="detail-tour-title">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <h1>Quy Nhơn - Eo Gió - Phú Yên</h1>
+                </div>
+                <div class="book-tour">
+                    <button>ĐẶT TOUR</button>
+                </div>
             </div>
             <div class="detail-img">
                 <div class="detail-img-left">
@@ -142,22 +149,22 @@
             <ul class="list-conveniences" style="flex: 5">
                 <div class="conveniences">
                     <li>
-                        <i class="fa-solid fa-calendar"></i>
-                        <span><b>Thời Gian: </b>4 ngày 3 đêm</span>
+                        <i class="fa-regular fa-clock"></i>
+                        <span><b>Thời Gian : </b>4 ngày 3 đêm</span>
                     </li>
                     <li>
-                        <i class="fa-solid fa-location-dot"></i>
-                        <span><b>Nơi khởi hành: </b>Quy Nhơn</span>
+                        <i class="fa-solid fa-money-bill"></i>
+                        <span><b>Giá tiền : </b>4.000.000 VNĐ</span>
                     </li>
                 </div>
                 <div class="conveniences">
                     <li>
-                        <i class="fa-solid fa-sack-dollar"></i>
-                        <span><b>Giá tiền: </b>4999999 vnd</span>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span><b>Nơi khởi hành : </b>Thành phố Đà Nẵng</span>
                     </li>
                     <li>
-                        <i class="fa-solid fa-user-tie"></i>
-                        <span><b>Số chỗ còn lại: </b>7</span>
+                        <i class="fa-solid fa-person"></i>
+                        <span><b>Số chỗ còn lại : </b>10 thành viên</span>
                     </li>
                 </div>
             </ul>
@@ -373,7 +380,8 @@
         </div>
     </footer>
 
-
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="../JS/detailTour.js"></script>
 </body>
 

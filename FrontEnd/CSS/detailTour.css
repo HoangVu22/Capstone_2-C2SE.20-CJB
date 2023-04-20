@@ -37,7 +37,7 @@ header .container > ul {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  width: 55%;
+  width: 65%;
 }
 
 header ul li a {
@@ -225,6 +225,12 @@ header ul li a {
   padding: 0 100px;
 }
 
+.detail-tour-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .detail-tour-title {
   display: flex;
   align-items: center;
@@ -238,6 +244,16 @@ header ul li a {
 
 .detail-tour-title h1 {
   font-size: 28px;
+}
+
+.book-tour button {
+  padding: 14px 20px;
+  border-radius: 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #03a9f4;
+  border: none;
+  cursor: pointer;
 }
 
 .detail-img {

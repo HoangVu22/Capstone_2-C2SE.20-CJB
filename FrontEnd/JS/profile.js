@@ -65,21 +65,21 @@ headerNavForm.onclick = function () {
     headerForm.style.display = "none";
   }
 };
-if(login.msg === "Đăng nhập thành công"){
+if (login.msg === "Đăng nhập thành công") {
   names.innerText = login.user_info.name;
   avatarUser.src = login.user_info.user_profile[0].avatar;
   avatarUser1.src = login.user_info.user_profile[0].avatar;
 } else {
-  
+
 }
-if(login.msg === "Đăng nhập thành công"){
+if (login.msg === "Đăng nhập thành công") {
   names.innerText = login.user_info.name;
   avatarUser.src = login.user_info.user_profile[0].avatar;
   avatarUser1.src = login.user_info.user_profile[0].avatar;
 } else {
-  names.innerText = login.user.name;
-  avatarUser.src = "https://scontent.fdad1-2.fna.fbcdn.net/v/t39.30808-6/323952197_567233611560466_7304591525322997827_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=PdWsTXpElkEAX9IVL9U&_nc_ht=scontent.fdad1-2.fna&oh=00_AfBGaaF1sKuii3DajDaAxGsPyrPBf8lHeo2HgE45lER7hA&oe=643E53C4";
-  avatarUser1.src = "https://scontent.fdad1-2.fna.fbcdn.net/v/t39.30808-6/323952197_567233611560466_7304591525322997827_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=PdWsTXpElkEAX9IVL9U&_nc_ht=scontent.fdad1-2.fna&oh=00_AfBGaaF1sKuii3DajDaAxGsPyrPBf8lHeo2HgE45lER7hA&oe=643E53C4";
+  names.innerText = login.user_info.name;
+  avatarUser.src = login.user_info.user_profile[0].avatar;
+  avatarUser1.src = login.user_info.user_profile[0].avatar;
 }
 
 // ---------------------------------------
@@ -117,14 +117,14 @@ if (login.msg === 'Đăng nhập thành công') {
   userPhone.innerText = login.user_info.phone_number;
   userEmail.innerText = login.user_info.email;
   userGender.innerText = login.user_info.user_profile[0].gender;
-  // userAbout.innerText = login.about;  
+  userAbout.innerText = login.user_info.about;
 } else {
-  userName[0].innerText = login.user.name;
-  userName[1].innerText = login.user.name;
-  userPhone.innerText = login.user.phone_number;
-  userEmail.innerText = login.user.email;
-  userGender.innerText = "male";//login.profile[0].gender;
-  // userAbout.innerText = login.user.about;
+  userName[0].innerText = login.user_info.name;
+  userName[1].innerText = login.user_info.name;
+  userPhone.innerText = login.user_info.phone_number;
+  userEmail.innerText = login.user_info.email;
+  userGender.innerText = login.user_info.user_profile[0].gender;
+  userAbout.innerText = login.user_info.about;
 }
 
 // ------------------- logout -----------------------------
@@ -143,122 +143,79 @@ console.log(login);
 const apiTSProfile = "http://127.0.0.1:8000/api/ts/profile/update";
 const apiUserProfile = "http://127.0.0.1:8000/api/user/profile/update";
 
+console.log(login.user_info.user_roles);
+
 function getInfoUser() {
-  if(login.user_info)
-  {
-    if (login.user_info.user_roles === 'user') {
-      fetch(apiTSProfile, { 
-        method: 'POST',
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          id: login.user_info.user_profile[0].id,
-          name: inputUserName.value,
-          phone_number: inputPhoneNumber.value,
-          avatar: "https://scontent.fdad1-2.fna.fbcdn.net/v/t39.30808-6/323952197_567233611560466_7304591525322997827_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=PdWsTXpElkEAX9IVL9U&_nc_ht=scontent.fdad1-2.fna&oh=00_AfBGaaF1sKuii3DajDaAxGsPyrPBf8lHeo2HgE45lER7hA&oe=643E53C4",
-          gender: inputGender.value,
-          about: inputAbout.value,
-        }),
-        data: ({
-          id: login.user_info.user_profile[0].id,
-          name: inputUserName.value,
-          phone_number: inputPhoneNumber.value,
-          avatar: "https://scontent.fdad1-2.fna.fbcdn.net/v/t39.30808-6/323952197_567233611560466_7304591525322997827_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=PdWsTXpElkEAX9IVL9U&_nc_ht=scontent.fdad1-2.fna&oh=00_AfBGaaF1sKuii3DajDaAxGsPyrPBf8lHeo2HgE45lER7hA&oe=643E53C4",
-          gender: inputGender.value,
-          about: inputAbout.value,
-        }),
+  if (login.user_info.user_roles === 'user') {
+    fetch(apiUserProfile, {
+      method: 'PUT',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: login.user_info.user_profile[0].id,
+        name: inputUserName.value,
+        phone_number: inputPhoneNumber.value,
+        avatar: login.user_info.user_profile[0].avatar,
+        gender: inputGender.value,
+        about: inputAbout.value,
+      }),
+      data: ({
+        id: login.user_info.user_profile[0].id,
+        name: inputUserName.value,
+        phone_number: inputPhoneNumber.value,
+        avatar: login.user_info.user_profile[0].avatar,
+        gender: inputGender.value,
+        about: inputAbout.value,
+      }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        window.localStorage.setItem("login", JSON.stringify(data));
+        const profile = JSON.parse(window.localStorage.getItem("login"));
+        console.log(data);
+        renderUserInfo(profile);
+        alert("Cập nhật thông tin thành công");
       })
-        .then(response => { return response.json() })
-        .then(data => {
-          console.log('29387');
-          if (data.status === 200 || data.msg === "Update thành công") {
-            window.localStorage.setItem("login", JSON.stringify(data));
-            const profile = JSON.parse(window.localStorage.getItem("login"));
-            console.log(login);
-            renderUserInfo(profile)
-            alert("1");
-          }else {
-            console.log("Fail !!!!!!!!!");
-        }
-        })
-    }
-    window.location.reload();
-  } else if (login.user){
-    if (login.user.user_roles === 'user') {
-      fetch(apiTSProfile, { 
-        method: 'POST',
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          id: login.user.id,
-          name: inputUserName.value,
-          phone_number: inputPhoneNumber.value,
-          avatar: "https://scontent.fdad1-2.fna.fbcdn.net/v/t39.30808-6/323952197_567233611560466_7304591525322997827_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=PdWsTXpElkEAX9IVL9U&_nc_ht=scontent.fdad1-2.fna&oh=00_AfBGaaF1sKuii3DajDaAxGsPyrPBf8lHeo2HgE45lER7hA&oe=643E53C4",
-          gender: inputGender.value,
-          about: inputAbout.value,
-        }),
-        data: ({
-          id: login.user.id,
-          name: inputUserName.value,
-          phone_number: inputPhoneNumber.value,
-          avatar: "https://scontent.fdad1-2.fna.fbcdn.net/v/t39.30808-6/323952197_567233611560466_7304591525322997827_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=PdWsTXpElkEAX9IVL9U&_nc_ht=scontent.fdad1-2.fna&oh=00_AfBGaaF1sKuii3DajDaAxGsPyrPBf8lHeo2HgE45lER7hA&oe=643E53C4",
-          gender: inputGender.value,
-          about: inputAbout.value,
-        }),
+      .catch(error)(
+        alert(error)
+      )
+  } else {
+    fetch(apiTSProfile, {
+      method: 'PUT',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: login.user_info.user_profile[0].id,
+        name: inputUserName.value,
+        phone_number: inputPhoneNumber.value,
+        avatar: login.user_info.user_profile[0].avatar,  
+      }),
+      data: ({
+        id: login.user_info.user_profile[0].id,
+        name: inputUserName.value,
+        phone_number: inputPhoneNumber.value,
+        avatar: login.user_info.user_profile[0].avatar,  
+      }),
+    })
+      .then(response => { return response.json() })
+      .then(data => {
+        window.localStorage.setItem("login", JSON.stringify(data));
+        const profile = JSON.parse(window.localStorage.getItem("login"));
+        console.log(data);
+        renderUserInfo(profile);
+        alert("Update success.....");
       })
-        .then(response => { return response.json() })
-        .then(data => {
-          console.log('29387');
-          if (data.status === 200 || data.msg === "Update thành công") {
-            window.localStorage.setItem("login", JSON.stringify(data));
-            const profile = JSON.parse(window.localStorage.getItem("login"));
-            console.log(login);
-            renderUserInfo(profile)
-            alert("1");
-          }else {
-            console.log("Fail !!!!!!!!!");
-        }
-        })
-    
+      .catch(error)(
+        alert(error)
+      )
   }
-  // } else {
-  //   fetch(apiTSProfile, {
-  //     method: 'POST',
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       id: login.user.id,
-  //       name: inputUserName.value,
-  //       phone_number: inputPhoneNumber.value,
-  //       avatar: "https://scontent.fdad1-2.fna.fbcdn.net/v/t39.30808-6/323952197_567233611560466_7304591525322997827_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=PdWsTXpElkEAX9IVL9U&_nc_ht=scontent.fdad1-2.fna&oh=00_AfBGaaF1sKuii3DajDaAxGsPyrPBf8lHeo2HgE45lER7hA&oe=643E53C4",
-  //     }),
-  //     data: ({
-  //       id: login.user.id,
-  //       name: inputUserName.value,
-  //       phone_number: inputPhoneNumber.value,
-  //       avatar: "https://scontent.fdad1-2.fna.fbcdn.net/v/t39.30808-6/323952197_567233611560466_7304591525322997827_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=PdWsTXpElkEAX9IVL9U&_nc_ht=scontent.fdad1-2.fna&oh=00_AfBGaaF1sKuii3DajDaAxGsPyrPBf8lHeo2HgE45lER7hA&oe=643E53C4",
-  //     }),
-  //   })
-  //     .then(response => { return response.json() })
-  //     .then(data => {
-  //       if (data.status === 200 || data.msg === "Update thành công") {
-  //         window.localStorage.setItem("login", JSON.stringify(data))
-  //         const profile = JSON.parse(window.localStorage.getItem("login", JSON.stringify(data)));
-  //         renderUserInfo(profile);
-  //       } else {
-  //         console.log("Fail !!!!!!!!!");
-  //       }
-  //     }
-  //     )
-  // }
   window.location.reload();
-}
 }
 var html_UserInfo = $('.profile-genaral');
 
+// console.log(profile);
 
 function renderUserInfo(obj) {
   console.log(html_UserInfo);
@@ -274,24 +231,24 @@ function renderUserInfo(obj) {
     <form class="form-profile">
       <div class="form-profile-info">
           <label for="">Họ và tên</label>
-          <div class="form-profile-content user_name">${obj.user.name}</div>
+          <div class="form-profile-content user_name">${obj.user_info.name}</div>
       </div>
       <div class="form-profile-info">
           <label for="">Số điện thoại</label>
-          <div class="form-profile-conten user_phone">${obj.user.phone_number}</div>
+          <div class="form-profile-conten user_phone">${obj.user_info.phone_number}</div>
       </div>
       <div class="form-profile-info">
           <label for="">Email</label>
-          <div class="form-profile-content user_email">${obj.user.email}</div>
+          <div class="form-profile-content user_email">${obj.user_info.email}</div>
       </div>
       <div class="form-profile-info">
           <label for="">Giới tính/ Tuổi</label>
-          <div class="form-profile-content user_gender">${obj.profile[0].gender}</div>
+          <div class="form-profile-content user_gender">${obj.user_info.user_profile[0].gender}</div>
       </div>
       <div class="form-line"></div>
       <div class="form-profile-bio">
           <h2>About:</h2>
-          <p class="user_about">Write your bio...</p>
+          <p class="user_about">${obj.user_info.about}</p>
       </div>
       <div class="form-line"></div>
 
@@ -327,13 +284,28 @@ inputPhoneNumber.onchange = (e) => {
 }
 inputEmail.disabled = true;
 
-if(login.msg === "Update thành công" || login.status === 200)
-{
-  inputEmail.value = login.user.email;
+if (login.msg === "Update thành công" || login.status === 200) {
+  inputEmail.value = login.user_info.email;
 } else {
-  inputEmail.value = login.email;
+  inputEmail.value = login.user_info.email;
 }
 
-inputGender.onchange  = (e) => {
-  console.log(e.target.value);  
+inputGender.onchange = (e) => {
+  console.log(e.target.value);
+}
+
+inputAbout.onchange = (e) => {
+  console.log(e.target.value)
+}
+
+
+
+// ------ lịch sử đặt tours---------
+const historyTour = document.querySelector('.history-tour')
+const supplierPages = document.querySelector('.supplierPages')
+const profile = document.querySelector('.profileGenaral')
+
+historyTour.onclick = function () {
+  supplierPages.style.display = 'block'
+  profile.style.display = 'none'
 }

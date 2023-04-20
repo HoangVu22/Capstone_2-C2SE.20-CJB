@@ -12,6 +12,25 @@ headerNavForm.onclick = function () {
   }
 };
 
+// --------- next- prev --------------
+const postImgWrap = document.querySelector('.post-img-wrap')
+const wraperPostInf = document.querySelector('.wraper-post-inf')
+const controlNext = document.querySelector('.control-next button')
+const controlPrev = document.querySelector('.control-prev')
+
+controlNext.onclick = function () {
+  postImgWrap.style.display = 'none'
+  wraperPostInf.style.display = 'block'
+}
+
+controlPrev.onclick = function () {
+  postImgWrap.style.display = 'block'
+  wraperPostInf.style.display = 'none'
+}
+
+
+
+
 // ---------------- schedual------------
 
 const postSchedualAdd = document.querySelector(".post-schedual-add");
