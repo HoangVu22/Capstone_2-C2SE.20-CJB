@@ -94,3 +94,16 @@ findContainer.forEach( value => {
   }
 })
 
+// --------- ẩn hiện thông báo----------
+const faBell = document.querySelector('.fa-bell')
+const containerNotification = document.querySelector('.container-notification')
+
+faBell.onclick = function () {
+  if (containerNotification.style.display === 'none') {
+    containerNotification.style.display = 'block'
+  }
+  else {
+    containerNotification.style.display = 'none'
+  }
+}
+

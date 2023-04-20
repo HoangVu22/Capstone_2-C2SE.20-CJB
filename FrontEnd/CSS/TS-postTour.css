@@ -49,7 +49,7 @@ button {
 }
 
 .detail-header > ul {
-  width: 55%;
+  width: 65%;
   justify-content: space-evenly;
   margin-left: -140px;
 }
@@ -62,7 +62,7 @@ button {
   text-decoration: none;
   color: #fff;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 1.06rem;
 }
 
 .detail-header > img {
@@ -342,16 +342,22 @@ button {
   justify-content: space-between;
 }
 
-.post-img-control button {
+.post-img-control button, .control-next button {
   padding: 14px 20px;
   font-size: 16px;
   background-color: rgba(2, 127, 255, 1);
   color: #fff;
   border: none;
   border-radius: 10px;
-  margin: 40px 0 60px 0;
+  margin: 20px 0 60px 0;
   font-size: 16px;
   cursor: pointer;
+}
+
+.control-next {
+  display: flex;
+  justify-content: end;
+  margin-top: 40px;
 }
 
 /* ------ post inf --------- */

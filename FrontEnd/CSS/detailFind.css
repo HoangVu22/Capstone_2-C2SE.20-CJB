@@ -46,7 +46,7 @@ body {
 }
 
 .detail-header > ul {
-  width: 55%;
+  width: 65%;
   justify-content: space-evenly;
   margin-left: -140px;
 }
@@ -206,6 +206,7 @@ body {
   background-color: #6fabe2;
   color: #fff;
   font-size: 16px;
+  cursor: pointer;
 }
 
 .detail-book {

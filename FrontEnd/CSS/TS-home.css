@@ -37,11 +37,11 @@ header .container > ul {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  width: 55%;
+  width: 65%;
 }
 
 header ul li a {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 400;
   color: #fff;
   cursor: pointer;

@@ -337,3 +337,15 @@ if(login.msg === "Update thành công" || login.status === 200)
 inputGender.onchange  = (e) => {
   console.log(e.target.value);  
 }
+
+
+
+// ------ lịch sử đặt tours---------
+const historyTour = document.querySelector('.history-tour')
+const supplierPages = document.querySelector('.supplierPages')
+const profile = document.querySelector('.profileGenaral')
+
+historyTour.onclick = function () {
+  supplierPages.style.display = 'block'
+  profile.style.display = 'none'
+}

@@ -64,10 +64,25 @@ logout.onclick = () => {
 
 const names = $('.header-name1');
 const avatarUser = document.getElementsByClassName("avatar_user");
-if(login.msg === "Đăng nhập thành công"){
-  names[0].innerText = login.user_info.name;
-  avatarUser[0].src = login.user_info.user_profile[0].avatar;
-} else {
-  names[0].innerText = login.user.name;
-  avatarUser[0].src = "https://scontent.fdad1-2.fna.fbcdn.net/v/t39.30808-6/323952197_567233611560466_7304591525322997827_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=PdWsTXpElkEAX9IVL9U&_nc_ht=scontent.fdad1-2.fna&oh=00_AfBGaaF1sKuii3DajDaAxGsPyrPBf8lHeo2HgE45lER7hA&oe=643E53C4";
+// if(login.msg === "Đăng nhập thành công"){
+//   names[0].innerText = login.user_info.name;
+//   avatarUser[0].src = login.user_info.user_profile[0].avatar;
+// } else {
+//   names[0].innerText = login.user.name;
+//   avatarUser[0].src = "https://scontent.fdad1-2.fna.fbcdn.net/v/t39.30808-6/323952197_567233611560466_7304591525322997827_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=PdWsTXpElkEAX9IVL9U&_nc_ht=scontent.fdad1-2.fna&oh=00_AfBGaaF1sKuii3DajDaAxGsPyrPBf8lHeo2HgE45lER7hA&oe=643E53C4";
+// }
+
+
+// --------- ẩn hiện thông báo----------
+const faBell = document.querySelector('.fa-bell')
+const containerNotification = document.querySelector('.container-notification')
+
+faBell.onclick = function () {
+  if (containerNotification.style.display === 'none') {
+    containerNotification.style.display = 'block'
+  }
+  else {
+    containerNotification.style.display = 'none'
+  }
 }
+
