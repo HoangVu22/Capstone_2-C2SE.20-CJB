@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\TSProfile;
+use App\Models\Images;
 
 class Tours extends Model
 {
@@ -33,5 +34,9 @@ class Tours extends Model
 
     public function tsProfile(){
         return $this->belongsTo(TSProfile::class, 'ts_id');
+    }
+    
+    public function images(){
+        return $this->hasMany(Images::class, 'tour_id');
     }
 }
