@@ -23,8 +23,8 @@
                     <li> <a href="./TS-home.html" class="nav-link">Home</a> </li>
                     <li> <a href="./TS-postTour.html" class="nav-link">Đăng tours</a> </li>
                     <li> <a href="./TS-managerTours.html" class="nav-link">Quản lý tours</a> </li>
+                    <li> <a href="./TS-managerBooked.html" class="nav-link">Quản lý đặt tours</a> </li>
                     <li> <a href="./home.html" class="nav-link">Trở thành người dùng</a> </li>
-                    <li> <a href="#" class="nav-link"><i class="fa-regular fa-bell"></i></a> </li>
 
                     <div class="header-nav-form">
                         <div class="header-nav-icon">
@@ -68,21 +68,27 @@
         </div>
 
         <div class="post-img-container">
-            <div class="warper-post-img">
-                <div class="post-title">
-                    <h1>Hãy cung cấp hình ảnh về chuyến đi của bạn.</h1>
-                </div>
-                <div class="post-images">
-                    <div class="drag-images">
-                        <p class="drag-drop">Kéo và thả để tải file lên</p>
-                        <p style="font-size: 13px; cursor: auto;">Hoặc</p>
-                        <button class="choose-files">Chọn file</button> <br>
-                        <input class="drop-input" type="file" hidden>
+            <div class="post-img-wrap">
+                <div class="warper-post-img">
+                    <div class="post-title">
+                        <h1>Hãy cung cấp hình ảnh về chuyến đi của bạn.</h1>
                     </div>
+                    <div class="post-images">
+                        <div class="drag-images">
+                            <p class="drag-drop">Kéo và thả để tải file lên</p>
+                            <p style="font-size: 13px; cursor: auto;">Hoặc</p>
+                            <button class="choose-files">Chọn file</button> <br>
+                            <input class="drop-input" type="file" hidden>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-next">
+                    <button>Tiếp tục</button>
                 </div>
             </div>
 
-            <div class="wraper-post-inf card_wrap">
+            <div style="display: none;" class="wraper-post-inf card_wrap">
                 <h1>Hãy cung cấp thông tin của chuyến đi</h1>
                 <div class="post-content">
                     <div class="post-information post-name">
@@ -139,12 +145,12 @@
                     </div>
                 </div>
 
+                <div class="post-img-control">
+                    <button class="control-prev">Quay lại</button>
+                    <button>Tiếp tục</button>
+                </div>
             </div>
 
-            <div class="post-img-control">
-                <button>Quay lại</button>
-                <button>Tiếp tục</button>
-            </div>
         </div>
 
 

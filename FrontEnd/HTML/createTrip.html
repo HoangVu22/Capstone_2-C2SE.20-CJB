@@ -17,10 +17,12 @@
             <div class="detail-header">
                 <a href="./home.html" class="logo"> <img src="../IMAGES/logo/final_logo.png" alt=""> </a>
                 <ul class="nav-menu">
-                    <li> <a href="./home.html" class="nav-link">HOME</a> </li>
-                    <li> <a href="./bookTour.html" class="nav-link">BOOK TOUR</a> </li>
-                    <li> <a href="#findBuddies" class="nav-link">FIND BUDDIES</a> </li>
-                    <li> <a href="#createATrip" class="nav-link">CREATE A TRIP</a> </li>
+                    <li> <a href="./home.html" class="nav-link">Home</a> </li>
+                    <li> <a href="./bookTour.html" class="nav-link">Tours</a> </li>
+                    <li> <a href="./createTrip.html" class="nav-link">Tạo chuyến đi</a> </li>
+                    <li> <a href="./group.html" class="nav-link">Group</a> </li>
+                    <li> <a href="./TS-home.html" class="nav-link">Trở thành nhà cung cấp</a> </li>
+                    <li> <a href="#" class="nav-link"><ion-icon name="notifications-outline"></ion-icon></a> </li>
 
                     <div class="header-nav-form">
                         <div class="header-nav-icon">
@@ -64,91 +66,127 @@
             </div>
         </div>
 
-        <div class="button-tranform-tab">
-            <h1>Bắt đầu chuyến đi</h1>
-            <div>
-                <div class="button1">
-                    <button class="button1-btn">1</button>
-                    <p>Điểm đến</p>
-                </div>
-                <div class="button2">
-                    <button class="button2-btn">2</button>
-                    <p>Mô tả chuyến đi</p>
-                </div>
+        <div class="container">
+            <div class="create-trip-container">
+                <h1>Bắt đầu chuyến đi</h1>
+                <p>Hãy tạo những chuyến đi của bạn và chúc bạn có 1 chuyến đi vui vẻ</p>
+                <!-- <div class="create-trip-control">
+                    <div class="button1">
+                        <button class="button1-btn">1</button>
+                        <p>Điểm đến</p>
+                    </div>
+                    <div class="button2">
+                        <button class="button2-btn">2</button>
+                        <p>Mô tả chuyến đi</p>
+                    </div>
+                </div> -->
             </div>
-        </div>
-        <div class="createTrip-container">
-            <img src="../IMAGES/slides/slide-4.png" alt="">
-            <div class="createTrip-wraper">
-                <div class="form-createTrip">
-                    <div class="form-trip-1">
-                        <div class="form-info-wrap">
-                            <div class="form-info">
-                                <label for="">Vị trí hiện tại của bạn?</label>
-                                <div class="form-input">
-                                    <input type="text">
-                                </div>
-                            </div>
-                            <div class="form-info">
-                                <label for="">Nơi bạn muốn đi?</label>
-                                <div class="form-input">
-                                    <input type="text">
-                                </div>
-                            </div>
+
+            <div class="form-trip">
+                <div class="form-trip-1">
+                    <div class="form-1">
+                        <div class="trip-2-img">
+                            <!-- <img src="../IMAGES/slides/slide-5.png" alt=""> -->
+                            <input type="file">
                         </div>
-                        <div class="form-info-wrap">
-                            <div class="form-info">
-                                <label for="">Từ ngày</label>
-                                <div class="form-input">
-                                    <input type="date">
+                        <div class="form-content">
+                            <div class="form-info-wrap">
+                                <div class="form-info">
+                                    <label for="">Tên chuyến đi</label>
+                                    <div class="form-input">
+                                        <input type="text" placeholder="Nhập tên chuyến đi của bạn">
+                                    </div>
+                                </div>
+                                <!-- <div class="form-info form-info1">
+                                    <label for="">Tên địa điểm</label>
+                                    <div class="form-input1">
+                                        <input type="text" placeholder="Nhập tên địa điểm">
+                                    </div>
+                                </div> -->
+                                <!-- <div class="form-info">
+                                    <label for="">Nơi bạn muốn đi?</label>
+                                    <div class="form-input">
+                                        <input type="text">
+                                    </div>
+                                </div> -->
+                            </div>
+                            <div class="form-info-wrap1">
+                                <div class="form-info form-info-0">
+                                    <label for="">Điểm xuất phát</label>
+                                    <div class="form-input">
+                                        <input type="text" placeholder="Nhập điểm xuất phát">
+                                    </div>
+                                </div>
+                                <div class="form-info">
+                                    <label for="">Điểm đến</label>
+                                    <div class="form-input">
+                                        <input type="text" placeholder="Nhập điểm đến">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-info">
-                                <label for="">Đến ngày</label>
-                                <div class="form-input">
-                                    <input type="date">
+                            <div class="form-info-wrap1">
+                                <div class="form-info form-info-0">
+                                    <label for="">Từ ngày</label>
+                                    <div class="form-input">
+                                        <input type="date">
+                                    </div>
+                                </div>
+                                <div class="form-info">
+                                    <label for="">Đến ngày</label>
+                                    <div class="form-input">
+                                        <input type="date">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-map">
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d245427.202253111!2d108.07605262450348!3d16.02392166225702!2m3!1f0!2f0!3f0!3m2!
-                                1i1024!2i768!4f13.1!3m3!1m2!1s0x314219c792252a13%3A0x1df0cb4b86727e06!2zxJDDoCBO4bq1bmcsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1679646974460!5m2!1svi!2s"
-                                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                            </iframe>
-                        </div>
-                        <div class="form-next">
-                            <button>Tiếp tục</button>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="createTrip-wraper1">
-                <div class="form-createTrip">
-                    <div class="form-trip-1">
-                        <div class="form-info-wrap1">
-                            <div class="form-info form-info1">
-                                <label for="">Tên chuyến đi</label>
-                                <div class="form-input1">
-                                    <input type="text">
+                    <!-- <div class="form-next">
+                        <button>Tiếp tục</button>
+                    </div> -->
+                    <div class="form-trip-2">
+                        <div class="form-2">
+                            <div class="form-content-2">
+                                <div class="trip-2-content">
+                                    <div class="form-info form-info1">
+                                        <label for="">Số người</label>
+                                        <div class="form-input1">
+                                            <input type="number" placeholder="Nhập số người">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-info-wrap1">
+                                    <div class="form-info form-info-0">
+                                        <label for="">Kinh độ</label>
+                                        <div class="form-input form-input-0">
+                                            <input type="number" placeholder="Nhập kinh độ">
+                                        </div>
+                                    </div>
+                                    <div class="form-info">
+                                        <label for="">Vĩ độ</label>
+                                        <div class="form-input form-input-0">
+                                            <input type="number" placeholder="Nhập vĩ độ">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-info form-info1">
+                                    <label for="">Mô tả ngắn về chuyến đi</label>
+                                    <div class="form-input1">
+                                        <textarea name="" id="" cols="30" rows="6" placeholder="Mô tả chuyến đi của bạn"></textarea>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-info form-info1">
-                                <label for="">Số người</label>
-                                <div class="form-input1">
-                                    <input class="number-people" type="number">
-                                </div>
+                            <div class="form-map">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d245427.202253111!2d108.07605262450348!3d16.02392166225702!2m3!1f0!2f0!3f0!3m2!
+                                    1i1024!2i768!4f13.1!3m3!1m2!1s0x314219c792252a13%3A0x1df0cb4b86727e06!2zxJDDoCBO4bq1bmcsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1679646974460!5m2!1svi!2s"
+                                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
                             </div>
-                            <div class="form-info form-info1">
-                                <label for="">Mô tả ngắn về chuyến đi</label>
-                                <div class="form-input1">
-                                    <textarea name="" id="" cols="30" rows="6"></textarea>
-                                </div>
-                            </div>
-                            <div class="form-back-start">
-                                <button class="goBack">Quay lại</button>
-                                <button class="startCreateTrip">Bắt đầu</button>
-                            </div>
+                        </div>
+                        <div class="form-back-start">
+                            <button>Hoàn tất</button>
+                            <!-- <button class="goBack">Quay lại</button>
+                            <button class="startCreateTrip">Bắt đầu</button> -->
                         </div>
                     </div>
                 </div>

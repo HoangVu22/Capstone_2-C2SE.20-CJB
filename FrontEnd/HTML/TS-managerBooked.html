@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/css/swiper.min.css"
         integrity="sha512-FCU4ZL4ubM4eDxvQQ9SqMmH+UQ9t0noKHj/cfky4whdWnyBgp+NF2ykUBgsyx8Iv+XtM3aXZ8jmFs4uLnT+Vng=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../CSS/group.css">
+    <link rel="stylesheet" href="../CSS/TS-managerBooked.css">
     <title>CJB</title>
 </head>
 
@@ -20,12 +20,11 @@
             <div class="detail-header">
                 <a href="./home.html" class="logo"> <img src="../IMAGES/logo/final_logo.png" alt=""> </a>
                 <ul class="nav-menu">
-                    <li> <a href="./home.html" class="nav-link">Home</a> </li>
-                    <li> <a href="./bookTour.html" class="nav-link">Tours</a> </li>
-                    <li> <a href="./createTrip.html" class="nav-link">Tạo chuyến đi</a> </li>
-                    <li> <a href="./group.html" class="nav-link">Group</a> </li>
-                    <li> <a href="./TS-home.html" class="nav-link">Trở thành nhà cung cấp</a> </li>
-                    <li> <a href="#" class="nav-link"><ion-icon name="notifications-outline"></ion-icon></a> </li>
+                    <li> <a href="./TS-home.html" class="nav-link">Home</a> </li>
+                    <li> <a href="./TS-postTour.html" class="nav-link">Đăng tours</a> </li>
+                    <li> <a href="./TS-managerTours.html" class="nav-link">Quản lý tours</a> </li>
+                    <li> <a href="./TS-managerBooked.html" class="nav-link">Quản lý đặt tours</a> </li>
+                    <li> <a href="./home.html" class="nav-link">Trở thành người dùng</a> </li>
 
                     <div class="header-nav-form">
                         <div class="header-nav-icon">
@@ -68,155 +67,96 @@
             </div>
         </div>
 
-        <div class="group-container">
-            <div class="container">
-                <div class="group-nav">
-                    <div class="group-nav-icon">
-                        <i class="fa-brands fa-rocketchat"></i>
-                    </div>
-                    <div class="group-nav-icon">
-                        <i class="fa-solid fa-people-group"></i>
-                    </div>
-                    <div class="group-nav-icon">
-                        <i class="fas fa-cog fa-spin"></i>
+        <div class="manager-tours card_wrap">
+            <div class="container-residence">
+                <div class="container-header">
+                    <h1>Quản lý đặt tours của khách hàng</h1>
+                    <!-- <div class="btn-toolbar">
+                        <a class="postNew-residence" href="./TS-postTour.html">
+                            <i class="fa-solid fa-plus"></i>
+                            <p>Thêm tour mới</p>
+                        </a>
+                    </div> -->
+                </div>
+                <div class="container-search">
+                    <div class="search-input">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" name="" id="search" placeholder="Tìm tên khách hàng..."
+                            onkeyup="searchResidence()">
                     </div>
                 </div>
 
-                <div class="group-wrap">
-                    <div class="group-title">
-                        <i class="fa-solid fa-arrow-left"></i>
-                        <h1>Group</h1>
-                    </div>
-                    <div class="group-content">
-                        <div class="group-item">
-                            <div class="group">
-                                <div class="create-group">
-                                    <i class="fa-solid fa-plus"></i>
-                                </div>
-                                <div class="create-group-item">
-                                    <p>Tạo group</p>
-                                </div>
-                            </div>
-
-                            <div style="display: none;" id="CR-body">
-                                <form action="">
-                                    <div class="form-img-name">
-                                        <div class="CR-room-image">
-                                            <input type="file" accept="image/png, image/gif, image/jpeg" alt=""
-                                                value="">
-                                            <img src="../IMAGES/Users-create-room/icon-upload-image.png" alt="">
-                                        </div>
-                                        <div class="CR-room-name-group">
-                                            <input type="text" name="" id="" placeholder="Nhập tên nhóm...">
-                                        </div>
-                                    </div>
-                                    <div class="form-privacy">
-                                        <label for="">Chọn loại chat</label>
-                                        <div class="select-privacy">
-                                            <div>
-                                                <input type="radio" name="type" id="">
-                                                <label for="">Công khai</label>
-                                            </div>
-                                            <div>
-                                                <input type="radio" name="type" id="">
-                                                <label for="">Riêng tư</label>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="form-number-people">
-                                        <input type="number" name="" id="" placeholder="Nhập số lượng thành viên...">
-                                    </div>
-                                    <div class="form-description">
-                                        <textarea name="" id="" cols="30" rows="3"
-                                            placeholder="Mô tả chi tiết..."></textarea>
-                                    </div>
-
-                                    <div class="btn-create">
-                                        <button>Tạo nhóm</button>
-                                    </div>
-
-                                    <div class="room-close">
-                                        <i class="fa-solid fa-xmark"></i>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-
-                        <div class="group-item">
-                            <div class="group-img">
-                                <img src="../IMAGES/slides/slide-5.png" alt="">
-                            </div>
-                            <div class="group-info">
-                                <h4 class="group-info-name">Antifan</h4>
-                                <p>30 thành viên</p>
-                                <button>Tham gia</button>
-                            </div>
-                        </div>
-                        <div class="group-item">
-                            <div class="group-img">
-                                <img src="../IMAGES/slides/slide-5.png" alt="">
-                            </div>
-                            <div class="group-info">
-                                <h4 class="group-info-name">Antifan</h4>
-                                <p>30 thành viên</p>
-                                <button>Tham gia</button>
-                            </div>
-                        </div>
-                        <div class="group-item">
-                            <div class="group-img">
-                                <img src="../IMAGES/slides/slide-5.png" alt="">
-                            </div>
-                            <div class="group-info">
-                                <h4 class="group-info-name">Antifan</h4>
-                                <p>30 thành viên</p>
-                                <button>Tham gia</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="group-content">
-                        <div class="group-item">
-                            <div class="group-img">
-                                <img src="../IMAGES/slides/slide-5.png" alt="">
-                            </div>
-                            <div class="group-info">
-                                <h4 class="group-info-name">Antifan</h4>
-                                <p>30 thành viên</p>
-                                <button>Tham gia</button>
-                            </div>
-                        </div>
-                        <div class="group-item">
-                            <div class="group-img">
-                                <img src="../IMAGES/slides/slide-5.png" alt="">
-                            </div>
-                            <div class="group-info">
-                                <h4 class="group-info-name">Antifan</h4>
-                                <p>30 thành viên</p>
-                                <button>Tham gia</button>
-                            </div>
-                        </div>
-                        <div class="group-item">
-                            <div class="group-img">
-                                <img src="../IMAGES/slides/slide-5.png" alt="">
-                            </div>
-                            <div class="group-info">
-                                <h4 class="group-info-name">Antifan</h4>
-                                <p>30 thành viên</p>
-                                <button>Tham gia</button>
-                            </div>
-                        </div>
-                        <div class="group-item">
-                            <div class="group-img">
-                                <img src="../IMAGES/slides/slide-5.png" alt="">
-                            </div>
-                            <div class="group-info">
-                                <h4 class="group-info-name">Antifan</h4>
-                                <p>30 thành viên</p>
-                                <button>Tham gia</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <table class="container-nav">
+                    <tr>
+                        <th>TÊN TOURS</th>
+                        <th>TT.KHÁCH HÀNG</th>
+                        <th>NGÀY ĐI</th>
+                        <th>NGÀY VỀ</th>
+                        <th>TỔNG TIỀN</th>
+                        <th>SỐ VÉ</th>
+                        <th>HÀNH ĐỘNG</th>
+                    </tr>
+                    <tr class="list-residence">
+                        <td class="list-content list-name-tour">
+                            <p>Chuyến đi tử thần</p>
+                        </td>
+                        <td class="list-content list-info">
+                            <p>Nguyễn Hoàng Vũ</p>
+                            <p>Nam</p>
+                            <p>hoangvu22062001@gmail.com</p>
+                            <p>0932424250</p>
+                            <p>Đà Nẵng</p>
+                        </td>
+                        <td class="list-content list-date">
+                            <p>12 tháng 3 , 2023</p>
+                        </td>
+                        <td class="list-content list-date">
+                            <p>20 tháng 3 , 2023</p>
+                        </td>
+                        <td class="list-content list-jojned">
+                            <p>4.000.000</p>
+                        </td>
+                        <td class="list-content list-jojned">
+                            <p>4</p>
+                        </td>
+                        <td class="list-content list-action">
+                            <a href="./TS-postTour.html">
+                                <i class="fa-solid fa-pencil"></i>
+                            </a>
+                            <i class="fa-solid fa-trash-can"></i>
+                        </td>
+                    </tr>
+                    <tr class="list-residence">
+                        <td class="list-content list-name-tour">
+                            <p>Chuyến đi tử thần</p>
+                        </td>
+                        <td class="list-content list-info">
+                            <p>Nguyễn Hoàng Vũ</p>
+                            <p>Nam</p>
+                            <p>hoangvu22062001@gmail.com</p>
+                            <p>0932424250</p>
+                            <p>Đà Nẵng</p>
+                        </td>
+                        <td class="list-content list-date">
+                            <p>12 tháng 3 , 2023</p>
+                        </td>
+                        <td class="list-content list-date">
+                            <p>20 tháng 3 , 2023</p>
+                        </td>
+                        <td class="list-content list-jojned">
+                            <p>4.000.000</p>
+                        </td>
+                        <td class="list-content list-jojned">
+                            <p>4</p>
+                        </td>
+                        <td class="list-content list-action">
+                            <a href="./TS-postTour.html">
+                                <i class="fa-solid fa-pencil"></i>
+                            </a>
+                            <i class="fa-solid fa-trash-can"></i>
+                        </td>
+                    </tr>
+                </table>
             </div>
 
             <div class="pagination">
@@ -320,7 +260,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script src="../JS/group.js"></script>
+    <script src="../JS/TS-managerBooked.js"></script>
 </body>
 
 </html>

@@ -45,7 +45,7 @@ body {
 }
 
 .detail-header > ul {
-  width: 55%;
+  width: 65%;
   justify-content: space-evenly;
   margin-left: -140px;
 }
@@ -394,15 +394,15 @@ body {
 }
 
 .group-title {
-    display: flex;
-    align-items: center;
-    color: #0071c2;
+  display: flex;
+  align-items: center;
+  color: #0071c2;
 }
 
 .group-title i {
-    font-size: 30px;
-    margin-right: 10px;
-    cursor: pointer;
+  font-size: 30px;
+  margin-right: 10px;
+  cursor: pointer;
 }
 
 .group-content {
@@ -417,15 +417,7 @@ body {
   border-radius: 10px;
   margin: 0 20px;
   text-align: center;
-}
-
-.group {
   cursor: pointer;
-}
-
-.group a {
-  text-decoration: none;
-  color: #333;
 }
 
 .create-group {
@@ -600,4 +592,157 @@ body {
 .slick-prev,
 .slick-next {
   display: none !important;
+}
+
+
+
+
+#CR-body {
+  position: fixed;
+  display: flex;
+  width: 50%;
+  height: 80%;
+  background-color: #fff;
+  top: 110px;
+  left: 0;
+  bottom: 34px;
+  right: 0;
+  box-shadow: 2px 4px 20px #0003;
+  cursor: pointer;
+  z-index: 100;
+  margin: auto;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+#CR-body form {
+  width: 100%;
+  background-color: #fff;
+  padding: 40px;
+}
+
+.form-img-name {
+  display: flex;
+  align-items: center;
+}
+
+.CR-room-image {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background-color: rgb(218, 218, 201);
+  margin-right: 20px;
+}
+
+.CR-room-image img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+  margin: 25px 0;
+}
+
+.CR-room-image input {
+  display: none;
+}
+
+.CR-room-name-group {
+  width: 70%;
+}
+
+.CR-room-name-group input {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid;
+  font-size: 20px;
+  width: 100%;
+  padding-left: 20px;
+  padding-bottom: 10px;
+}
+
+.form-privacy > label {
+  color: #0000008c;
+}
+
+.form-privacy {
+  display: flex;
+}
+
+.select-privacy {
+  padding-left: 30px;
+}
+
+.select-privacy > div {
+  padding-bottom: 10px;
+}
+
+.select-privacy input {
+  margin-right: 8px;
+}
+
+.form-number-people input {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #333;
+  padding-bottom: 10px;
+  width: 100%;
+  font-size: 18px;
+}
+
+.form-description textarea {
+  display: flex;
+  width: 100%;
+  font-size: 18px;
+  padding: 10px 20px;
+  margin: 30px 0;
+  outline: chartreuse;
+  background-color: azure;
+  border-radius: 10px;
+}
+
+.form-privacy {
+  display: flex;
+  width: 100%;
+  font-size: 18px;
+  padding: 20px 0;
+}
+
+.btn-create button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #0071c2;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.room-close {
+  position: absolute;
+  top: 20px;
+  right: 5%;
+  color: #333;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 1;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #333;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.room-close i {
+  padding: 10px;
+}
+
+.room-close:hover {
+  background-color: #0071c2;
+  color: #fff;
+  border: none;
 }

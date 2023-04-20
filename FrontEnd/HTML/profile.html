@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/css/swiper.min.css" integrity="sha512-FCU4ZL4ubM4eDxvQQ9SqMmH+UQ9t0noKHj/cfky4whdWnyBgp+NF2ykUBgsyx8Iv+XtM3aXZ8jmFs4uLnT+Vng==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/css/swiper.min.css"
+        integrity="sha512-FCU4ZL4ubM4eDxvQQ9SqMmH+UQ9t0noKHj/cfky4whdWnyBgp+NF2ykUBgsyx8Iv+XtM3aXZ8jmFs4uLnT+Vng=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="../CSS/profile.css">
     <title>CJB</title>
@@ -17,10 +19,12 @@
             <div class="detail-header">
                 <a href="./home.html" class="logo"> <img src="../IMAGES/logo/final_logo.png" alt=""> </a>
                 <ul class="nav-menu">
-                    <li> <a href="./home.html" class="nav-link">HOME</a> </li>
-                    <li> <a href="./bookTour.html" class="nav-link">BOOK TOUR</a> </li>
-                    <li> <a href="#findBuddies" class="nav-link">FIND BUDDIES</a> </li>
-                    <li> <a href="./createTrip.html" class="nav-link">CREATE A TRIP</a> </li>
+                    <li> <a href="./home.html" class="nav-link">Home</a> </li>
+                    <li> <a href="./bookTour.html" class="nav-link">Tours</a> </li>
+                    <li> <a href="./createTrip.html" class="nav-link">Tạo chuyến đi</a> </li>
+                    <li> <a href="./group.html" class="nav-link">Group</a> </li>
+                    <li> <a href="./TS-home.html" class="nav-link">Trở thành nhà cung cấp</a> </li>
+                    <li> <a href="#" class="nav-link"><ion-icon name="notifications-outline"></ion-icon></a> </li>
 
                     <div class="header-nav-form">
                         <div class="header-nav-icon">
@@ -77,6 +81,10 @@
                         <div class="form-action create-group">
                             <i class="fa-solid fa-users"></i>
                             <p>Tìm bạn</p>
+                        </div>
+                        <div class="form-action create-group history-tour">
+                            <i class="fa-solid fa-clock-rotate-left"></i>
+                            <p>Lịch sử đặt tours</p>
                         </div>
                     </div>
                 </div>
@@ -157,7 +165,8 @@
                                 <div class="form-profile-info form-profile-space">
                                     <label for="">Email</label>
                                     <div class="form-profile-input ">
-                                        <input class="form-profile-text input-email" type="text" placeholder="Nhập email của bạn">
+                                        <input class="form-profile-text input-email" type="text"
+                                            placeholder="Nhập email của bạn">
                                     </div>
                                 </div>
                                 <div class="form-profile-info form-profile-space">
@@ -166,7 +175,8 @@
                                         <select name="gender" id="input-gender" class="form-profile-text">
                                             <!--<option class="form-gender" value="">Chọn giới tính của bạn</option> -->
                                             <option value="male">Male</option>
-                                            <option value="female">Female</option></option>
+                                            <option value="female">Female</option>
+                                            </option>
                                         </select>
                                     </div>
                                 </div>
@@ -228,13 +238,70 @@
                             </form>
                         </div>
                     </div>
+
+                    <div class="histoty-book-tour">
+                        <div style="display: none;" class="no-tour">
+                            <h1>Lịch sử đặt tour của tôi</h1>
+                            <img src="https://go2joy.vn/_nuxt/search-not-found.47b1f6f6.png" alt="">
+                            <h3>Bạn chưa có đặt tour nào</h3>
+                            <p>Hãy đặt tour để tận hưởng nhé</p>
+                        </div>
+                        <div style="display: none;" class="supplierPages">
+                            <div class="container-residence">
+                                <h1>Lịch sử đặt tour của tôi</h1>
+                                <table class="container-nav">
+                                    <tr>
+                                        <th>TÊN TOURS</th>
+                                        <th>NGÀY ĐI</th>
+                                        <th>NGÀY VỀ</th>
+                                        <th>TỔNG TIỀN</th>
+                                        <th>HÀNH ĐỘNG</th>
+                                    </tr>
+                                    <tr class="list-residence">
+                                        <td class="list-content list-name-tour">
+                                            <p>Chuyến đi tử thần</p>
+                                        </td>
+                                        <td class="list-content list-date">
+                                            <p>12 tháng 3 , 2023</p>
+                                        </td>
+                                        <td class="list-content list-date">
+                                            <p>20 tháng 3 , 2023</p>
+                                        </td>
+                                        <td class="list-content list-jojned">
+                                            <p>4.000.000</p>
+                                        </td>
+                                        <td class="list-content list-action">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </td>
+                                    </tr>
+                                    <tr class="list-residence">
+                                        <td class="list-content list-name-tour">
+                                            <p>Chuyến đi tử thần</p>
+                                        </td>
+                                        <td class="list-content list-date">
+                                            <p>12 tháng 3 , 2023</p>
+                                        </td>
+                                        <td class="list-content list-date">
+                                            <p>20 tháng 3 , 2023</p>
+                                        </td>
+                                        <td class="list-content list-jojned">
+                                            <p>4.000.000</p>
+                                        </td>
+                                        <td class="list-content list-action">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="myTrip">
                 <div class="myTrip-title">
                     <div class="form-line"></div>
-                    <h2>Nhóm của tôi</h2>
+                    <h2>Chuyến đi của tôi</h2>
                 </div>
 
                 <div class="blog-slider">
@@ -269,8 +336,9 @@
                                     <p>25 Sep 2022</p>
                                 </div>
                                 <div class="blog-slider__host"><b>Người tạo: </b>Nguyễn Hoàng Vũ</div>
-                                <div class="blog-slider__text"><span>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                                    Recusandae voluptate repellendus magni illo ea animi?</span></div>
+                                <div class="blog-slider__text"><span>Lorem ipsum dolor sit amet consectetur, adipisicing
+                                        elit.
+                                        Recusandae voluptate repellendus magni illo ea animi?</span></div>
                                 <a href="#" class="blog-slider__button">CHI TIẾT</a>
                             </div>
                         </div>
@@ -296,6 +364,7 @@
                     </div>
                     <div class="blog-slider__pagination"></div>
                 </div>
+
             </div>
         </div>
     </div>
