@@ -15,7 +15,7 @@
 <a href="https://getcomposer.org/">COMPOSER</a> 
 
 In xampp start Apache and Mysql <br>
-Go to /Capstone_2_C2SE.20-CJB by terminal and run:
+If this is your first time running backend go to /Capstone_2_C2SE.20-CJB by terminal and run:
 
 ```bash
 cd BackEnd
@@ -35,6 +35,16 @@ php artisan key:generate
 
 ```bash
 php artisan migrate:refresh --seed
+```
+
+```bash
+php artisan serve
+```
+
+After the first time, go to /Capstone_2_C2SE.20-CJB and just run
+
+```bash
+cd BackEnd
 ```
 
 ```bash
