@@ -83,4 +83,45 @@ class RoomsController extends Controller
             }
         }
     }
+
+    public function join(Request $request)
+    {   
+        if(Rooms::find($request->room_id)->members()->where('user_id', $request->user_id)->exists()){
+            if(Rooms::find($request->room_id)
+                ->members()
+                ->where('user_id', $request->user_id)
+                ->where('is_confirm', true)->exists()
+            ){
+                return response()->json([
+                    'msg' => "Bạn đã ở trong room này rồi",
+                    'status' => 409,
+                ]);
+            }
+            else{
+                return response()->json([
+                    'msg' => "Bạn đã đăng ký join room này rồi",
+                    'status' => 409,
+                ]);
+            }
+        }
+        else{
+            Rooms::find($request->room_id)->members()->attach($request->user_id, ['is_confirm' => false]);
+            return response()->json([
+                'msg' => "Bạn đã đăng ký join room thành công",
+                'status' => 200,
+            ]);
+        }
+    }
+
+    public function getAllUserNeedConfirm(Request $request)
+    {
+        return response()->json([
+            'user' => Rooms::find($request->room_id)->members()->where('is_confirm', false)->get(),
+            'status' => 200,
+        ]);
+    }
+
+    public function acceptUser(Request $request){
+
+    }
 }

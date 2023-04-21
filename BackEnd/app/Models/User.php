@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\PersonalTours;
 use App\Models\Tours;
+use App\Models\Rooms;
 use App\Models\UserProfile;
 
 // use App\Models\Scopes\ExceptScope;
@@ -16,14 +17,6 @@ use App\Models\UserProfile;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-
-    /**
-     * The "booted" method of the model.
-     */
-    // protected static function booted(): void
-    // {
-    //     static::addGlobalScope(new ExceptScope);
-    // }
 
     /**
      * The attributes that are mass assignable.
@@ -71,7 +64,7 @@ class User extends Authenticatable
     }
 
     public function rooms(){
-        return $this->belongsToMany(PersonalTours::class, 'rooms', 'user_id', 'pt_id');
+        return $this->belongsToMany(Rooms::class, 'members', 'user_id', 'room_id');
     }
 
     public function userProfile(){

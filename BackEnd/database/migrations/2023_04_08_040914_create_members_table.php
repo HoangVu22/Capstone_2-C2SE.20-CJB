@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('room_id');
+            $table->boolean('is_confirm');
             $table->timestamps();
 
             $table->foreign('user_id')
