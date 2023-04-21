@@ -12,7 +12,7 @@
 
 ## TO START BACKEND MAKE SURE THAT YOU HAVE PHP AND COMPOSER
 <a href="https://www.apachefriends.org/download_success.html">PHP</a>, 
-<a href="https://getcomposer.org/">COMPOSER</a>, 
+<a href="https://getcomposer.org/">COMPOSER</a> 
 
 In xampp start Apache and Mysql <br>
 Go to /Capstone_2_C2SE.20-CJB by terminal and run:
@@ -22,7 +22,7 @@ cd BackEnd
 ```
 
 ```bash
-Composer update
+composer update
 ```
 
 ```bash
@@ -34,7 +34,7 @@ php artisan key:generate
 ```
 
 ```bash
-php artisan migrate
+php artisan migrate:refresh --seed
 ```
 
 ```bash
