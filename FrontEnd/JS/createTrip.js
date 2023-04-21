@@ -45,8 +45,8 @@ if(login.msg === "Đăng nhập thành công"){
 }
 
 // ---------------create trip --------------------
-// const $ = document.querySelector.bind(document);
-// const $$ = document.querySelectorAll.bind(document);
+const $ = document.querySelector.bind(document);
+const $$ = document.querySelectorAll.bind(document);
 
 // const tab = $(".createTrip-wraper");
 // const tab1 = $(".createTrip-wraper1");
@@ -97,34 +97,15 @@ const formNext = document.querySelector('.form-next button')
 const goBack = document.querySelector('.goBack')
 const startCreateTrip = document.querySelector('.startCreateTrip')
 
-button1.onclick = function () {
-  formTrip1.style.display = 'block'
-  formTrip2.style.display = 'none'
-  button1.style.backgroundColor = 'rgba(2, 127, 255, 1)'
-  button1.style.color = '#fff'
-  button1.style.border = 'none'
-  button2.style.border = '1px solid #333'
-  button2.style.color = '#333'
-  button2.style.backgroundColor = '#fff'
-}
-
-button2.onclick = function () {
-  formTrip2.style.display = 'block'
-  formTrip1.style.display = 'none'
-  button2.style.backgroundColor = 'rgba(2, 127, 255, 1)'
-  button2.style.color = '#fff'
-  button2.style.border = 'none'
-  button1.style.border = '1px solid #333'
-  button1.style.color = '#333'
-  button1.style.backgroundColor = '#fff'
-}
-
-formNext.onclick = function () {
-  formTrip2.style.display = 'block'
-  formTrip1.style.display = 'none'
-}
-
-goBack.onclick = function () {
-  formTrip1.style.display = 'block'
-  formTrip2.style.display = 'none'
-}
+const uploadImage = $('.upload_image');
+const importImage = $('.input_image');
+let objImage;
+uploadImage.onclick = () => {
+  importImage.click();
+  importImage.onchange = (e) => {
+    objImage = URL.createObjectURL(e.target.files[0]);
+    objImage.style = "object-fit: contain;";
+    console.log(objImage);
+    uploadImage.style.backgroundImage = `url('${objImage}')`;
+  };
+};

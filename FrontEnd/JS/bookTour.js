@@ -47,7 +47,7 @@ if(login.msg === "Đăng nhập thành công"){
   avatarUser.src = login.user_info.user_profile[0].avatar;
 } else {
   names[0].innerText = login.user_info.name;
-  avatarUser[0].src = login.user_info.user_profile[0].avatar;
+  avatarUser.src = login.user_info.user_profile[0].avatar;
 }
 // ---------------------------------------
 

@@ -37,7 +37,7 @@ loginButton.onclick = () => {
                 window.location.href = 'http://127.0.0.1:5503/Capstone_2-C2SE.20-CJB/FrontEnd/HTML/home.html';
                 console.log(data);
             } else {
-                // alert(data.msg)
+                alert(data.msg)
                 console.log("1");
             }
         })
