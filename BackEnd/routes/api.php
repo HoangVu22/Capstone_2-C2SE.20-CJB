@@ -9,6 +9,8 @@ use App\Http\Controllers\ToursController;
 use App\Http\Controllers\TSProfileController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\RoomsController;
+use App\Http\Controllers\CheckoutController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -65,10 +67,19 @@ Route::prefix('personal/room')->group(function(){
     Route::get('/show/{id}', [RoomsController::class, 'show']);
     Route::put('/update/{id}', [RoomsController::class, 'update']);
     Route::delete('/delete/{id}', [RoomsController::class, 'destroy']);
+    Route::post('/join', [RoomsController::class, 'join']);
+    Route::get('getAllUserNeedConfirm/{room_id}/', [RoomsController::class, 'getAllUserNeedConfirm']);
+    Route::post('/acceptUser/{room_id}', [RoomsController::class, 'acceptUser']);
+    Route::post('/refuseUser/{room_id}', [RoomsController::class, 'refuseUser']);
 });
 
 Route::prefix('friend')->group(function(){
     Route::post('/create', [FriendController::class, 'store']);
     Route::get('/show/{id}', [FriendController::class, 'show']);
     Route::delete('/delete', [FriendController::class, 'destroy']);
+});
+
+Route::prefix('payment')->group(function(){
+    Route::post('/', [CheckoutController::class, 'checkout']);
+    Route::get('/done', [CheckoutController::class, 'done']);
 });

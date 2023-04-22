@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PersonalTours;
+use App\Models\Rooms;
 use Illuminate\Http\Request;
 use App\Http\Resources\HomepageGroupResource;
 
@@ -35,6 +36,9 @@ class PersonalToursController extends Controller
             'from_where' => $request->from_where,
             'to_where' => $request->to_where,
         ]);
+
+        Rooms::find($request->room_id)->members()->detach($request->owner_id);
+        Rooms::find($request->room_id)->members()->attach($request->owner_id, ['is_confirm' => true]);
 
         return response()->json(['msg' => "Tạo personal tour thành công", 'status' => 200], 200);
     }
