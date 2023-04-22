@@ -106,4 +106,11 @@ class PersonalToursController extends Controller
         // dd(1);
         return HomepageGroupResource::collection(PersonalTours::where('from_date', '>=', date('y-m-d'))->get());
     }
+
+    public function allPersonalTour(Request $request){
+        return response()->json([
+            'all_tour' => PersonalTours::where('owner_id', $request->id)->get(),
+            'status' => 200,
+        ]);
+    }
 }
