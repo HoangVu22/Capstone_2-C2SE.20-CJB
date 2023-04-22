@@ -3,8 +3,9 @@ const headerForm = document.querySelector(".header-form");
 const headerFormLogin = headerNavForm.querySelector(".header-form-login");
 const headerFormLogout = document.querySelector(".header-form-logout");
 const login = JSON.parse(window.localStorage.getItem("login"));
-  
-if(login){
+const $ = document.querySelector.bind(document);
+const $$ = document.querySelectorAll.bind(document);
+if (login) {
   headerNavForm.onclick = function () {
     if (headerForm.style.display === "none") {
       headerForm.style.display = "block";
@@ -34,19 +35,18 @@ logout.onclick = () => {
   window.location.href = 'http://127.0.0.1:5503/Capstone_2-C2SE.20-CJB/FrontEnd/HTML/login-register.html';
 }
 
-const names = document.getElementsByClassName('header-name1');
-const avatarUser = document.getElementById("avatar_user");
-if(login.msg === "Đăng nhập thành công"){
-  names[0].innerText = login.user_info.name;
+const names = $('.header-name1');
+const avatarUser = $("#avatar_user");
+if (login.msg === "Đăng nhập thành công") {
+  names.innerText = login.user_info.name;
   avatarUser.src = login.user_info.user_profile[0].avatar;
 } else {
-  names[0].innerText = login.user_info.name;
-  avatarUser[0].src = login.user_info.user_profile[0].avatar;
+  names.innerText = login.user_info.name;
+  avatarUser.src = login.user_info.user_profile[0].avatar;
 }
 
 // ---------------create trip --------------------
-// const $ = document.querySelector.bind(document);
-// const $$ = document.querySelectorAll.bind(document);
+
 
 // const tab = $(".createTrip-wraper");
 // const tab1 = $(".createTrip-wraper1");
@@ -97,34 +97,49 @@ const formNext = document.querySelector('.form-next button')
 const goBack = document.querySelector('.goBack')
 const startCreateTrip = document.querySelector('.startCreateTrip')
 
-button1.onclick = function () {
-  formTrip1.style.display = 'block'
-  formTrip2.style.display = 'none'
-  button1.style.backgroundColor = 'rgba(2, 127, 255, 1)'
-  button1.style.color = '#fff'
-  button1.style.border = 'none'
-  button2.style.border = '1px solid #333'
-  button2.style.color = '#333'
-  button2.style.backgroundColor = '#fff'
-}
+const tenchuyendi = $('.tenchuyendi');
+const diemxuatphat = $('.diemxuatphat');
+const diemden = $('.diemden');
+const tungay = $('.tungay');
+const denngay = $('.denngay');
+const songuoi = $('.songuoi');
+const kinhdo = $('.kinhdo');
+const vido = $('.vido');
+const motachuyendi = $('.motachuyendi');
 
-button2.onclick = function () {
-  formTrip2.style.display = 'block'
-  formTrip1.style.display = 'none'
-  button2.style.backgroundColor = 'rgba(2, 127, 255, 1)'
-  button2.style.color = '#fff'
-  button2.style.border = 'none'
-  button1.style.border = '1px solid #333'
-  button1.style.color = '#333'
-  button1.style.backgroundColor = '#fff'
-}
 
-formNext.onclick = function () {
-  formTrip2.style.display = 'block'
-  formTrip1.style.display = 'none'
-}
 
-goBack.onclick = function () {
-  formTrip1.style.display = 'block'
-  formTrip2.style.display = 'none'
+const btnCreateTrip = $(".create-trip");
+console.log(btnCreateTrip);
+btnCreateTrip.onclick = () => {
+  fetch("http://127.0.0.1:8000/api/personal/tour/create", {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name: tenchuyendi.value,
+      owner_id: login.user_info.user_profile[0].user_id,
+      from_date: tungay.value,
+      to_date: denngay.value,
+      lat: vido.value,
+      lon: kinhdo.value,
+      from_where: diemxuatphat.value,
+      to_where: diemden.value,
+      room_id: 1
+    }),
+    data: ({
+      name: tenchuyendi.value,
+      owner_id: login.user_info.user_profile[0].user_id,
+      from_date: tungay.value,
+      to_date: denngay.value,
+      lat: vido.value,
+      lon: kinhdo.value,
+      from_where: diemxuatphat.value,
+      to_where: diemden.value,
+      room_id: 1
+    }),
+  })
+  .then(response => response.json())
+      .then(data => console.log(data))
 }

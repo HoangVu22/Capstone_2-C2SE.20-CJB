@@ -34,7 +34,7 @@ loginButton.onclick = () => {
                 window.localStorage.setItem("login", JSON.stringify(data));
                 window.localStorage.setItem("id",JSON.stringify(data.user_info.user_profile[0].id))
                 window.localStorage.getItem("login");
-                window.location.href = 'http://127.0.0.1:5503/Capstone_2-C2SE.20-CJB/FrontEnd/HTML/home.html';
+                window.location.href = 'http://127.0.0.1:5500/Capstone_2-C2SE.20-CJB/FrontEnd/HTML/home.html';
                 console.log(data);
             } else {
                 // alert(data.msg)
