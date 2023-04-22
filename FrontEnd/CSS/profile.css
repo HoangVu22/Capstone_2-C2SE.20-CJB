@@ -41,8 +41,11 @@ body {
 }
 
 .detail-header > a > img {
-  width: 100%;
+  width: 70%;
   object-fit: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .detail-header > ul {
@@ -768,6 +771,16 @@ body {
 
 .blog-slider__host {
   line-height: 60px;
+}
+
+.profile-control {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile-action a {
+  text-decoration: none;
 }
 
 /* ------lịch sử--- */

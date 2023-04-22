@@ -18,7 +18,7 @@
     <div class="main">
         <div class="wrapper-header">
             <div class="detail-header">
-                <a href="./home.html" class="logo"> <img src="../IMAGES/logo/final_logo.png" alt=""> </a>
+                <a href="./home.html" class="logo"> <img src="../IMAGES/logo/logo-removebg-preview.png" alt=""> </a>
                 <ul class="nav-menu">
                     <li> <a href="./TS-home.html" class="nav-link">Home</a> </li>
                     <li> <a href="./TS-postTour.html" class="nav-link">Đăng tours</a> </li>
@@ -91,6 +91,7 @@
                         <th>LISTING TITLE</th>
                         <th>NGÀY ĐĂNG</th>
                         <th>ĐÃ THAM GIA</th>
+                        <th>TRẠNG THÁI</th>
                         <th>HÀNH ĐỘNG</th>
                     </tr>
                     <tr class="list-residence">
@@ -119,6 +120,67 @@
                         </td>
                         <td class="list-content list-jojned">
                             <p>100</p>
+                        </td>
+                        <td class="list-content list-jojned status-green">
+                            <button>Đang đi</button>
+                        </td>
+                        <td class="list-content list-action">
+                            <div class="" style="display: flex; align-items: center; justify-content: center; text-align: center;">
+                                <a href="./TS-postTour.html">
+                                    <i class="fa-solid fa-pencil"></i>
+                                </a>
+                                <!-- <i class="fa-solid fa-trash-can"></i> -->
+                                <a href="#modal-opened" class="link-1" id="modal-closed"><i class="fa-solid fa-trash-can"></i></a>
+                            </div>
+
+                            <div class="modal-container" id="modal-opened">
+                                <div class="modal">
+
+                                    <div class="modal__details">
+                                        <h1 class="modal__title">Xác nhận xóa</h1>
+                                        <p class="modal__description">Bạn có thật sự muốn xóa hay không ?</p>
+                                    </div>
+
+                                    <div class="">
+                                        <button class="modal__btn">No</button>
+                                        <button class="modal__btn">Yes</button>
+                                    </div>
+
+                                    <a href="#modal-closed" class="link-2"></a>
+
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="list-residence">
+                        <td class="list-content list-info">
+                            <div class="list-info-img">
+                                <img src="../IMAGES/slides/slide-5.png" alt="">
+                            </div>
+                            <div class="list-info-content">
+                                <h3>Chuyến đi tử thần</h3>
+                                <span>
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <p>Nơi khởi hành: TP HCM</p>
+                                </span>
+                                <span>
+                                    <i class="fa-solid fa-street-view"></i>
+                                    <p>Số lượng người: 30</p>
+                                </span>
+                                <span>
+                                    <i class="fa-solid fa-sack-dollar"></i>
+                                    <p>Giá tiền: 1.000.000 / người</p>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="list-content list-date">
+                            <p>12 tháng 3 , 2023</p>
+                        </td>
+                        <td class="list-content list-jojned">
+                            <p>100</p>
+                        </td>
+                        <td class="list-content list-jojned status-yellow">
+                            <button>Chưa đi</button>
                         </td>
                         <td class="list-content list-action">
                             <a href="./TS-postTour.html">
@@ -153,6 +215,9 @@
                         </td>
                         <td class="list-content list-jojned">
                             <p>100</p>
+                        </td>
+                        <td class="list-content list-jojned status-red">
+                            <button>Đã đi</button>
                         </td>
                         <td class="list-content list-action">
                             <a href="./TS-postTour.html">
