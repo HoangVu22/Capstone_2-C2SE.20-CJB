@@ -104,7 +104,7 @@ class PersonalToursController extends Controller
     public function homepageGroups()
     {
         // dd(1);
-        return HomepageGroupResource::collection(PersonalTours::where('from_date', '>=', date('y-m-d'))->get());
+        return HomepageGroupResource::collection(PersonalTours::where('from_date', '>=', date('y-m-d'))->paginate(3));
     }
 
     public function allPersonalTour(Request $request){

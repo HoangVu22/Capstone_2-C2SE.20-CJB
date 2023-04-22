@@ -95,7 +95,7 @@ class ToursController extends Controller
     }
 
     public function homepageTours(){
-        return HomepageToursResource::collection(Tours::where('from_date', '>=', date('y-m-d'))->get());
+        return HomepageToursResource::collection(Tours::where('from_date', '>=', date('y-m-d'))->paginate(3));
     }
 
     public function allTour(Request $request){
