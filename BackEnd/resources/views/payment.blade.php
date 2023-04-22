@@ -22,6 +22,8 @@
             <label for="formGroupExampleInput2" class="form-label">Amount</label>
             <input type="text" name="amount" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder">
         </div>
+        <input type="hidden" name="user_id" value="1">
+        <input type="hidden" name="tour_id" value="1">
         <button name="redirect" type="submit">Submit</button>
     </form>
 
