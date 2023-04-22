@@ -84,43 +84,32 @@
 
             <div class="form-trip">
                 <div class="form-trip-1">
+                   <form action="">
                     <div class="form-1">
-                        <div class="trip-2-img">
-                            <!-- <img src="../IMAGES/slides/slide-5.png" alt=""> -->
-                            <input type="file">
+                        <div class="trip-2-img upload_image">
+                            Upload ảnh
+                            <input name="img" class="input_image" type="file" accept="image/png, image/jpg" hidden class="form-control">
                         </div>
                         <div class="form-content">
                             <div class="form-info-wrap">
                                 <div class="form-info">
                                     <label for="">Tên chuyến đi</label>
                                     <div class="form-input">
-                                        <input type="text" placeholder="Nhập tên chuyến đi của bạn">
+                                        <input name="name" type="text" placeholder="Nhập tên chuyến đi của bạn" class="form-control tenchuyendi">
                                     </div>
                                 </div>
-                                <!-- <div class="form-info form-info1">
-                                    <label for="">Tên địa điểm</label>
-                                    <div class="form-input1">
-                                        <input type="text" placeholder="Nhập tên địa điểm">
-                                    </div>
-                                </div> -->
-                                <!-- <div class="form-info">
-                                    <label for="">Nơi bạn muốn đi?</label>
-                                    <div class="form-input">
-                                        <input type="text">
-                                    </div>
-                                </div> -->
                             </div>
                             <div class="form-info-wrap1">
                                 <div class="form-info form-info-0">
                                     <label for="">Điểm xuất phát</label>
                                     <div class="form-input">
-                                        <input type="text" placeholder="Nhập điểm xuất phát">
+                                        <input name="from_where" type="text" placeholder="Nhập điểm xuất phát" class="form-control diemxuatphat">
                                     </div>
                                 </div>
                                 <div class="form-info">
                                     <label for="">Điểm đến</label>
                                     <div class="form-input">
-                                        <input type="text" placeholder="Nhập điểm đến">
+                                        <input name="to_where" type="text" placeholder="Nhập điểm đến" class="form-control diemden">
                                     </div>
                                 </div>
                             </div>
@@ -128,21 +117,18 @@
                                 <div class="form-info form-info-0">
                                     <label for="">Từ ngày</label>
                                     <div class="form-input">
-                                        <input type="date">
+                                        <input name="from_date" type="date" class="form-control tungay">
                                     </div>
                                 </div>
                                 <div class="form-info">
                                     <label for="">Đến ngày</label>
                                     <div class="form-input">
-                                        <input type="date">
+                                        <input name="to_date" type="date" class="form-control denngay">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="form-next">
-                        <button>Tiếp tục</button>
-                    </div> -->
                     <div class="form-trip-2">
                         <div class="form-2">
                             <div class="form-content-2">
@@ -150,7 +136,7 @@
                                     <div class="form-info form-info1">
                                         <label for="">Số người</label>
                                         <div class="form-input1">
-                                            <input type="number" placeholder="Nhập số người">
+                                            <input name="people" type="number" placeholder="Nhập số người" class="form-control songuoi"> 
                                         </div>
                                     </div>
                                 </div>
@@ -158,13 +144,13 @@
                                     <div class="form-info form-info-0">
                                         <label for="">Kinh độ</label>
                                         <div class="form-input form-input-0">
-                                            <input type="number" placeholder="Nhập kinh độ">
+                                            <input name="lon" type="number" placeholder="Nhập kinh độ" class="form-control kinhdo">
                                         </div>
                                     </div>
                                     <div class="form-info">
                                         <label for="">Vĩ độ</label>
                                         <div class="form-input form-input-0">
-                                            <input type="number" placeholder="Nhập vĩ độ">
+                                            <input name="lat" type="number" placeholder="Nhập vĩ độ" class="form-control vido">
                                         </div>
                                     </div>
                                 </div> -->
@@ -184,11 +170,12 @@
                             </div>
                         </div>
                         <div class="form-back-start">
-                            <button>Hoàn tất</button>
+                            <button type="button" class="create-trip">Tạo chuyến đi</button>
                             <!-- <button class="goBack">Quay lại</button>
                             <button class="startCreateTrip">Bắt đầu</button> -->
                         </div>
                     </div>
+                   </form>
                 </div>
             </div>
         </div>

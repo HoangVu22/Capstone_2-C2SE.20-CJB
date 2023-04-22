@@ -18,7 +18,6 @@ class PersonalTours extends Model
         'owner_id',
         'room_id',
         'description',
-        'address',
         'from_date',
         'to_date',
         'lat',
