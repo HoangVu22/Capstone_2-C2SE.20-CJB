@@ -15,7 +15,8 @@ return new class extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('tour_id');
-            $table->double('price', 10, 4);
+            $table->double('price', 10, 3);
+            $table->integer('tickets');
             $table->timestamps();
 
             $table->foreign('user_id')

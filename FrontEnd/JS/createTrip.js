@@ -46,31 +46,6 @@ const debounce = (func, timeout = 300) => {
     }, timeout);
   };
 };
-const place = [
-  {
-    place_id: 307776093,
-    licence: "Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright",
-    osm_type: "relation",
-    osm_id: 43984,
-    boundingbox: ["45.0050855", "45.0530385", "7.3658231", "7.4414157"],
-    lat: "45.039044",
-    lon: "7.421817",
-    display_name: "Trana, Torino, Piedmont, Ý",
-    class: "boundary",
-    type: "administrative",
-    importance: 0.7342311219378264,
-    icon: "https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png",
-    address: {
-      village: "Trana",
-      county: "Torino",
-      "ISO3166-2-lvl6": "IT-TO",
-      state: "Piedmont",
-      "ISO3166-2-lvl4": "IT-21",
-      country: "Ý",
-      country_code: "it",
-    },
-  },
-];
 
 destinationInput.onkeypress = (e) => {
   if (e.key === "Enter") {
