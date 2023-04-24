@@ -40,15 +40,15 @@ logout.onclick = () => {
   window.location.href = 'http://127.0.0.1:5503/Capstone_2-C2SE.20-CJB/FrontEnd/HTML/login-register.html';
 }
 
-const names = document.getElementsByClassName('header-name1');
-const avatarUser = document.getElementById("avatar_user");
-if (login.msg === "Đăng nhập thành công") {
-  names[0].innerText = login.user_info.name;
-  avatarUser.src = login.user_info.user_profile[0].avatar;
-} else {
-  names[0].innerText = login.user_info.name;
-  avatarUser[0].src = login.user_info.user_profile[0].avatar;
-}
+// const names = document.getElementsByClassName('header-name1');
+// const avatarUser = document.getElementById("avatar_user");
+// if (login.msg === "Đăng nhập thành công") {
+//   names[0].innerText = login.user_info.name;
+//   avatarUser.src = login.user_info.user_profile[0].avatar;
+// } else {
+//   names[0].innerText = login.user_info.name;
+//   avatarUser[0].src = login.user_info.user_profile[0].avatar;
+// }
 // ---------------------------------------
 
 let endDate = new Date("4/20/2023 00:00:00").getTime();
@@ -70,30 +70,30 @@ let check = setInterval(function () {
 
 // ------------ slide 1 --------------
 
-$(".slides2").slick({
-  infinite: true,
-  slidesToShow: 3,
-  slidesToScroll: 1,
-  speed: 800,
-});
+// $(".slides2").slick({
+//   infinite: true,
+//   slidesToShow: 3,
+//   slidesToScroll: 1,
+//   speed: 800,
+// });
 
-const z = document.querySelector.bind(document);
-const slickPre = z(".fa-chevron-left");
-const slickNext = z(".fa-chevron-right");
-const findSlickPrev = z(".prev1");
-const findSlickNext = z(".next1");
-const pre = z(".slick-prev");
-const next = z(".slick-next");
+// const z = document.querySelector.bind(document);
+// const slickPre = z(".fa-chevron-left");
+// const slickNext = z(".fa-chevron-right");
+// const findSlickPrev = z(".prev1");
+// const findSlickNext = z(".next1");
+// const pre = z(".slick-prev");
+// const next = z(".slick-next");
 
-slickPre.onclick = () => {
-  pre.click();
-};
+// slickPre.onclick = () => {
+//   pre.click();
+// };
 
-slickNext.onclick = () => {
-  next.click();
-};
+// slickNext.onclick = () => {
+//   next.click();
+// };
 
-// ------------ slide 2 --------------
+// // ------------ slide 2 --------------
 
 const prev2 = document.querySelector(".prev2");
 const next2 = document.querySelector(".next2");
@@ -121,7 +121,7 @@ $(".slides3").slick({
 const findContainer = document.querySelectorAll('.find-container')
 findContainer.forEach(value => {
   value.onclick = function () {
-    location.href = "http://127.0.0.1:5503/Capstone_2-C2SE.20-CJB/FrontEnd/HTML/detailTour.html"
+    location.href = "http://127.0.0.1:5500/FrontEnd/HTML/detailTour.html"
   }
 })
 

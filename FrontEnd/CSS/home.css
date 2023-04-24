@@ -868,8 +868,11 @@ section.card:first-child .blog-post img {
 }
 
 .container-notification {
-  max-height: none;
-  min-height: 330px;
+  /* max-height: none;
+  min-height: 330px; */
+  width: 40%;
+  height: 450px;
+  overflow-y: scroll;
   background-color: #fff;
   border-radius: 20px;
   position: absolute;
@@ -894,14 +897,14 @@ section.card:first-child .blog-post img {
 }
 
 .header-notification p {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   line-height: 22px;
   padding: 12px 15px;
 }
 
 .content-notification {
-  padding: 50px;
+  padding: 30px;
   text-align: center;
   width: 100%;
 }
@@ -933,9 +936,18 @@ section.card:first-child .blog-post img {
   border-radius: 50%;
 }
 
+.show-content-top {
+  text-align: start;
+}
+
+.show-content-top span {
+  font-size: 15px;
+  text-align: start;
+}
+
 .show-content-top-time {
   display: flex;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .show-content-top-btn {
