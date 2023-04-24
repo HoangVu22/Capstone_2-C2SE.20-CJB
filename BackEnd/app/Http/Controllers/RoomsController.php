@@ -13,7 +13,10 @@ class RoomsController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json([
+            'allRoom' => Rooms::all(),
+            'status' => 200,
+        ]);
     }
 
     /**
