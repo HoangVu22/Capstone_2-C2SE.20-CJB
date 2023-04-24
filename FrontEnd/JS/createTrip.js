@@ -7,57 +7,22 @@ const headerFormLogout = document.querySelector(".header-form-logout");
 const login = JSON.parse(window.localStorage.getItem("login"));
 
 const destinationInput = $(".diemden");
-const destinationSuggestList = $(".destination-list");
+const destinationSuggestList = $(".destination-location-suggestion");
+const currentLocationInupt = $('.diemxuatphat')
+const currentLocationSuggestList = $('.current-location-suggestion')
 
-let listPlace = [];
-
-// const controller = new AbortController();
-let aborter = null
-const searching = (value) => {
-  if (aborter) {
-    aborter.abort()
-  }
-  aborter = new AbortController()
-  const NOMINATIM_BASE_URL = "https://nominatim.openstreetmap.org/search?";
-  const params = {
-    limit: 5,
-   // country: "vietnam",
-    q: value,
-    format: "json",
-    //addressdetails: "addressdetails",
-    addressdetails: 1,
-    polygon_geojson: 0,
-  };
-  const queryString = new URLSearchParams(params).toString();
-  const requestOptions = {
-    method: "get",
-    redirect: "follow",
-    signal: aborter.signal,
-  };
-  fetch(`${NOMINATIM_BASE_URL}${queryString}`, requestOptions)
-    .then((response) => response.text())
-    .then((result) => {
-      listPlace = JSON.parse(result);
-      console.log(listPlace)
-      const places = listPlace.map((place) => `<li class="destination-item"><p>${place.display_name}</p></li>`).join("");
-    destinationSuggestList.innerHTML = places;
-    })
-    .catch((error) => console.log({ error }));
-};
-
-const debounce = (func, timeout = 300) => {
-  let timer;
-  return () => {
-    clearTimeout(timer);
-    timer = setTimeout(() => {
-      func();
-    }, timeout);
-  };
-};
-
-destinationInput.onkeydown = (e) => {
-  debounce(() => searching(e.target.value), 0)();
-};
+const createTourState = {
+  name: "",
+  owner_id: "",
+  description: "",
+  from_date: "",
+  to_date: "",
+  lat: "",
+  lon: "",
+  from_where: "",
+  to_where: "",
+  room_id: ""
+}
 
 const mapDOM = $(".form-map");
 const map = L.map(mapDOM).setView([51.505, -0.09], 13);
@@ -73,6 +38,89 @@ map.on("click", (e) => {
     map.removeLayer(marker);
   });
 });
+
+let listPlace = [];
+
+const handleDestinationSuggestItemClick = (doms, parent) => {
+  doms.forEach(item => {
+    item.onclick = () => {
+      const { lat, lon } = item.dataset
+      // gán lat, lon cho biến bất kỳ để có thể ném vào trong call api create-tour, ví dụ: a = lat; b = lon
+      const marker = L.marker([lat, lon], { draggable: true }).addTo(map)
+      map.flyTo([lat, lon], 19)
+      marker.on('dragend', (e) => {
+
+      })
+      parent.innerHTML = null
+    }
+  })
+}
+
+const handleCurrentLocationSuggestItemClick = (doms) => {
+  doms.forEach(item => {
+    item.onclick = () => {
+      const { lat, lon } = item.dataset
+      const name = item.innerText
+      console.log(name)
+      // gán name của điểm xuất phát, ví dụ: a = name
+      const marker = L.marker([lat, lon], { draggable: true }).addTo(map)
+      map.flyTo([lat, lon], 19)
+      marker.on('dragend', (e) => {
+
+      })
+      doms.innerHTML = null
+    }
+  })
+}
+let aborter = null
+const searching = (value, listdom, itemclass, func) => {
+  if (aborter) {
+    aborter.abort()
+  }
+  aborter = new AbortController()
+  const NOMINATIM_BASE_URL = "https://nominatim.openstreetmap.org/search?";
+  const params = {
+    limit: 5,
+    q: value,
+    format: "json",
+    addressdetails: 1,
+    polygon_geojson: 0,
+  };
+  const queryString = new URLSearchParams(params).toString();
+  const requestOptions = {
+    method: "get",
+    redirect: "follow",
+    signal: aborter.signal,
+  };
+  fetch(`${NOMINATIM_BASE_URL}${queryString}`, requestOptions)
+    .then((response) => response.text())
+    .then((result) => {
+      listPlace = JSON.parse(result);
+      const places = listPlace.map((place) => `<li data-lat="${place.lat}" data-lon="${place.lon}" class="destination-item"><p>${place.display_name}</p></li>`).join("");
+      listdom.innerHTML = places;
+      const itemdoms = listdom.querySelectorAll(`.${itemclass}`)
+      func(itemdoms, listdom)
+    })
+    .catch(error => console.log(error))
+};
+
+const debounce = (func, timeout = 300) => {
+  let timer;
+  return () => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      func();
+    }, timeout);
+  };
+};
+
+destinationInput.onkeydown = (e) => {
+  debounce(() => searching(e.target.value, destinationSuggestList, 'destination-item', handleDestinationSuggestItemClick), 0)();
+};
+
+currentLocationInupt.onkeydown = (e) => {
+  debounce(() => searching(e.target.value, currentLocationSuggestList, 'destination-item', handleCurrentLocationSuggestItemClick), 0)()
+}
 
 if (login) {
   headerNavForm.onclick = function () {
