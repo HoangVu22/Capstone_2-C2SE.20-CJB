@@ -11,8 +11,13 @@ const destinationSuggestList = $(".destination-list");
 
 let listPlace = [];
 
-const controller = new AbortController();
+// const controller = new AbortController();
+let aborter = null
 const searching = (value) => {
+  if (aborter) {
+    aborter.abort()
+  }
+  aborter = new AbortController()
   const NOMINATIM_BASE_URL = "https://nominatim.openstreetmap.org/search?";
   const params = {
     limit: 5,
@@ -27,12 +32,15 @@ const searching = (value) => {
   const requestOptions = {
     method: "get",
     redirect: "follow",
-    signal: controller.signal,
+    signal: aborter.signal,
   };
   fetch(`${NOMINATIM_BASE_URL}${queryString}`, requestOptions)
     .then((response) => response.text())
     .then((result) => {
       listPlace = JSON.parse(result);
+      console.log(listPlace)
+      const places = listPlace.map((place) => `<li class="destination-item"><p>${place.display_name}</p></li>`).join("");
+    destinationSuggestList.innerHTML = places;
     })
     .catch((error) => console.log({ error }));
 };
@@ -47,13 +55,8 @@ const debounce = (func, timeout = 300) => {
   };
 };
 
-destinationInput.onkeypress = (e) => {
-  if (e.key === "Enter") {
-    console.log(e.target.value);
-    debounce(() => searching(e.target.value), 0)();
-    const places = listPlace.map((place) => `<li class="destination-item"><p>${place.display_name}</p></li>`).join("");
-    destinationSuggestList.innerHTML = places;
-  }
+destinationInput.onkeydown = (e) => {
+  debounce(() => searching(e.target.value), 0)();
 };
 
 const mapDOM = $(".form-map");
