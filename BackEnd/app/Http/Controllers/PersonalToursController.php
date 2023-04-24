@@ -47,7 +47,12 @@ class PersonalToursController extends Controller
      */
     public function show($id)
     {
-        return response()->json(PersonalTours::find($id));
+        return response()->json(
+            PersonalTours::where('personal_tours.id', $id)
+            ->join('users', 'personal_tours.owner_id', '=', 'users.id')
+            ->select('personal_tours.*', 'users.name')
+            ->get(),
+        );
     }
 
     /**

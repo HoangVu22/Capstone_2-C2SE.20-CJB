@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Rooms;
+use DateTimeInterface;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class PersonalTours extends Model
 {
@@ -30,6 +32,20 @@ class PersonalTours extends Model
         'created_at',
         'updated_at',
     ];
+
+    protected function fromDate(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => date('d-m-Y', strtotime($value)),
+        );
+    }
+
+    protected function toDate(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => date('d-m-Y', strtotime($value)),
+        );
+    }
 
     public function user(){
         return $this->belongsTo(User::class, 'owner_id');

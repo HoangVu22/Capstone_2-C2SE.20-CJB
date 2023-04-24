@@ -107,12 +107,9 @@ body {
   font-size: 24px;
 }
 
-.detail-inf-address i {
-  color: #6fabe2;
-}
-
 .detail-inf-time i {
-  color: #f44336;
+  color: #2F4E84;
+  font-size: 20px;
 }
 
 .detail-inf-cost i {
@@ -133,8 +130,9 @@ body {
 }
 
 .detail-trip p {
-  font-size: 22px;
+  font-size: 16px;
   padding: 10px 0;
+  margin-bottom: 16px;
 }
 
 .detail-location {
@@ -157,7 +155,7 @@ body {
 
 .detail-host-inf {
   display: flex;
-  margin-top: 20px;
+  margin-top: 40px;
   align-items: center;
 }
 
@@ -215,6 +213,7 @@ body {
 
 .detail-map iframe {
   width: 100%;
+  border-radius: 10px;
 }
 
 .detail-inf-action {
@@ -264,71 +263,6 @@ body {
 
 .detail-member-name {
   width: 50%;
-}
-
-/* ------- related tours ---------- */
-.find-tours {
-  margin: 80px 0 20px 0;
-  width: 100%;
-}
-
-.find-heading {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding-bottom: 40px;
-}
-
-.find-heading h1 {
-  font-size: 28px;
-}
-
-.popular-heading-icon {
-  font-size: 25px;
-  cursor: pointer;
-}
-
-.find-container-wraper {
-  display: flex;
-  width: 80%;
-  justify-content: space-evenly;
-  margin: 0 auto;
-  flex-wrap: wrap;
-}
-
-.find-container {
-  border: 1px solid #333;
-  width: 28%;
-  padding: 20px;
-  border-radius: 10px;
-  margin: 0 10px;
-}
-
-.find-container-top {
-  width: 100%;
-}
-
-.find-container-top img {
-  width: 100%;
-  border-radius: 10px;
-}
-
-.find-container-bottom {
-  line-height: 30px;
-}
-
-.find-bottom-address,
-.find-bottom-time {
-  display: flex;
-}
-
-.find-bottom-icon i {
-  padding-right: 10px;
-}
-
-.slick-prev,
-.slick-next {
-  display: none !important;
 }
 
 /* ------------- footer --------- */
