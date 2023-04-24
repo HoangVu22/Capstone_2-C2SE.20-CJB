@@ -44,8 +44,11 @@ button {
 }
 
 .detail-header > a > img {
-  width: 100%;
+  width: 70%;
   object-fit: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .detail-header > ul {
@@ -388,18 +391,38 @@ button {
 }
 
 .list-info-content h3 {
-    margin-bottom: 10px;
-    text-align: start;
+  margin-bottom: 10px;
+  text-align: start;
 }
 
 .list-info-content span {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .list-info-content span i {
-    margin-right: 10px;
-    font-size: 18px;
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.status-green button,
+.status-yellow button,
+.status-red button {
+  padding: 8px 15px;
+  border-radius: 20px;
+  background: none;
+  border: 1px solid #28a745;
+  color: #28a745;
+}
+
+.status-yellow button {
+  border: 1px solid #ffc107;
+  color: #ffc107;
+}
+
+.status-red button {
+  border: 1px solid #ff3939;
+  color: #ff3939;
 }
 
 .list-action {
@@ -412,27 +435,27 @@ button {
 }
 
 .fa-pencil {
-    padding: 12px;
-    border: 1px solid #0071c2;
-    border-radius: 50%;
-    color: #0071c2;
+  padding: 12px;
+  border: 1px solid #0071c2;
+  border-radius: 50%;
+  color: #0071c2;
 }
 
 .fa-pencil:hover {
-    color: #fff;
-    background-color: #0071c2;
+  color: #fff;
+  background-color: #0071c2;
 }
 
 .fa-trash-can {
-    padding: 12px;
-    border: 1px solid #f44336;
-    border-radius: 50%;
-    color: #f44336;
+  padding: 12px;
+  border: 1px solid #f44336;
+  border-radius: 50%;
+  color: #f44336;
 }
 
 .fa-trash-can:hover {
-    color: #fff;
-    background-color: #f44336;
+  color: #fff;
+  background-color: #f44336;
 }
 
 table {
@@ -452,14 +475,15 @@ th {
 }
 
 th:not(th:nth-child(1)) {
-  width: 15%;
+  width: 12%;
 }
 
 th:nth-child(1) {
   width: 45%;
 }
 
-th, td {
+th,
+td {
   padding: 10px 0;
 }
 
@@ -586,4 +610,128 @@ td {
 
 .custom-shape-divider-bottom-1679667216 .shape-fill {
   fill: #2f4e84;
+}
+
+/* ------------ */
+body {
+  --light: hsl(0, 0%, 100%);
+  --background: linear-gradient(
+    to right bottom,
+    hsl(236, 50%, 50%),
+    hsl(195, 50%, 50%)
+  );
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(
+    to bottom,
+    hsl(236, 50%, 98%),
+    hsl(236, 50%, 94%)
+  );
+}
+
+a,
+a:link {
+  text-decoration: none;
+}
+
+.modal-container {
+  font-size: 62.5%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: hsla(0, 0%, 40%, 0.6);
+}
+
+.modal-container:target {
+  display: flex;
+}
+
+.modal {
+  width: 40rem;
+  padding: 3rem 2rem;
+  border-radius: 0.8rem;
+  color: var(--light);
+  background: var(--background);
+  box-shadow: 0.4rem 0.4rem 2.4rem 0.2rem hsla(236, 50%, 50%, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.modal__details {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid hsla(0, 0%, 100%, 0.4);
+}
+
+.modal__title {
+  font-size: 1.8rem;
+}
+
+.modal__description {
+  margin-top: 1.2rem;
+  font-size: 1.1rem;
+  font-style: italic;
+}
+
+.modal__btn {
+  padding: 10px 50px;
+  border: 1px solid hsla(0, 0%, 100%, 0.4);
+  border-radius: 100rem;
+  color: inherit;
+  background: transparent;
+  font-size: 1.1rem;
+  letter-spacing: 0.2rem;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.modal__btn:hover,
+.modal__btn:focus {
+  border-color: hsla(0, 0%, 100%, 0.6);
+  transform: translateY(-0.2rem);
+}
+
+.link-1 {
+  color: var(--light);
+  border-radius: 100rem;
+  padding: 1.4rem 0.4rem;
+  transition: 0.2s;
+}
+
+.link-2 {
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid hsla(0, 0%, 100%, 0.4);
+  border-radius: 100rem;
+  color: inherit;
+  font-size: 2.2rem;
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s;
+}
+
+.link-2::before {
+  content: "×";
+  transform: translateY(-0.1rem);
+}
+
+.link-2:hover,
+.link-2:focus {
+  border-color: hsla(0, 0%, 100%, 0.6);
+  transform: translateY(-0.2rem);
 }

@@ -11,6 +11,13 @@ class Ordereds extends Model
 
     protected $table = 'ordereds';
 
+    protected $fillable = [
+        'user_id',
+        'tour_id',
+        'price',
+        'tickets',
+    ];
+
     protected $hidden = [
         'created_at',
         'updated_at',

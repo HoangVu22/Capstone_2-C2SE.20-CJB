@@ -64,8 +64,11 @@ body {
 }
 
 .detail-header > a > img {
-  width: 100%;
+  width: 70%;
   object-fit: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .detail-header > ul {
@@ -383,7 +386,7 @@ body {
 }
 
 .form-trip-2 {
-  margin-top: 60px;
+  margin-top: 20px;
 }
 
 .form-info label {
@@ -410,6 +413,7 @@ body {
 }
 
 .form-info {
+  position: relative;
   width: 100%;
   margin-bottom: 20px;
 }
@@ -511,4 +515,28 @@ iframe {
 
 .form-info-wrap1 {
   display: flex;
+}
+
+.destination-list {
+  position: absolute;
+  z-index: 99999;
+  list-style: none;
+  width: 100%;
+}
+
+.destination-item {
+  margin-top: 2px;
+  border: 1px solid #777;
+  background-color: white;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.destination-item:hover {
+  background-color: #dbcece;
+}
+
+.destination-item p {
+  margin-left: 5px;
 }

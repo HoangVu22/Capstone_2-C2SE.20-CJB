@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Rooms;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class RoomsController extends Controller
@@ -12,7 +13,10 @@ class RoomsController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json([
+            'allRoom' => Rooms::all(),
+            'status' => 200,
+        ]);
     }
 
     /**
@@ -122,6 +126,61 @@ class RoomsController extends Controller
     }
 
     public function acceptUser(Request $request){
+        $id = collect($request->all())
+            ->filter(function($value, $key){
+                return strpos($key, 'user_') === 0;
+            })
+            ->all();
 
+        if(empty($id)){
+            return response()->json([
+                'msg' => "Hãy chọn 1 người",
+                'status' => 204,
+            ]);
+        }
+
+        if(count($id) === count(User::whereIn('id', $id)->get()->toArray())){
+            Rooms::find($request->room_id)->members()->detach($id);
+            Rooms::find($request->room_id)->members()->attach($id, ['is_confirm' => true]);
+            return response()->json([
+                'msg' => "Thành công",
+                'status' => 200,
+            ]);
+        }
+        else{
+            return response()->json([
+                'msg' => "Người được chọn không hợp lệ",
+                'status' => 304,
+            ]);
+        }
+    }
+
+    public function refuseUser(Request $request){
+        $id = collect($request->all())
+            ->filter(function($value, $key){
+                return strpos($key, 'user_') === 0;
+            })
+            ->all();
+
+        if(empty($id)){
+            return response()->json([
+                'msg' => "Hãy chọn 1 người",
+                'status' => 204,
+            ]);
+        }
+
+        if(count($id) === count(User::whereIn('id', $id)->get()->toArray())){
+            Rooms::find($request->room_id)->members()->detach($id);
+            return response()->json([
+                'msg' => "Thành công",
+                'status' => 200,
+            ]);
+        }
+        else{
+            return response()->json([
+                'msg' => "Người được chọn không hợp lệ",
+                'status' => 304,
+            ]);
+        }
     }
 }

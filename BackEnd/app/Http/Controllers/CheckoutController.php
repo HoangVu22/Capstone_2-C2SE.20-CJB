@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-use Carbon\Carbon;
+use App\Models\Ordereds;
+use App\Models\Transactions;
+// session_start();
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 
 class CheckoutController extends Controller
 {
@@ -16,34 +19,15 @@ class CheckoutController extends Controller
 
         $vnp_TxnRef = $time; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
         $vnp_OrderInfo = $_POST['order_desc'];
-        $vnp_OrderType = $_POST['order_type'];
-        $vnp_Amount = $_POST['amount'] * 100;
-        $vnp_Locale = $_POST['language'];
-        $vnp_BankCode = $_POST['bank_code'];
-        $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
-        //Add Params of 2.0.1 Version
-        $vnp_ExpireDate = $_POST['txtexpire'];
-        //Billing
-        $vnp_Bill_Mobile = $_POST['txt_billing_mobile'];
-        $vnp_Bill_Email = $_POST['txt_billing_email'];
-        $fullName = trim($_POST['txt_billing_fullname']);
-        if (isset($fullName) && trim($fullName) != '') {
-            $name = explode(' ', $fullName);
-            $vnp_Bill_FirstName = array_shift($name);
-            $vnp_Bill_LastName = array_pop($name);
-        }
-        $vnp_Bill_Address=$_POST['txt_inv_addr1'];
-        $vnp_Bill_City=$_POST['txt_bill_city'];
-        $vnp_Bill_Country=$_POST['txt_bill_country'];
-        $vnp_Bill_State=$_POST['txt_bill_state'];
-        // Invoice
-        $vnp_Inv_Phone=$_POST['txt_inv_mobile'];
-        $vnp_Inv_Email=$_POST['txt_inv_email'];
-        $vnp_Inv_Customer=$_POST['txt_inv_customer'];
-        $vnp_Inv_Address=$_POST['txt_inv_addr1'];
-        $vnp_Inv_Company=$_POST['txt_inv_company'];
-        $vnp_Inv_Taxcode=$_POST['txt_inv_taxcode'];
-        $vnp_Inv_Type=$_POST['cbo_inv_type'];
+        $vnp_OrderType = "Thanh toán hóa đơn";
+        $vnp_Amount = $_POST['amount'] * $_POST['price'] * 100;
+        $vnp_Locale = 'vn';
+        $vnp_BankCode = '';
+
+        setcookie('user_id', $_POST['user_id']);
+        setcookie('tour_id', $_POST['tour_id']);
+        setcookie('price', $_POST['price']);
+        setcookie('amount', $_POST['amount']);
         $inputData = array(
             "vnp_Version" => "2.1.0",
             "vnp_TmnCode" => $vnp_TmnCode,
@@ -51,27 +35,12 @@ class CheckoutController extends Controller
             "vnp_Command" => "pay",
             "vnp_CreateDate" => date('YmdHis'),
             "vnp_CurrCode" => "VND",
-            "vnp_IpAddr" => $vnp_IpAddr,
+            // "vnp_IpAddr" => $vnp_IpAddr,
             "vnp_Locale" => $vnp_Locale,
             "vnp_OrderInfo" => $vnp_OrderInfo,
             "vnp_OrderType" => $vnp_OrderType,
             "vnp_ReturnUrl" => $vnp_Returnurl,
             "vnp_TxnRef" => $vnp_TxnRef,
-            "vnp_ExpireDate"=>$vnp_ExpireDate,
-            "vnp_Bill_Mobile"=>$vnp_Bill_Mobile,
-            "vnp_Bill_Email"=>$vnp_Bill_Email,
-            "vnp_Bill_FirstName"=>$vnp_Bill_FirstName,
-            "vnp_Bill_LastName"=>$vnp_Bill_LastName,
-            "vnp_Bill_Address"=>$vnp_Bill_Address,
-            "vnp_Bill_City"=>$vnp_Bill_City,
-            "vnp_Bill_Country"=>$vnp_Bill_Country,
-            "vnp_Inv_Phone"=>$vnp_Inv_Phone,
-            "vnp_Inv_Email"=>$vnp_Inv_Email,
-            "vnp_Inv_Customer"=>$vnp_Inv_Customer,
-            "vnp_Inv_Address"=>$vnp_Inv_Address,
-            "vnp_Inv_Company"=>$vnp_Inv_Company,
-            "vnp_Inv_Taxcode"=>$vnp_Inv_Taxcode,
-            "vnp_Inv_Type"=>$vnp_Inv_Type
         );
 
         if (isset($vnp_BankCode) && $vnp_BankCode != "") {
@@ -81,7 +50,7 @@ class CheckoutController extends Controller
             $inputData['vnp_Bill_State'] = $vnp_Bill_State;
         }
 
-        //var_dump($inputData);
+        // var_dump($inputData);
         ksort($inputData);
         $query = "";
         $i = 0;
@@ -107,12 +76,31 @@ class CheckoutController extends Controller
         if (isset($_POST['redirect'])) {
             header('Location: ' . $vnp_Url);
             die();
-        } else {
-            echo json_encode($returnData);
-        }
+        } 
     }
 
-    public function done()
+    public function done(Request $request)
+    {
+        $orderId = Ordereds::insertGetId([
+            'user_id' => $_COOKIE['user_id'],
+            'tour_id' =>$_COOKIE['tour_id'],
+            'price' => $_COOKIE['price'], 
+            'tickets' => $_COOKIE['amount'],
+            'created_at' => now(),
+        ]);
+
+        // dd($request->vnp_Amount);
+        Transactions::create([
+            'ordered_id' => $orderId,
+            'amount' => $request->vnp_Amount,
+            'bankCode' => $request->vnp_BankCode,
+            'cardType' => $request->vnp_CardType,
+            'responseCode' => $request->vnp_ResponseCode,
+        ]);
+        return view('payment');
+    }
+
+    public function payment()
     {
         // return Carbon::now()->second;
         // return time();

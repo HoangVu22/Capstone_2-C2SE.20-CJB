@@ -23,7 +23,10 @@ a {
 }
 
 .logo img {
-  width: 200px;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 header .container {

@@ -65,4 +65,11 @@ class UserProfileController extends Controller
     {
         //
     }
+
+    public function allRoom(Request $request){
+        return response()->json([
+            'all_room' => User::find($request->user_id)->rooms()->where('is_confirm', true)->get(),
+            'status' => 200,
+        ]);
+    }
 }

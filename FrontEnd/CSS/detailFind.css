@@ -41,8 +41,11 @@ body {
 }
 
 .detail-header>a>img {
-  width: 100%;
+  width: 70%;
   object-fit: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .detail-header > ul {
@@ -154,17 +157,23 @@ body {
 
 .detail-host-inf {
   display: flex;
+  margin-top: 20px;
+  align-items: center;
 }
 
 .detail-host-img {
-  width: 120px;
-  height: 120px;
-  margin-right: 20px;
+  width: 170px;
+  height: 170px;
+  margin-right: 40px;
 }
 
 .detail-host-img img {
   width: 100%;
   height: 100%;
+}
+
+.detail-host span {
+  font-size: 16px;
 }
 
 .detail-confirm {
@@ -181,6 +190,21 @@ body {
   line-height: 30px;
   font-size: 20px;
   color: #f44336;
+}
+
+.add-friend button {
+  display: flex; 
+  align-items: center; 
+  gap: 5px; 
+  padding: 14px 20px; 
+  border-radius: 10px; 
+  border: none; 
+  background-color: #6fabe2; 
+  color: white; 
+  font-weight: 600; 
+  margin-top: 20px; 
+  cursor: pointer; 
+  font-size: 16px;
 }
 
 .detail-map {
