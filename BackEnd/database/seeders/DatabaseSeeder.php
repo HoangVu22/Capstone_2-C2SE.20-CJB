@@ -13,9 +13,19 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         \App\Models\User::create([
+            'name' => "Tân",
+            'email' => "tannguyen.010201@gmail.com",
+            'password' => 'truongboanhai', //123456
+            'phone_number' => "0999999999",
+            'is_Admin' => true,
+            'user_roles' => 'user',
+            'about' => "(*_*)",
+        ]);
+
+        \App\Models\User::create([
             'name' => "Trường",
             'email' => "letruong02072001@gmail.com",
-            'password' => '$2y$10$ixMaI5ElpONDdnMva6A0c.J9RNw4P7zc15DkmYT/1VovG/rwwQWem', //123456
+            'password' => 'truongboanhai', //123456
             'phone_number' => "021736321",
             'is_Admin' => false,
             'user_roles' => 'user',
@@ -32,7 +42,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::create([
             'name' => "Tân",
             'email' => "tan123@gmail.com",
-            'password' => '$2y$10$ixMaI5ElpONDdnMva6A0c.J9RNw4P7zc15DkmYT/1VovG/rwwQWem', //123456
+            'password' => 'truongboanhai', //123456
             'phone_number' => "021736321",
             'is_Admin' => false,
             'user_roles' => 'user',
@@ -48,7 +58,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::create([
             'name' => "Vũ",
             'email' => "vu123@gmail.com",
-            'password' => '$2y$10$ixMaI5ElpONDdnMva6A0c.J9RNw4P7zc15DkmYT/1VovG/rwwQWem', //123456
+            'password' => 'truongboanhai', //123456
             'phone_number' => "021736321",
             'is_Admin' => false,
             'user_roles' => 'ts',
@@ -63,7 +73,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::create([
             'name' => "Hằng",
             'email' => "hang123@gmail.com",
-            'password' => '$2y$10$ixMaI5ElpONDdnMva6A0c.J9RNw4P7zc15DkmYT/1VovG/rwwQWem', //123456
+            'password' => 'truongboanhai', //123456
             'phone_number' => "021736321",
             'is_Admin' => false,
             'user_roles' => 'ts',

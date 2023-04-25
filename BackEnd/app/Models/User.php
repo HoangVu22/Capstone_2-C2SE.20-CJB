@@ -11,6 +11,8 @@ use App\Models\PersonalTours;
 use App\Models\Tours;
 use App\Models\Rooms;
 use App\Models\UserProfile;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Support\Facades\Hash;
 
 // use App\Models\Scopes\ExceptScope;
  
@@ -45,6 +47,16 @@ class User extends Authenticatable
         'updated_at',
         'email_verified_at'
     ];
+
+    /**
+     * Interact with the user's first name.
+     */
+    protected function password(): Attribute
+    {
+        return Attribute::make(
+            set: fn (string $value) => $value !== '' ? Hash::make($value) : $value,
+        );
+    }
 
     /**
      * The attributes that should be cast.
