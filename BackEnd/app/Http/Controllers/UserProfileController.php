@@ -39,7 +39,15 @@ class UserProfileController extends Controller
      */
     public function update(Request $request)
     {
-        // return $request;
+        if(empty($request->name) || empty($request->phone_number) 
+            || empty($request->avatar) || empty($request->gender)
+        ){
+            return response()->json([
+                'msg' => "Tên, sdt, giới tính, avatar không được để trống",
+                'status' => 422,
+            ]);
+        }
+
         User::where('id', $request->id)->update([
             'name' => $request->name,
             'phone_number' => $request->phone_number,
