@@ -38,6 +38,13 @@ class TSProfileController extends Controller
      */
     public function update(Request $request, TSProfile $tSProfile)
     {
+        if(empty($request->name) || empty($request->phone_number) || empty($request->avatar)){
+            return response()->json([
+                'msg' => "Tên, sdt, avatar không được để trống",
+                'status' => 422,
+            ]);
+        }
+
         User::where('id', $request->id)->update([
             'name' => $request->name,
             'phone_number' => $request->phone_number,

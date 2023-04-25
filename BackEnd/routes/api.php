@@ -88,7 +88,7 @@ Route::prefix('friend')->group(function(){
 });
 
 Route::prefix('payment')->group(function(){
-    Route::get('/', [CheckoutController::class, 'payment']);
+    Route::get('/', [CheckoutController::class, 'payment'])->name('payment');
     Route::post('/', [CheckoutController::class, 'checkout']);
     Route::get('/done', [CheckoutController::class, 'done'])->name('done');
 });
