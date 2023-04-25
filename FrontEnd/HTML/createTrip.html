@@ -107,46 +107,35 @@
                             </div>
                             <div class="form-info-wrap1">
                                 <div class="form-info form-info-0">
-                                    <label for="">Điểm xuất phát</label>
-                                    <div class="form-input">
-                                        <input name="from_where" type="text" placeholder="Nhập điểm xuất phát" class="form-control diemxuatphat">
-                                    </div>
+                                  <label for="">Từ ngày</label>
+                                  <div class="form-input">
+                                    <input name="from_date" type="date" class="form-control tungay">
+                                  </div>
                                 </div>
                                 <div class="form-info">
-                                    <label for="">Điểm đến</label>
-                                    <div class="form-input">
-                                        <input name="to_where" type="text" placeholder="Nhập điểm đến" class="form-control diemden">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-info-wrap1">
-                                <div class="form-info form-info-0">
-                                    <label for="">Từ ngày</label>
-                                    <div class="form-input">
-                                        <input name="from_date" type="date" class="form-control tungay">
-                                    </div>
-                                </div>
-                                <div class="form-info">
-                                    <label for="">Đến ngày</label>
-                                    <div class="form-input">
-                                        <input name="to_date" type="date" class="form-control denngay">
-                                    </div>
+                                  <label for="">Đến ngày</label>
+                                  <div class="form-input">
+                                    <input name="to_date" type="date" class="form-control denngay">
+                                  </div>
                                 </div>
                               </div>
                               <div class="form-info-wrap1">
-                                  <!-- <div class="form-info form-info-0">
+                                  <div class="form-info form-info-0">
                                       <label for="">Điểm xuất phát</label>
                                       <div class="form-input">
                                           <input name="from_where" type="text" placeholder="Nhập điểm xuất phát" class="form-control diemxuatphat">
                                       </div>
-                                  </div> -->
+                                      <div>
+                                        <ul class="destination-list current-location-suggestion"></ul>
+                                      </div>
+                                  </div>
                                   <div class="form-info">
                                       <label for="">Điểm đến</label>
                                       <div class="form-input">
                                           <input name="to_where" type="text" placeholder="Nhập điểm đến" class="form-control diemden">
                                       </div>
                                       <div>
-                                        <ul class="destination-list">
+                                        <ul class="destination-list destination-location-suggestion">
                                         </ul>
                                       </div>
                                   </div>
@@ -181,7 +170,7 @@
                                 <div class="form-info form-info1">
                                     <label for="">Mô tả ngắn về chuyến đi</label>
                                     <div class="form-input1">
-                                        <textarea name="" id="" cols="30" rows="6" placeholder="Mô tả chuyến đi của bạn" class="form-control motachuyendi"></textarea>
+                                        <textarea name="description" id="" cols="30" rows="11" placeholder="Mô tả chuyến đi của bạn" class="form-control description"></textarea>
                                     </div>
                                 </div>
                             </div>

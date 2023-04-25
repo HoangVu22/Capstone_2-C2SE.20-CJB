@@ -33,25 +33,6 @@ body {
   height: 80px;
 }
 
-.upload_image{
-  width: 45% !important;
-  margin-right: 5%;
-  height: 300px;
-  border: 1px dashed #386e89;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  object-fit: contain;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-}
-
-
-.input_image{
-  object-fit: contain;
-  background-size: 100%;
-}
-
 .detail-header,
 .detail-header .nav-menu {
   display: flex;
@@ -324,9 +305,7 @@ body {
 .form-content {
   width: 50%;
 }
-.form-trip{
-  padding-bottom: 60px;
-}
+
 .create-trip-container {
   margin-bottom: 30px;
   box-shadow: 2px 4px 20px #0003;
@@ -354,13 +333,11 @@ body {
   background-color: rgba(2, 127, 255, 1);
   color: #fff;
 }
-
 .button2 button {
   color: #333;
   background-color: #fff;
   border: 1px solid #333 !important;
 }
-
 .button1 button,
 .button2 button {
   width: 40px;
@@ -371,7 +348,6 @@ body {
   font-size: 20px;
   cursor: pointer;
 }
-
 .button1 p,
 .button2 p {
   padding-top: 10px;
@@ -448,8 +424,22 @@ iframe {
   display: flex;
 } */
 
+.upload_image{
+    border: 1px dashed slateblue;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .trip-2-img {
   width: 50%;
+  width: 100%;
+  margin: 0 20px 0 0;
+  object-fit: cover;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  height: auto;
 }
 
 .trip-2-img img {
