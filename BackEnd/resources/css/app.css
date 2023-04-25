@@ -127,6 +127,16 @@ h6 {
     font-size: 16px;
 }
 
+.userlist_add-btn {
+    opacity: 0.7;
+    font-size: 36px !important;
+}
+
+.userlist_add-btn:hover {
+    cursor: pointer;
+    opacity: 1;
+}
+
 @media (max-width: 1199px) {
     #main {
         padding: 20px;

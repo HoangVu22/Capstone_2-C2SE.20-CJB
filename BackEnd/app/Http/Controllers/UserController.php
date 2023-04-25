@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -11,7 +13,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.user', [
+            'title' => 'List users',
+            'users' => User::where('id', '>', 1)->paginate(10),
+        ]);
     }
 
     /**
@@ -19,15 +24,19 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.userCreate', [
+            'title' => 'Create users',
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        //
+        User::create($request->all());
+
+        return redirect()->route('user')->with('success', 'Created successfully!');
     }
 
     /**

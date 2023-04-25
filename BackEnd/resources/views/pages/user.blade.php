@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('tittle')
-    Users
+    {{ $title }}
 @endsection
 
 @section('content')
@@ -35,14 +35,7 @@
             <div class="card info-card revenue-card">
 
                 <div class="filter">
-                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                        <li class="dropdown-header text-start">
-                            <h6>Controller</h6>
-                        </li>
-
-                        <li><a class="dropdown-item" href="#">Add user</a></li>
-                    </ul>
+                    <a class="icon text-primary userlist_add-btn" href="{{ route('user.create') }}"><i class="bi bi-plus-circle"></i></a>
                 </div>
 
                 <form action="" method="post">
@@ -60,15 +53,15 @@
                                     <tr>
                                         <th scope="col"></th>
                                         <th scope="col">#</th>
-                                        <th scope="col">code</th>
                                         <th scope="col">name</th>
                                         <th scope="col">Email</th>
+                                        <th scope="col">Role</th>
                                         <th scope="col">Phone</th>
                                         <th scope="col"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @foreach ($users as $key => $user) --}}
+                                    @foreach ($users as $key => $user)
                                         <tr>
                                             <th scope="row">
                                                 <div class="form-check">
@@ -76,11 +69,11 @@
                                                         name="id" id="flexCheckDefault">
                                                 </div>
                                             </th>
-                                            <th scope="row">1</th>
-                                            <td>1234</td>
-                                            <td>nva</td>
-                                            <td>tna@mafds</td>
-                                            <td>123456</td>
+                                            <th scope="row">{{ ++$key }}</th>
+                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td>{{ $user->user_roles }}</td>
+                                            <td>{{ $user->phone_number }}</td>
                                             <td style="width: 176px;">
                                                 <a class="btn btn-outline-info user_list_btn"
                                                     href="#">
@@ -92,7 +85,7 @@
                                                 </a>
                                                 <button type="button" class="btn btn-outline-danger user_list_btn"
                                                     data-bs-toggle="modal"
-                                                    data-bs-target="#exampleModalid">
+                                                    data-bs-target="#exampleModal{{ $user->id }}">
                                                     <i class="bi bi-trash"></i>
                                                 </button>
                                             </td>
@@ -100,8 +93,8 @@
                                         <!-- Modal -->
                                         <form action="" method="post">
                                             @csrf
-                                            {{-- @method('DELETE') --}}
-                                            <div class="modal fade" id="exampleModalid" tabindex="-1"
+                                            @method('DELETE')
+                                            <div class="modal fade" id="exampleModal{{ $user->id }}" tabindex="-1"
                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
@@ -112,10 +105,8 @@
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            Are you sure you want to remove id 
-                                                            <b> 1234 </b>
-                                                            Name
-                                                            <b>nva</b>
+                                                            Are you sure you want to remove user 
+                                                            <b> {{ $user->name }} </b>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="submit"
@@ -127,13 +118,13 @@
                                                 </div>
                                             </div>
                                         </form>
-                                    {{-- @endforeach --}}
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
-                        {{-- <div>
+                        <div>
                             {{ $users->links() }}
-                        </div> --}}
+                        </div>
                     </div>
                 </form>
             </div>

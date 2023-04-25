@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/dashboard', function () {
     return view('pages.dashboard');
 })->name('dashboard');
-Route::get('/user', function () {
-    return view('pages.user');
-})->name('user');
+
+Route::controller(UserController::class)->group(function () {
+    Route::prefix('user')->group(function () {
+        Route::get('/', 'index')->name('user');
+        Route::get('/create', 'create')->name('user.create');
+        Route::post('/create', 'store')->name('user.store');
+    });
+});

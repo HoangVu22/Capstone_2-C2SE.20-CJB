@@ -1,10 +1,9 @@
-<header id="header" class="header fixed-top d-flex align-items-center">
+<header id="header" class="header fixed-top d-flex align-items-center" style="background: rgb(0,0,0); background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,184,185,1) 100%);">
     <div class="d-flex align-items-center justify-content-between">
         <a href="#" class="logo d-flex align-items-center">
-            <img src="{{ Vite::asset('resources/assets/img/logo.png') }}" alt="">
-            <span class="d-none d-lg-block">NiceAdmin</span>
+            <img style="max-height: 50px" src="{{ Vite::asset('resources/assets/img/logo-removebg-preview.png') }}" alt="">
         </a>
-        <i class="bi bi-list toggle-sidebar-btn"></i>
+        <i class="bi bi-list toggle-sidebar-btn" style="color: white;"></i>
     </div><!-- End Logo -->
 
     <div class="search-bar">
@@ -20,15 +19,15 @@
 
             <li class="nav-item d-block d-lg-none">
                 <a class="nav-link nav-icon search-bar-toggle " href="#">
-                    <i class="bi bi-search"></i>
+                    <i class="bi bi-search" ></i>
                 </a>
             </li><!-- End Search Icon-->
 
             <li class="nav-item dropdown">
 
                 <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                    <i class="bi bi-bell"></i>
-                    <span class="badge bg-primary badge-number">4</span>
+                    <i class="bi bi-bell" style="color: white;"></i>
+                    <span class="badge bg-warning badge-number" style="color: black;">4</span>
                 </a><!-- End Notification Icon -->
 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
@@ -102,14 +101,14 @@
             <li class="nav-item dropdown">
 
                 <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                    <i class="bi bi-chat-left-text"></i>
+                    <i class="bi bi-chat-left-text" style="color: white;"></i>
                     <span class="badge bg-success badge-number">3</span>
                 </a><!-- End Messages Icon -->
 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
                     <li class="dropdown-header">
                         You have 3 new messages
-                        <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+                        <a href="#"><span class="badge rounded-pill bg-warning p-2 ms-2">View all</span></a>
                     </li>
                     <li>
                         <hr class="dropdown-divider">
@@ -174,7 +173,7 @@
                     data-bs-toggle="dropdown">
                     <img src="{{ Vite::asset('resources/assets/img/profile-img.jpg') }}" alt="Profile"
                         class="rounded-circle">
-                    <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+                    <span class="d-none d-md-block dropdown-toggle ps-2" style="color: white;">K. Anderson</span>
                 </a><!-- End Profile Iamge Icon -->
 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
