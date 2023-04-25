@@ -41,8 +41,11 @@ body {
 }
 
 .detail-header>a>img {
-  width: 100%;
+  width: 70%;
   object-fit: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .detail-header > ul {
@@ -104,12 +107,9 @@ body {
   font-size: 24px;
 }
 
-.detail-inf-address i {
-  color: #6fabe2;
-}
-
 .detail-inf-time i {
-  color: #f44336;
+  color: #2F4E84;
+  font-size: 20px;
 }
 
 .detail-inf-cost i {
@@ -130,8 +130,9 @@ body {
 }
 
 .detail-trip p {
-  font-size: 22px;
+  font-size: 16px;
   padding: 10px 0;
+  margin-bottom: 16px;
 }
 
 .detail-location {
@@ -154,17 +155,23 @@ body {
 
 .detail-host-inf {
   display: flex;
+  margin-top: 40px;
+  align-items: center;
 }
 
 .detail-host-img {
-  width: 120px;
-  height: 120px;
-  margin-right: 20px;
+  width: 170px;
+  height: 170px;
+  margin-right: 40px;
 }
 
 .detail-host-img img {
   width: 100%;
   height: 100%;
+}
+
+.detail-host span {
+  font-size: 16px;
 }
 
 .detail-confirm {
@@ -183,6 +190,21 @@ body {
   color: #f44336;
 }
 
+.add-friend button {
+  display: flex; 
+  align-items: center; 
+  gap: 5px; 
+  padding: 14px 20px; 
+  border-radius: 10px; 
+  border: none; 
+  background-color: #6fabe2; 
+  color: white; 
+  font-weight: 600; 
+  margin-top: 20px; 
+  cursor: pointer; 
+  font-size: 16px;
+}
+
 .detail-map {
   width: 45%;
   position: relative;
@@ -191,6 +213,7 @@ body {
 
 .detail-map iframe {
   width: 100%;
+  border-radius: 10px;
 }
 
 .detail-inf-action {
@@ -240,71 +263,6 @@ body {
 
 .detail-member-name {
   width: 50%;
-}
-
-/* ------- related tours ---------- */
-.find-tours {
-  margin: 80px 0 20px 0;
-  width: 100%;
-}
-
-.find-heading {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding-bottom: 40px;
-}
-
-.find-heading h1 {
-  font-size: 28px;
-}
-
-.popular-heading-icon {
-  font-size: 25px;
-  cursor: pointer;
-}
-
-.find-container-wraper {
-  display: flex;
-  width: 80%;
-  justify-content: space-evenly;
-  margin: 0 auto;
-  flex-wrap: wrap;
-}
-
-.find-container {
-  border: 1px solid #333;
-  width: 28%;
-  padding: 20px;
-  border-radius: 10px;
-  margin: 0 10px;
-}
-
-.find-container-top {
-  width: 100%;
-}
-
-.find-container-top img {
-  width: 100%;
-  border-radius: 10px;
-}
-
-.find-container-bottom {
-  line-height: 30px;
-}
-
-.find-bottom-address,
-.find-bottom-time {
-  display: flex;
-}
-
-.find-bottom-icon i {
-  padding-right: 10px;
-}
-
-.slick-prev,
-.slick-next {
-  display: none !important;
 }
 
 /* ------------- footer --------- */

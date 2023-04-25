@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/css/swiper.min.css"
         integrity="sha512-FCU4ZL4ubM4eDxvQQ9SqMmH+UQ9t0noKHj/cfky4whdWnyBgp+NF2ykUBgsyx8Iv+XtM3aXZ8jmFs4uLnT+Vng=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../CSS/TS-postTour.css">
+    <link rel="stylesheet" href="../CSS/patment.css">
     <title>CJB</title>
 </head>
 
@@ -20,11 +20,33 @@
             <div class="detail-header">
                 <a href="./home.html" class="logo"> <img src="../IMAGES/logo/logo-removebg-preview.png" alt=""> </a>
                 <ul class="nav-menu">
-                    <li> <a href="./TS-home.html" class="nav-link">Home</a> </li>
-                    <li> <a href="./TS-postTour.html" class="nav-link">Đăng tours</a> </li>
-                    <li> <a href="./TS-managerTours.html" class="nav-link">Quản lý tours</a> </li>
-                    <li> <a href="./TS-managerBooked.html" class="nav-link">Quản lý đặt tours</a> </li>
-                    <li> <a href="./home.html" class="nav-link">Trở thành người dùng</a> </li>
+                    <li> <a href="./home.html" class="nav-link">Home</a> </li>
+                    <li> <a href="./bookTour.html" class="nav-link">Tours</a> </li>
+                    <li> <a href="./createTrip.html" class="nav-link">Tạo chuyến đi</a> </li>
+                    <li> <a href="./group.html" class="nav-link">Group</a> </li>
+                    <li> <a href="./TS-home.html" class="nav-link">Trở thành nhà cung cấp</a> </li>
+                    <li><i class="fa-solid fa-bell"></i>
+                        <div style="display: none;" class="container-notification">
+                            <div class="wrap-notification">
+                                <div class="header-notification">
+                                    <p>Thông báo</p>
+                                </div>
+                                <div class="content-notification">
+                                    <div class="content-notification-empty">
+                                        <img src="https://static.boosty.to/assets/images/bell-light.gNKz9.svg" alt="">
+                                        <div class="empty-title">
+                                            <h3>Chưa có thông báo nào</h3>
+                                            <p>Tất cả thông báo sẽ có ở đây</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="content-notication-show">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
 
                     <div class="header-nav-form">
                         <div class="header-nav-icon">
@@ -42,9 +64,9 @@
                                 <div class="content-logout">
                                     <a href="./profile.html" class="avatar-login">
                                         <div class="header-form-avatar">
-                                            <img src="../image/avatars/avatar_1.jpg" alt="">
+                                            <img src="" alt="" id="avatar_user">
                                             <div class="header-name">
-                                                <span>NguyenHoangVu</span>
+                                                <span class="header-name1">NguyenHoangVu</span>
                                                 <p>Xem hồ sơ</p>
                                             </div>
                                         </div>
@@ -67,93 +89,85 @@
             </div>
         </div>
 
-        <div class="post-img-container">
-            <div class="post-img-wrap">
-                <div class="warper-post-img">
-                    <div class="post-title">
-                        <h1>Hãy cung cấp hình ảnh về chuyến đi của bạn.</h1>
+        <div style="width: 100%; height: 100vh; display: grid; place-items: center">
+            <div class="payment">
+                <h1>Thanh toán đặt tour</h1>
+                <div class="form-payment">
+                    <div class="payment-text">
+                        <label for="payment-money">Số tiền</label>
+                        <input disabled type="number" id="payment-money" placeholder="Số tiền">
                     </div>
-                    <div class="post-images">
-                        <div class="drag-images">
-                            <p class="drag-drop">Kéo và thả để tải file lên</p>
-                            <p style="font-size: 13px; cursor: auto;">Hoặc</p>
-                            <button class="choose-files">Chọn file</button> <br>
-                            <input class="drop-input" type="file" hidden>
-                        </div>
+                    <div class="payment-text">
+                        <label for="payment-money">Số vé</label>
+                        <input type="number" id="payment-money" placeholder="Số vé">
+                    </div>
+                    <div style="display: none" class="payment-text">
+                        <input disabled name="tour_id" value="" type="number" id="payment-money" placeholder="Số tiền">
+                    </div>
+                    <div style="display: none" class="payment-text">
+                        <input name="user_id" value="" disabled type="number" id="payment-money" placeholder="Số tiền">
+                    </div>
+                    <div class="payment-text">
+                        <label for="payment-content">Nội dung thanh toán</label>
+                        <textarea name="" id="payment-content" cols="80" rows="2"></textarea>
+                    </div>
+                    <div class="payment-text">
+                        <label for="bankcode">Ngân hàng</label>
+                        <select name="bankcode" id="bankcode" class="form-control">
+                            <option value="">Không chọn </option>
+                            <option value="MBAPP">Ung dung MobileBanking</option>
+                            <option value="VNPAYQR">VNPAYQR</option>
+                            <option value="VNBANK">LOCAL BANK</option>
+                            <option value="IB">INTERNET BANKING</option>
+                            <option value="ATM">ATM CARD</option>
+                            <option value="INTCARD">INTERNATIONAL CARD</option>
+                            <option value="VISA">VISA</option>
+                            <option value="MASTERCARD"> MASTERCARD</option>
+                            <option value="JCB">JCB</option>
+                            <option value="UPI">UPI</option>
+                            <option value="VIB">VIB</option>
+                            <option value="VIETCAPITALBANK">VIETCAPITALBANK</option>
+                            <option value="SCB">Ngan hang SCB</option>
+                            <option value="NCB">Ngan hang NCB</option>
+                            <option value="SACOMBANK">Ngan hang SacomBank </option>
+                            <option value="EXIMBANK">Ngan hang EximBank </option>
+                            <option value="MSBANK">Ngan hang MSBANK </option>
+                            <option value="NAMABANK">Ngan hang NamABank </option>
+                            <option value="VNMART"> Vi dien tu VnMart</option>
+                            <option value="VIETINBANK">Ngan hang Vietinbank </option>
+                            <option value="VIETCOMBANK">Ngan hang VCB </option>
+                            <option value="HDBANK">Ngan hang HDBank</option>
+                            <option value="DONGABANK">Ngan hang Dong A</option>
+                            <option value="TPBANK">Ngân hàng TPBank </option>
+                            <option value="OJB">Ngân hàng OceanBank</option>
+                            <option value="BIDV">Ngân hàng BIDV </option>
+                            <option value="TECHCOMBANK">Ngân hàng Techcombank </option>
+                            <option value="VPBANK">Ngan hang VPBank </option>
+                            <option value="AGRIBANK">Ngan hang Agribank </option>
+                            <option value="MBBANK">Ngan hang MBBank </option>
+                            <option value="ACB">Ngan hang ACB </option>
+                            <option value="OCB">Ngan hang OCB </option>
+                            <option value="IVB">Ngan hang IVB </option>
+                            <option value="SHB">Ngan hang SHB </option>
+                        </select>
+                    </div>
+                    <div class="payment-text">
+                        <label for="payment-language">Ngôn ngữ</label>
+                        <select name="" id="payment-language">
+                            <option value="vn">Tiếng Việt</option>
+                            <option value="en">English</option>
+                        </select>
+                    </div>
+                    <div style="display: flex; justify-content: center; column-gap: 20px">
+                        <button style="display: none" class="payment-btn">Tiếp tục thanh toán</button>
+                        <button style="display: none" class="payment-cancel">Thanh toán khi nhận phòng</button>
                     </div>
                 </div>
-
-                <div class="control-next">
+                <div class="patment-next">
                     <button>Tiếp tục</button>
                 </div>
             </div>
-
-            <div style="display: none;" class="wraper-post-inf card_wrap">
-                <h1>Hãy cung cấp thông tin của chuyến đi</h1>
-                <div class="post-content">
-                    <div class="post-information post-name">
-                        <label for="">Tên chuyến đi</label>
-                        <input type="text" placeholder="Nhập tên chuyến đi">
-                    </div>
-                    <div class="post-information post-name">
-                        <label for="">Nơi khởi hành</label>
-                        <input type="text" placeholder="Nhập nơi khởi hành">
-                    </div>
-                    <div class="post-information post-date">
-                        <div class="post-start-date">
-                            <label for="">Từ ngày</label>
-                            <input type="date">
-                        </div>
-                        <div class="post-end-date">
-                            <label for="">Đến ngày</label>
-                            <input type="date">
-                        </div>
-                    </div>
-                    <div class="post-information post-money">
-                        <div class="post-cost">
-                            <label for="">Giá tiền</label>
-                            <input type="number" placeholder="Nhập giá tiền">
-                        </div>
-                        <div class="post-people">
-                            <label for="">Số người</label>
-                            <input type="number" placeholder="Nhập số người">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="post-content post-schedual">
-                    <div class="post-schedual-input">
-                        <div class="post-item">
-                            <div class="post-control">
-                                <p>Lịch trình</p>
-                            </div>
-                            <div class="post-control-input">
-                                <input type="text" placeholder="Nhập tên chuyến đi ( Ví dụ: Ngày 1: Đà Nẵng - Hà Nội )">
-                            </div>
-                        </div>
-                        <div class="post-item">
-                            <div class="post-control">
-                                <i class="fa-solid fa-trash"></i>
-                            </div>
-                            <div class="post-control-input">
-                                <textarea cols="30" rows="10" placeholder="Mô tả nội dung chuyến đi..."></textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="post-schedual-add">
-                        <i class="fa-solid fa-plus"></i>
-                    </div>
-                </div>
-
-                <div class="post-img-control">
-                    <button class="control-prev">Quay lại</button>
-                    <button>Tiếp tục</button>
-                </div>
-            </div>
-
         </div>
-
-
 
         <!-- ----------- FOOTER -------------- -->
         <footer class="footer">
@@ -246,7 +260,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script src="../JS/TS-postTour.js"></script>
+    <script src="../JS/payment.js"></script>
 </body>
 
 </html>

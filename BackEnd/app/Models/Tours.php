@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\TSProfile;
 use App\Models\Images;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Tours extends Model
 {
@@ -31,6 +32,20 @@ class Tours extends Model
         'created_at',
         'updated_at',
     ];
+
+    protected function fromDate(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => date('d-m-Y', strtotime($value)),
+        );
+    }
+
+    protected function toDate(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => date('d-m-Y', strtotime($value)),
+        );
+    }
 
     public function tsProfile(){
         return $this->belongsTo(TSProfile::class, 'ts_id');

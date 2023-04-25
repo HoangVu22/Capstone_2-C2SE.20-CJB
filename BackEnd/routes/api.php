@@ -10,6 +10,7 @@ use App\Http\Controllers\TSProfileController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\RoomsController;
 use App\Http\Controllers\CheckoutController;
+use App\Models\Rooms;
 
 
 /*
@@ -38,6 +39,10 @@ Route::controller(UserProfileController::class)->prefix('user/profile')->group(f
     Route::put('/update', 'update');
 });
 
+Route::controller(UserProfileController::class)->prefix('user/')->group(function(){
+    Route::get('/{user_id}/allRoom', 'allRoom');
+});
+
 Route::controller(TSProfileController::class)->prefix('ts/profile')->group(function(){
     Route::put('/update', 'update');
 });
@@ -53,6 +58,7 @@ Route::prefix('ts/tour')->group(function(){
     Route::post('/create', [ToursController::class, 'store']);
     Route::put('/update/{id}', [ToursController::class, 'update']);
     Route::delete('/delete/{id}', [ToursController::class, 'destroy']);
+    Route::get('/all/{id}', [ToursController::class, 'allTour']);
 });
 
 Route::prefix('personal/tour')->group(function(){
@@ -60,9 +66,11 @@ Route::prefix('personal/tour')->group(function(){
     Route::get('/show/{id}', [PersonalToursController::class, 'show']);
     Route::put('/update/{id}', [PersonalToursController::class, 'update']);
     Route::delete('/delete/{id}', [PersonalToursController::class, 'destroy']);
+    Route::get('/all/{id}', [PersonalToursController::class, 'allPersonalTour']);
 });
 
 Route::prefix('personal/room')->group(function(){
+    Route::get('/all', [RoomsController::class, 'index']);
     Route::post('/create', [RoomsController::class, 'store']);
     Route::get('/show/{id}', [RoomsController::class, 'show']);
     Route::put('/update/{id}', [RoomsController::class, 'update']);
@@ -80,6 +88,7 @@ Route::prefix('friend')->group(function(){
 });
 
 Route::prefix('payment')->group(function(){
+    Route::get('/', [CheckoutController::class, 'payment']);
     Route::post('/', [CheckoutController::class, 'checkout']);
-    Route::get('/done', [CheckoutController::class, 'done']);
+    Route::get('/done', [CheckoutController::class, 'done'])->name('done');
 });

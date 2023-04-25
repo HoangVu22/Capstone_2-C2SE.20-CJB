@@ -28,7 +28,6 @@ class PersonalToursController extends Controller
             'owner_id' => $request->owner_id,
             'room_id' => $request->room_id,
             'description' => $request->description,
-            'address' => $request->address,
             'from_date' => $request->from_date,
             'to_date' => $request->to_date,
             'lat' => $request->lat,
@@ -48,7 +47,12 @@ class PersonalToursController extends Controller
      */
     public function show($id)
     {
-        return response()->json(PersonalTours::find($id));
+        return response()->json(
+            PersonalTours::where('personal_tours.id', $id)
+            ->join('users', 'personal_tours.owner_id', '=', 'users.id')
+            ->select('personal_tours.*', 'users.name')
+            ->get(),
+        );
     }
 
     /**
@@ -69,7 +73,6 @@ class PersonalToursController extends Controller
                     'owner_id' => $request->owner_id,
                     'room_id' => $request->room_id,
                     'description' => $request->description,
-                    'address' => $request->address,
                     'from_date' => $request->from_date,
                     'to_date' => $request->to_date,
                     'lat' => $request->lat,
@@ -105,5 +108,12 @@ class PersonalToursController extends Controller
     {
         // dd(1);
         return HomepageGroupResource::collection(PersonalTours::where('from_date', '>=', date('y-m-d'))->get());
+    }
+
+    public function allPersonalTour(Request $request){
+        return response()->json([
+            'all_tour' => PersonalTours::where('owner_id', $request->id)->get(),
+            'status' => 200,
+        ]);
     }
 }

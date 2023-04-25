@@ -40,8 +40,11 @@ body {
 }
 
 .detail-header > a > img {
-  width: 100%;
+  width: 70%;
   object-fit: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .detail-header > ul {
@@ -159,7 +162,7 @@ body {
   line-height: 50px;
 }
 
-.book-control i {
+/* .book-control i {
   position: absolute;
   font-size: 30px;
   width: 50px;
@@ -188,18 +191,18 @@ body {
   right: 0;
   top: 50%;
   transform: translateY(-50%);
-}
+} */
 
 .book-places {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  width: 85%;
-  margin: auto;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .find-container {
-  width: 28%;
+  width: 30%;
   border-radius: 20px;
   overflow: hidden;
   margin: 10px 10px;
@@ -223,7 +226,7 @@ body {
 
 .find-container-bottom {
   line-height: 30px;
-  padding: 10px 20px 20px 20px;
+  padding: 5px 20px 10px 20px;
 }
 
 .find-bottom-address {
@@ -237,7 +240,7 @@ body {
 .find-bottom-money {
   display: flex;
   justify-content: space-between;
-  padding: 10px 0 20px 0;
+  padding: 5px 0 10px 0;
 }
 
 .find-bottom-money h2 {

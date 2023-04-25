@@ -8,6 +8,12 @@
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="../CSS/createTrip.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+     crossorigin=""></script>
     <title>CJB</title>
 </head>
 
@@ -15,7 +21,7 @@
     <div class="main">
         <div class="wrapper-header">
             <div class="detail-header">
-                <a href="./home.html" class="logo"> <img src="../IMAGES/logo/final_logo.png" alt=""> </a>
+                <a href="./home.html" class="logo"> <img src="../IMAGES/logo/logo-removebg-preview.png" alt=""> </a>
                 <ul class="nav-menu">
                     <li> <a href="./home.html" class="nav-link">Home</a> </li>
                     <li> <a href="./bookTour.html" class="nav-link">Tours</a> </li>
@@ -84,65 +90,55 @@
 
             <div class="form-trip">
                 <div class="form-trip-1">
+                   <form action="">
                     <div class="form-1">
-                        <div class="trip-2-img">
-                            <!-- <img src="../IMAGES/slides/slide-5.png" alt=""> -->
-                            <input type="file">
+                        <div class="trip-2-img upload_image">
+                            Upload ảnh
+                            <input name="img" class="input_image" type="file" accept="image/png, image/jpg" hidden class="form-control">
                         </div>
                         <div class="form-content">
                             <div class="form-info-wrap">
                                 <div class="form-info">
                                     <label for="">Tên chuyến đi</label>
                                     <div class="form-input">
-                                        <input type="text" placeholder="Nhập tên chuyến đi của bạn">
-                                    </div>
-                                </div>
-                                <!-- <div class="form-info form-info1">
-                                    <label for="">Tên địa điểm</label>
-                                    <div class="form-input1">
-                                        <input type="text" placeholder="Nhập tên địa điểm">
-                                    </div>
-                                </div> -->
-                                <!-- <div class="form-info">
-                                    <label for="">Nơi bạn muốn đi?</label>
-                                    <div class="form-input">
-                                        <input type="text">
-                                    </div>
-                                </div> -->
-                            </div>
-                            <div class="form-info-wrap1">
-                                <div class="form-info form-info-0">
-                                    <label for="">Điểm xuất phát</label>
-                                    <div class="form-input">
-                                        <input type="text" placeholder="Nhập điểm xuất phát">
-                                    </div>
-                                </div>
-                                <div class="form-info">
-                                    <label for="">Điểm đến</label>
-                                    <div class="form-input">
-                                        <input type="text" placeholder="Nhập điểm đến">
+                                        <input name="name" type="text" placeholder="Nhập tên chuyến đi của bạn" class="form-control tenchuyendi">
                                     </div>
                                 </div>
                             </div>
                             <div class="form-info-wrap1">
                                 <div class="form-info form-info-0">
-                                    <label for="">Từ ngày</label>
-                                    <div class="form-input">
-                                        <input type="date">
-                                    </div>
+                                  <label for="">Từ ngày</label>
+                                  <div class="form-input">
+                                    <input name="from_date" type="date" class="form-control tungay">
+                                  </div>
                                 </div>
                                 <div class="form-info">
-                                    <label for="">Đến ngày</label>
-                                    <div class="form-input">
-                                        <input type="date">
-                                    </div>
+                                  <label for="">Đến ngày</label>
+                                  <div class="form-input">
+                                    <input name="to_date" type="date" class="form-control denngay">
+                                  </div>
                                 </div>
-                            </div>
+                              </div>
+                              <div class="form-info-wrap1">
+                                  <!-- <div class="form-info form-info-0">
+                                      <label for="">Điểm xuất phát</label>
+                                      <div class="form-input">
+                                          <input name="from_where" type="text" placeholder="Nhập điểm xuất phát" class="form-control diemxuatphat">
+                                      </div>
+                                  </div> -->
+                                  <div class="form-info">
+                                      <label for="">Điểm đến</label>
+                                      <div class="form-input">
+                                          <input name="to_where" type="text" placeholder="Nhập điểm đến" class="form-control diemden">
+                                      </div>
+                                      <div>
+                                        <ul class="destination-list">
+                                        </ul>
+                                      </div>
+                                  </div>
+                              </div>
                         </div>
                     </div>
-                    <!-- <div class="form-next">
-                        <button>Tiếp tục</button>
-                    </div> -->
                     <div class="form-trip-2">
                         <div class="form-2">
                             <div class="form-content-2">
@@ -150,50 +146,50 @@
                                     <div class="form-info form-info1">
                                         <label for="">Số người</label>
                                         <div class="form-input1">
-                                            <input type="number" placeholder="Nhập số người">
+                                            <input name="people" type="number" placeholder="Nhập số người" class="form-control songuoi"> 
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-info-wrap1">
+                                <!-- <div class="form-info-wrap1">
                                     <div class="form-info form-info-0">
                                         <label for="">Kinh độ</label>
                                         <div class="form-input form-input-0">
-                                            <input type="number" placeholder="Nhập kinh độ">
+                                            <input name="lon" type="number" placeholder="Nhập kinh độ" class="form-control kinhdo">
                                         </div>
                                     </div>
                                     <div class="form-info">
                                         <label for="">Vĩ độ</label>
                                         <div class="form-input form-input-0">
-                                            <input type="number" placeholder="Nhập vĩ độ">
+                                            <input name="lat" type="number" placeholder="Nhập vĩ độ" class="form-control vido">
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="form-info form-info1">
                                     <label for="">Mô tả ngắn về chuyến đi</label>
                                     <div class="form-input1">
-                                        <textarea name="" id="" cols="30" rows="6" placeholder="Mô tả chuyến đi của bạn"></textarea>
+                                        <textarea name="" id="" cols="30" rows="11" placeholder="Mô tả chuyến đi của bạn"></textarea>
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-map">
-                                <iframe
+                            <div class="form-map" id="form-map">
+                                <!-- <iframe
                                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d245427.202253111!2d108.07605262450348!3d16.02392166225702!2m3!1f0!2f0!3f0!3m2!
                                     1i1024!2i768!4f13.1!3m3!1m2!1s0x314219c792252a13%3A0x1df0cb4b86727e06!2zxJDDoCBO4bq1bmcsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1679646974460!5m2!1svi!2s"
                                     allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                                </iframe>
+                                </iframe> -->
                             </div>
                         </div>
                         <div class="form-back-start">
-                            <button>Hoàn tất</button>
+                            <button type="button" class="create-trip">Tạo chuyến đi</button>
                             <!-- <button class="goBack">Quay lại</button>
                             <button class="startCreateTrip">Bắt đầu</button> -->
                         </div>
                     </div>
+                   </form>
                 </div>
             </div>
         </div>
     </div>
-
 
     <script src="../JS/createTrip.js"></script>
 </body>

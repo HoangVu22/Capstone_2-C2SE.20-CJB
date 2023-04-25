@@ -9,8 +9,8 @@ const headerForm = document.querySelector(".header-form");
 const headerFormLogin = headerNavForm.querySelector(".header-form-login");
 const headerFormLogout = document.querySelector(".header-form-logout");
 const login = JSON.parse(window.localStorage.getItem("login"));
-  
-if(login){
+
+if (login) {
   headerNavForm.onclick = function () {
     if (headerForm.style.display === "none") {
       headerForm.style.display = "block";
@@ -40,15 +40,15 @@ logout.onclick = () => {
   window.location.href = 'http://127.0.0.1:5503/Capstone_2-C2SE.20-CJB/FrontEnd/HTML/login-register.html';
 }
 
-const names = document.getElementsByClassName('header-name1');
-const avatarUser = document.getElementById("avatar_user");
-if(login.msg === "Đăng nhập thành công"){
-  names[0].innerText = login.user_info.name;
-  avatarUser.src = login.user_info.user_profile[0].avatar;
-} else {
-  names[0].innerText = login.user_info.name;
-  avatarUser[0].src = login.user_info.user_profile[0].avatar;
-}
+// const names = document.getElementsByClassName('header-name1');
+// const avatarUser = document.getElementById("avatar_user");
+// if (login.msg === "Đăng nhập thành công") {
+//   names[0].innerText = login.user_info.name;
+//   avatarUser.src = login.user_info.user_profile[0].avatar;
+// } else {
+//   names[0].innerText = login.user_info.name;
+//   avatarUser[0].src = login.user_info.user_profile[0].avatar;
+// }
 // ---------------------------------------
 
 let endDate = new Date("4/20/2023 00:00:00").getTime();
@@ -70,30 +70,30 @@ let check = setInterval(function () {
 
 // ------------ slide 1 --------------
 
-$(".slides2").slick({
-  infinite: true,
-  slidesToShow: 3,
-  slidesToScroll: 1,
-  speed: 800,
-});
+// $(".slides2").slick({
+//   infinite: true,
+//   slidesToShow: 3,
+//   slidesToScroll: 1,
+//   speed: 800,
+// });
 
-const z = document.querySelector.bind(document);
-const slickPre = z(".fa-chevron-left");
-const slickNext = z(".fa-chevron-right");
-const findSlickPrev = z(".prev1");
-const findSlickNext = z(".next1");
-const pre = z(".slick-prev");
-const next = z(".slick-next");
+// const z = document.querySelector.bind(document);
+// const slickPre = z(".fa-chevron-left");
+// const slickNext = z(".fa-chevron-right");
+// const findSlickPrev = z(".prev1");
+// const findSlickNext = z(".next1");
+// const pre = z(".slick-prev");
+// const next = z(".slick-next");
 
-slickPre.onclick = () => {
-  pre.click();
-};
+// slickPre.onclick = () => {
+//   pre.click();
+// };
 
-slickNext.onclick = () => {
-  next.click();
-};
+// slickNext.onclick = () => {
+//   next.click();
+// };
 
-// ------------ slide 2 --------------
+// // ------------ slide 2 --------------
 
 const prev2 = document.querySelector(".prev2");
 const next2 = document.querySelector(".next2");
@@ -119,9 +119,9 @@ $(".slides3").slick({
 
 // ---------- chuyển qua trang detail Tour------------
 const findContainer = document.querySelectorAll('.find-container')
-findContainer.forEach( value => {
+findContainer.forEach(value => {
   value.onclick = function () {
-    location.href = "http://127.0.0.1:5503/Capstone_2-C2SE.20-CJB/FrontEnd/HTML/detailTour.html"
+    location.href = "http://127.0.0.1:5500/FrontEnd/HTML/detailTour.html"
   }
 })
 
@@ -138,3 +138,76 @@ faBell.onclick = function () {
   }
 }
 
+// const ss = document.querySelector.bind(document);
+// var listTours = z(".find-container-wraper");
+// const api = "http://127.0.0.1:8000/api/homepage/tour";
+// let htmls = "";
+// function getTours(api) {
+//   fetch(api)
+//     .then(response => {
+//       return response.json();
+//     })
+//     .then(data => {
+//       const tours = data.data;
+//       console.log(tours);
+//       console.log(htmls);
+//       htmls = tours.map((tour) => {
+//         return `
+//         <div class="find-container-top">
+//         <img src="../IMAGES/slides/slide-0.png" alt="">
+//     </div>
+//     <div class="find-container-bottom">
+//         <h4 class="find-bottom-name">TRIP TO ĐÀ NẴNG</h4>
+//         <div class="find-bottom-address">
+//             <div class="find-bottom-icon">
+//                 <i class="fa-solid fa-location-dot"></i>
+//             </div>
+//             <p><b>Nơi khởi hành: </b>Đà Nẵng</p>
+//         </div>
+//         <div class="find-bottom-money">
+//             <h2>4,999,990đ</h2>
+//             <p>4 ngày</p>
+//         </div>
+//         <div class="find-bottom-time">
+//             <div class="item">
+//                 <div id="day">05</div>
+//                 ngày
+//             </div>
+//             <div class="item">
+//                 <div id="hour">12</div>
+//                 giờ
+//             </div>
+//             <div class="item">
+//                 <div id="minute">30</div>
+//                 phút
+//             </div>
+//             <div class="item">
+//                 <div id="seconds">12</div>
+//                 giây
+//             </div>
+//         </div>
+//         <div class="find-bottom-seats">
+//             <p><b>Số chỗ còn: </b>5</p>
+//         </div>
+//     </div>
+// </div>
+//       `;
+//       }); sliderFind.innerHTML = htmls.join("");
+//       if (sliderFind.innerHTML) {
+//         $(".slides2").slick({
+//           slidesToShow: 4,
+//           slidesToScroll: 2,
+//           autoplay: true,
+//         });
+//         findSlickPrev.onclick = () => {
+//           pre1[0].click();
+//         };
+//         findSlickNext.onclick = () => {
+//           next1[0].click();
+//         }
+//       }
+//     })
+
+// }
+
+// getTours(api);
