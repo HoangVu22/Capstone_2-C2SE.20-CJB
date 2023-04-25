@@ -43,10 +43,6 @@ app.post("/firebase/:folder", upload.single("filename"), (req, res) => {
     });
 });
 
-app.get("/", (req, res) => {
-  res.json(req.query.a)
-});
-
 app.listen(port, () => {
   console.log(`Example app listening on port http://localhost:${port}`)
 })
