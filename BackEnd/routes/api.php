@@ -62,6 +62,7 @@ Route::prefix('ts/tour')->group(function(){
 });
 
 Route::prefix('personal/tour')->group(function(){
+    Route::get('/', [PersonalToursController::class, 'index']);
     Route::post('/create', [PersonalToursController::class, 'store']);
     Route::get('/show/{id}', [PersonalToursController::class, 'show']);
     Route::put('/update/{id}', [PersonalToursController::class, 'update']);
