@@ -59,19 +59,19 @@ function getListTour() {
 }
 
 var sliderFind = $(".swiper-wrapper");
-// console.log(api);
-
-// const api = "http://127.0.0.1:8000/api/personal/tour/all/" + login.user_info.user_profile[0].user_id;
+const api = "http://127.0.0.1:8000/api/ts/tour";
+console.log(api);
 let htmls = "";
 function renderListTour() {
-    fetch("http://127.0.0.1:8000/api/personal/tour/all/" + login.user_info.user_profile[0].user_id)
+    fetch(api)
         .then(response => {
             return response.json();
         })
         .then(data => {
-            const tours = data.all_tour;
+            console.log(data);
+            const tours = data;
             window.localStorage.setItem("dataPersonTour", JSON.stringify(data.all_tour));
-            const listTour = JSON.parse(window.localStorage.getItem("dataPersonTour"));
+            // const listTour = JSON.parse(window.localStorage.getItem("dataPersonTour"));
             const tourNames = document.querySelectorAll('.blog-slider__item .blog-slider__content .profile-control .blog-slider__button')
             tourNames.forEach(tourr => {
                 tourr.onclick = (e) => {
@@ -79,7 +79,7 @@ function renderListTour() {
                     window.location.href = 'http://127.0.0.1:5500/CAPSTONE2/FrontEnd/HTML/detailFind.html'
                 }
             })
-            htmls = tours.map((tour, index) => {
+            htmls = tours.map((tour) => {
                 return `
                 <div class="blog-slider__item swiper-slide data-id='${tour.id}'">
                 
@@ -91,20 +91,20 @@ function renderListTour() {
                 <div class="blog-slider__content">
                     <div class="blog-slider__title">${tour.name}</div>
                     <div class="blog-slider__trip">
-                        <p><b>Từ:</b> ${tour.from_where} - <b>Đến:</b> ${tour.to_where}</p>
+                        <p><b>Từ:</b> ${tour.address} - <b>Đến:</b> ${tour.name}</p>
                         <p class="tao-them">${tour.from_date}</p>
                     </div>
                     <div class="blog-slider__host"><b>Người tạo: </b>${login.user_info.name}</div>
                     <div class="blog-slider__text"> ${tour.description} </div>
                     <div class="profile-control">
                         <div class="">
-                            <a href="../HTML/detailFind.html" class="blog-slider__button" onclick="handle_detail_page(${tour.id})">CHI TIẾT</a>
+                            <a href="../HTML/detailFind.html" class="blog-slider__button">CHI TIẾT</a>
                         </div>
                         <div class="profile-action">
                             <a href="./createTrip.html">
                                 <i class="fa-solid fa-pencil"></i>
                             </a>
-                            <i class="fa-solid fa-trash-can btn-delete"></i>
+                            <i class="fa-solid fa-trash-can" onclick="handle_detail_page(${tour.id})"></i>
                         </div>
                     </div>
                 </div>
@@ -135,18 +135,15 @@ function renderListTour() {
 function handle_detail_page(e) {
     window.localStorage.setItem("page-detail", e)
     console.log(window.localStorage.getItem("page-detail"));
+    const params = { ts_id: `${login.user_info.user_profile[0].user_id}` }
+    fetch("http://127.0.0.1:8000/api/ts/tour/delete/" + e + "?owner_id=" + params.ts_id,
+        {
+            method: 'DELETE',
+        }
+    )
+        .then(res => res.json())
+        .then(data => console.log(data))
 }
-
-const tourNames = document.querySelectorAll('.blog-slider__item .blog-slider__content .profile-control .btn-delete')
-console.log(tourNames);
-tourNames.forEach((tourr) => {
-    tourr.onclick = (e) => {
-        alert(e.target.dataset.tourr);
-        localStorage.setItem('targetTourId', e.target.dataset.tourr)
-        // e.href = 'http://127.0.0.1:5500/CAPSTONE2/FrontEnd/HTML/detailFind.html'
-    }
-})
-
 
 function start() {
     renderListTour();
@@ -243,56 +240,52 @@ logout.onclick = () => {
 
 
 // // -----------------------  update profile user ------------------------------------
+// var profile;
+function getInfoTS() {
 
-const apiUserProfile = "http://127.0.0.1:8000/api/user/profile/update";
-
-console.log(login.user_info.user_roles);
-console.log(inputAbout);
-
-function getInfoUser() {
-     
-        fetch("http://127.0.0.1:8000/api/user/profile/update", {
-            method: 'PUT',
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                id: login.user_info.user_profile[0].id,
-                name: inputUserName.value,
-                phone_number: inputPhoneNumber.value,
-                avatar: login.user_info.user_profile[0].avatar,
-                gender: inputGender.value,
-                about: inputAbout.value,
-            }),
-            data: ({
-                id: login.user_info.user_profile[0].id,
-                name: inputUserName.value,
-                phone_number: inputPhoneNumber.value,
-                avatar: login.user_info.user_profile[0].avatar,
-                gender: inputGender.value,
-                about: inputAbout.value,
-            }),
+    fetch("http://127.0.0.1:8000/api/ts/profile/update", {
+        method: 'PUT',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            id: login.user_info.user_profile[0].id,
+            name: inputUserName.value,
+            phone_number: inputPhoneNumber.value,
+            avatar: login.user_info.user_profile[0].avatar,
+            gender: inputGender.value,
+            about: inputAbout.value,
+        }),
+        data: ({
+            id: login.user_info.user_profile[0].id,
+            name: inputUserName.value,
+            phone_number: inputPhoneNumber.value,
+            avatar: login.user_info.user_profile[0].avatar,
+            gender: inputGender.value,
+            about: inputAbout.value,
+        }),
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            // window.localStorage.removeItem("login");
+            window.localStorage.setItem("dataa", JSON.stringify(data));
+            const profile = JSON.parse(window.localStorage.getItem("dataa"));
+            console.log(profile);
+            renderTSInfo(profile);
+            alert("Cập nhật thông tin thành công");
+            window.location.reload(true);
         })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                window.localStorage.removeItem("login");
-                window.localStorage.setItem("login", JSON.stringify(data));
-                const profile = JSON.parse(window.localStorage.getItem("login"));
-                renderUserInfo(profile);
-                alert("Cập nhật thông tin thành công");
-                window.location.reload(true);
-            })
-            .catch(error)(
-                alert(error)
-            )
-    }
+        .catch(error)(
+            alert(error)
+        )
+}
 
 var html_UserInfo = $('.profile-genaral');
 
 // ----------------------- render user info ------------------------------
 
-function renderUserInfo(obj) {
+function renderTSInfo(obj) {
     const html = `
   <div class="profile-title">
   <h2>Hồ sơ của tôi</h2>
@@ -348,49 +341,48 @@ function renderUserInfo(obj) {
 
 console.log(login);
 
-if (login.status === 200) {
-    btnUpdate.onclick = () => {
-        getInfoUser();
-        window.location.reload(true);
-    }
+btnUpdate.onclick = () => {
+    getInfoTS();
+    window.location.reload(true);
 }
+
 
 // ------------------------------------------------------------------
 
-inputUserName.onchange = (e) => {
-    console.log(e.target.value);
-}
-inputPhoneNumber.onchange = (e) => {
-    console.log(e.target.value);
-}
-inputEmail.disabled = true;
+// inputUserName.onchange = (e) => {
+//     console.log(e.target.value);
+// }
+// inputPhoneNumber.onchange = (e) => {
+//     console.log(e.target.value);
+// }
+// inputEmail.disabled = true;
 
-if (login.msg === "Update thành công" || login.status === 200) {
-    inputEmail.value = login.user_info.email;
-} else {
-    inputEmail.value = login.user_info.email;
-}
+// if (login.msg === "Update thành công" || login.status === 200) {
+//     inputEmail.value = login.user_info.email;
+// } else {
+//     inputEmail.value = login.user_info.email;
+// }
 
-inputGender.onchange = (e) => {
-    console.log(e.target.value);
-}
+// inputGender.onchange = (e) => {
+//     console.log(e.target.value);
+// }
 
-inputAbout.onchange = (e) => {
-    console.log(e.target.value)
-}
+// inputAbout.onchange = (e) => {
+//     console.log(e.target.value)
+// }
 
 
 
-// // ------ lịch sử đặt tours------------------------------------------------
+// // // ------ lịch sử đặt tours------------------------------------------------
 
-const historyTour = document.querySelector('.history-tour')
-const supplierPages = document.querySelector('.supplierPages')
-const profile = document.querySelector('.profileGenaral')
+// const historyTour = document.querySelector('.history-tour')
+// const supplierPages = document.querySelector('.supplierPages')
+// const profile = document.querySelector('.profileGenaral')
 
-const newLocal = historyTour.onclick = function () {
-    supplierPages.style.display = 'block';
-    profile.style.display = 'none';
-};
+// const newLocal = historyTour.onclick = function () {
+//     supplierPages.style.display = 'block';
+//     profile.style.display = 'none';
+// };
 
 
 // const TourID = $('.blog-slider__button');
@@ -402,11 +394,18 @@ const newLocal = historyTour.onclick = function () {
 // const listTours = JSON.parse(window.localStorage.getItem("ListTour"));
 // console.log(listTours);
 
+const tourNames = document.querySelectorAll('.blog-slider__item .blog-slider__content .profile-control .profile-action .fa-trash-can')
+// console.log(4);
+tourNames.forEach((tourr) => {
+    tourr.onclick = (e) => {
+        alert(e.target.dataset.tourr);
+        localStorage.setItem('targetTourId', e.target.dataset.tourr)
+    }
+})
 
 
-
-const createGroup = $(".create-group");
-createGroup.onclick = () => {
-    window.location.href = "http://127.0.0.1:5500/CAPSTONE2/FrontEnd/HTML/group.html";
-}
+// const createGroup = $(".create-group");
+// createGroup.onclick = () => {
+//     window.location.href = "http://127.0.0.1:5500/CAPSTONE2/FrontEnd/HTML/group.html";
+// }
 

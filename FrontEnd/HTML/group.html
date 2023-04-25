@@ -43,9 +43,9 @@
                                 <div class="content-logout">
                                     <a href="./profile.html" class="avatar-login">
                                         <div class="header-form-avatar">
-                                            <img src="../image/avatars/avatar_1.jpg" alt="">
+                                            <img src="" alt="" id="avatar_user">
                                             <div class="header-name">
-                                                <span>NguyenHoangVu</span>
+                                                <span class="header-name1">NguyenHoangVu</span>
                                                 <p>Xem hồ sơ</p>
                                             </div>
                                         </div>
@@ -84,8 +84,12 @@
 
                 <div class="group-wrap">
                     <div class="group-title">
-                        <i class="fa-solid fa-arrow-left"></i>
-                        <h1>Group</h1>
+                        <div class="sub-title">
+                            <div>
+                                <i class="fa-solid fa-arrow-left"></i>
+                                <h1>Group</h1>
+                            </div>
+                        </div>
                     </div>
                     <div class="group-content">
                         <div class="group-item">
@@ -107,7 +111,8 @@
                                             <img src="../IMAGES/Users-create-room/icon-upload-image.png" alt="">
                                         </div>
                                         <div class="CR-room-name-group">
-                                            <input type="text" name="" id="" placeholder="Nhập tên nhóm...">
+                                            <input type="text" name="name" id="name-room" placeholder="Nhập tên nhóm..."
+                                                class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-privacy">
@@ -128,12 +133,12 @@
                                         <input type="number" name="" id="" placeholder="Nhập số lượng thành viên...">
                                     </div>
                                     <div class="form-description">
-                                        <textarea name="" id="" cols="30" rows="3"
-                                            placeholder="Mô tả chi tiết..."></textarea>
+                                        <textarea name="description" id="description-room" cols="30" rows="3"
+                                            placeholder="Mô tả chi tiết..." class="form-control"></textarea>
                                     </div>
 
                                     <div class="btn-create">
-                                        <button>Tạo nhóm</button>
+                                        <button class="create-room">Tạo nhóm</button>
                                     </div>
 
                                     <div class="room-close">
@@ -143,39 +148,7 @@
                             </div>
                         </div>
 
-                        <div class="group-item">
-                            <div class="group-img">
-                                <img src="../IMAGES/slides/slide-5.png" alt="">
-                            </div>
-                            <div class="group-info">
-                                <h4 class="group-info-name">Antifan</h4>
-                                <p>30 thành viên</p>
-                                <button>Tham gia</button>
-                            </div>
-                        </div>
-                        <div class="group-item">
-                            <div class="group-img">
-                                <img src="../IMAGES/slides/slide-5.png" alt="">
-                            </div>
-                            <div class="group-info">
-                                <h4 class="group-info-name">Antifan</h4>
-                                <p>30 thành viên</p>
-                                <button>Tham gia</button>
-                            </div>
-                        </div>
-                        <div class="group-item">
-                            <div class="group-img">
-                                <img src="../IMAGES/slides/slide-5.png" alt="">
-                            </div>
-                            <div class="group-info">
-                                <h4 class="group-info-name">Antifan</h4>
-                                <p>30 thành viên</p>
-                                <button>Tham gia</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="group-content">
-                        <div class="group-item">
+                        <!-- <div class="group-item">
                             <div class="group-img">
                                 <img src="../IMAGES/slides/slide-5.png" alt="">
                             </div>
@@ -215,18 +188,110 @@
                                 <button>Tham gia</button>
                             </div>
                         </div>
-                    </div>
+                        <div class="group-item">
+                            <div class="group-img">
+                                <img src="../IMAGES/slides/slide-5.png" alt="">
+                            </div>
+                            <div class="group-info">
+                                <h4 class="group-info-name">Antifan</h4>
+                                <p>30 thành viên</p>
+                                <button>Tham gia</button>
+                            </div>
+                        </div>
+                        <div class="group-item">
+                            <div class="group-img">
+                                <img src="../IMAGES/slides/slide-5.png" alt="">
+                            </div>
+                            <div class="group-info">
+                                <h4 class="group-info-name">Antifan</h4>
+                                <p>30 thành viên</p>
+                                <button>Tham gia</button>
+                            </div>
+                        </div>
+                        <div class="group-item">
+                            <div class="group-img">
+                                <img src="../IMAGES/slides/slide-5.png" alt="">
+                            </div>
+                            <div class="group-info">
+                                <h4 class="group-info-name">Antifan</h4>
+                                <p>30 thành viên</p>
+                                <button>Tham gia</button>
+                            </div>
+                        </div>
+                        <div class="group-item">
+                            <div class="group-img">
+                                <img src="../IMAGES/slides/slide-5.png" alt="">
+                            </div>
+                            <div class="group-info">
+                                <h4 class="group-info-name">Antifan</h4>
+                                <p>30 thành viên</p>
+                                <button>Tham gia</button>
+                            </div>
+                        </div>
+                        <div class="group-item">
+                            <div class="group-img">
+                                <img src="../IMAGES/slides/slide-5.png" alt="">
+                            </div>
+                            <div class="group-info">
+                                <h4 class="group-info-name">Antifan</h4>
+                                <p>30 thành viên</p>
+                                <button>Tham gia</button>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- <div class="group-content">
+                        <div class="group-item">
+                            <div class="group-img">
+                                <img src="../IMAGES/slides/slide-5.png" alt="">
+                            </div>
+                            <div class="group-info">
+                                <h4 class="group-info-name">Antifan</h4>
+                                <p>30 thành viên</p>
+                                <button>Tham gia</button>
+                            </div>
+                        </div>
+                        <div class="group-item">
+                            <div class="group-img">
+                                <img src="../IMAGES/slides/slide-5.png" alt="">
+                            </div>
+                            <div class="group-info">
+                                <h4 class="group-info-name">Antifan</h4>
+                                <p>30 thành viên</p>
+                                <button>Tham gia</button>
+                            </div>
+                        </div>
+                        <div class="group-item">
+                            <div class="group-img">
+                                <img src="../IMAGES/slides/slide-5.png" alt="">
+                            </div>
+                            <div class="group-info">
+                                <h4 class="group-info-name">Antifan</h4>
+                                <p>30 thành viên</p>
+                                <button>Tham gia</button>
+                            </div>
+                        </div>
+                        <div class="group-item">
+                            <div class="group-img">
+                                <img src="../IMAGES/slides/slide-5.png" alt="">
+                            </div>
+                            <div class="group-info">
+                                <h4 class="group-info-name">Antifan</h4>
+                                <p>30 thành viên</p>
+                                <button>Tham gia</button>
+                            </div>
+                        </div>
+                    </div> -->
                 </div>
             </div>
 
-            <div class="pagination">
+            <!-- <div class="pagination">
                 <li class="page-item previous-page disable"><a class="page-link" href="#">Prev</a></li>
                 <li class="page-item current-page active"><a class="page-link" href="#">1</a></li>
                 <li class="page-item current-page"><a class="page-link" href="#">2</a></li>
                 <li class="page-item current-page"><a class="page-link" href="#">3</a></li>
                 <li class="page-item current-page"><a class="page-link" href="#">4</a></li>
                 <li class="page-item next-page"><a class="page-link" href="#">Next</a></li>
-            </div>
+            </div> -->
         </div>
 
         <!-- ----------- FOOTER -------------- -->

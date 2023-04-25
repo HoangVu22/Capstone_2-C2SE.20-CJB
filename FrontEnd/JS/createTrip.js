@@ -7,54 +7,22 @@ const headerFormLogout = document.querySelector(".header-form-logout");
 const login = JSON.parse(window.localStorage.getItem("login"));
 
 const destinationInput = $(".diemden");
-const destinationSuggestList = $(".destination-list");
+const destinationSuggestList = $(".destination-location-suggestion");
+const currentLocationInupt = $('.diemxuatphat')
+const currentLocationSuggestList = $('.current-location-suggestion')
 
-let listPlace = [];
-
-const controller = new AbortController();
-const searching = (value) => {
-  const NOMINATIM_BASE_URL = "https://nominatim.openstreetmap.org/search?";
-  const params = {
-    limit: 5,
-   // country: "vietnam",
-    q: value,
-    format: "json",
-    //addressdetails: "addressdetails",
-    addressdetails: 1,
-    polygon_geojson: 0,
-  };
-  const queryString = new URLSearchParams(params).toString();
-  const requestOptions = {
-    method: "get",
-    redirect: "follow",
-    signal: controller.signal,
-  };
-  fetch(`${NOMINATIM_BASE_URL}${queryString}`, requestOptions)
-    .then((response) => response.text())
-    .then((result) => {
-      listPlace = JSON.parse(result);
-    })
-    .catch((error) => console.log({ error }));
-};
-
-const debounce = (func, timeout = 300) => {
-  let timer;
-  return () => {
-    clearTimeout(timer);
-    timer = setTimeout(() => {
-      func();
-    }, timeout);
-  };
-};
-
-destinationInput.onkeypress = (e) => {
-  if (e.key === "Enter") {
-    console.log(e.target.value);
-    debounce(() => searching(e.target.value), 0)();
-    const places = listPlace.map((place) => `<li class="destination-item"><p>${place.display_name}</p></li>`).join("");
-    destinationSuggestList.innerHTML = places;
-  }
-};
+const createTourState = {
+  name: "",
+  owner_id: "",
+  description: "",
+  from_date: "",
+  to_date: "",
+  lat: "",
+  lon: "",
+  from_where: "",
+  to_where: "",
+  room_id: ""
+}
 
 const mapDOM = $(".form-map");
 const map = L.map(mapDOM).setView([51.505, -0.09], 13);
@@ -71,11 +39,138 @@ map.on("click", (e) => {
   });
 });
 
+let listPlace = [];
+
+const handleDestinationSuggestItemClick = (doms, parent) => {
+  doms.forEach(item => {
+    item.onclick = () => {
+      const { lat, lon } = item.dataset
+      // gán lat, lon cho biến bất kỳ để có thể ném vào trong call api create-tour, ví dụ: a = lat; b = lon
+      const marker = L.marker([lat, lon], { draggable: true }).addTo(map)
+      map.flyTo([lat, lon], 19)
+      marker.on('dragend', (e) => {
+
+      })
+      parent.innerHTML = null
+    }
+  })
+}
+
+const handleCurrentLocationSuggestItemClick = (doms) => {
+  doms.forEach(item => {
+    item.onclick = () => {
+      const { lat, lon } = item.dataset
+      const name = item.innerText
+      console.log(name)
+      // gán name của điểm xuất phát, ví dụ: a = name
+      const marker = L.marker([lat, lon], { draggable: true }).addTo(map)
+      map.flyTo([lat, lon], 19)
+      marker.on('dragend', (e) => {
+
+      })
+      doms.innerHTML = null
+    }
+  })
+}
+let aborter = null
+const searching = (value, listdom, itemclass, func) => {
+  if (aborter) {
+    aborter.abort()
+  }
+  aborter = new AbortController()
+  const NOMINATIM_BASE_URL = "https://nominatim.openstreetmap.org/search?";
+  const params = {
+    limit: 5,
+    q: value,
+    format: "json",
+    addressdetails: 1,
+    polygon_geojson: 0,
+  };
+  const queryString = new URLSearchParams(params).toString();
+  const requestOptions = {
+    method: "get",
+    redirect: "follow",
+    signal: aborter.signal,
+  };
+  fetch(`${NOMINATIM_BASE_URL}${queryString}`, requestOptions)
+    .then((response) => response.text())
+    .then((result) => {
+      listPlace = JSON.parse(result);
+      const places = listPlace.map((place) => `<li data-lat="${place.lat}" data-lon="${place.lon}" class="destination-item"><p>${place.display_name}</p></li>`).join("");
+      listdom.innerHTML = places;
+      const itemdoms = listdom.querySelectorAll(`.${itemclass}`)
+      func(itemdoms, listdom)
+    })
+    .catch(error => console.log(error))
+};
+
+const debounce = (func, timeout = 300) => {
+  let timer;
+  return () => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      func();
+    }, timeout);
+  };
+};
+
+destinationInput.onkeydown = (e) => {
+  debounce(() => searching(e.target.value, destinationSuggestList, 'destination-item', handleDestinationSuggestItemClick), 0)();
+};
+
+currentLocationInupt.onkeydown = (e) => {
+  debounce(() => searching(e.target.value, currentLocationSuggestList, 'destination-item', handleCurrentLocationSuggestItemClick), 0)()
+}
+
+// ------------------------------------------------------------------------------
+
+// if (login) {
+//     headerNavForm.onclick = function () {
+//         if (headerForm.style.display === "none") {
+//             headerForm.style.display = "block";
+//             headerFormLogout.style.display = "block";
+//         } else {
+//             headerForm.style.display = "none";
+//             headerFormLogout.style.display = "none";
+//         }
+//     };
+// } else {
+//     headerNavForm.onclick = function () {
+//         if (headerForm.style.display === "none") {
+//             headerForm.style.display = "block";
+//             headerFormLogin.style.display = "block";
+//         } else {
+//             headerForm.style.display = "none";
+//             headerFormLogin.style.display = "none";
+//         }
+//     };
+// }
+
+const logout = $('.form-logout');
+logout.onclick = () => {
+  alert('Bạn chắc chắn muốn thoát ?')
+  window.localStorage.clear();
+  window.location.reload(true);
+  window.location.href = 'http://127.0.0.1:5500/CAPSTONE2/FrontEnd/HTML/home.html';
+}
+
+
+const names = $(".header-name1");
+const avatarUser = $("#avatar_user");
+if (login?.msg === "Đăng nhập thành công") {
+    names.innerText = login?.user_info.name;
+    avatarUser.src = login?.user_info.user_profile[0].avatar;
+} else {
+    names.innerText = login?.user_info.name;
+    avatarUser.src = login?.user_info.user_profile[0].avatar;
+}
+
 if (login) {
   headerNavForm.onclick = function () {
     if (headerForm.style.display === "none") {
       headerForm.style.display = "block";
       headerFormLogout.style.display = "block";
+      headerFormLogin.style.display = "none";
     } else {
       headerForm.style.display = "none";
       headerFormLogout.style.display = "none";
@@ -86,6 +181,7 @@ if (login) {
     if (headerForm.style.display === "none") {
       headerForm.style.display = "block";
       headerFormLogin.style.display = "block";
+      headerFormLogout.style.display = "none";
     } else {
       headerForm.style.display = "none";
       headerFormLogin.style.display = "none";
@@ -93,23 +189,6 @@ if (login) {
   };
 }
 
-const logout = document.getElementsByClassName("form-logout");
-logout.onclick = () => {
-  alert("Bạn chắc chắn muốn thoát ?");
-  window.localStorage.clear();
-  window.location.reload(true);
-  window.location.href = "http://127.0.0.1:5503/Capstone_2-C2SE.20-CJB/FrontEnd/HTML/login-register.html";
-};
-
-const names = $(".header-name1");
-const avatarUser = $("#avatar_user");
-if (login?.msg === "Đăng nhập thành công") {
-  names.innerText = login?.user_info.name;
-  avatarUser.src = login?.user_info.user_profile[0].avatar;
-} else {
-  names.innerText = login?.user_info.name;
-  avatarUser.src = login?.user_info.user_profile[0].avatar;
-}
 
 // ---------------create trip --------------------
 
@@ -170,39 +249,75 @@ const denngay = $(".denngay");
 const songuoi = $(".songuoi");
 const kinhdo = $(".kinhdo");
 const vido = $(".vido");
-const motachuyendi = $(".motachuyendi");
+const motachuyendi = $(".description");
+
+motachuyendi.onchange = (e) => {
+  console.log(e.target.value);
+}
+
 
 const btnCreateTrip = $(".create-trip");
 console.log(btnCreateTrip);
 btnCreateTrip.onclick = () => {
-  fetch("http://127.0.0.1:8000/api/personal/tour/create", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      name: tenchuyendi.value,
-      owner_id: login.user_info.user_profile[0].user_id,
-      from_date: tungay.value,
-      to_date: denngay.value,
-      lat: vido.value,
-      lon: kinhdo.value,
-      from_where: diemxuatphat.value,
-      to_where: diemden.value,
-      room_id: 1,
-    }),
-    data: {
-      name: tenchuyendi.value,
-      owner_id: login.user_info.user_profile[0].user_id,
-      from_date: tungay.value,
-      to_date: denngay.value,
-      lat: vido.value,
-      lon: kinhdo.value,
-      from_where: diemxuatphat.value,
-      to_where: diemden.value,
-      room_id: 1,
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => console.log(data));
+    fetch("http://127.0.0.1:8000/api/personal/tour/create", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            name: tenchuyendi.value,
+            owner_id: login.user_info.user_profile[0].user_id,
+            from_date: tungay.value,
+            to_date: denngay.value,
+            lat: 234723, //vido.value,
+            lon: 234324,//kinhdo.value,
+            from_where: diemxuatphat.value,
+            to_where: diemden.value,
+            room_id: login.user_info.user_profile[0].user_id,
+            description:motachuyendi.value, 
+        }),
+        data: {
+            name: tenchuyendi.value,
+            owner_id: login.user_info.user_profile[0].user_id,
+            from_date: tungay.value,
+            to_date: denngay.value,
+            lat: 234723,//vido.value,
+            lon: 234324,//kinhdo.value,
+            from_where: diemxuatphat.value,
+            to_where: diemden.value,
+            room_id: login.user_info.user_profile[0].user_id,
+            description:motachuyendi.value, 
+        },
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data)
+            window.location.href = "http://127.0.0.1:5500/CAPSTONE2/FrontEnd/HTML/profile.html";
+        });
+
 };
+
+
+// ------------------------------- image -----------------------
+
+const uploadImage = $(".upload_image");
+console.log(uploadImage); 
+const importImage = $(".input_image")
+
+let objImage;
+uploadImage.onclick = () => {
+  importImage.click();
+  importImage.onchange = (e) => {
+    objImage = URL.createObjectURL(e.target.files[0]);
+    uploadImage.style.backgroundImage = `url('${objImage}')`;
+  };
+};
+
+
+if(!login)
+{
+  btnCreateTrip.disabled = true;
+  console.log(1);
+} else {
+  btnCreateTrip.enabled = true;
+}

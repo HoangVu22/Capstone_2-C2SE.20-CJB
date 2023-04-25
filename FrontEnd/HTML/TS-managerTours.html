@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/css/swiper.min.css"
         integrity="sha512-FCU4ZL4ubM4eDxvQQ9SqMmH+UQ9t0noKHj/cfky4whdWnyBgp+NF2ykUBgsyx8Iv+XtM3aXZ8jmFs4uLnT+Vng=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../CSS/TS-managerTours.css">
+    <link rel="stylesheet" href="../CSS/TS-manageTours.css">
     <title>CJB</title>
 </head>
 
@@ -42,7 +42,7 @@
                                 <div class="content-logout">
                                     <a href="./profile.html" class="avatar-login">
                                         <div class="header-form-avatar">
-                                            <img src="../image/avatars/avatar_1.jpg" alt="">
+                                            <img src="" alt="">
                                             <div class="header-name">
                                                 <span>NguyenHoangVu</span>
                                                 <p>Xem hồ sơ</p>
@@ -85,158 +85,22 @@
                             onkeyup="searchResidence()">
                     </div>
                 </div>
-
                 <table class="container-nav">
-                    <tr>
-                        <th>LISTING TITLE</th>
-                        <th>NGÀY ĐĂNG</th>
-                        <th>ĐÃ THAM GIA</th>
-                        <th>TRẠNG THÁI</th>
-                        <th>HÀNH ĐỘNG</th>
-                    </tr>
-                    <tr class="list-residence">
-                        <td class="list-content list-info">
-                            <div class="list-info-img">
-                                <img src="../IMAGES/slides/slide-5.png" alt="">
-                            </div>
-                            <div class="list-info-content">
-                                <h3>Chuyến đi tử thần</h3>
-                                <span>
-                                    <i class="fa-solid fa-location-dot"></i>
-                                    <p>Nơi khởi hành: TP HCM</p>
-                                </span>
-                                <span>
-                                    <i class="fa-solid fa-street-view"></i>
-                                    <p>Số lượng người: 30</p>
-                                </span>
-                                <span>
-                                    <i class="fa-solid fa-sack-dollar"></i>
-                                    <p>Giá tiền: 1.000.000 / người</p>
-                                </span>
-                            </div>
-                        </td>
-                        <td class="list-content list-date">
-                            <p>12 tháng 3 , 2023</p>
-                        </td>
-                        <td class="list-content list-jojned">
-                            <p>100</p>
-                        </td>
-                        <td class="list-content list-jojned status-green">
-                            <button>Đang đi</button>
-                        </td>
-                        <td class="list-content list-action">
-                            <div class="" style="display: flex; align-items: center; justify-content: center; text-align: center;">
-                                <a href="./TS-postTour.html">
-                                    <i class="fa-solid fa-pencil"></i>
-                                </a>
-                                <!-- <i class="fa-solid fa-trash-can"></i> -->
-                                <a href="#modal-opened" class="link-1" id="modal-closed"><i class="fa-solid fa-trash-can"></i></a>
-                            </div>
-
-                            <div class="modal-container" id="modal-opened">
-                                <div class="modal">
-
-                                    <div class="modal__details">
-                                        <h1 class="modal__title">Xác nhận xóa</h1>
-                                        <p class="modal__description">Bạn có thật sự muốn xóa hay không ?</p>
-                                    </div>
-
-                                    <div class="">
-                                        <button class="modal__btn">No</button>
-                                        <button class="modal__btn">Yes</button>
-                                    </div>
-
-                                    <a href="#modal-closed" class="link-2"></a>
-
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="list-residence">
-                        <td class="list-content list-info">
-                            <div class="list-info-img">
-                                <img src="../IMAGES/slides/slide-5.png" alt="">
-                            </div>
-                            <div class="list-info-content">
-                                <h3>Chuyến đi tử thần</h3>
-                                <span>
-                                    <i class="fa-solid fa-location-dot"></i>
-                                    <p>Nơi khởi hành: TP HCM</p>
-                                </span>
-                                <span>
-                                    <i class="fa-solid fa-street-view"></i>
-                                    <p>Số lượng người: 30</p>
-                                </span>
-                                <span>
-                                    <i class="fa-solid fa-sack-dollar"></i>
-                                    <p>Giá tiền: 1.000.000 / người</p>
-                                </span>
-                            </div>
-                        </td>
-                        <td class="list-content list-date">
-                            <p>12 tháng 3 , 2023</p>
-                        </td>
-                        <td class="list-content list-jojned">
-                            <p>100</p>
-                        </td>
-                        <td class="list-content list-jojned status-yellow">
-                            <button>Chưa đi</button>
-                        </td>
-                        <td class="list-content list-action">
-                            <a href="./TS-postTour.html">
-                                <i class="fa-solid fa-pencil"></i>
-                            </a>
-                            <i class="fa-solid fa-trash-can"></i>
-                        </td>
-                    </tr>
-                    <tr class="list-residence">
-                        <td class="list-content list-info">
-                            <div class="list-info-img">
-                                <img src="../IMAGES/slides/slide-5.png" alt="">
-                            </div>
-                            <div class="list-info-content">
-                                <h3>Chuyến đi tử thần</h3>
-                                <span>
-                                    <i class="fa-solid fa-location-dot"></i>
-                                    <p>Nơi khởi hành: TP HCM</p>
-                                </span>
-                                <span>
-                                    <i class="fa-solid fa-street-view"></i>
-                                    <p>Số lượng người: 30</p>
-                                </span>
-                                <span>
-                                    <i class="fa-solid fa-sack-dollar"></i>
-                                    <p>Giá tiền: 1.000.000 / người</p>
-                                </span>
-                            </div>
-                        </td>
-                        <td class="list-content list-date">
-                            <p>12 tháng 3 , 2023</p>
-                        </td>
-                        <td class="list-content list-jojned">
-                            <p>100</p>
-                        </td>
-                        <td class="list-content list-jojned status-red">
-                            <button>Đã đi</button>
-                        </td>
-                        <td class="list-content list-action">
-                            <a href="./TS-postTour.html">
-                                <i class="fa-solid fa-pencil"></i>
-                            </a>
-                            <i class="fa-solid fa-trash-can"></i>
-                        </td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>LISTING TITLE</th>
+                            <th>NGÀY ĐĂNG</th>
+                            <th>ĐÃ THAM GIA</th>
+                            <th>TRẠNG THÁI</th>
+                            <th>HÀNH ĐỘNG</th>
+                        </tr>
+                    </thead>
+                    <tbody class="list-tour">
+                    </tbody>
                 </table>
+
             </div>
 
-            <div class="pagination">
-                <li class="page-item previous-page disable"><a class="page-link" href="#">Prev</a></li>
-                <li class="page-item current-page active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item current-page"><a class="page-link" href="#">2</a></li>
-                <li class="page-item current-page"><a class="page-link" href="#">3</a></li>
-                <li class="page-item current-page"><a class="page-link" href="#">4</a></li>
-                <li class="page-item next-page"><a class="page-link" href="#">Next</a></li>
-            </div>
         </div>
 
         <!-- ----------- FOOTER -------------- -->
@@ -330,7 +194,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script src="../JS/TS-managerTours.js"></script>
+    <script src="../JS/TS-manageTour.js"></script>
 </body>
 
 </html>
