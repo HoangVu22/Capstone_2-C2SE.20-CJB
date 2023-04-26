@@ -20,7 +20,7 @@ use App\Http\Controllers\UserController;
 //     })->name('dashboard');
 // });
 // code for dev
-Route::get('/dashboard', function () {
+Route::get('/', function () {
     return view('pages.dashboard');
 })->name('dashboard');
 
@@ -29,5 +29,6 @@ Route::controller(UserController::class)->group(function () {
         Route::get('/', 'index')->name('user');
         Route::get('/create', 'create')->name('user.create');
         Route::post('/create', 'store')->name('user.store');
+        Route::get('/{id}', 'show')->name('user.show');
     });
 });

@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('tittle')
-    Create
+    {{ $title }}
 @endsection
 
 @section('content')

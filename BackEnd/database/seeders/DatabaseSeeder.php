@@ -37,14 +37,13 @@ class DatabaseSeeder extends Seeder
             'phone_number' => "021736321",
             'is_Admin' => false,
             'user_roles' => 'user',
-            'about' => "Death is like the wind, always by my side",
+            'about' => "Trường đầu bò ăn hại ngu si tứ tri phát triển :)",
         ]);
 
         UserProfile::create([
-            'user_id' => 1,
-            'gender' => 'male',
-            'avatar' => "https://scontent.fdad3-5.fna.fbcdn.net/v/t39.30808-6/323952197_567233611560466_7304591525322997827_n.jpg?_nc_cat=106&ccb=1-
-            7&_nc_sid=09cbfe&_nc_ohc=uMNInV918rgAX-D1MHH&_nc_ht=scontent.fdad3-5.fna&oh=00_AfDE2DudSyD_Uredi03XLsCYCxDtCxPsYmxgiPaQXNs3_g&oe=643A5F44",
+            'user_id' => 2,
+            'gender' => 'female',
+            'avatar' => "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQElwzWmZoog_w97HKC4Birkcqac1I_z1ZJKw&usqp=CAU",
         ]);
 
         User::create([
@@ -58,9 +57,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         UserProfile::create([
-            'user_id' => 2,
-            'gender' => 'female',
-            'avatar' => "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOnUBiI51lBoTRhYTJHEh8eM4BUb66vN5BeQ&usqp=CAU",
+            'user_id' => 3,
+            'gender' => 'male',
+            'avatar' => "https://cdn2.vectorstock.com/i/1000x1000/47/61/web-developer-design-vector-6584761.jpg",
         ]);
 
         User::create([
@@ -74,7 +73,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         TSProfile::create([
-            'user_id' => 3,
+            'user_id' => 4,
             'avatar' => "https://haycafe.vn/wp-content/uploads/2021/12/hinh-anh-anime-nam-1.jpg",
         ]);
 
@@ -89,7 +88,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         TSProfile::create([
-            'user_id' => 4,
+            'user_id' => 5,
             'avatar' => "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrmlMm8jN0GqRjo2L9b6OBtm8gJbJS9cIZfw&usqp=CAU",
         ]);
 
@@ -259,6 +258,15 @@ class DatabaseSeeder extends Seeder
             'tour_id' => 3,
         ]);
 
-        User::factory(50)->create();
+        User::factory(50)->create([
+            'user_roles' => 'user'
+        ]);
+        
+        User::factory(50)->create([
+            'user_roles' => 'ts'
+        ]);
+
+        UserProfile::factory(50)->create();
+        TSProfile::factory(50)->create();
     }
 }

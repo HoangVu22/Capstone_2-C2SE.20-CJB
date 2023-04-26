@@ -82,4 +82,8 @@ class User extends Authenticatable
     public function userProfile(){
         return $this->hasOne(UserProfile::class, 'user_id', 'id');
     }
+
+    public function tsProfile(){
+        return $this->hasOne(TSProfile::class, 'user_id', 'id');
+    }
 }

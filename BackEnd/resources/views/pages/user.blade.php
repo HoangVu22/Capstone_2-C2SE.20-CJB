@@ -76,7 +76,7 @@
                                             <td>{{ $user->phone_number }}</td>
                                             <td style="width: 176px;">
                                                 <a class="btn btn-outline-info user_list_btn"
-                                                    href="#">
+                                                    href="{{ route('user.show', ['id' => $user->id]) }}">
                                                     <i class="bi bi-person-vcard"></i>
                                                 </a>
                                                 <a class="btn btn-outline-success user_list_btn"
