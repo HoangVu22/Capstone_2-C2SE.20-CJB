@@ -57,18 +57,6 @@ class UserController extends Controller
     {
         $data = UserProfile::with('user')->where('user_id', $id)->get();
         $data = sizeof($data) === 0 ? TSProfile::with('user')->where('user_id', $id)->get() : $data;
-//         id": 2,
-//   "user_id": 3,
-//   "gender": "male",
-//   "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOnUBiI51lBoTRhYTJHEh8eM4BUb66vN5BeQ&usqp=CAU",
-//   "user": {
-//     "id": 3,
-//     "name": "Tân",
-//     "email": "tan123@gmail.com",
-//     "is_admin": 0,
-//     "user_roles": "user",
-//     "phone_number": "021736321",
-//     "about": "Solo yasuo?"
   
         return view('pages.userDetail', [
             'profile' => $data[0],
@@ -80,15 +68,25 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = UserProfile::with('user')->where('user_id', $id)->get();
+        $data = sizeof($data) === 0 ? TSProfile::with('user')->where('user_id', $id)->get() : $data;
+  
+        return view('pages.userEdit', [
+            'profile' => $data[0],
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UserRequest $request, User $user)
     {
-        //
+        $request = isset($request->password) 
+                   ? $request->validated() 
+                   : $request->except(['password']);
+
+        $user->update($request);
+        return redirect()->route('user.show', ['id' => $request['id']])->with('success', 'Updated successfully!');
     }
 
     /**

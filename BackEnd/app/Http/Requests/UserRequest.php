@@ -23,10 +23,10 @@ class UserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => 'required|email|max:50|unique:App\Models\User,email',
-            'password' => 'required|min:8|max:25|regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#])(?=.*[0-9])(?=[^\s])/',
+            'email' => 'required|email|max:50|unique:App\Models\User,email,' . $this->id,
+            'password' => empty($this->id) ? 'required|min:8|max:25|regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#])(?=.*[0-9])(?=[^\s])/' : 'nullable',
             'name' => 'required|max:50',
-            'phone_number' => 'required|numeric|min:9|unique:App\Models\User,phone_number',
+            'phone_number' => "required|numeric|min:9|unique:App\Models\User,phone_number,$this->id",
             'user_roles' => [
                 'required',
                 Rule::in(['user', 'ts'])

@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
             'name' => "Trường",
             'email' => "letruong02072001@gmail.com",
             'password' => 'truongboanhai', //123456
-            'phone_number' => "021736321",
+            'phone_number' => "0192197",
             'is_Admin' => false,
             'user_roles' => 'user',
             'about' => "Trường đầu bò ăn hại ngu si tứ tri phát triển :)",
@@ -50,7 +50,7 @@ class DatabaseSeeder extends Seeder
             'name' => "Tân",
             'email' => "tan123@gmail.com",
             'password' => 'truongboanhai', //123456
-            'phone_number' => "021736321",
+            'phone_number' => "023428468",
             'is_Admin' => false,
             'user_roles' => 'user',
             'about' => "Solo yasuo?",
@@ -66,7 +66,7 @@ class DatabaseSeeder extends Seeder
             'name' => "Vũ",
             'email' => "vu123@gmail.com",
             'password' => 'truongboanhai', //123456
-            'phone_number' => "021736321",
+            'phone_number' => "02936942",
             'is_Admin' => false,
             'user_roles' => 'ts',
             'about' => "Your will, my hand",
@@ -81,7 +81,7 @@ class DatabaseSeeder extends Seeder
             'name' => "Hằng",
             'email' => "hang123@gmail.com",
             'password' => 'truongboanhai', //123456
-            'phone_number' => "021736321",
+            'phone_number' => "02349294",
             'is_Admin' => false,
             'user_roles' => 'ts',
             'about' => "Solo ys?",

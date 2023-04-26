@@ -20,7 +20,7 @@ class UserFactory extends Factory
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
-            'phone_number' => fake()->unique()->phoneNumber(),
+            'phone_number' => '0' . fake()->unique()->numberBetween(100000000, 99999999999999),
             'is_Admin' => false,
             'user_roles' => array_rand(['user' => 1, 'ts' => 2]),
             'email_verified_at' => now(),
