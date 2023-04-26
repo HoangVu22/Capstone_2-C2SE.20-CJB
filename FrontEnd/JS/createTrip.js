@@ -27,7 +27,7 @@ const createTourState = {
 const mapDOM = $(".form-map");
 const map = L.map(mapDOM).setView([51.505, -0.09], 13);
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  maxZoom: 19,
+  maxZoom: 25,
   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 }).addTo(map);
 
@@ -47,7 +47,7 @@ const handleDestinationSuggestItemClick = (doms, parent) => {
       const { lat, lon } = item.dataset
       // gán lat, lon cho biến bất kỳ để có thể ném vào trong call api create-tour, ví dụ: a = lat; b = lon
       const marker = L.marker([lat, lon], { draggable: true }).addTo(map)
-      map.flyTo([lat, lon], 19)
+      map.flyTo([lat, lon], 25)
       marker.on('dragend', (e) => {
 
       })
@@ -80,7 +80,7 @@ const searching = (value, listdom, itemclass, func) => {
   aborter = new AbortController()
   const NOMINATIM_BASE_URL = "https://nominatim.openstreetmap.org/search?";
   const params = {
-    limit: 5,
+    limit: 100,
     q: value,
     format: "json",
     addressdetails: 1,
