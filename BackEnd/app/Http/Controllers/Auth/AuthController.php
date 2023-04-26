@@ -16,12 +16,12 @@ class AuthController extends Controller
     //
     public function login(Request $request){
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
-            // $request->session()->regenerate();
-
             if(Auth::user()->is_Admin == true){
-                return ;
+                return redirect()->route('dashboard');
             }
             else{
+                setcookie('userId', Auth::user()->id);// cookies available in 2 hours
+                // dd($_COOKIE['userId']);
                 return response()->json(['msg' => 'Đăng nhập thành công', 
                                         'user_info' =>
                                             new UserInfoResource(User::find(Auth::user()->id)),
@@ -88,7 +88,7 @@ class AuthController extends Controller
             'name' => $request->name,
             'email' => $email,
             'phone_number' => $request->phone_number,
-            'password' => Hash::make($request->password),
+            'password' => $request->password,
             'is_Admin' => false,
             'user_roles' => "ts",
         ]);

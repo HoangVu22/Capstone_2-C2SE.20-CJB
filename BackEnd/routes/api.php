@@ -62,6 +62,7 @@ Route::prefix('ts/tour')->group(function(){
 });
 
 Route::prefix('personal/tour')->group(function(){
+    Route::get('/', [PersonalToursController::class, 'index']);
     Route::post('/create', [PersonalToursController::class, 'store']);
     Route::get('/show/{id}', [PersonalToursController::class, 'show']);
     Route::put('/update/{id}', [PersonalToursController::class, 'update']);
@@ -88,7 +89,7 @@ Route::prefix('friend')->group(function(){
 });
 
 Route::prefix('payment')->group(function(){
-    Route::get('/', [CheckoutController::class, 'payment']);
+    Route::get('/', [CheckoutController::class, 'payment'])->name('payment');
     Route::post('/', [CheckoutController::class, 'checkout']);
     Route::get('/done', [CheckoutController::class, 'done'])->name('done');
 });

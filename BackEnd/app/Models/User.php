@@ -11,6 +11,8 @@ use App\Models\PersonalTours;
 use App\Models\Tours;
 use App\Models\Rooms;
 use App\Models\UserProfile;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Support\Facades\Hash;
 
 // use App\Models\Scopes\ExceptScope;
  
@@ -47,6 +49,16 @@ class User extends Authenticatable
     ];
 
     /**
+     * Interact with the user's first name.
+     */
+    protected function password(): Attribute
+    {
+        return Attribute::make(
+            set: fn (string $value) => $value !== '' ? Hash::make($value) : $value,
+        );
+    }
+
+    /**
      * The attributes that should be cast.
      *
      * @var array<string, string>
@@ -69,5 +81,9 @@ class User extends Authenticatable
 
     public function userProfile(){
         return $this->hasOne(UserProfile::class, 'user_id', 'id');
+    }
+
+    public function tsProfile(){
+        return $this->hasOne(TSProfile::class, 'user_id', 'id');
     }
 }

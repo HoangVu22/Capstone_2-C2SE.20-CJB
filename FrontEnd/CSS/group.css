@@ -411,6 +411,10 @@ body {
 .group-content {
   margin-top: 20px;
   display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  height: 500px;
+  overflow-x: scroll;
 }
 
 .group-item {
@@ -421,6 +425,7 @@ body {
   margin: 0 20px;
   text-align: center;
   cursor: pointer;
+  margin-bottom: 20px;
 }
 
 .create-group {
@@ -444,6 +449,23 @@ body {
 .group-img {
   width: 100%;
 }
+
+/* ----------------------------------------- */
+
+.sub-title{
+  display: flex;
+}
+
+.fa-users-medical::before{
+  content: "\f060";
+}
+
+.fa-users-medical {
+  font-size: 30px;
+}
+
+/* ---------------------------------------- */
+
 
 .group-img img {
   width: 80%;
@@ -741,7 +763,7 @@ body {
 }
 
 .room-close i {
-  padding: 10px;
+  padding: 10px;    
 }
 
 .room-close:hover {

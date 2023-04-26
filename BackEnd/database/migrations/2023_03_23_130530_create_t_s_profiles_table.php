@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('ts_profiles', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->string('avatar');
+            $table->string('avatar', 2048);
             $table->timestamps();
 
             $table->foreign('user_id')

@@ -37,7 +37,7 @@ const postSchedualAdd = document.querySelector(".post-schedual-add");
 const postSchedualInput = document.querySelector(".post-schedual-input");
 let postControl = document.querySelectorAll(".post-control i");
 
-let id = 0;
+let id;
 const array = [
   {
     id: 0,
@@ -56,40 +56,49 @@ const array = [
   <div class="post-control-input">
                                 <textarea cols="30" rows="10" placeholder="Mô tả nội dung chuyến đi..."></textarea>
                             </div>
-  </div>`,
-  },
+  </div>`
+  }
 ];
+
+function renerList () {
+  console.log(array);
+}
+
+renerList()
+
 postSchedualAdd.onclick = () => {
-  ++id;
+  id++;
   array.push({
-    id,
-    value: `<div class="post-item">
+    id, value: `<div class="post-item">
     <div class="post-control">
     </div>
     <div class="post-control-input">
-                                <input type="text" placeholder="Nhập tên chuyến đi ( Ví dụ: Ngày 1: Đà Nẵng - Hà Nội )">
-                            </div>
-  </div>
-  <div class="post-item">
+      <input type="text" placeholder="Nhập tên chuyến đi ( Ví dụ: Ngày 1: Đà Nẵng - Hà Nội )">
+    </div>
+    </div>
+    <div class="post-item">
     <div class="post-control">
         <i class="fa-solid fa-trash" data-remove=${id}></i>
     </div>
     <div class="post-control-input">
-                                <textarea cols="30" rows="10" placeholder="Mô tả nội dung chuyến đi..."></textarea>
-                            </div>
-  </div>`,
+      <textarea cols="30" rows="10" placeholder="Mô tả nội dung chuyến đi..."></textarea>
+    </div>
+    </div>`
   });
   postSchedualInput.innerHTML = array.map((val) => val.value);
   postControl = document.querySelectorAll(".post-control i");
+  console.log(postControl);
   postControl.forEach((element) => {
     element.onclick = (e) => {
+      console.log(e.target.dataset.remove);
       const re = e.target.dataset.remove;
 
       postSchedualInput.innerHTML = array.map((val) => {
         if (val.id !== Number(re)) {
+          console.log(val.value);
           return val.value;
         } else return "";
-      });
-    };
-  });
+        });
+      };
+    });
 };

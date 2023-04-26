@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::middleware('auth')->group(function () {
+//     Route::get('/dashboard', function () {
+//         return view('pages.dashboard');
+//     })->name('dashboard');
+// });
+// code for dev
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages.dashboard');
+})->name('dashboard');
+
+Route::controller(UserController::class)->group(function () {
+    Route::prefix('user')->group(function () {
+        Route::get('/', 'index')->name('user');
+        Route::get('/create', 'create')->name('user.create');
+        Route::post('/create', 'store')->name('user.store');
+        Route::get('/{id}', 'show')->name('user.show');
+        Route::get('/edit/{id}', 'edit')->name('user.edit');
+        Route::put('/{user}', 'update')->name('user.update');
+    });
 });

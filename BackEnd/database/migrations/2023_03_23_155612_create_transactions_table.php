@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->increments('bankTranNo');
             $table->unsignedInteger('ordered_id');
-            $table->integer('amount');
+            $table->decimal('amount', 15, 4);;
             $table->string('bankCode');
             $table->string('cardType');
             $table->string('responseCode');

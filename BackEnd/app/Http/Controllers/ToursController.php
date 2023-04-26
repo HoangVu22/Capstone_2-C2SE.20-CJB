@@ -80,6 +80,7 @@ class ToursController extends Controller
      */
     public function destroy(Request $request, Tours $tours)
     {
+
         if(Tours::find($request->id) == null){
             return response()->json(['msg' => "Tour không tồn tại", 'status' => 404], 404);
         }

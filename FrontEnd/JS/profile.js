@@ -29,197 +29,271 @@ const inputHobbies = $('.input-hobbies');
 const inputGender = $('#input-gender');
 const login = JSON.parse(window.localStorage.getItem("login"));
 
-
 // ----- my trip----------
-new Swiper(".blog-slider", {
-  spaceBetween: 30,
-  effect: "fade",
-  loop: true,
-  mousewheel: {
-    invert: false,
-  },
-  // autoHeight: true,
-  pagination: {
-    el: ".blog-slider__pagination",
-    clickable: true,
-  },
-});
+// new Swiper(".blog-slider", {
+//     spaceBetween: 30,
+//     effect: "fade",
+//     loop: true,
+//     mousewheel: {
+//         invert: false,
+//     },
+//     // autoHeight: true,
+//     pagination: {
+//         el: ".blog-slider__pagination",
+//         clickable: true,
+//     },
+// });
 
-// -----------------
+// -------------------- render list tour ------------------------
+
+
+function getListTour() {
+    fetch("http://127.0.0.1:8000/api/personal/tour/all/" + login.user_info.user_profile[0].user_id)
+        .then(res => res.json())
+        .then(
+            data => {
+                window.localStorage.setItem("ListTour", JSON.stringify(data.all_tour));
+                return;
+            }
+        )
+}
+
+var sliderFind = $(".swiper-wrapper");
+// console.log(api);
+
+// const api = "http://127.0.0.1:8000/api/personal/tour/all/" + login.user_info.user_profile[0].user_id;
+let htmls = "";
+function renderListTour() {
+    fetch("http://127.0.0.1:8000/api/personal/tour/all/" + login.user_info.user_profile[0].user_id)
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            const tours = data.all_tour;
+            window.localStorage.setItem("dataPersonTour", JSON.stringify(data.all_tour));
+            const listTour = JSON.parse(window.localStorage.getItem("dataPersonTour"));
+            const tourNames = document.querySelectorAll('.blog-slider__item .blog-slider__content .profile-control .blog-slider__button')
+            tourNames.forEach(tourr => {
+                tourr.onclick = (e) => {
+                    localStorage.setItem('targetTourId', e.target.dataset.tourr)
+                    window.location.href = 'http://127.0.0.1:5500/CAPSTONE2/FrontEnd/HTML/detailFind.html'
+                }
+            })
+            htmls = tours.map((tour, index) => {
+                return `
+                <div class="blog-slider__item swiper-slide data-id='${tour.id}'">
+                
+                <div class="blog-slider__img">
+
+                    <img src="https://images.unsplash.com/photo-1512633017083-67231aba710d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80"
+                        alt="">
+                </div>
+                <div class="blog-slider__content">
+                    <div class="blog-slider__title">${tour.name}</div>
+                    <div class="blog-slider__trip">
+                        <p><b>Từ:</b> ${tour.from_where} - <b>Đến:</b> ${tour.to_where}</p>
+                        <p class="tao-them">${tour.from_date}</p>
+                    </div>
+                    <div class="blog-slider__host"><b>Người tạo: </b>${login.user_info.name}</div>
+                    <div class="blog-slider__text"> ${tour.description} </div>
+                    <div class="profile-control">
+                        <div class="">
+                            <a href="../HTML/detailFind.html" class="blog-slider__button" onclick="handle_detail_page(${tour.id})">CHI TIẾT</a>
+                        </div>
+                        <div class="profile-action">
+                            <a href="./createTrip.html">
+                                <i class="fa-solid fa-pencil"></i>
+                            </a>
+                            <i class="fa-solid fa-trash-can btn-delete"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+            });
+            sliderFind.innerHTML = htmls.join("");
+            if (sliderFind.innerHTML) {
+                new Swiper(".blog-slider", {
+                    spaceBetween: 30,
+                    effect: "fade",
+                    loop: true,
+                    mousewheel: {
+                        invert: false,
+                    },
+                    // autoHeight: true,
+                    pagination: {
+                        el: ".blog-slider__pagination",
+                        clickable: true,
+                    },
+                });
+            }
+        })
+}
+
+// const handle_detail_page = $(".blog-slider__button");
+
+function handle_detail_page(e) {
+    window.localStorage.setItem("page-detail", e)
+    console.log(window.localStorage.getItem("page-detail"));
+}
+
+const tourNames = document.querySelectorAll('.blog-slider__item .blog-slider__content .profile-control .btn-delete')
+console.log(tourNames);
+tourNames.forEach((tourr) => {
+    tourr.onclick = (e) => {
+        alert(e.target.dataset.tourr);
+        localStorage.setItem('targetTourId', e.target.dataset.tourr)
+        // e.href = 'http://127.0.0.1:5500/CAPSTONE2/FrontEnd/HTML/detailFind.html'
+    }
+})
+
+
+function start() {
+    renderListTour();
+}
+
+start();
 
 if (!login) {
-  headerFormLogin.style.display = "block";
-  headerFormLogout.style.display = "none";
+    headerFormLogin.style.display = "block";
+    headerFormLogout.style.display = "none";
 } else {
-  headerFormLogout.style.display = "block";
-  headerFormLogin.style.display = "none";
+    headerFormLogout.style.display = "block";;
+    headerFormLogin.style.display = "none";
 }
 const names = $('#header-name1');
 const avatarUser = $('#avatar_user');
 const avatarUser1 = $('.avatar_user_header');
 
 headerNavForm.onclick = function () {
-  if (headerForm.style.display === "none") {
-    headerForm.style.display = "block";
-  } else {
-    headerForm.style.display = "none";
-  }
+    if (headerForm.style.display === "none") {
+        headerForm.style.display = "block";
+    } else {
+        headerForm.style.display = "none";
+    }
 };
-if (login.msg === "Đăng nhập thành công") {
-  names.innerText = login.user_info.name;
-  avatarUser.src = login.user_info.user_profile[0].avatar;
-  avatarUser1.src = login.user_info.user_profile[0].avatar;
-} else {
-
+if (login.status === 200) {
+    names.innerText = login.user_info.name;
+    avatarUser.src = login.user_info.user_profile[0].avatar;
+    avatarUser1.src = login.user_info.user_profile[0].avatar;
 }
-if (login.msg === "Đăng nhập thành công") {
-  names.innerText = login.user_info.name;
-  avatarUser.src = login.user_info.user_profile[0].avatar;
-  avatarUser1.src = login.user_info.user_profile[0].avatar;
+if (login.status === 200) {
+    names.innerText = login.user_info.name;
+    avatarUser.src = login.user_info.user_profile[0].avatar;
+    avatarUser1.src = login.user_info.user_profile[0].avatar;
 } else {
-  names.innerText = login.user_info.name;
-  avatarUser.src = login.user_info.user_profile[0].avatar;
-  avatarUser1.src = login.user_info.user_profile[0].avatar;
+    names.innerText = login.user_info.name;
+    avatarUser.src = login.user_info.user_profile[0].avatar;
+    avatarUser1.src = login.user_info.user_profile[0].avatar;
 }
 
-// ---------------------------------------
+// // ---------------------------------------
 
 
 profileTitleBtn.onclick = function () {
-  if (profileGenaralEdit) {
-    if (profileGenaralEdit.style.display === "block") {
-      profileGenaralEdit.style.display = "none";
-      profileGenaral.style.display = "block";
-    } else {
-      profileGenaralEdit.style.display = "block";
-      profileGenaral.style.display = "none";
+    if (profileGenaralEdit) {
+        if (profileGenaralEdit.style.display === "block") {
+            profileGenaralEdit.style.display = "none";
+            profileGenaral.style.display = "block";
+        } else {
+            profileGenaralEdit.style.display = "block";
+            profileGenaral.style.display = "none";
+        }
     }
-  }
 };
 
 function edit() {
-  profileGenaralEdit.style.display = "none";
-  profileGenaral.style.display = "block";
+    profileGenaralEdit.style.display = "none";
+    profileGenaral.style.display = "block";
 }
 
 btnProfileCancel.onclick = () => {
-  if (profileGenaralEdit.style.display === "block") {
-    profileGenaralEdit.style.display = "none";
-    profileGenaral.style.display = "block";
-  }
+    if (profileGenaralEdit.style.display === "block") {
+        profileGenaralEdit.style.display = "none";
+        profileGenaral.style.display = "block";
+    }
 }
 
-console.log(login);
-
-if (login.msg === 'Đăng nhập thành công') {
-  userName[0].innerText = login.user_info.name;
-  userName[1].innerText = login.user_info.name;
-  userPhone.innerText = login.user_info.phone_number;
-  userEmail.innerText = login.user_info.email;
-  userGender.innerText = login.user_info.user_profile[0].gender;
-  userAbout.innerText = login.user_info.about;
+if (login.status === 200) {
+    userName[0].innerText = login.user_info.name;
+    userName[1].innerText = login.user_info.name;
+    userPhone.innerText = login.user_info.phone_number;
+    userEmail.innerText = login.user_info.email;
+    userGender.innerText = login.user_info.user_profile[0].gender;
+    userAbout.innerText = login.user_info.about;
 } else {
-  userName[0].innerText = login.user_info.name;
-  userName[1].innerText = login.user_info.name;
-  userPhone.innerText = login.user_info.phone_number;
-  userEmail.innerText = login.user_info.email;
-  userGender.innerText = login.user_info.user_profile[0].gender;
-  userAbout.innerText = login.user_info.about;
+    userName[0].innerText = login.user_info.name;
+    userName[1].innerText = login.user_info.name;
+    userPhone.innerText = login.user_info.phone_number;
+    userEmail.innerText = login.user_info.email;
+    userGender.innerText = login.user_info.user_profile[0].gender;
+    userAbout.innerText = login.user_info.about;
 }
 
-// ------------------- logout -----------------------------
+
+
+// // ------------------- logout -----------------------------
 const logout = $('.form-logout');
 logout.onclick = () => {
-  window.localStorage.clear();
-  window.location.reload(true);
-  window.location.href = 'http://127.0.0.1:5500/FrontEnd/HTML/login-register.html';
+    alert('Bạn chắc chắn muốn thoát ?')
+    window.localStorage.clear();
+    window.location.reload(true);
+    window.location.href = 'http://127.0.0.1:5500/CAPSTONE2/FrontEnd/HTML/home.html';
 }
 
-// -----------------------------------------------------------
 
-console.log(login);
-// console.log(login.user_info.user_profile[0].id);
+// // -----------------------  update profile user ------------------------------------
 
-const apiTSProfile = "http://127.0.0.1:8000/api/ts/profile/update";
 const apiUserProfile = "http://127.0.0.1:8000/api/user/profile/update";
 
 console.log(login.user_info.user_roles);
+console.log(inputAbout);
 
 function getInfoUser() {
-  if (login.user_info.user_roles === 'user') {
-    fetch(apiUserProfile, {
-      method: 'PUT',
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        id: login.user_info.user_profile[0].id,
-        name: inputUserName.value,
-        phone_number: inputPhoneNumber.value,
-        avatar: login.user_info.user_profile[0].avatar,
-        gender: inputGender.value,
-        about: inputAbout.value,
-      }),
-      data: ({
-        id: login.user_info.user_profile[0].id,
-        name: inputUserName.value,
-        phone_number: inputPhoneNumber.value,
-        avatar: login.user_info.user_profile[0].avatar,
-        gender: inputGender.value,
-        about: inputAbout.value,
-      }),
-    })
-      .then(response => response.json())
-      .then(data => {
-        window.localStorage.setItem("login", JSON.stringify(data));
-        const profile = JSON.parse(window.localStorage.getItem("login"));
-        console.log(data);
-        renderUserInfo(profile);
-        alert("Cập nhật thông tin thành công");
-      })
-      .catch(error)(
-        alert(error)
-      )
-  } else {
-    fetch(apiTSProfile, {
-      method: 'PUT',
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        id: login.user_info.user_profile[0].id,
-        name: inputUserName.value,
-        phone_number: inputPhoneNumber.value,
-        avatar: login.user_info.user_profile[0].avatar,  
-      }),
-      data: ({
-        id: login.user_info.user_profile[0].id,
-        name: inputUserName.value,
-        phone_number: inputPhoneNumber.value,
-        avatar: login.user_info.user_profile[0].avatar,  
-      }),
-    })
-      .then(response => { return response.json() })
-      .then(data => {
-        window.localStorage.setItem("login", JSON.stringify(data));
-        const profile = JSON.parse(window.localStorage.getItem("login"));
-        console.log(data);
-        renderUserInfo(profile);
-        alert("Update success.....");
-      })
-      .catch(error)(
-        alert(error)
-      )
-  }
-  window.location.reload();
-}
+     
+        fetch("http://127.0.0.1:8000/api/user/profile/update", {
+            method: 'PUT',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                id: login.user_info.user_profile[0].id,
+                name: inputUserName.value,
+                phone_number: inputPhoneNumber.value,
+                avatar: login.user_info.user_profile[0].avatar,
+                gender: inputGender.value,
+                about: inputAbout.value,
+            }),
+            data: ({
+                id: login.user_info.user_profile[0].id,
+                name: inputUserName.value,
+                phone_number: inputPhoneNumber.value,
+                avatar: login.user_info.user_profile[0].avatar,
+                gender: inputGender.value,
+                about: inputAbout.value,
+            }),
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                window.localStorage.removeItem("login");
+                window.localStorage.setItem("login", JSON.stringify(data));
+                const profile = JSON.parse(window.localStorage.getItem("login"));
+                renderUserInfo(profile);
+                alert("Cập nhật thông tin thành công");
+                window.location.reload(true);
+            })
+            .catch(error)(
+                alert(error)
+            )
+    }
+
 var html_UserInfo = $('.profile-genaral');
 
-// console.log(profile);
+// ----------------------- render user info ------------------------------
 
 function renderUserInfo(obj) {
-  console.log(html_UserInfo);
-  const html = `
+    const html = `
   <div class="profile-title">
   <h2>Hồ sơ của tôi</h2>
   <div class="profile-save">
@@ -243,7 +317,7 @@ function renderUserInfo(obj) {
       </div>
       <div class="form-profile-info">
           <label for="">Giới tính/ Tuổi</label>
-          <div class="form-profile-content user_gender">${obj.user_info.user_profile[0].gender}</div>
+          <div class="form-profile-content user_gender">${'Male'}</div>
       </div>
       <div class="form-line"></div>
       <div class="form-profile-bio">
@@ -269,43 +343,70 @@ function renderUserInfo(obj) {
       </div>
   </form>
 </div> `
-  return html_UserInfo.innerHTML = html;
+    return html_UserInfo.innerHTML = html;
 }
 
-btnUpdate.onclick = () => {
-  getInfoUser();
+console.log(login);
+
+if (login.status === 200) {
+    btnUpdate.onclick = () => {
+        getInfoUser();
+        window.location.reload(true);
+    }
 }
+
+// ------------------------------------------------------------------
 
 inputUserName.onchange = (e) => {
-  console.log(e.target.value);
+    console.log(e.target.value);
 }
 inputPhoneNumber.onchange = (e) => {
-  console.log(e.target.value);
+    console.log(e.target.value);
 }
 inputEmail.disabled = true;
 
 if (login.msg === "Update thành công" || login.status === 200) {
-  inputEmail.value = login.user_info.email;
+    inputEmail.value = login.user_info.email;
 } else {
-  inputEmail.value = login.user_info.email;
+    inputEmail.value = login.user_info.email;
 }
 
 inputGender.onchange = (e) => {
-  console.log(e.target.value);
+    console.log(e.target.value);
 }
 
 inputAbout.onchange = (e) => {
-  console.log(e.target.value)
+    console.log(e.target.value)
 }
 
 
 
-// ------ lịch sử đặt tours---------
+// // ------ lịch sử đặt tours------------------------------------------------
+
 const historyTour = document.querySelector('.history-tour')
 const supplierPages = document.querySelector('.supplierPages')
 const profile = document.querySelector('.profileGenaral')
 
-historyTour.onclick = function () {
-  supplierPages.style.display = 'block'
-  profile.style.display = 'none'
+const newLocal = historyTour.onclick = function () {
+    supplierPages.style.display = 'block';
+    profile.style.display = 'none';
+};
+
+
+// const TourID = $('.blog-slider__button');
+// console.log(TourID);
+// TourID.onclick = (tours) => {
+//     console.dir(this.id);
+// }
+
+// const listTours = JSON.parse(window.localStorage.getItem("ListTour"));
+// console.log(listTours);
+
+
+
+
+const createGroup = $(".create-group");
+createGroup.onclick = () => {
+    window.location.href = "http://127.0.0.1:5500/CAPSTONE2/FrontEnd/HTML/group.html";
 }
+

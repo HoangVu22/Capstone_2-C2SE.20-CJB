@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/css/swiper.min.css"
+        integrity="sha512-FCU4ZL4ubM4eDxvQQ9SqMmH+UQ9t0noKHj/cfky4whdWnyBgp+NF2ykUBgsyx8Iv+XtM3aXZ8jmFs4uLnT+Vng=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/profile.css">
+    <title>CJB</title>
+</head>
+
+<body>
+    <div class="main">
+        <div class="wrapper-header">
+            <div class="detail-header">
+                <a href="./home.html" class="logo"> <img src="../IMAGES/logo/logo-removebg-preview.png" alt=""> </a>
+                <ul class="nav-menu">
+                    <li> <a href="./home.html" class="nav-link">Home</a> </li>
+                    <li> <a href="./bookTour.html" class="nav-link">Tours</a> </li>
+                    <li> <a href="./createTrip.html" class="nav-link">Tạo chuyến đi</a> </li>
+                    <li> <a href="./group.html" class="nav-link">Group</a> </li>
+                    <li> <a href="./TS-home.html" class="nav-link">Trở thành nhà cung cấp</a> </li>
+                    <li> <a href="#" class="nav-link"><ion-icon name="notifications-outline"></ion-icon></a> </li>
+
+                    <div class="header-nav-form">
+                        <div class="header-nav-icon">
+                            <i class="fa-solid fa-user user-icon"></i>
+                            <i class="fa-solid fa-bars"></i>
+                        </div>
+                        <div class="header-form">
+                            <div class="header-form-login">
+                                <ul>
+                                    <li><a href="./login-register.html">Đăng nhập</a></li>
+                                    <li><a href="./login-register.html">Đăng ký</a></li>
+                                </ul>
+                            </div>
+                            <div style="display: none;" class="header-form-logout">
+                                <div class="content-logout">
+                                    <a href="./profile.html" class="avatar-login">
+                                        <div class="header-form-avatar">
+                                            <img src="" alt="" id="avatar_user">
+                                            <div class="header-name">
+                                                TS
+                                                <span id="header-name1">NguyenHoangVu</span>
+                                                <p>Xem hồ sơ</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <span class="drop-line"></span>
+                                    <div class="header-form-booked">
+                                        <i class="fa-sharp fa-solid fa-clock-rotate-left"></i>
+                                        <span>Chuyến đi của tôi</span>
+                                    </div>
+                                    <div class="header-form-loved">
+                                        <i class="fa-regular fa-heart"></i>
+                                        <span>Lịch sử chuyến đi</span>
+                                    </div>
+                                    <div class="form-logout">Đăng xuất</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+        </div>
+
+        <div class="profile-container" style="display: block;">
+            <div class="container">
+                <div class="profile-avatar">
+                    <img src="" alt="" class="avatar_user_header">
+                    <p class="user_name">Nguyễn Hoàng Vũ, Nam</p>
+
+                    <div class="form-wraper">
+                        <div class="form-action create-group">
+                            <i class="fa-solid fa-users"></i>
+                            <p>Tạo nhóm</p>
+                        </div>
+                        <div class="form-action create-group">
+                            <i class="fa-solid fa-users"></i>
+                            <p>Tìm bạn</p>
+                        </div>
+                        <div class="form-action create-group history-tour">
+                            <i class="fa-solid fa-clock-rotate-left"></i>
+                            <p>Lịch sử đặt tours</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-information">
+                    <div class="profile-genaral">
+                        <div class="profile-title">
+                            <h2>Hồ sơ của tôi</h2>
+                            <button>Chỉnh sửa</button>
+                        </div>
+                        <div class="form-profile-wraper">
+                            <form class="form-profile">
+                                <div class="form-profile-info">
+                                    <label for="">Họ và tên</label>
+                                    <div class="form-profile-content user_name">Nguyễn Hoàng Vũ</div>
+                                </div>
+                                <div class="form-profile-info">
+                                    <label for="">Số điện thoại</label>
+                                    <div class="form-profile-content user_phone">0932424250</div>
+                                </div>
+                                <div class="form-profile-info">
+                                    <label for="">Email</label>
+                                    <div class="form-profile-content user_email">hoangvu22062001@gmail.com</div>
+                                </div>
+                                <div class="form-profile-info">
+                                    <label for="">Giới tính/ Tuổi</label>
+                                    <div class="form-profile-content user_gender">Nam, 22</div>
+                                </div>
+                                <div class="form-line"></div>
+
+                                <div class="form-profile-bio">
+                                    <h2>About:</h2>
+                                    <p class="user_about">Write your bio...</p>
+                                </div>
+                                <div class="form-line"></div>
+
+                                <div class="form-profile-hobbies form-profile-bio">
+                                    <h2>Sở thích:</h2>
+                                    <div class="profile-hobbies-list">
+                                        <div class="tag hobbies-1">Cắm trại</div>
+                                        <div class="tag hobbies-2">Cắm trại</div>
+                                        <div class="tag hobbies-3">Cắm trại</div>
+                                        <div class="tag hobbies-4">Cắm trại</div>
+                                        <div class="tag hobbies-5">Cắm trại</div>
+                                        <div class="tag hobbies-6">Cắm trại</div>
+                                        <div class="tag hobbies-7">Cắm trại</div>
+                                        <div class="tag hobbies-8">Cắm trại</div>
+                                        <div class="tag hobbies-9">Cắm trại</div>
+                                        <div class="tag hobbies-10">Cắm trại</div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="profile-genaral-edit">
+                        <div class="profile-title">
+                            <h2>Hồ sơ của tôi</h2>
+                            <div class="profile-save">
+                                <button class="profile_update">Lưu</button>
+                                <p class="profile_cancel">Hủy</p>
+                            </div>
+                        </div>
+                        <div class="form-profile-wraper">
+                            <form class="form-profile form-profile-edit">
+                                <div class="form-profile-info form-profile-space">
+                                    <label for="">Họ và tên</label>
+                                    <div class="form-profile-input">
+                                        <input class="form-profile-text input-username" type="text"
+                                            placeholder="Nhập Họ và tên của bạn">
+                                    </div>
+                                </div>
+                                <div class="form-profile-info form-profile-space">
+                                    <label for="">Số điện thoại</label>
+                                    <div class="form-profile-input">
+                                        <input class="form-profile-text  input-phonenumber" type="number"
+                                            placeholder="Nhập số điện thoại của bạn">
+                                    </div>
+                                </div>
+                                <div class="form-profile-info form-profile-space">
+                                    <label for="">Email</label>
+                                    <div class="form-profile-input ">
+                                        <input class="form-profile-text input-email" type="text"
+                                            placeholder="Nhập email của bạn">
+                                    </div>
+                                </div>
+                                <div class="form-profile-info form-profile-space">
+                                    <label for="">Giới tính/ Tuổi</label>
+                                    <div class="form-profile-input">
+                                        <select name="gender" id="input-gender" class="form-profile-text">
+                                            <!--<option class="form-gender" value="">Chọn giới tính của bạn</option> -->
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-line"></div>
+
+                                <div class="form-profile-bio">
+                                    <h2>About:</h2>
+                                    <textarea class="form-bio" cname="" id="" cols="30" rows="4"
+                                        placeholder="Write your bio..."></textarea>
+                                </div>
+                                <div class="form-line"></div>
+
+                                <div class="form-profile-hobbies form-profile-bio">
+                                    <h3>Chọn các sở thich bạn quan tâm nhất:</h3>
+                                    <input class="choose-hobbies" type="text" placeholder="Chọn sở thích của bạn...">
+                                    <div class="profile-hobbies-list">
+                                        <div class="tag hobbies-1">
+                                            <i class="fa-solid fa-xmark"></i>
+                                            Cắm trại
+                                        </div>
+                                        <div class="tag hobbies-2">
+                                            <i class="fa-solid fa-xmark"></i>
+                                            Dã ngoại
+                                        </div>
+                                        <div class="tag hobbies-3">
+                                            <i class="fa-solid fa-xmark"></i>
+                                            Cắm trại
+                                        </div>
+                                        <div class="tag hobbies-4">
+                                            <i class="fa-solid fa-xmark"></i>
+                                            Cắm trại
+                                        </div>
+                                        <div class="tag hobbies-5">
+                                            <i class="fa-solid fa-xmark"></i>
+                                            Cắm trại
+                                        </div>
+                                        <div class="tag hobbies-6">
+                                            <i class="fa-solid fa-xmark"></i>
+                                            Cắm trại
+                                        </div>
+                                        <div class="tag hobbies-7">
+                                            <i class="fa-solid fa-xmark"></i>
+                                            Cắm trại
+                                        </div>
+                                        <div class="tag hobbies-8">
+                                            <i class="fa-solid fa-xmark"></i>
+                                            Cắm trại
+                                        </div>
+                                        <div class="tag hobbies-9">
+                                            <i class="fa-solid fa-xmark"></i>
+                                            Cắm trại
+                                        </div>
+                                        <div class="tag hobbies-10">
+                                            <i class="fa-solid fa-xmark"></i>
+                                            Cắm trại
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="histoty-book-tour">
+                        <div style="display: none;" class="no-tour">
+                            <h1>Lịch sử đặt tour của tôi</h1>
+                            <img src="https://go2joy.vn/_nuxt/search-not-found.47b1f6f6.png" alt="">
+                            <h3>Bạn chưa có đặt tour nào</h3>
+                            <p>Hãy đặt tour để tận hưởng nhé</p>
+                        </div>
+                        <div style="display: none;" class="supplierPages">
+                            <div class="container-residence">
+                                <h1>Lịch sử đặt tour của tôi</h1>
+                                <table class="container-nav">
+                                    <tr>
+                                        <th>TÊN TOURS</th>
+                                        <th>NGÀY ĐI</th>
+                                        <th>NGÀY VỀ</th>
+                                        <th>TỔNG TIỀN</th>
+                                        <th>HÀNH ĐỘNG</th>
+                                    </tr>
+                                    <tr class="list-residence">
+                                        <td class="list-content list-name-tour">
+                                            <p>Chuyến đi tử thần</p>
+                                        </td>
+                                        <td class="list-content list-date">
+                                            <p>12 tháng 3 , 2023</p>
+                                        </td>
+                                        <td class="list-content list-date">
+                                            <p>20 tháng 3 , 2023</p>
+                                        </td>
+                                        <td class="list-content list-jojned">
+                                            <p>4.000.000</p>
+                                        </td>
+                                        <td class="list-content list-action">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </td>
+                                    </tr>
+                                    <tr class="list-residence">
+                                        <td class="list-content list-name-tour">
+                                            <p>Chuyến đi tử thần</p>
+                                        </td>
+                                        <td class="list-content list-date">
+                                            <p>12 tháng 3 , 2023</p>
+                                        </td>
+                                        <td class="list-content list-date">
+                                            <p>20 tháng 3 , 2023</p>
+                                        </td>
+                                        <td class="list-content list-jojned">
+                                            <p>4.000.000</p>
+                                        </td>
+                                        <td class="list-content list-action">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="myTrip">
+                <div class="myTrip-title">
+                    <div class="form-line"></div>
+                    <h2>Chuyến đi của tôi</h2>
+                </div>
+
+                <div class="blog-slider">
+                    <div class="blog-slider__wrp swiper-wrapper">
+                        <div class="blog-slider__item swiper-slide">
+                            <div class="blog-slider__img">
+
+                                <img src="https://images.unsplash.com/photo-1512633017083-67231aba710d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80"
+                                    alt="">
+                            </div>
+                            <div class="blog-slider__content">
+                                <div class="blog-slider__title">Chuyến đi mạo hiểm</div>
+                                <div class="blog-slider__trip">
+                                    <p><b>Từ:</b> Đà Nẵng - <b>Đến:</b> Hội An</p>
+                                    <p>25 Sep 2022</p>
+                                </div>
+                                <div class="blog-slider__host"><b>Người tạo: </b>Nguyễn Hoàng Vũ</div>
+                                <div class="blog-slider__text">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                                    Recusandae voluptate repellendus magni illo ea animi? </div>
+                                <div class="profile-control">
+                                    <div class="">
+                                        <a href="./detailFind.html" class="blog-slider__button">CHI TIẾT</a>
+                                    </div>
+                                    <div class="profile-action">
+                                        <a href="./createTrip.html">
+                                            <i class="fa-solid fa-pencil"></i>
+                                        </a>
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="blog-slider__item swiper-slide">
+                            <div class="blog-slider__img">
+
+                                <img src="https://images.unsplash.com/photo-1512633017083-67231aba710d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80"
+                                    alt="">
+                            </div>
+                            <div class="blog-slider__content">
+                                <div class="blog-slider__title">Chuyến đi mạo hiểm</div>
+                                <div class="blog-slider__trip">
+                                    <p><b>Từ:</b> Đà Nẵng - <b>Đến:</b> Hội An</p>
+                                    <p>25 Sep 2022</p>
+                                </div>
+                                <div class="blog-slider__host"><b>Người tạo: </b>Nguyễn Hoàng Vũ</div>
+                                <div class="blog-slider__text">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                                    Recusandae voluptate repellendus magni illo ea animi? </div>
+                                <a href="../HTML/detailFind.html" class="blog-slider__button">CHI TIẾT</a>
+                            </div>
+                        </div>
+                        <div class="blog-slider__item swiper-slide">
+                            <div class="blog-slider__img">
+                                <img src="https://images.unsplash.com/photo-1594780841377-e05e12d0d1ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
+                                    alt="">
+                            </div>
+                            <div class="blog-slider__content">
+                                <div class="blog-slider__title">Chuyến đi khám phá</div>
+                                <div class="blog-slider__trip">
+                                    <p><b>Từ:</b> Đà Nẵng - <b>Đến:</b> Hội An</p>
+                                    <p>25 Sep 2022</p>
+                                </div>
+                                <div class="blog-slider__host"><b>Người tạo: </b>Nguyễn Hoàng Vũ</div>
+                                <div class="blog-slider__text"><span>Lorem ipsum dolor sit amet consectetur, adipisicing
+                                        elit.
+                                        Recusandae voluptate repellendus magni illo ea animi?</span></div>
+                                <div class="profile-control">
+                                    <div class="">
+                                        <a href="./detailFind.html" class="blog-slider__button">CHI TIẾT</a>
+                                    </div>
+                                    <div class="profile-action">
+                                        <a href="./createTrip.html">
+                                            <i class="fa-solid fa-pencil"></i>
+                                        </a>
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="blog-slider__item swiper-slide">
+                            <div class="blog-slider__img">
+                                <img src="https://images.unsplash.com/photo-1552793084-49132af00ff1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80"
+                                    alt="">
+                            </div>
+                            <div class="blog-slider__content">
+                                <div class="blog-slider__title">Chuyến đi tử thần</div>
+                                <div class="blog-slider__trip">
+                                    <p><b>Từ:</b> Đà Nẵng - <b>Đến:</b> Hội An</p>
+                                    <p>25 Sep 2022</p>
+                                </div>
+                                <div class="blog-slider__host"><b>Người tạo: </b>Nguyễn Hoàng Vũ</div>
+                                <div class="blog-slider__text">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                                    Recusandae voluptate repellendus magni illo ea animi?</div>
+                                <div class="profile-control">
+                                    <div class="">
+                                        <a href="./detailFind.html" class="blog-slider__button">CHI TIẾT</a>
+                                    </div>
+                                    <div class="profile-action">
+                                        <a href="./createTrip.html">
+                                            <i class="fa-solid fa-pencil"></i>
+                                        </a>
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="blog-slider__pagination"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+        integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.min.js"
+        integrity="sha512-NdZyIQYjul6RuB0vCoq9ec+xqTO2riVTZAZf9YM3BHkkcJxFTq7z9FAK3PXP+XYs5zQRuOycmL5GdwD85t2T+Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="../JS/TS-profile.js"></script>
+</body>
+
+</html>

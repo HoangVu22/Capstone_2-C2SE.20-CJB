@@ -19,8 +19,7 @@ headerNavForm.onclick = function () {
 console.log(login);
 
 const names = z('.header-name1');
-const avatarUser = z(".header-form-avatar #avatar_user");
-console.log(avatarUser);
+const avatarUser = z(".avatar_user");
 if (login) {
   names.innerText = login.user_info.name;
   avatarUser.src = login.user_info.user_profile[0].avatar;
