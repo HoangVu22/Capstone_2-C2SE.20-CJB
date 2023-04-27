@@ -21,8 +21,6 @@ return new class extends Migration
             $table->dateTime('to_date');
             $table->double('price', 15, 2)->nullable();
             $table->integer('slot')->nullable();
-            $table->string('lon',20);
-            $table->string('lat',20);
             $table->timestamps();
 
             $table->foreign('ts_id')

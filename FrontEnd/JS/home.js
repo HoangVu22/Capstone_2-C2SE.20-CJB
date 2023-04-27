@@ -52,11 +52,11 @@ const slickPre = z(".fa-chevron-left");
 const slickNext = z(".fa-chevron-right");
 const findSlickPrev = z(".find-slick-left");
 const findSlickNext = z(".find-slick-right");
-const pre = z(".slick-prev");
-const next = z(".slick-next");
+// const pre = z(".slick-prev");
+// const next = z(".slick-next");
 
-const pre1 = document.getElementsByClassName("slick-prev");
-const next1 = document.getElementsByClassName("slick-next");
+const pre1 = z(".slick-prev");
+const next1 = z(".slick-next");
 
 console.log(login);
 
@@ -123,8 +123,8 @@ faBell.onclick = function () {
 
 // ---------------------------------------------------
 
-const ss = document.querySelector.bind(document);
-var sliderFind = ss(".slides");
+// const ss = document.querySelector.bind(document);
+var sliderFind = z(".slides");
 const api = "http://127.0.0.1:8000/api/homepage/tour";
 
 let htmls = "";
@@ -176,3 +176,7 @@ function getTours(api) {
 
 getTours(api);
 
+  console.log(findSlickPrev);
+  console.log(findSlickNext);
+  console.log(pre1);
+  console.log(next1);
