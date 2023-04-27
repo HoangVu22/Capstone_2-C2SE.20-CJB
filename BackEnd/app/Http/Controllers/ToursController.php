@@ -30,8 +30,6 @@ class ToursController extends Controller
             'to_date' => $request->to_date,
             'price' => $request->price,
             'slot' => $request->slot,
-            'lat' => $request->lat,
-            'lon' => $request->lon,
         ]);
 
         return response()->json(['msg' => "Tạo tour thành công", 'status' => 200], 200);
@@ -67,8 +65,6 @@ class ToursController extends Controller
                     'to_date' => $request->to_date,
                     'price' => $request->price,
                     'slot' => $request->slot,
-                    'lat' => $request->lat,
-                    'lon' => $request->lon,
                 ]);
                 return response()->json(['msg' => "Update tour thành công", 'status' => 200], 200);
             }
@@ -99,7 +95,7 @@ class ToursController extends Controller
         return HomepageToursResource::collection(Tours::where('from_date', '>=', date('y-m-d'))->get());
     }
 
-    public function allTour(Request $request){
+    public function allTourOfTS(Request $request){
         return response()->json([
             'all_tour' => Tours::where('ts_id', $request->id)->get(),
             'status' => 200,
