@@ -19,7 +19,6 @@ loginButton.onclick = () => {
     inputs.forEach(item => {
         requestValues[item.attributes.name.value] = item.value;
     });
-    console.log(requestValues);
     fetch('http://127.0.0.1:8000/api/auth/login', {
         method: 'POST',
         headers: {
@@ -29,16 +28,12 @@ loginButton.onclick = () => {
     })
         .then(response => response.json())
         .then(data => {
-            console.log(data.status);
             if (data.status === 200) {
                 window.localStorage.setItem("login", JSON.stringify(data));
                 window.localStorage.setItem("id", JSON.stringify(data.user_info.user_profile[0].id))
-                window.localStorage.getItem("login");
-                window.location.href = 'http://127.0.0.1:5500/CAPSTONE2/FrontEnd/HTML/TS-home.html';
-                console.log(data);
+                window.location.href = 'http://localhost:3000/FrontEnd/HTML/TS-home.html';
             } else {
-                // alert(data.msg)
-                console.log("1");
+                alert(data.msg)
             }
         })
 }
@@ -56,10 +51,6 @@ registerButton.onclick = () => {
     inputs.forEach(item => {
         requestValues[item.attributes.name.value] = item.value;
     })
-
-    console.log(requestValues);
-
-
     fetch('http://127.0.0.1:8000/api/auth/tsRegister', {
         method: 'POST',
         headers: {
@@ -72,7 +63,7 @@ registerButton.onclick = () => {
             data => {
                 if (data.status === 200) {
                     alert("success......");
-                    // window.location.href = 'http://127.0.0.1:5500/FrontEnd/HTML/home.html'
+                    window.location.href = 'http://localhost:3000/FrontEnd/HTML/home.html'
                 } else {
                     alert(data.message)
                 }

@@ -20,7 +20,6 @@ firebase.initializeApp(firebaseConfig);
 const storage = getStorage();
 const upload = multer({ storage: multer.memoryStorage() });
 
-
 app.get("/firebase/:fileName", (req, res) => {
   let folder = req.query.folder || '';
   getDownloadURL(ref(storage, `${folder}/${req.params.fileName}`))

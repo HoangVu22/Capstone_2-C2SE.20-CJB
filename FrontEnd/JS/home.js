@@ -6,8 +6,6 @@ const login = JSON.parse(window.localStorage.getItem("login"));
 const z = document.querySelector.bind(document);
 const zz = document.querySelectorAll.bind(document);
 
-console.log(login);
-
 if (login) {
   headerNavForm.onclick = function () {
     if (headerForm.style.display === "none") {
@@ -33,7 +31,6 @@ if (login) {
 }
 const names = z('.header-name1');
 const avatarUser = z(".header-form-avatar #avatar_user");
-console.log(avatarUser);
 if (login) {
   names.innerText = login.user_info.name;
   avatarUser.src = login.user_info.user_profile[0].avatar;
@@ -44,7 +41,7 @@ logout.onclick = () => {
   alert('Bạn chắc chắn muốn thoát ?')
   window.localStorage.clear();
   window.location.reload(true);
-  window.location.href = 'http://127.0.0.1:5500/CAPSTONE2/FrontEnd/HTML/home.html';
+  window.location.href = 'http://localhost:3000/FrontEnd/HTML/home.html';
 }
 
 
@@ -138,8 +135,6 @@ function getTours(api) {
     })
     .then(data => {
       const tours = data.data;
-      console.log(tours);
-      console.log(htmls);
       htmls = tours.map((tour) => {
         return `
           <div class="find-container">
@@ -163,22 +158,21 @@ function getTours(api) {
                 </div>
             </div>
       `;
-      }); sliderFind.innerHTML = htmls.join("");
-      if (sliderFind.innerHTML) {
-        $(".slides").slick({
-          slidesToShow: 5,
-          slidesToScroll: 2,
-          autoplay: true,
-        });
-        findSlickPrev.onclick = () => {
-          pre1[0].click();
-        };
-        findSlickNext.onclick = () => {
-          next1[0].click();
-        }
+      }); 
+      sliderFind.innerHTML = htmls.join("");
+      $(".slides").slick({
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        autoplay: true,
+      });
+      findSlickPrev.onclick = () => {
+        pre1[0].click();
+      };
+      findSlickNext.onclick = () => {
+        next1[0].click();
       }
     })
 }
 
-  getTours(api);
+getTours(api);
 

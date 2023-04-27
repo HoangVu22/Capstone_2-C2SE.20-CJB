@@ -13,7 +13,8 @@ loginButton1.addEventListener('click', () => {
     container.classList.remove('right-panel-active')
 })
 
-loginButton.onclick = () => {
+loginButton.addEventListener('click', (e) => {
+    e.preventDefault()
     const inputs = document.querySelectorAll('input.form-control');
     const requestValues = {};
 
@@ -24,25 +25,25 @@ loginButton.onclick = () => {
     fetch('http://127.0.0.1:8000/api/auth/login', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            "Content-Type": "application/json",
         },
         body: JSON.stringify(requestValues)
     })
         .then(response => response.json())
         .then(data => {
-            console.log(data.status);
             if (data.status === 200) {
                 window.localStorage.setItem("login", JSON.stringify(data));
                 console.log(data.user_info.user_role);
                 window.localStorage.setItem("id", JSON.stringify(data.user_info.user_profile[0].user_id))
                 window.localStorage.getItem("login");
                 console.log(data);
-                window.location.href = 'http://127.0.0.1:5500/CAPSTONE2/FrontEnd/HTML/home.html';
+                window.location.href = 'http://localhost:3000/FrontEnd/HTML/home.html';
             } else {
                 alert(data.msg)
             }
         })
-}
+        .catch(error => console.log(error))
+})
 
 // --------------------------------------------------------------------
 
@@ -59,7 +60,6 @@ registerButton.onclick = (e) => {
     inputs.forEach(item => {
         requestValues[item.attributes.name.value] = item.value;
     })
-    console.log(requestValues);
     fetch('http://127.0.0.1:8000/api/auth/userRegister', {
         method: 'POST',
         headers: {

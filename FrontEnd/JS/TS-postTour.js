@@ -4,6 +4,38 @@ const headerFormLogin = headerNavForm.querySelector(".header-form-login");
 const headerFormLogout = document.querySelector(".header-form-logout");
 const login = JSON.parse(window.localStorage.getItem("login"));
 
+const requestInputs = document.querySelectorAll('.request')
+const createTourButton = document.querySelector('.create-tour-submit')
+console.log(login)
+createTourButton.onclick = () => {
+  const request = {
+    name: "",
+    ts_id: 1,
+    description: "",
+    address: "",
+    from_date: "",
+    to_date: "",
+    price: "",
+    slot: ""
+  }
+  requestInputs.forEach(input => {
+    const { key } = input.dataset
+    request[key] = input.value
+  })
+  fetch('http://127.0.0.1:8000/api/ts/tour/create', {
+    method: 'post',
+    headers: {
+      'Content-Type': "application/json"
+    },
+    body: JSON.stringify(request)
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+    })
+    .catch(error => console.log(error))
+}
+
 headerNavForm.onclick = function () {
   if (headerForm.style.display === "none") {
     headerForm.style.display = "block";
@@ -59,12 +91,6 @@ const array = [
   </div>`
   }
 ];
-
-function renerList () {
-  console.log(array);
-}
-
-renerList()
 
 postSchedualAdd.onclick = () => {
   id++;
