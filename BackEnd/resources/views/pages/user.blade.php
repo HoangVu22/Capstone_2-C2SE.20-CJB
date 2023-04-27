@@ -92,7 +92,7 @@
                                                 </td>
                                             </tr>
                                             <!-- Modal -->
-                                            <form action="" method="post">
+                                            <form action="{{ route('user.destroy', ['user' => $user->id]) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
                                                 <div class="modal fade" id="exampleModal{{ $user->id }}" tabindex="-1"
