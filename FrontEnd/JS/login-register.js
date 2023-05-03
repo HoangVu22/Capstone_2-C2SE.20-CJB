@@ -72,7 +72,7 @@ registerButton.onclick = (e) => {
       if (data.status === 200) {
         alert("success......");
         window.location.href =
-          "http://127.0.0.1:5500/CAPSTONE2/FrontEnd/HTML/home.html";
+          "http://localhost:3000/home.html";
       } else {
         alert(data.message);
       }
