@@ -149,4 +149,16 @@ class ToursController extends Controller
             'status' => 200,
         ]);
     }
+
+    public function search(Request $request)
+    {
+        return response()->json([
+            'tours' => Tours::where('tours.name', 'like', "%$request->name%")
+            ->join('ts_profiles', 'tours.ts_id', '=', 'ts_profiles.id')
+            ->join('users', 'ts_profiles.user_id', '=', 'users.id')
+            ->select('tours.*', 'users.name as travel_supplier_name')
+            ->get(),
+            'status' => 200,
+        ]);
+    }
 }
