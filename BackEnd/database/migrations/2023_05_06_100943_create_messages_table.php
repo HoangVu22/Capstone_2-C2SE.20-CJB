@@ -19,16 +19,14 @@ return new class extends Migration
                   ->on('users')
                   ->onDelete('cascade');
 
-            $table->unsignedInteger('to_id');
+            $table->unsignedInteger('to_id')->nullable();
             $table->foreign('to_id')
-                    ->nullable()
                     ->references('id')
                     ->on('users')
                     ->onDelete('cascade');
 
-            $table->unsignedInteger('room_id');
+            $table->unsignedInteger('room_id')->nullable();
             $table->foreign('room_id')
-                    ->nullable()
                     ->references('id')
                     ->on('rooms')
                     ->onDelete('cascade');
