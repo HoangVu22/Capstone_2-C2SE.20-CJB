@@ -44,10 +44,12 @@ logout.onclick = () => {
 
 const names = z('.header-name1');
 const avatarUser = document.getElementById("avatar_user");
-// if (login.msg === "Đăng nhập thành công") {
+console.log(names);
+if (login.msg === "Đăng nhập thành công") {
 console.log(login);
 names.innerText = login.user_info.name;
 avatarUser.src = login.user_info.user_profile[0].avatar;
+}
 // } else {
 //   names.innerText = login.user_info.name;
 //   avatarUser.src = login.user_info.user_profile[0].avatar;
