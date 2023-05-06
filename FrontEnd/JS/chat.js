@@ -72,7 +72,7 @@ sendButton.onclick = () => {
         </div>
     </div>`;
     messages.innerHTML += targetMessage;
-    socket.emit("send_message", messageInput.value);
+    socket.emit("send_message", {sender: 1, receiver: 2, message: messageInput.value});
     messageInput.value = "";
   }
 };

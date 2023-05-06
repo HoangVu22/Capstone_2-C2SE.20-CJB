@@ -17,7 +17,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     to_id: {
       type: DataTypes.INTEGER.UNSIGNED,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: 'users',
         key: 'id'
@@ -25,7 +25,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     room_id: {
       type: DataTypes.INTEGER.UNSIGNED,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: 'rooms',
         key: 'id'
@@ -39,6 +39,7 @@ module.exports = function(sequelize, DataTypes) {
     sequelize,
     tableName: 'messages',
     timestamps: true,
+    underscored: true,
     indexes: [
       {
         name: "PRIMARY",
