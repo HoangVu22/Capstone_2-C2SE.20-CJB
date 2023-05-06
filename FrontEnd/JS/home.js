@@ -3,10 +3,6 @@ const headerForm = document.querySelector(".header-form");
 const headerFormLogin = headerNavForm.querySelector(".header-form-login");
 const headerFormLogout = document.querySelector(".header-form-logout");
 const login = JSON.parse(window.localStorage.getItem("login"));
-const z = document.querySelector.bind(document);
-const zz = document.querySelectorAll.bind(document);
-
-console.log(login);
 
 if (login) {
   headerNavForm.onclick = function () {
@@ -31,35 +27,32 @@ if (login) {
     }
   };
 }
-const names = z('.header-name1');
-const avatarUser = z(".header-form-avatar #avatar_user");
-console.log(avatarUser);
+const names = document.getElementsByClassName(' header-name1');
+const avatarUser = document.getElementById("avatar_user");
 if (login) {
-  names.innerText = login.user_info.name;
+  names[0].innerText = login.user_info.name;
   avatarUser.src = login.user_info.user_profile[0].avatar;
 }
 
-const logout = z('.form-logout');
-logout.onclick = () => {
+const logout = document.getElementsByClassName('form-logout');
+logout[0].onclick = () => {
   alert('Bạn chắc chắn muốn thoát ?')
   window.localStorage.clear();
   window.location.reload(true);
-  window.location.href = 'http://127.0.0.1:5500/CAPSTONE2/FrontEnd/HTML/home.html';
+  window.location.href = 'http://localhost:3000/home.html';
 }
 
 
 // ---------------------------------------
 
 
-const slickPre = z(".fa-chevron-left");
-const slickNext = z(".fa-chevron-right");
-const findSlickPrev = z(".find-slick-left");
-const findSlickNext = z(".find-slick-right");
-// const pre = z(".slick-prev");
-// const next = z(".slick-next");
+const slickPre = document.getElementsByClassName(" fa-chevron-left");
+const slickNext = document.getElementsByClassName(" fa-chevron-right");
+const findSlickPrev = document.getElementsByClassName(" find-slick-left");
+const findSlickNext = document.getElementsByClassName(" find-slick-right");
 
-const pre1 = z(".slick-prev");
-const next1 = z(".slick-next");
+const pre1 = document.getElementsByClassName(" slick-prev");
+const next1 = document.getElementsByClassName(" slick-next");
 
 console.log(login);
 
@@ -127,7 +120,7 @@ faBell.onclick = function () {
 // ---------------------------------------------------
 
 // const ss = document.querySelector.bind(document);
-var sliderFind = z(".slides");
+var sliderFind = document.getElementsByClassName("slides");
 const api = "http://127.0.0.1:8000/api/homepage/tour";
 
 let htmls = "";
@@ -138,8 +131,6 @@ function getTours(api) {
     })
     .then(data => {
       const tours = data.data;
-      console.log(tours);
-      console.log(htmls);
       htmls = tours.map((tour) => {
         return `
           <div class="find-container">
@@ -163,26 +154,20 @@ function getTours(api) {
                 </div>
             </div>
       `;
-      }); sliderFind.innerHTML = htmls.join("");
-      if (sliderFind.innerHTML) {
-        $(".slides").slick({
-          slidesToShow: 4,
-          slidesToScroll: 2,
-          autoplay: true,
-        });
-        findSlickPrev.onclick = () => {
-          pre1.click();
-        };
-        findSlickNext.onclick = () => {
-          next1.click();
-        }
+      }); 
+      sliderFind[0].innerHTML = htmls.join("");
+      $(".slides").slick({
+        slidesToShow: 4,
+        slidesToScroll: 2,
+        autoplay: true,
+      });
+      findSlickPrev[0].onclick = () => {
+        pre1[0].click();
+      };
+      findSlickNext[0].onclick = () => {
+        next1[0].click();
       }
     })
 }
 
-  getTours(api);
-
-  console.log(findSlickPrev);
-  console.log(findSlickNext);
-  console.log(pre1);
-  console.log(next1);
+getTours(api);

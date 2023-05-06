@@ -35,32 +35,40 @@ if (login) {
 const names = $('.header-name1');
 const avatarUser = $("#avatar_user");
 console.log(avatarUser);
-if (login) {
-  names.innerText = login.user_info.name;
-  avatarUser.src = login.user_info.user_profile[0].avatar;
-}
+// if (login) {
+//   names.innerText = login.user_info.name;
+//   avatarUser.src = login.user_info.user_profile[0].avatar;
+// }
 
 // ----------- ẩn hiện create group-----------
 const group = document.querySelector('.group')
+console.log(group);
 const CRBody = document.querySelector('#CR-body')
 const roomClose = document.querySelector('.room-close i')
-group.onclick = function () {
-    CRBody.style.display = 'block'
-}
+const classC = document.querySelector('.class')
+console.log(roomClose);
 roomClose.onclick = function () {
+    console.log(2);
     CRBody.style.display = 'none'
+    classC.style.display = 'none'
+}
+group.onclick = function () {
+    console.log(1);
+    CRBody.style.display = 'block'
+    classC.style.display = 'block'
 }
 
 // --------------- create room ------------------
 
-const createRoom = $('.create-room');
+const createRoom = $('.btn-create');
 const roomName = $("#name-room");
+console.log(roomName);
 const roomDescription = $("#description-room");
 console.log(login);
 if(login)
 {
     createRoom.onclick = (e) => {
-        e.preventDefault();
+        e.preventDefault(); 
         const inputs = document.querySelectorAll('.form-control');
         const requestValues = {};
     

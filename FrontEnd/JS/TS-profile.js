@@ -238,7 +238,7 @@ logout.onclick = () => {
     alert('Bạn chắc chắn muốn thoát ?')
     window.localStorage.clear();
     window.location.reload(true);
-    window.location.href = 'http://127.0.0.1:5500/CAPSTONE2/FrontEnd/HTML/home.html';
+    window.location.href = 'http://localhost:3000/home.html';
 }
 
 
@@ -409,6 +409,6 @@ tourNames.forEach((tourr) => {
 
 const createGroup = $(".create-group");
 createGroup.onclick = () => {
-    window.location.href = "http://127.0.0.1:5500/CAPSTONE2/FrontEnd/HTML/TS-postTour.html";
+    window.location.href = "http://localhost:3000/TS-postTour.html";
 }
 
