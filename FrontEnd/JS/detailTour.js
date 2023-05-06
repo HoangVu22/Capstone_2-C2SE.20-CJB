@@ -45,7 +45,7 @@ logout.onclick = () => {
     alert('Bạn chắc chắn muốn thoát ?')
     window.localStorage.clear();
     window.location.reload(true);
-    window.location.href = 'http://127.0.0.1:5503/Capstone_2-C2SE.20-CJB/FrontEnd/HTML/login-register.html';
+    window.location.href = 'http://localhost:3000/login-register.html';
 }
 // ---------------------------------------
 

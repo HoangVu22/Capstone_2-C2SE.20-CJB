@@ -38,15 +38,18 @@ logout.onclick = () => {
   alert('Bạn chắc chắn muốn thoát ?')
   window.localStorage.clear();
   window.location.reload(true);
-  window.location.href = 'http://127.0.0.1:5500/CAPSTONE2/FrontEnd/HTML/home.html';
+  window.location.href = 'http://localhost:3000/home.html';
 }
 
 
 const names = z('.header-name1');
 const avatarUser = document.getElementById("avatar_user");
-// if (login.msg === "Đăng nhập thành công") {
-  names.innerText = login.user_info.name;
-  avatarUser.src = login.user_info.user_profile[0].avatar;
+console.log(names);
+if (login.msg === "Đăng nhập thành công") {
+console.log(login);
+names.innerText = login.user_info.name;
+avatarUser.src = login.user_info.user_profile[0].avatar;
+}
 // } else {
 //   names.innerText = login.user_info.name;
 //   avatarUser.src = login.user_info.user_profile[0].avatar;
@@ -106,7 +109,7 @@ slickNext[0].onclick = () => {
 const findContainer = document.querySelectorAll('.find-container')
 findContainer.forEach(value => {
   value.onclick = function () {
-    location.href = "http://127.0.0.1:5503/Capstone_2-C2SE.20-CJB/FrontEnd/HTML/detailTour.html"
+    location.href = "http://localhost:3000/detailTour.html"
   }
 })
 
@@ -206,18 +209,22 @@ getTours(api);
 
 // -------------------------- slide3 người dùng tạo tour (render and slides) ----------------------------------------------
 
-const prev2 = ss(".prev2");
-const next2 = ss(".next2");
-const slickPrev2 = ss(".slick-prev");
-const slickNext2 = ss(".slick-next");
-console.log(prev2);
-console.log(next2);
-console.log(slickPrev2);
-console.log(slickNext2);
-var renderListTourUser = ss(".slides_wrapp");
-const apiTourUser = "http://127.0.0.1:8000/api/personal/tour";
+const slickPrev = document.querySelectorAll(".fa-chevron-left");
+const slickNextt = document.querySelectorAll(".fa-chevron-right");
+const findSlickPrevv = document.getElementsByClassName("find-slick-left");
+const findSlickNextt = document.getElementsByClassName("find-slick-right");
+
+console.log(slickPre);
+console.log(slickNext);
+console.log(findSlickPrev);
+console.log(findSlickNext);
+
+const pre1 = document.getElementsByClassName("slick-prev");
+const next1 = document.getElementsByClassName("slick-next");
+var renderListTourUser = document.getElementsByClassName("popular-slides");
 let htmlss = "";
-function getTourUser(apiTourUser) {
+function getTourUser() {
+  const apiTourUser = "http://127.0.0.1:8000/api/personal/tour";
   fetch(apiTourUser)
     .then(response => {
       return response.json();
@@ -226,66 +233,58 @@ function getTourUser(apiTourUser) {
       const PStours = data.data;
       console.log(PStours);
       htmlss = PStours.map((tour) => {
-        return `
-        <div class="blog-slider">
-                            <div class="blog-slider__wrp swiper-wrapper">
-                                <div class="blog-slider__item swiper-slide">
-                                    <div class="blog-slider__img">
-
-                                        <img src="https://images.unsplash.com/photo-1512633017083-67231aba710d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80"
-                                            alt="">
-                                    </div>
-                                    <div class="blog-slider__content">
-                                        <div class="blog-slider__title">Chuyến đi mạo hiểm</div>
-                                        <div class="blog-slider__trip">
-                                            <p><b>Từ:</b> Đà Nẵng - <b>Đến:</b> Hội An</p>
-                                            <p>25 Sep 2022</p>
-                                        </div>
-                                        <div class="blog-slider__host"><b>Người tạo: </b>Nguyễn Hoàng Vũ</div>
-                                        <a href="../HTML/detailFind.html" class="blog-slider__button">CHI TIẾT</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="blog-slider__pagination"></div>
-                        </div>
+        return `          
+        <div>
+        <div class="popular-container">
+            <div class="popular-container-left">
+                <img src="../IMAGES/slides/slide-0.png" alt="">
+                <div class="popular-container-host">
+                    <p><b>Host:</b> ${tour.host}</p>
+                </div>
+            </div>
+            <div class="popular-container-center">
+                <h1>${tour.name}</h1>
+                <p><b>Thành viên:</b> ${tour.room.member}</p>
+                <p><b>Từ:</b> ${tour.from_where} - <b>Đến:</b> ${tour.to_where}</p>
+                <p><b>Ngày xuất phát:</b> ${tour.from_date}</p>
+            </div>
+            <div class="popular-container-right">
+                <button class="btn" id="btn1">JOIN</button>
+            </div>
+        </div>
+    </div>      
         `;
       });
-      renderListTourUser.innerHTML = htmlss.join("");
-      if (renderListTourUser.innerHTML) {
-        $(".slides3").slick({
-          infinite: true,
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          speed: 1000,
-          autoplay: true,
-        });
-        prev2.onclick = () => {
-          console.log(1);
-          slickPrev2.click();
-        };
-        next2.onclick = () => {
-          slickNext2.click();
-          console.log(1);
-        };
+      renderListTourUser[0].innerHTML = htmlss.join("");
+      $(".popular-slides").slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+      });
+      slickPrev[1].onclick = () => {
+        pre1[1].click();
+      };
+      slickNext[1].onclick = () => {
+        next1[1].click();
       }
     })
 }
 
 
-// getTourUser(apiTourUser);
+getTourUser();
 
-  $(".slides3").slick({
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    speed: 1000,
-    autoplay: true,
-  });
-  prev2.onclick = () => {
-    console.log(1);
-    slickPrev2.click();
-  };
-  next2.onclick = () => {
-    slickNext2.click();
-    console.log(1);
-  };
+// $(".slides3").slick({
+//   infinite: true,
+//   slidesToShow: 1,
+//   slidesToScroll: 1,
+//   speed: 1000,
+//   autoplay: true,
+// });
+// prev2.onclick = () => {
+//   console.log(1);
+//   slickPrev2.click();
+// };
+// next2.onclick = () => {
+//   slickNext2.click();
+//   console.log(1);
+// };

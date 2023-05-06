@@ -87,7 +87,6 @@ class ToursController extends Controller
      */
     public function show($id)
     {
-        // return response()->json(Tours::find($id));
         return new TourDetailResource(Tours::find($id));
     }
 
@@ -104,6 +103,7 @@ class ToursController extends Controller
                 return response()->json(['msg' => "Đây không phải là tour của bạn", 'status' => 403], 403);
             }
             else{
+                // dd($request->schedule);
                 Tours::find($request->id)->update([
                     'ts_id' => $request->ts_id,
                     'name' => $request->name,
@@ -114,6 +114,10 @@ class ToursController extends Controller
                     'price' => $request->price,
                     'slot' => $request->slot,
                 ]);
+
+                $tripPlan = $this->arrayTripPlan($request->schedule);
+                TripPlan::where('tour_id', $request->id)->delete();
+                $this->createTripPlanForTour($tripPlan, $request->id);
                 return response()->json(['msg' => "Update tour thành công", 'status' => 200], 200);
             }
         } 
@@ -146,6 +150,18 @@ class ToursController extends Controller
     public function allTourOfTS(Request $request){
         return response()->json([
             'all_tour' => Tours::where('ts_id', $request->id)->get(),
+            'status' => 200,
+        ]);
+    }
+
+    public function search(Request $request)
+    {
+        return response()->json([
+            'tours' => Tours::where('tours.name', 'like', "%$request->name%")
+            ->join('ts_profiles', 'tours.ts_id', '=', 'ts_profiles.id')
+            ->join('users', 'ts_profiles.user_id', '=', 'users.id')
+            ->select('tours.*', 'users.name as travel_supplier_name')
+            ->get(),
             'status' => 200,
         ]);
     }
