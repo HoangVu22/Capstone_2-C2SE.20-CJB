@@ -1,7 +1,7 @@
 const express = require("express");
 const { createServer } = require("http");
 const { Server } = require("socket.io");
-const chatHandler = require("./chatHandler");
+const chatHandler = require("./handlers/chatHandler");
 
 const app = express();
 const httpServer = createServer(app);
