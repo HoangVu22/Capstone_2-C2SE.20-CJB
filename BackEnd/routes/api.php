@@ -10,6 +10,7 @@ use App\Http\Controllers\TSProfileController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\RoomsController;
 use App\Http\Controllers\CheckoutController;
+use App\Models\PersonalTours;
 use App\Models\Rooms;
 
 
@@ -54,6 +55,7 @@ Route::prefix('homepage')->group(function(){
 
 Route::prefix('ts/tour')->group(function(){
     Route::get('/', [ToursController::class, 'index']);
+    Route::get('/search', [ToursController::class, 'search']);
     Route::get('/{id}', [ToursController::class, 'show']);
     Route::post('/create', [ToursController::class, 'store']);
     Route::put('/update/{id}', [ToursController::class, 'update']);
@@ -63,6 +65,7 @@ Route::prefix('ts/tour')->group(function(){
 
 Route::prefix('personal/tour')->group(function(){
     Route::get('/', [PersonalToursController::class, 'index']);
+    Route::get('/search', [PersonalToursController::class, 'search']);
     Route::post('/create', [PersonalToursController::class, 'store']);
     Route::get('/show/{id}', [PersonalToursController::class, 'show']);
     Route::put('/update/{id}', [PersonalToursController::class, 'update']);
