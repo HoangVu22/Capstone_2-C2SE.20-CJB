@@ -37,7 +37,7 @@ loginButton.addEventListener('click', (e) => {
                 window.localStorage.setItem("id", JSON.stringify(data.user_info.user_profile[0].user_id))
                 window.localStorage.getItem("login");
                 console.log(data);
-                window.location.href = 'http://localhost:3000/FrontEnd/HTML/home.html';
+                window.location.href = 'http://localhost:3000/home.html';
             } else {
                 alert(data.msg)
             }
@@ -71,7 +71,7 @@ registerButton.onclick = (e) => {
             data => {
                 if (data.status === 200) {
                     alert("success......");
-                    window.location.href = 'http://127.0.0.1:5500/CAPSTONE2/FrontEnd/HTML/home.html'
+                    window.location.href = 'http://localhost:3000/home.html'
                 } else {
                     alert(data.message)
                 }
