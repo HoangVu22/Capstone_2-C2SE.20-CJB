@@ -103,7 +103,7 @@
                                             <img src="../IMAGES/Users-create-room/icon-upload-image.png" alt="">
                                         </div>
                                         <div class="CR-room-name-group">
-                                            <input type="text" name="" id="" placeholder="Nhập tên nhóm...">
+                                            <input type="text" name="name" id="name-room" placeholder="Nhập tên nhóm...">
                                         </div>
                                     </div>
                                     <div class="form-privacy">
@@ -124,7 +124,7 @@
                                         <input type="number" name="" id="" placeholder="Nhập số lượng thành viên...">
                                     </div>
                                     <div class="form-description">
-                                        <textarea name="" id="" cols="30" rows="3"
+                                        <textarea name="description" id="description-room" cols="30" rows="3"
                                             placeholder="Mô tả chi tiết..."></textarea>
                                     </div>
 
@@ -229,13 +229,12 @@
                 </div>
             </div>
 
-            <div class="pagination">
-                <li class="page-item previous-page disable"><a class="page-link" href="#">Prev</a></li>
-                <li class="page-item current-page active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item current-page"><a class="page-link" href="#">2</a></li>
-                <li class="page-item current-page"><a class="page-link" href="#">3</a></li>
-                <li class="page-item current-page"><a class="page-link" href="#">4</a></li>
-                <li class="page-item next-page"><a class="page-link" href="#">Next</a></li>
+            <ul class="notifications"></ul>
+            <div class="buttons">
+                <button class="btn" id="success">Success</button>
+                <button class="btn" id="error">Error</button>
+                <button class="btn" id="warning">Warning</button>
+                <button class="btn" id="info">Info</button>
             </div>
         </div>
 

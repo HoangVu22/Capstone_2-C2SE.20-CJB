@@ -11,6 +11,7 @@ const destinationSuggestList = $(".destination-location-suggestion");
 const currentLocationInupt = $('.diemxuatphat')
 const currentLocationSuggestList = $('.current-location-suggestion')
 
+
 const createTourState = {
   name: "",
   owner_id: "",
@@ -367,6 +368,11 @@ uploadImage.onclick = () => {
     uploadImage.style.backgroundImage = `url('${objImage}')`;
   };
 };
+
+setTimeout(()=>{
+  console.log(objImage);
+},10000)
+
 
 
 if(!login)

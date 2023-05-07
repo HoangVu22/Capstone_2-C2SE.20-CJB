@@ -40,7 +40,7 @@ header .container {
   padding-top: 20px;
 }
 
-header .container > ul {
+header .container>ul {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -63,7 +63,7 @@ header ul li a {
   height: 100%;
 }
 
-.image-map > img {
+.image-map>img {
   object-fit: contain;
   width: 51.5%;
 }
@@ -477,7 +477,7 @@ header ul li a {
   z-index: -1;
 }
 
-.header-form-login > ul > li > a {
+.header-form-login>ul>li>a {
   font-weight: normal;
   line-height: 10px;
   color: #333;
@@ -636,6 +636,7 @@ header ul li a {
 section.card {
   padding: 10px;
 }
+
 .blog-post {
   height: 100%;
   position: relative;
@@ -664,6 +665,7 @@ section.card {
   object-fit: cover;
   border-radius: 10px;
 }
+
 .blog-post .category {
   position: absolute;
   width: 80%;
@@ -704,6 +706,7 @@ section.card {
   font-weight: 400;
   margin-bottom: 5px;
 }
+
 .text-content img {
   height: 70px;
   width: 70px;
@@ -713,14 +716,15 @@ section.card {
   top: -35px;
   left: 35px;
 }
+
 @media screen and (max-width: 1100px) {
   .container {
     grid-template-columns:
-      1fr
-      1fr;
+      1fr 1fr;
     grid-row-gap: 60px;
   }
 }
+
 @media screen and (max-width: 600px) {
   .container {
     grid-template-columns: 1fr;
@@ -732,15 +736,19 @@ section.card {
   display: grid;
   grid: "a a b c" "a a d e";
 }
+
 section.card:first-child {
   grid-area: a;
 }
+
 section.card:first-child .blog-post {
   height: 100%;
 }
+
 section.card:first-child .blog-post img {
   height: 100%;
 }
+
 .card_wrap {
   width: 1000px;
   margin: auto;
@@ -809,10 +817,12 @@ section.card:first-child .blog-post img {
     transform: scale(0.5);
     opacity: 0;
   }
+
   50% {
     transform: scale(1);
     opacity: 1;
   }
+
   100% {
     transform: scale(1.4);
     opacity: 0;
@@ -869,14 +879,23 @@ section.card:first-child .blog-post img {
   cursor: pointer;
 }
 
+
+.content-notication-show {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  overflow-y: scroll;
+}
+
 .container-notification {
   max-height: none;
   min-height: 330px;
   background-color: #fff;
   border-radius: 20px;
   position: absolute;
-  right: 180px;
+  right: 100px;
   top: 90px;
+  width: 456px;
 }
 
 .wrap-notification {
@@ -903,9 +922,10 @@ section.card:first-child .blog-post img {
 }
 
 .content-notification {
-  padding: 50px;
-  text-align: center;
+  padding: 20px;
   width: 100%;
+  height: 260px;
+  overflow-y: auto;
 }
 
 .content-notification-empty {

@@ -1141,3 +1141,10 @@ body {
   background: #011627;
   color: #7edd03;
 }
+
+.text-places{
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+ -webkit-box-orient: vertical;
+ overflow: hidden;
+}
