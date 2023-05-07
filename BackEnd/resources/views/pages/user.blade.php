@@ -45,9 +45,9 @@
                         <div class="card-body">
                             <h5 class="card-title">Uses <span>|
                                     List</span></h5>
-                            <button type="submit" class="btn btn-danger">
+                            {{-- <button type="submit" class="btn btn-danger">
                                 <i class="bi bi-trash"></i>
-                            </button>
+                            </button> --}}
                             <div class="d-flex align-items-center">
                                 <table class="table table-striped">
                                     <thead>
