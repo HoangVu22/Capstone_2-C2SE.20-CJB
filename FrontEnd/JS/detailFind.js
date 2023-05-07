@@ -7,53 +7,53 @@ const pageDetail = window.localStorage.getItem("page-detail");
 const z = document.querySelector.bind(document);
 const zz = document.querySelectorAll.bind(document);
 
-
 if (login) {
-    headerNavForm.onclick = function () {
-      if (headerForm.style.display === "none") {
-        headerForm.style.display = "block";
-        headerFormLogout.style.display = "block";
-        headerFormLogin.style.display = "none";
-      } else {
-        headerForm.style.display = "none";
-        headerFormLogout.style.display = "none";
-      }
-    };
-  } else {
-    headerNavForm.onclick = function () {
-      if (headerForm.style.display === "none") {
-        headerForm.style.display = "block";
-        headerFormLogin.style.display = "block";
-        headerFormLogout.style.display = "none";
-      } else {
-        headerForm.style.display = "none";
-        headerFormLogin.style.display = "none";
-      }
-    };
-  }
-  const names = z('.header-name1');
-  const avatarUser = z(".header-form-avatar #avatar_user");
-  console.log(avatarUser);
-  if (login) {
-    names.innerText = login.user_info.name;
-    avatarUser.src = login.user_info.user_profile[0].avatar;
-  }
+  headerNavForm.onclick = function () {
+    if (headerForm.style.display === "none") {
+      headerForm.style.display = "block";
+      headerFormLogout.style.display = "block";
+      headerFormLogin.style.display = "none";
+    } else {
+      headerForm.style.display = "none";
+      headerFormLogout.style.display = "none";
+    }
+  };
+} else {
+  headerNavForm.onclick = function () {
+    if (headerForm.style.display === "none") {
+      headerForm.style.display = "block";
+      headerFormLogin.style.display = "block";
+      headerFormLogout.style.display = "none";
+    } else {
+      headerForm.style.display = "none";
+      headerFormLogin.style.display = "none";
+    }
+  };
+}
+const names = z(".header-name1");
+const avatarUser = z(".header-form-avatar #avatar_user");
+console.log(avatarUser);
+if (login) {
+  names.innerText = login.user_info.name;
+  avatarUser.src = login.user_info.user_profile[0].avatar;
+}
 
 //   ----------------------------------------------------------------------
-const logout = document.getElementsByClassName('form-logout');
+const logout = document.getElementsByClassName("form-logout");
 logout.onclick = () => {
-    alert('Bạn chắc chắn muốn thoát ?')
-    window.localStorage.clear();
-    window.location.reload(true);
-    window.location.href = 'http://localhost:3000/login-register.html';
-}
+  alert("Bạn chắc chắn muốn thoát ?");
+  window.localStorage.clear();
+  window.location.reload(true);
+  window.location.href = "http://localhost:3000/login-register.html";
+};
 // ---------------------------------------
 
 const apiPersonTourDetail = "http://127.0.0.1:8000/api/personal/tour/show/";
-var htmlPersonTour = z('.detail-container');
+var htmlPersonTour = z(".detail-container");
 
 function RenderTourDetail(obj) {
-    const htmls = `
+  console.log(obj);
+  const htmls = `
     <div class="detail-inf-tour">
     <div class="detail-inf-wraper">
         <div class="detail-inf">
@@ -100,7 +100,7 @@ function RenderTourDetail(obj) {
                         <p>Xác minh qua facebook</p>
                     </div>
                     <div class="add-friend">
-                        <button>
+                        <button onclick="handleAddFriend(${obj[0].owner_id})">
                             <i class="fa-solid fa-user-plus" style="color: #ffffff;"></i>
                             Add friend
                         </button>
@@ -178,18 +178,19 @@ function RenderTourDetail(obj) {
     </div>
 </div>
   `;
-//   console.log(htmls);
-    return htmlPersonTour.innerHTML = htmls;
+  //   console.log(htmls);
+  return (htmlPersonTour.innerHTML = htmls);
 }
 
+const handleAddFriend = (id) => {};
+
 fetch("http://127.0.0.1:8000/api/personal/tour/show/" + pageDetail)
-    .then(res => res.json())
-    .then(
-        data => {
-            console.log(data);
-            window.localStorage.setItem("data",JSON.stringify(data));
-            const dataa = window.localStorage.getItem("data");
-            RenderTourDetail(data);
-        })
-        const dataa = window.localStorage.getItem("data");
-        console.log(dataa);
+  .then((res) => res.json())
+  .then((data) => {
+    console.log(data);
+    window.localStorage.setItem("data", JSON.stringify(data));
+    const dataa = window.localStorage.getItem("data");
+    RenderTourDetail(data);
+  });
+const dataa = window.localStorage.getItem("data");
+console.log(dataa);

@@ -9,6 +9,7 @@ const socket = io("http://localhost:3002/chat", {
     token: localStorage.getItem("id"),
   },
 });
+
 const messageInput = document.querySelector(".type_msg");
 const sendButton = document.querySelector(".send_btn");
 const messages = document.querySelector(".msg_card_body");

@@ -33,33 +33,18 @@ loginButton.addEventListener("click", (e) => {
     .then((data) => {
       if (data.status === 200) {
         window.localStorage.setItem("login", JSON.stringify(data));
-        console.log(data.user_info.user_role);
+        window.localStorage.setItem("access_token", data.token);
         window.localStorage.setItem(
           "id",
           JSON.stringify(data.user_info.user_profile[0].user_id)
         );
-        window.localStorage.getItem("login");
-        console.log(data);
-        window.location.href = "http://localhost:3000/home.html";
+        window.location.href = "home.html";
       } else {
         alert(data.msg);
       }
     })
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === 200) {
-                window.localStorage.setItem("login", JSON.stringify(data));
-                console.log(data.user_info.user_role);
-                window.localStorage.setItem("id", JSON.stringify(data.user_info.user_profile[0].user_id))
-                window.localStorage.getItem("login");
-                console.log(data);
-                window.location.href = 'http://localhost:3000/home.html';
-            } else {
-                alert(data.msg)
-            }
-        })
-        .catch(error => console.log(error))
-})
+    .catch((error) => console.log(error));
+});
 
 // --------------------------------------------------------------------
 
@@ -70,25 +55,23 @@ registerButton.onclick = (e) => {
   const inputs = document.querySelectorAll("input.form-input");
   const requestValues = {};
 
-    inputs.forEach(item => {
-        requestValues[item.attributes.name.value] = item.value;
-    })
-    fetch('http://127.0.0.1:8000/api/auth/userRegister', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(requestValues)
-    })
-        .then(response => response.json())
-        .then(
-            data => {
-                if (data.status === 200) {
-                    alert("success......");
-                    window.location.href = 'http://localhost:3000/home.html'
-                } else {
-                    alert(data.message)
-                }
-            }
-        )
-}
+  inputs.forEach((item) => {
+    requestValues[item.attributes.name.value] = item.value;
+  });
+  fetch("http://127.0.0.1:8000/api/auth/userRegister", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(requestValues),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.status === 200) {
+        alert("success......");
+        window.location.reload();
+      } else {
+        alert(data.message);
+      }
+    });
+};
