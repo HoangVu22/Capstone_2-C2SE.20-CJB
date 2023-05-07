@@ -35,6 +35,9 @@ Route::controller(AuthController::class)->prefix('auth')->group(function(){
     Route::post('/tsRegister', 'tsRegister');
 
 });
+Route::group(['middleware' => 'jwt.auth'], function () {
+    Route::get('token/userinfo', [AuthController::class, 'getUserInfo']);
+});
 
 Route::controller(UserProfileController::class)->prefix('user/profile')->group(function(){
     Route::put('/update', 'update');
