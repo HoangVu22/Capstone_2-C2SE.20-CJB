@@ -9,7 +9,7 @@ const headerForm = document.querySelector(".header-form");
 const headerFormLogin = headerNavForm.querySelector(".header-form-login");
 const headerFormLogout = document.querySelector(".header-form-logout");
 const login = JSON.parse(window.localStorage.getItem("login"));
-const z = document.querySelector.bind(document);
+
 
 if (login) {
   headerNavForm.onclick = function () {
@@ -32,7 +32,7 @@ if (login) {
     }
   };
 }
-
+const z = document.querySelector.bind(document);
 const logout = z('.form-logout');
 logout.onclick = () => {
   alert('Bạn chắc chắn muốn thoát ?')
@@ -155,7 +155,7 @@ function getTours(api) {
                   <div class="find-bottom-icon">
                       <i class="fa-solid fa-location-dot"></i>
                   </div>
-                  <p><b>Nơi khởi hành: </b>${tour.address}</p>
+                  <p class="text-places"><b>Nơi khởi hành: </b>${tour.address}</p>
               </div>
               <div class="find-bottom-money">
                   <h2>${tour.price}đ</h2>

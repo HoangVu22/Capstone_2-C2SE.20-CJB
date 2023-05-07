@@ -128,3 +128,13 @@ postSchedualAdd.onclick = () => {
       };
     });
 };
+
+
+const z = document.querySelector.bind(document);
+const logout = z('.form-logout');
+logout.onclick = () => {
+  alert('Bạn chắc chắn muốn thoát ?')
+  window.localStorage.clear();
+  window.location.reload(true);
+  window.location.href = 'http://localhost:3000/home.html';
+}
