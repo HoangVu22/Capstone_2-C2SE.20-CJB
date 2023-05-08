@@ -10,28 +10,51 @@ use App\Models\TSProfile;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Resources\UserInfoResource;
+use JWTAuth;
+use JWTAuthException;
 
 class AuthController extends Controller
 {
     //
     public function login(Request $request){
-        if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
-            if(Auth::user()->is_Admin == true){
-                return redirect()->route('dashboard');
+        // if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
+        //     if(Auth::user()->is_Admin == true){
+        //         return redirect()->route('dashboard');
+        //     }
+        //     else{
+        //         setcookie('userId', Auth::user()->id);// cookies available in 2 hours
+        //         // dd($_COOKIE['userId']);
+        //         return response()->json(['msg' => 'Đăng nhập thành công', 
+        //                                 'user_info' =>
+        //                                     new UserInfoResource(User::find(Auth::user()->id)),
+        //                                 'status' => 200,
+        //                                 ], 200);
+        //     }
+        // }
+        // else{
+        //     return response()->json(['msg' => 'Đăng nhập thất bại', 'email' => $request->email, 'status' => 401], 401);
+        // }
+        $credentials = $request->only('email', 'password');
+        $token = null;
+        try {
+            if (!$token = JWTAuth::attempt($credentials)) {
+                return response()->json(['msg' => 'Đăng nhập thất bại', 'email' => $request->email, 'status' => 401], 401);
             }
-            else{
-                setcookie('userId', Auth::user()->id);// cookies available in 2 hours
-                // dd($_COOKIE['userId']);
-                return response()->json(['msg' => 'Đăng nhập thành công', 
-                                        'user_info' =>
-                                            new UserInfoResource(User::find(Auth::user()->id)),
-                                        'status' => 200,
-                                        ], 200);
-            }
+        } catch (JWTAuthException $e) {
+            return response()->json(['failed_to_create_token'], 500);
         }
-        else{
-            return response()->json(['msg' => 'Đăng nhập thất bại', 'email' => $request->email, 'status' => 401], 401);
-        }
+        return response()->json([
+            'msg' => 'Đăng nhập thành công',
+            'token' => $token, 
+            'user_info' =>
+                new UserInfoResource(User::find(Auth::user()->id)),
+            'status' => 200,
+        ], 200);
+    }
+
+    public function getUserInfo(Request $request){
+        $user = JWTAuth::toUser($request->token);
+        return response()->json($user);
     }
 
     public function userRegister(Request $request){

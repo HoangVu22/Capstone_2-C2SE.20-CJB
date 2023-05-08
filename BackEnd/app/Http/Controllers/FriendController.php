@@ -24,6 +24,10 @@ class FriendController extends Controller
             'user_id' => $request->user_id,
             'friend_id' => $request->friend_id,
         ]);
+        Friend::create([
+            'user_id' => $request->friend_id,
+            'friend_id' => $request->user_id,
+        ]);
 
         return response()->json(['msg' => 'Make friend thành công']);
     }
@@ -50,8 +54,12 @@ class FriendController extends Controller
     public function destroy(Request $request)
     {
         Friend::where([
-            'user_id' => $request->userId,
-            'friend_id' => $request->friendId,
+            'user_id' => $request->user_id,
+            'friend_id' => $request->friend_id,
+        ])->delete();
+        Friend::where([
+            'user_id' => $request->friend_id,
+            'friend_id' => $request->user_id,
         ])->delete();
 
         return response()->json(['msg' => 'Unfriend thành công']);
