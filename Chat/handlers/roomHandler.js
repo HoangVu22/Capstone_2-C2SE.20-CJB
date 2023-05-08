@@ -21,7 +21,8 @@ module.exports = (io) => {
       });
       const user = await users.findByPk(joiner);
       connectUsers[room.room_owner].emit("join-room", {
-        message: `${user.name} đang muốn tham gia vào phòng của bạn`,
+        who: user.name,
+        message: `đang muốn tham gia vào phòng của bạn`,
         verifyId: member.id,
       });
     });

@@ -1,50 +1,4 @@
-const headerNavForm = document.querySelector(".header-nav-form");
-const headerForm = document.querySelector(".header-form");
-const headerFormLogin = headerNavForm.querySelector(".header-form-login");
-const headerFormLogout = document.querySelector(".header-form-logout");
-const login = JSON.parse(window.localStorage.getItem("login"));
-
-if (login) {
-  headerNavForm.onclick = function () {
-    if (headerForm.style.display === "none") {
-      headerForm.style.display = "block";
-      headerFormLogout.style.display = "block";
-      headerFormLogin.style.display = "none";
-    } else {
-      headerForm.style.display = "none";
-      headerFormLogout.style.display = "none";
-    }
-  };
-} else {
-  headerNavForm.onclick = function () {
-    if (headerForm.style.display === "none") {
-      headerForm.style.display = "block";
-      headerFormLogin.style.display = "block";
-      headerFormLogout.style.display = "none";
-    } else {
-      headerForm.style.display = "none";
-      headerFormLogin.style.display = "none";
-    }
-  };
-}
-const names = document.getElementsByClassName(' header-name1');
-const avatarUser = document.getElementById("avatar_user");
-if (login) {
-  names[0].innerText = login.user_info.name;
-  avatarUser.src = login.user_info.user_profile[0].avatar;
-}
-
-const logout = document.getElementsByClassName('form-logout');
-logout[0].onclick = () => {
-  alert('Bạn chắc chắn muốn thoát ?')
-  window.localStorage.clear();
-  window.location.reload(true);
-  window.location.href = 'http://localhost:3000/home.html';
-}
-
-
 // ---------------------------------------
-
 
 const slickPre = document.getElementsByClassName(" fa-chevron-left");
 const slickNext = document.getElementsByClassName(" fa-chevron-right");
@@ -101,22 +55,6 @@ console.log(login);
 //   avatarUser[0].src = "https://scontent.fdad1-2.fna.fbcdn.net/v/t39.30808-6/323952197_567233611560466_7304591525322997827_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=PdWsTXpElkEAX9IVL9U&_nc_ht=scontent.fdad1-2.fna&oh=00_AfBGaaF1sKuii3DajDaAxGsPyrPBf8lHeo2HgE45lER7hA&oe=643E53C4";
 // }
 
-
-// --------- ẩn hiện thông báo----------
-
-const faBell = document.querySelector('.fa-bell')
-const containerNotification = document.querySelector('.container-notification')
-
-faBell.onclick = function () {
-  if (containerNotification.style.display === 'none') {
-    containerNotification.style.display = 'block'
-  }
-  else {
-    containerNotification.style.display = 'none'
-  }
-}
-
-
 // ---------------------------------------------------
 
 // const ss = document.querySelector.bind(document);
@@ -126,10 +64,10 @@ const api = "http://127.0.0.1:8000/api/homepage/tour";
 let htmls = "";
 function getTours(api) {
   fetch(api)
-    .then(response => {
+    .then((response) => {
       return response.json();
     })
-    .then(data => {
+    .then((data) => {
       const tours = data.data;
       htmls = tours.map((tour) => {
         return `
@@ -154,7 +92,7 @@ function getTours(api) {
                 </div>
             </div>
       `;
-      }); 
+      });
       sliderFind[0].innerHTML = htmls.join("");
       $(".slides").slick({
         slidesToShow: 4,
@@ -166,8 +104,8 @@ function getTours(api) {
       };
       findSlickNext[0].onclick = () => {
         next1[0].click();
-      }
-    })
+      };
+    });
 }
 
 getTours(api);
