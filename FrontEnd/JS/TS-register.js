@@ -63,6 +63,7 @@ registerButton.onclick = () => {
             data => {
                 if (data.status === 200) {
                     alert("success......");
+                    window.localStorage.setItem("login", JSON.stringify(data));
                     window.location.href = 'http://localhost:3000/home.html'
                 } else {
                     alert(data.message)

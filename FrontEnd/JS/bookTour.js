@@ -141,11 +141,21 @@ function getTours(api) {
     })
     .then(data => {
       const tours = data;
-      console.log(htmls);
+      console.log(tours);
+      const tourDetails = document.querySelectorAll('.book-tour-places .find-container')
+      console.log(tourDetails);
+      tourDetails.forEach(tourr => {
+          tourr.onclick = (e) => {
+            console.log(e);
+              localStorage.setItem('detailTourId', e)
+              // window.location.href = 'http://localhost:3000/detailTour.html'
+          }
+      })
+      window.localStorage.setItem("dataTSTour", JSON.stringify(data));
       htmls = tours.map((tour) => {
-        console.log(Date(`${tour.to_date}`));
+        console.log(Date(`${tour.to_date}`));//
         return `
-          <div class="find-container">
+          <div class="find-container data-id='${tour.id}'" onclick="tranFormPage(${tour.id})">
           <div class="find-container-top">
               <img src="../IMAGES/slides/slide-0.png" alt="">
           </div>
@@ -205,6 +215,14 @@ function getTours(api) {
 }
 
 getTours(api);
+
+
+function tranFormPage(idPage) {
+  const listTourDetail = JSON.parse(window.localStorage.getItem("dataTSTour"));
+    window.localStorage.setItem("detail-tour", idPage)
+    console.log(window.localStorage.getItem("detail-tour"));
+    window.location.href = 'http://localhost:3000/detailTour.html';
+}
 
 
 // -------------------------- slide3 người dùng tạo tour (render and slides) ----------------------------------------------
@@ -270,21 +288,5 @@ function getTourUser() {
     })
 }
 
-
 getTourUser();
-
-// $(".slides3").slick({
-//   infinite: true,
-//   slidesToShow: 1,
-//   slidesToScroll: 1,
-//   speed: 1000,
-//   autoplay: true,
-// });
-// prev2.onclick = () => {
-//   console.log(1);
-//   slickPrev2.click();
-// };
-// next2.onclick = () => {
-//   slickNext2.click();
-//   console.log(1);
-// };
+const dataTSTour = window.localStorage.getItem("dataTSTour");

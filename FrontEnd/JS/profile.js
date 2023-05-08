@@ -65,20 +65,18 @@ var sliderFind = $(".swiper-wrapper");
 let htmls = "";
 function renderListTour() {
     fetch("http://127.0.0.1:8000/api/personal/tour/all/" + login.user_info.user_profile[0].user_id)
-        .then(response => {
-            return response.json();
-        })
+        .then(response => response.json())
         .then(data => {
             const tours = data.all_tour;
             window.localStorage.setItem("dataPersonTour", JSON.stringify(data.all_tour));
 
-            const tourNames = document.querySelectorAll('.blog-slider__item .blog-slider__content .profile-control .blog-slider__button')
-            tourNames.forEach(tourr => {
-                tourr.onclick = (e) => {
-                    localStorage.setItem('targetTourId', e.target.dataset.tourr)
-                    window.location.href = 'http://localhost:3000/detailFind.html'
-                }
-            })
+            // const tourNames = document.querySelectorAll('.blog-slider__item .blog-slider__content .profile-control .blog-slider__button')
+            // tourNames.forEach(tourr => {
+            //     tourr.onclick = (e) => {
+            //         localStorage.setItem('targetTourId', e.target.dataset.tourr)
+            //         window.location.href = 'http://localhost:3000/detailFind.html'
+            //     }
+            // })
             htmls = tours.map((tour) => {
                 return `
                 <div class="blog-slider__item swiper-slide data-id='${tour.id}'">
@@ -137,7 +135,7 @@ function renderListTour() {
 function handle_delete(e, v) {
     console.log(e);
     console.log(v);
-    const listTour = JSON.parse(window.localStorage.getItem("dataPersonTour"));
+    // const listTour = JSON.parse(window.localStorage.getItem("dataPersonTour"));
     window.localStorage.setItem("page-detail", e)
     console.log(window.localStorage.getItem("page-detail"));
     fetch("http://127.0.0.1:8000/api/personal/tour/delete/" + e + "?owner_id=" + v,
@@ -162,7 +160,7 @@ function handle_detail_page(e) {
     const listTour = JSON.parse(window.localStorage.getItem("dataPersonTour"));
     window.localStorage.setItem("page-detail", e)
     console.log(window.localStorage.getItem("page-detail"));
-    e.href = 'http://localhost:3000/detailFind.html';
+    window.location.href = 'http://localhost:3000/detailFind.html';
 }
 
 // const tourNames = document.querySelectorAll('.blog-slider__item .blog-slider__content .profile-control .btn-delete')
@@ -271,10 +269,9 @@ logout.onclick = () => {
 
 
 // // -----------------------  update profile user ------------------------------------
-
-const apiUserProfile = "http://127.0.0.1:8000/api/user/profile/update";
+console.log(login.user_info.user_profile[0].avatar);
 function getInfoUser() {
-    fetch(apiUserProfile, {
+    fetch("http://127.0.0.1:8000/api/user/profile/update", {
         method: 'PUT',
         headers: {
             "Content-Type": "application/json",
@@ -300,7 +297,6 @@ function getInfoUser() {
         .then(data => {
             window.localStorage.setItem("login", JSON.stringify(data));
             const profile = JSON.parse(window.localStorage.getItem("login"));
-            alert("Cập nhật thông tin thành công");
             createToast("success")
             window.location.reload(true);
             renderUserInfo(profile);
@@ -368,8 +364,41 @@ function renderUserInfo(obj) {
 
 // if (login.status === 200) {
 btnUpdate.onclick = () => {
-    getInfoUser();
-    window.location.reload(true);
+    console.log(329846234);
+    fetch("http://127.0.0.1:8000/api/user/profile/update", {
+        method: 'PUT',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            id: login.user_info.user_profile[0].user_id,
+            name: inputUserName.value,
+            phone_number: inputPhoneNumber.value,
+            avatar: login.user_info.user_profile[0].avatar,
+            gender: inputGender.value,
+            about: inputAbout.value,
+        }),
+        data: ({
+            id: login.user_info.user_profile[0].user_id,
+            name: inputUserName.value,
+            phone_number: inputPhoneNumber.value,
+            avatar: login.user_info.user_profile[0].avatar,
+            gender: inputGender.value,
+            about: inputAbout.value,
+        }),
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            window.localStorage.setItem("login", JSON.stringify(data));
+            const profile = JSON.parse(window.localStorage.getItem("login"));
+            createToast("success")
+            setTimeout(() => {
+                window.location.reload(true);
+            }, 5000);
+            renderUserInfo(profile);
+        })
+        .catch(error => console.log(error))
 }
 // }
 

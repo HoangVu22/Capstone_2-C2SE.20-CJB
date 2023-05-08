@@ -63,7 +63,7 @@ function getTours(api) {
 
                                     <div class="">
                                         <button class="modal__btn">No</button>
-                                        <button class="modal__btn">Yes</button>
+                                        <button class="modal__btn" onclick="handleDeleteTourTS(${tour.id},${tour.ts_id})">Yes</button>
                                     </div>
 
                                     <a href="#modal-closed" class="link-2"></a>
@@ -94,4 +94,14 @@ logout.onclick = () => {
   window.localStorage.clear();
   window.location.reload(true);
   window.location.href = 'http://localhost:3000/home.html';
+}
+
+// ------------------------ delete tourTS ----------------------------------
+function handleDeleteTourTS(id , ts_id){
+    fetch("http://127.0.0.1:8000/api/ts/tour/delete/"+id+"?ts_id="+ts_id,{
+        method: "DELETE ",
+    })
+        .then(res => res.json())
+        .then(data=>{ console.log(data);})
+    
 }

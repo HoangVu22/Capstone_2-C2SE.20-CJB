@@ -27,7 +27,7 @@ if (login) {
     }
   };
 }
-const names = document.getElementsByClassName(' header-name1');
+const names = document.getElementsByClassName('header-name1');
 const avatarUser = document.getElementById("avatar_user");
 if (login) {
   names[0].innerText = login.user_info.name;
@@ -124,6 +124,7 @@ var sliderFind = document.getElementsByClassName("slides");
 const api = "http://127.0.0.1:8000/api/homepage/tour";
 
 let htmls = "";
+
 function getTours(api) {
   fetch(api)
     .then(response => {
@@ -171,3 +172,6 @@ function getTours(api) {
 }
 
 getTours(api);
+
+
+
