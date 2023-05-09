@@ -182,15 +182,23 @@ function RenderTourDetail(obj) {
   return (htmlPersonTour.innerHTML = htmls);
 }
 
-const handleAddFriend = (id) => {};
+const handleAddFriend = (id) => {
+  fetch(
+    `http://127.0.0.1:8000/api/friend/create?user_id=${localStorage.getItem(
+      "id"
+    )}&friend_id=${id}`
+  )
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+    });
+};
 
 fetch("http://127.0.0.1:8000/api/personal/tour/show/" + pageDetail)
   .then((res) => res.json())
   .then((data) => {
     console.log(data);
-    window.localStorage.setItem("data", JSON.stringify(data));
-    const dataa = window.localStorage.getItem("data");
+    // window.localStorage.setItem("data", JSON.stringify(data));
+    // const dataa = window.localStorage.getItem("data");
     RenderTourDetail(data);
   });
-const dataa = window.localStorage.getItem("data");
-console.log(dataa);

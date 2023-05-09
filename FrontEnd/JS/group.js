@@ -1,66 +1,66 @@
-const headerNavForm = document.querySelector(".header-nav-form");
-const headerForm = document.querySelector(".header-form");
-const headerFormLogin = headerNavForm.querySelector(".header-form-login");
-const headerFormLogout = document.querySelector(".header-form-logout");
+// const headerNavForm = document.querySelector(".header-nav-form");
+// const headerForm = document.querySelector(".header-form");
+// const headerFormLogin = headerNavForm.querySelector(".header-form-login");
+// const headerFormLogout = document.querySelector(".header-form-logout");
 const login = JSON.parse(window.localStorage.getItem("login"));
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
-const socket = io("http://localhost:3002/room", {
+const socketRoom = io("http://localhost:3002/room", {
   auth: {
     token: localStorage.getItem("id"),
   },
 });
 
-socket.on("connect", () => {
-  localStorage.setItem("socketId", socket.id);
+socketRoom.on("connect", () => {
+  localStorage.setItem("socketId", socketRoom.id);
 });
 
-if (login) {
-  headerNavForm.onclick = function () {
-    if (headerForm.style.display === "none") {
-      headerForm.style.display = "block";
-      headerFormLogout.style.display = "block";
-      headerFormLogin.style.display = "none";
-    } else {
-      headerForm.style.display = "none";
-      headerFormLogout.style.display = "none";
-    }
-  };
-} else {
-  headerNavForm.onclick = function () {
-    if (headerForm.style.display === "none") {
-      headerForm.style.display = "block";
-      headerFormLogin.style.display = "block";
-      headerFormLogout.style.display = "none";
-    } else {
-      headerForm.style.display = "none";
-      headerFormLogin.style.display = "none";
-    }
-  };
-}
+// if (login) {
+//   headerNavForm.onclick = function () {
+//     if (headerForm.style.display === "none") {
+//       headerForm.style.display = "block";
+//       headerFormLogout.style.display = "block";
+//       headerFormLogin.style.display = "none";
+//     } else {
+//       headerForm.style.display = "none";
+//       headerFormLogout.style.display = "none";
+//     }
+//   };
+// } else {
+//   headerNavForm.onclick = function () {
+//     if (headerForm.style.display === "none") {
+//       headerForm.style.display = "block";
+//       headerFormLogin.style.display = "block";
+//       headerFormLogout.style.display = "none";
+//     } else {
+//       headerForm.style.display = "none";
+//       headerFormLogin.style.display = "none";
+//     }
+//   };
+// }
 
-const z = document.querySelector.bind(document);
-const logout = z(".form-logout");
-logout.onclick = () => {
-  alert("Bạn chắc chắn muốn thoát ?");
-  window.localStorage.clear();
-  window.location.reload(true);
-  window.location.href = "http://localhost:3000/home.html";
-};
+// const z = document.querySelector.bind(document);
+// const logout = z(".form-logout");
+// logout.onclick = () => {
+//   alert("Bạn chắc chắn muốn thoát ?");
+//   window.localStorage.clear();
+//   window.location.reload(true);
+//   window.location.href = "http://localhost:3000/home.html";
+// };
 
-const goBackProfile = z(".group-icon");
+// const goBackProfile = z(".group-icon");
 
-goBackProfile.onclick = () => {
-  window.location.href = "http://localhost:3000/profile.html";
-};
+// goBackProfile.onclick = () => {
+//   window.location.href = "http://localhost:3000/profile.html";
+// };
 
-const names = document.getElementsByClassName(" header-name1");
-const avatarUser = document.getElementById("avatar_user");
-if (login) {
-  names[0].innerText = login.user_info.name;
-  avatarUser.src = login.user_info.user_profile[0].avatar;
-}
+// const names = document.getElementsByClassName(" header-name1");
+// const avatarUser = document.getElementById("avatar_user");
+// if (login) {
+//   names[0].innerText = login.user_info.name;
+//   avatarUser.src = login.user_info.user_profile[0].avatar;
+// }
 
 // ----------- ẩn hiện create group-----------
 const group = document.querySelector(".group");
@@ -170,7 +170,7 @@ function joinRoom(idRoom) {
     .then((response) => response.json())
     .then((val) => {
       createToast("success", val.msg);
-      socket.emit("join-room", {
+      socketRoom.emit("join-room", {
         roomId: idRoom,
         joiner: login.user_info.user_profile[0].user_id,
       });
@@ -180,7 +180,7 @@ function joinRoom(idRoom) {
     });
 }
 
-socket.on("join-room", (users) => {
+socketRoom.on("join-room", (users) => {
   console.log(users);
 });
 

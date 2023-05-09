@@ -73,7 +73,6 @@ function renderListTour() {
         "dataPersonTour",
         JSON.stringify(data.all_tour)
       );
-      // const listTour = JSON.parse(window.localStorage.getItem("dataPersonTour"));
       const tourNames = document.querySelectorAll(
         ".blog-slider__item .blog-slider__content .profile-control .blog-slider__button"
       );
@@ -103,7 +102,7 @@ function renderListTour() {
                     <div class="blog-slider__text"> ${tour.description} </div>
                     <div class="profile-control">
                         <div class="">
-                            <a href="detailFind.html" class="blog-slider__button">CHI TIẾT</a>
+                            <button onclick="handleClickDetail(${tour.id})" class="blog-slider__button">CHI TIẾT</button>
                         </div>
                         <div class="profile-action">
                             <a href="./createTrip.html">
@@ -134,6 +133,11 @@ function renderListTour() {
       }
     });
 }
+
+const handleClickDetail = (id) => {
+  localStorage.setItem("page-detail", id);
+  window.location.href = "detailFind.html";
+};
 
 // const handle_detail_page = $(".blog-slider__button");
 // -------------------------- delete ----------------------------------------------

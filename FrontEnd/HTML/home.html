@@ -1,18 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-    <link rel="stylesheet" href="../CSS/home.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="CSS/root.css" />
+    <link rel="stylesheet" href="CSS/home.css" />
+    <link rel="stylesheet" href="CSS/navbar.css" />
     <title>CJB</title>
-    <script src="https://cdn.socket.io/4.6.0/socket.io.min.js" integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+" crossorigin="anonymous"></script>
-</head>
+    <script
+      src="https://cdn.socket.io/4.6.0/socket.io.min.js"
+      integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-<body>
+  <body>
     <div class="main" id="main">
       <div id="render-nav">
         <!-- <header class="header">
@@ -148,59 +160,63 @@
         </header> -->
       </div>
 
-        <section class="home" id="home">
-            <div class="head_container">
-                <div class="text">
-                    <div>
-                        <h1>Get ready</h1>
-                        <p>Collection of the most beautiful places and experience</p>
-                    </div>
-                    <div class="image image-map">
-                        <img src="../IMAGES/slides/slide-map.png">
-                    </div>
-                </div>
-                <div class="image">
-                    <img src="../IMAGES/slides/slide-1.jpg" class="slide">
-                </div>
+      <section class="home" id="home">
+        <div class="head_container">
+          <div class="text">
+            <div>
+              <h1>Get ready</h1>
+              <p>Collection of the most beautiful places and experience</p>
             </div>
-        </section>
+            <div class="image image-map">
+              <img src="../IMAGES/slides/slide-map.png" />
+            </div>
+          </div>
+          <div class="image">
+            <img src="../IMAGES/slides/slide-1.jpg" class="slide" />
+          </div>
+        </div>
+      </section>
 
-        <section class="book">
-            <div class="book-container">
-                <div class="book-input">
-                    <div class="input-box">
-                        <label>Location</label>
-                        <input type="input" placeholder="Chọn điểm đến" class="input-location">
-                    </div>
-                    <div class="input-box">
-                        <label>Check-in</label>
-                        <input type="date" placeholder="Check-in-Date">
-                    </div>
-                    <div class="input-box">
-                        <label>Check-out</label>
-                        <input type="date" placeholder="Check-out-Date">
-                    </div>
-                    <div class="input-box">
-                        <label>Guests</label> <br>
-                        <input type="number" placeholder="0" class="input-guests">
-                    </div>
-                    <div class="search">
-                        <button>Search</button>
-                    </div>
-                </div>
+      <section class="book">
+        <div class="book-container">
+          <div class="book-input">
+            <div class="input-box">
+              <label>Location</label>
+              <input
+                type="input"
+                placeholder="Chọn điểm đến"
+                class="input-location"
+              />
             </div>
-        </section>
+            <div class="input-box">
+              <label>Check-in</label>
+              <input type="date" placeholder="Check-in-Date" />
+            </div>
+            <div class="input-box">
+              <label>Check-out</label>
+              <input type="date" placeholder="Check-out-Date" />
+            </div>
+            <div class="input-box">
+              <label>Guests</label> <br />
+              <input type="number" placeholder="0" class="input-guests" />
+            </div>
+            <div class="search">
+              <button>Search</button>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
 
     <!-- -------- POPULAR GROUPS-------------- -->
-    <div class="popular-groups" style="display: none;">
-        <div class="popular-heading">
-            <i class="fa-solid fa-chevron-left popular-heading-icon"></i>
-            <h1>POPULAR GROUPS</h1>
-            <i class="fa-solid fa-chevron-right popular-heading-icon"></i>
-        </div>
-        <div class="popular-slides">
-            <!-- <div>
+    <div class="popular-groups" style="display: none">
+      <div class="popular-heading">
+        <i class="fa-solid fa-chevron-left popular-heading-icon"></i>
+        <h1>POPULAR GROUPS</h1>
+        <i class="fa-solid fa-chevron-right popular-heading-icon"></i>
+      </div>
+      <div class="popular-slides">
+        <!-- <div>
                 <div class="popular-container">
                     <div class="popular-container-left">
                         <img src="../IMAGES/slides/slide-5.png" alt="">
@@ -308,18 +324,22 @@
                     </div>
                 </div>
             </div> -->
-        </div>
+      </div>
     </div>
 
     <!-- ----------- FIND TOURS-------------- -->
     <div class="find-tours slises">
-        <div class="find-heading">
-            <i class="fa-solid fa-chevron-left popular-heading-icon find-slick-left"></i>
-            <h1>CÁC CHUYẾN ĐI</h1>
-            <i class="fa-solid fa-chevron-right popular-heading-icon find-slick-right"></i>
-        </div>
-        <div class="find-container-wraper slides">
-            <!-- <div class="find-container">
+      <div class="find-heading">
+        <i
+          class="fa-solid fa-chevron-left popular-heading-icon find-slick-left"
+        ></i>
+        <h1>CÁC CHUYẾN ĐI</h1>
+        <i
+          class="fa-solid fa-chevron-right popular-heading-icon find-slick-right"
+        ></i>
+      </div>
+      <div class="find-container-wraper slides">
+        <!-- <div class="find-container">
                 <div class="find-container-top">
                     <img src="../IMAGES/slides/slide-5.png" alt="">
                 </div>
@@ -439,169 +459,191 @@
                     </div>
                 </div>
             </div> -->
-        </div>
+      </div>
     </div>
 
     <div class="list_city card_wrap">
-        <div class="find-heading">
-            <h1>CÁC THÀNH PHỐ CỦA VIỆT NAM</h1>
-        </div>
-        <div class="card_list">
-            <section class="card">
-                <div class="blog-post">
-                    <img src="../IMAGES/slides/slide-1.jpg" alt="Man" />
-                    <a href="../HTML/bookTour.html" class="category">HÀ NỘI</a>
+      <div class="find-heading">
+        <h1>CÁC THÀNH PHỐ CỦA VIỆT NAM</h1>
+      </div>
+      <div class="card_list">
+        <section class="card">
+          <div class="blog-post">
+            <img src="../IMAGES/slides/slide-1.jpg" alt="Man" />
+            <a href="../HTML/bookTour.html" class="category">HÀ NỘI</a>
 
-                    <!-- <div class="text-content">
+            <!-- <div class="text-content">
                         <p class="post-title">
                             <p>HÀ NỘI</p>
                         </p>
                     </div> -->
-                </div>
-            </section>
-            <section class="card">
-                <div class="blog-post">
-                    <img src="../IMAGES/slides/slide-4.png" alt="Man" />
-                    <a href="../HTML/bookTour.html" target="_blank" class="category">HẢI PHÒNG</a>
+          </div>
+        </section>
+        <section class="card">
+          <div class="blog-post">
+            <img src="../IMAGES/slides/slide-4.png" alt="Man" />
+            <a href="../HTML/bookTour.html" target="_blank" class="category"
+              >HẢI PHÒNG</a
+            >
 
-                    <!-- <div class="text-content">
+            <!-- <div class="text-content">
                         <p class="post-title">
                             <p>HÀ NỘI</p>
                         </p>
                     </div> -->
-                </div>
-            </section>
-            <section class="card">
-                <div class="blog-post">
-                    <img src="../IMAGES/slides/slide-5.png" alt="Man" />
-                    <a href="../HTML/bookTour.html" target="_blank" class="category">ĐÀ NẴNG</a>
+          </div>
+        </section>
+        <section class="card">
+          <div class="blog-post">
+            <img src="../IMAGES/slides/slide-5.png" alt="Man" />
+            <a href="../HTML/bookTour.html" target="_blank" class="category"
+              >ĐÀ NẴNG</a
+            >
 
-                    <!-- <div class="text-content">
+            <!-- <div class="text-content">
                         <p class="post-title">
                             <p>HÀ NỘI</p>
                         </p>
                     </div> -->
-                </div>
-            </section>
-            <section class="card">
-                <div class="blog-post">
-                    <img src="../IMAGES/slides/slide-5.png" alt="Man" />
-                    <a href="../HTML/bookTour.html" target="_blank" class="category">HỒ CHÍ MINH</a>
+          </div>
+        </section>
+        <section class="card">
+          <div class="blog-post">
+            <img src="../IMAGES/slides/slide-5.png" alt="Man" />
+            <a href="../HTML/bookTour.html" target="_blank" class="category"
+              >HỒ CHÍ MINH</a
+            >
 
-                    <!-- <div class="text-content">
+            <!-- <div class="text-content">
                         <p class="post-title">
                             <p>HÀ NỘI</p>
                         </p>
                     </div> -->
-                </div>
-            </section>
-            <section class="card">
-                <div class="blog-post">
-                    <img src="../IMAGES/slides/slide-4.png" alt="Man" />
-                    <a href="../HTML/bookTour.html" target="_blank" class="category">CẦN THƠ</a>
+          </div>
+        </section>
+        <section class="card">
+          <div class="blog-post">
+            <img src="../IMAGES/slides/slide-4.png" alt="Man" />
+            <a href="../HTML/bookTour.html" target="_blank" class="category"
+              >CẦN THƠ</a
+            >
 
-                    <!-- <div class="text-content">
+            <!-- <div class="text-content">
                         <p class="post-title">
                             <p>HÀ NỘI</p>
                         </p>
                     </div> -->
-                </div>
-            </section>
-        </div>
+          </div>
+        </section>
+      </div>
     </div>
 
     <div class="chatCJB">
-        <a href="./chat.html">Chat CJB</a>
+      <a href="./chat.html">Chat CJB</a>
     </div>
 
     <footer class="footer">
-        <div class="wrap-footer">
-            <div class="footer-content">
-                <div class="footer-title">
-                    Về CJB
-                </div>
-                <ul class="footer-list">
-                    <li><a href="">Về chúng tôi</a></li>
-                    <li><a href="">Liên hệ</a></li>
-                    <li><a href="">Trợ giúp</a></li>
-                    <li><a href="">Quy chế hoạt động</a></li>
-                    <li><a href="">Quy định bảo mật</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-content">
-                <div class="footer-title">
-                    Đối tác
-                </div>
-                <ul class="footer-list">
-                    <li><a href="">Đối tác liên kết</a></li>
-                    <li><a href="">Đối tác kết nối</a></li>
-                    <li><a href="">Quy chế trả góp</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-content">
-                <div class="footer-title">
-                    Điểm du lịch
-                </div>
-                <ul class="footer-list">
-                    <li><a href="">Thành phố Hà Nội</a></li>
-                    <li><a href="">Thành phố Hải Phòng</a></li>
-                    <li><a href="">Thành phố Đà Nẵng</a></li>
-                    <li><a href="">Thành phố Hồ Chí Minh</a></li>
-                    <li><a href="">Thành phố Cần Thơ</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-content">
-                <div class="footer-title">
-                    Theo dõi chúng tôi trên
-                </div>
-                <ul class="footer-list">
-                    <li>
-                        <a href="https://www.facebook.com/ngayay.emcua/" class="footer-list-connect">
-                            <div class="footer-list-icon">
-                                <i class="fa-brands fa-facebook"></i>
-                            </div>
-                            Facebook
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" class="footer-list-connect">
-                            <div class="footer-list-icon">
-                                <i class="fa-brands fa-instagram"></i>
-                            </div>
-                            Instagram
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" class="footer-list-connect">
-                            <div class="footer-list-icon">
-                                <i class="fa-brands fa-youtube"></i>
-                            </div>
-                            Youtube
-                        </a>
-                    </li>
-                </ul>
-            </div>
+      <div class="wrap-footer">
+        <div class="footer-content">
+          <div class="footer-title">Về CJB</div>
+          <ul class="footer-list">
+            <li><a href="">Về chúng tôi</a></li>
+            <li><a href="">Liên hệ</a></li>
+            <li><a href="">Trợ giúp</a></li>
+            <li><a href="">Quy chế hoạt động</a></li>
+            <li><a href="">Quy định bảo mật</a></li>
+          </ul>
         </div>
-        <div class="custom-shape-divider-bottom-1679667216">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
-                preserveAspectRatio="none">
-                <path
-                    d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
-                    class="shape-fill"></path>
-            </svg>
+
+        <div class="footer-content">
+          <div class="footer-title">Đối tác</div>
+          <ul class="footer-list">
+            <li><a href="">Đối tác liên kết</a></li>
+            <li><a href="">Đối tác kết nối</a></li>
+            <li><a href="">Quy chế trả góp</a></li>
+          </ul>
         </div>
+
+        <div class="footer-content">
+          <div class="footer-title">Điểm du lịch</div>
+          <ul class="footer-list">
+            <li><a href="">Thành phố Hà Nội</a></li>
+            <li><a href="">Thành phố Hải Phòng</a></li>
+            <li><a href="">Thành phố Đà Nẵng</a></li>
+            <li><a href="">Thành phố Hồ Chí Minh</a></li>
+            <li><a href="">Thành phố Cần Thơ</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-content">
+          <div class="footer-title">Theo dõi chúng tôi trên</div>
+          <ul class="footer-list">
+            <li>
+              <a
+                href="https://www.facebook.com/ngayay.emcua/"
+                class="footer-list-connect"
+              >
+                <div class="footer-list-icon">
+                  <i class="fa-brands fa-facebook"></i>
+                </div>
+                Facebook
+              </a>
+            </li>
+            <li>
+              <a href="" class="footer-list-connect">
+                <div class="footer-list-icon">
+                  <i class="fa-brands fa-instagram"></i>
+                </div>
+                Instagram
+              </a>
+            </li>
+            <li>
+              <a href="" class="footer-list-connect">
+                <div class="footer-list-icon">
+                  <i class="fa-brands fa-youtube"></i>
+                </div>
+                Youtube
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="custom-shape-divider-bottom-1679667216">
+        <svg
+          data-name="Layer 1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
+            class="shape-fill"
+          ></path>
+        </svg>
+      </div>
     </footer>
 
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="//code.jquery.com/jquery-1.11.0.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="//code.jquery.com/jquery-migrate-1.2.1.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+    ></script>
     <script src="JS/home.js"></script>
     <script src="JS/navbar.js"></script>
-</body>
-
+  </body>
 </html>
