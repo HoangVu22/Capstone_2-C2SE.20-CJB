@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "vietanh",
+    "password": "1882001Bi",
+    "database": "connectjourneybuddies",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "vietanh",
+    "password": "1882001Bi",
+    "database": "connectjourneybuddies",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
