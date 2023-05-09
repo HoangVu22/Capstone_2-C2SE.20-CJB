@@ -87,6 +87,9 @@ class ToursController extends Controller
      */
     public function show($id)
     {
+        if(Tours::find($id) == null){
+            return response()->json(['msg' => "Tour không tồn tại", 'status' => 404], 404);
+        }
         return new TourDetailResource(Tours::find($id));
     }
 
