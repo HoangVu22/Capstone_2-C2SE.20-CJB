@@ -10,9 +10,8 @@ use App\Http\Controllers\TSProfileController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\RoomsController;
 use App\Http\Controllers\CheckoutController;
-use App\Models\PersonalTours;
-use App\Models\Rooms;
-
+use App\Http\Controllers\NotificationsController;
+use App\Models\Notifications;
 
 /*
 |--------------------------------------------------------------------------
@@ -98,4 +97,10 @@ Route::prefix('payment')->group(function(){
     Route::get('/', [CheckoutController::class, 'payment'])->name('payment');
     Route::post('/', [CheckoutController::class, 'checkout']);
     Route::get('/done', [CheckoutController::class, 'done'])->name('done');
+});
+
+Route::prefix('notification')->group(function(){
+    Route::post('/send', [NotificationsController::class, 'send']);
+    Route::get('/read', [NotificationsController::class, 'read']);
+    Route::get('/getNotification', [NotificationsController::class, 'getNotification']);
 });

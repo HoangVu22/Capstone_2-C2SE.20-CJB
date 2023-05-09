@@ -10,6 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 use App\Models\PersonalTours;
 use App\Models\Tours;
 use App\Models\Rooms;
+use App\Models\Notifications;
 use App\Models\UserProfile;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Support\Facades\Hash;
@@ -92,6 +93,10 @@ class User extends Authenticatable implements JWTSubject
 
     public function tsProfile(){
         return $this->hasOne(TSProfile::class, 'user_id', 'id');
+    }
+
+    public function notifications(){
+        return $this->hasMany(Notifications::class, 'receiver_id', 'id');
     }
 
     
