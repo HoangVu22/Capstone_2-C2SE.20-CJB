@@ -2,8 +2,8 @@ const express = require("express");
 const { createServer } = require("http");
 const { Server } = require("socket.io");
 const cors = require("cors");
-const chatHandler = require("./handlers/chatHandler");
 const routing = require("./routers");
+const socket = require("./sockets");
 
 const app = express();
 const httpServer = createServer(app);
@@ -16,17 +16,7 @@ const io = new Server(httpServer, {
     methods: ["get", "post"],
   },
 });
-
-const chatNamespace = io.of("/chat");
-chatNamespace.on("connection", (socket) => {
-  console.log(`user connection ${socket.id}`);
-  chatHandler(chatNamespace, socket);
-
-  chatNamespace.on("disconnect", () => {
-    console.log(`user disconnect ${socket.id}`);
-  });
-});
-
+socket(io);
 routing(app);
 
 httpServer.listen(3002, () => {

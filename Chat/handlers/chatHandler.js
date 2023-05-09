@@ -1,27 +1,37 @@
 const { messages, friends, users } = require("../models");
 
-module.exports = async (io, socket) => {
-  const userId = socket.handshake.auth.token;
+module.exports = async (io) => {
+  io.on("connection", (socket) => {
+    console.log(`----------- user connection ${socket.id}`);
 
-  socket.on("send-message", async ({ receiver, message }) => {
-    const messageObject = await messages.create({
-      from_id: userId,
-      to_id: receiver,
-      content: message,
-    });
-    socket.broadcast.emit("receive-message", messageObject.content);
-  });
+    const userId = socket.handshake.auth.token;
 
-  socket.on("friends", async () => {
-    const yourFriends = await friends.findAll({
-      where: {
-        user_id: userId,
-      },
-      attributes: ["friend_id"],
+    socket.on("send-message", async ({ receiver, message }) => {
+      const messageObject = await messages.create({
+        from_id: userId,
+        to_id: receiver,
+        content: message,
+      });
+      socket.broadcast.emit("receive-message", messageObject.content);
     });
-    const yourFriendInfos = await Promise.all(
-      yourFriends.map(async (friend) => await users.findByPk(friend.friend_id))
-    );
-    socket.emit("friends", yourFriendInfos);
+
+    socket.on("friends", async () => {
+      const yourFriends = await friends.findAll({
+        where: {
+          user_id: userId,
+        },
+        attributes: ["friend_id"],
+      });
+      const yourFriendInfos = await Promise.all(
+        yourFriends.map(
+          async (friend) => await users.findByPk(friend.friend_id)
+        )
+      );
+      socket.emit("friends", yourFriendInfos);
+    });
+
+    socket.on("disconnect", () => {
+      console.log(`----------- user disconnect ${socket.id}`);
+    });
   });
 };

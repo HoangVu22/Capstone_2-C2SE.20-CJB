@@ -45,7 +45,6 @@ logout[0].onclick = () => {
 
 // ---------------------------------------
 
-
 const slickPre = document.getElementsByClassName(" fa-chevron-left");
 const slickNext = document.getElementsByClassName(" fa-chevron-right");
 const findSlickPrev = document.getElementsByClassName(" find-slick-left");
@@ -101,22 +100,6 @@ console.log(login);
 //   avatarUser[0].src = "https://scontent.fdad1-2.fna.fbcdn.net/v/t39.30808-6/323952197_567233611560466_7304591525322997827_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=PdWsTXpElkEAX9IVL9U&_nc_ht=scontent.fdad1-2.fna&oh=00_AfBGaaF1sKuii3DajDaAxGsPyrPBf8lHeo2HgE45lER7hA&oe=643E53C4";
 // }
 
-
-// --------- ẩn hiện thông báo----------
-
-const faBell = document.querySelector('.fa-bell')
-const containerNotification = document.querySelector('.container-notification')
-
-faBell.onclick = function () {
-  if (containerNotification.style.display === 'none') {
-    containerNotification.style.display = 'block'
-  }
-  else {
-    containerNotification.style.display = 'none'
-  }
-}
-
-
 // ---------------------------------------------------
 
 // const ss = document.querySelector.bind(document);
@@ -127,10 +110,10 @@ let htmls = "";
 
 function getTours(api) {
   fetch(api)
-    .then(response => {
+    .then((response) => {
       return response.json();
     })
-    .then(data => {
+    .then((data) => {
       const tours = data.data;
       htmls = tours.map((tour) => {
         return `
@@ -155,7 +138,7 @@ function getTours(api) {
                 </div>
             </div>
       `;
-      }); 
+      });
       sliderFind[0].innerHTML = htmls.join("");
       $(".slides").slick({
         slidesToShow: 4,
@@ -167,8 +150,8 @@ function getTours(api) {
       };
       findSlickNext[0].onclick = () => {
         next1[0].click();
-      }
-    })
+      };
+    });
 }
 
 getTours(api);
