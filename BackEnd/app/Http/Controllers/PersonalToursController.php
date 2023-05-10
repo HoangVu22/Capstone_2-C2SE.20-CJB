@@ -59,6 +59,9 @@ class PersonalToursController extends Controller
 
         $members = PersonalTours::find($id)->room->members->count();
         $tour[0]['members'] = $members;
+
+        $memberList = PersonalTours::find($id)->room->members->toArray(); 
+        $tour[0]['member_list'] = $memberList;
         
         return response()->json($tour);
     }

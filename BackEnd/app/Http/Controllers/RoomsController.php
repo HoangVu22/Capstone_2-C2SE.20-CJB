@@ -45,6 +45,7 @@ class RoomsController extends Controller
     {
         return response()->json([
             'room' => Rooms::find($id),
+            'members' => Rooms::find($id)->members()->where('is_confirm', true)->get(),
             'status' => 200,
         ]);
     }
