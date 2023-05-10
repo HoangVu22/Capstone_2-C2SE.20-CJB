@@ -50,6 +50,7 @@ app.post("/firebase/:folder", upload.single("filename"), (req, res) => {
     `${req.params.folder}/${req.file.originalname}`
   );
 
+  
   uploadBytes(storageRef, req.file.buffer)
     .then((snapshot) => {
       res.json("File uploaded successfully");
