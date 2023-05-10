@@ -24,11 +24,13 @@ class RoomsController extends Controller
      */
     public function store(Request $request)
     {
-        Rooms::create([
+        $room = Rooms::create([
             'room_owner' => $request->owner_id,
             'name' => $request->name,
             'description' => $request->description,
         ]);
+
+        Rooms::find($room->id)->members()->attach($request->owner_id, ['is_confirm' => true]);
 
         return response()->json([
             'msg' => "Tạo room thành công",
