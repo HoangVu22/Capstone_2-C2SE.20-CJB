@@ -379,3 +379,26 @@ if (!login) {
 } else {
   btnCreateTrip.enabled = true;
 }
+
+const pageDetail = window.localStorage.getItem("page-detail");
+fetch("http://127.0.0.1:8000/api/personal/tour/all/" + login.user_info.user_profile[0].user_id)
+  .then(res => res.json())
+  .then(data => {
+    data.all_tour.map(
+      (tour) => {
+        if (tour.id === pageDetail) {
+          console.log(tour);
+        }
+        return tour;
+      }
+    )
+    btnCreateTrip.innerText = "Chỉnh Sửa";
+    //     tenchuyendi.value = data[pageDetail].from_where;
+    // diemxuatphat.value = data[pageDetail].from_where;
+    // diemden.value = data[pageDetail].to_where;
+    // tungay.value = data[pageDetail].from_date;
+    // denngay.value = data[pageDetail].to_date;
+    // songuoi.value = data[pageDetail].
+    // motachuyendi.value = data[pageDetail].
+  })
+

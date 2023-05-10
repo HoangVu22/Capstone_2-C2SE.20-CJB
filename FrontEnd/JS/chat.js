@@ -25,6 +25,8 @@ socket.on("friends", (friends) => {
   myFriends = friends;
   targetFriend = friends[0];
   renderMessages(targetFriend.id);
+
+  console.log(targetFriend.id);
   targetFriendInfo.querySelector("span").innerText = targetFriend.name;
   contacts.innerHTML = myFriends.map(
     (friend) =>

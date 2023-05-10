@@ -2,10 +2,10 @@
 const inputImg = document.querySelector("#photo");
 const btnUpload = document.querySelector(".btn_upload")
 
-inputImg.onchange = (e) => {
-    console.log(e.target.files[0].name);
-    return e.target.files[0].name;
-}
+// inputImg.onchange = (e) => {
+//     console.log(e.target.files[0].name);
+//     return e.target.files[0].name;
+// }
 
 
 
@@ -22,18 +22,13 @@ inputImg.onchange = (e) => {
 
 const btn = document.querySelector(".d");
 btn.onclick = () => {
-    var formData = new FormData();
-    var fileField = document.querySelector("input[type='file']");
-
-    formData.append('filename', fileField.files[0]);
-    console.log(fileField.files[0].name);
-    fetch("http://localhost:3000/firebase/" + fileField.files[0].name + "?folder=user_images",{
+    fetch("http://localhost:3000/firebase/" + "278580945_668189734255632_8649391358758399598_n.jpg" + "?folder=user_images", {
         mode: "no-cors",
         headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/x-www-form-urlencoded",
         },
     })
-        // .then(res => res.json())
+        // .then(res => res.text())
         .then(data => {
             console.log(data)
         });
@@ -61,27 +56,24 @@ btnUpload.onclick = () => {
     var fileField = document.querySelector("input[type='file']");
 
     formData.append('filename', fileField.files[0]);
+    console.log(fileField.files[0]);
     fetch("http://localhost:3000/firebase/user_images", {
         method: 'POST',
         mode: "no-cors",
         headers: {
             "Content-Type": "application/json",
         },
-        body: formData
+        body: formData,
     })
+        // .then((res) => res.json())
         .then(data => {
-            data.json();
             console.log(data);
-            alert("OK")
         })
-        console.dir(inputImg.src);
 }
 
+// const formData = new FormData();
+// const fileField = document.querySelector('input[type="file"]');
 
+// formData.append("filename", fileField.files[0]);
 
-
-
-
-
-
-
+// upload(formData);

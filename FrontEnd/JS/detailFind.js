@@ -50,21 +50,27 @@ logout.onclick = () => {
 
 const apiPersonTourDetail = "http://127.0.0.1:8000/api/personal/tour/show/";
 var htmlPersonTour = z(".detail-container");
+// const handleAddFriend = (id) => {};
 
-function RenderTourDetail(obj) {
-  console.log(obj);
-  const htmls = `
+console.log(pageDetail);
+fetch("http://127.0.0.1:8000/api/personal/tour/show/" + pageDetail)
+  .then((res) => res.json())
+  .then((data) => {
+    console.log(data);
+    window.localStorage.setItem("data", JSON.stringify(data));
+    const dataa = window.localStorage.getItem("data");
+    const htmls = `
     <div class="detail-inf-tour">
     <div class="detail-inf-wraper">
         <div class="detail-inf">
-            <h1>${obj[0].to_where}</h1>
+            <h1>${data[0].to_where}</h1>
             <div class="detail-inf-all detail-inf-time">
                 <i class="fa-solid fa-location-dot"></i>
-                <p><b>Điểm xuất phát: </b>${obj[0].from_where}</p>
+                <p><b>Điểm xuất phát: </b>${data[0].from_where}</p>
             </div>
             <div class="detail-inf-all detail-inf-time">
                 <i class="fa-solid fa-location-dot"></i>
-                <p><b>Điểm đến: </b>${obj[0].to_where}</p>
+                <p><b>Điểm đến: </b>${data[0].to_where}</p>
             </div>
             <div class="detail-inf-all detail-inf-time">
                 <i class="fa-solid fa-person"></i>
@@ -72,12 +78,12 @@ function RenderTourDetail(obj) {
             </div>
             <div class="detail-inf-all detail-inf-time">
                 <i class="fa-solid fa-calendar-days"></i>
-                <p>${obj[0].from_date} - ${obj[0].to_date}</p>
+                <p>${data[0].from_date} - ${data[0].to_date}</p>
             </div>
         </div>
         <div class="detail-trip">
             <h4>Mô tả chuyến đi</h4>
-            <p>${obj[0].description}</p>
+            <p>${data[0].description}</p>
         </div>
         <!-- <div class="detail-location">
             <h4>Điểm xuất phát</h4>
@@ -85,7 +91,7 @@ function RenderTourDetail(obj) {
         </div> -->
 
         <div class="detail-host">
-            <h4 style="font-size: 22px; display: flex; align-items: center;">Chuyến đi được tạo bởi: <span style="color: #000; margin-left: 10px;">${obj[0].name}</span></h4>
+            <h4 style="font-size: 22px; display: flex; align-items: center;">Chuyến đi được tạo bởi: <span style="color: #000; margin-left: 10px;">${data[0].name}</span></h4>
             <div class="detail-host-inf">
                 <div class="detail-host-img">
                     <img src="../IMAGES/default/avatar.jpg" alt="avatar" style="border-radius: 50%;">
@@ -100,7 +106,7 @@ function RenderTourDetail(obj) {
                         <p>Xác minh qua facebook</p>
                     </div>
                     <div class="add-friend">
-                        <button onclick="handleAddFriend(${obj[0].owner_id})">
+                        <button onclick="handleAddFriend(${data[0].owner_id})">
                             <i class="fa-solid fa-user-plus" style="color: #ffffff;"></i>
                             Add friend
                         </button>
@@ -178,19 +184,7 @@ function RenderTourDetail(obj) {
     </div>
 </div>
   `;
-  //   console.log(htmls);
-  return (htmlPersonTour.innerHTML = htmls);
-}
-
-const handleAddFriend = (id) => {};
-
-fetch("http://127.0.0.1:8000/api/personal/tour/show/" + pageDetail)
-  .then((res) => res.json())
-  .then((data) => {
-    console.log(data);
-    window.localStorage.setItem("data", JSON.stringify(data));
-    const dataa = window.localStorage.getItem("data");
-    RenderTourDetail(data);
+  htmlPersonTour.innerHTML = htmls;
   });
-const dataa = window.localStorage.getItem("data");
-console.log(dataa);
+// const dataa = window.localStorage.getItem("data");
+// console.log(window.localStorage.getItem("data"));

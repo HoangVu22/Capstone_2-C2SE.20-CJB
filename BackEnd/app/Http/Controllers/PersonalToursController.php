@@ -47,12 +47,20 @@ class PersonalToursController extends Controller
      */
     public function show($id)
     {
-        return response()->json(
-            PersonalTours::where('personal_tours.id', $id)
+        if(PersonalTours::find($id) == null){
+            return response()->json(['msg' => "Tour không tồn tại", 'status' => 404], 404);
+        }
+
+        $tour = PersonalTours::where('personal_tours.id', $id)
             ->join('users', 'personal_tours.owner_id', '=', 'users.id')
-            ->select('personal_tours.*', 'users.name')
-            ->get(),
-        );
+            ->select('personal_tours.*', 'users.name as owner_name')
+            ->get()
+            ->toArray();
+
+        $members = PersonalTours::find($id)->room->members->count();
+        $tour[0]['members'] = $members;
+        
+        return response()->json($tour);
     }
 
     /**

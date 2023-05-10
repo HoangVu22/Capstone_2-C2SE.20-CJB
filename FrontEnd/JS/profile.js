@@ -96,10 +96,10 @@ function renderListTour() {
                     <div class="blog-slider__text"> ${tour.description} </div>
                     <div class="profile-control">
                         <div class="">
-                            <a href="./detailFind.html" class="blog-slider__button" onclick="handle_detail_page(${tour.id},${tour.owner_id})" >CHI TIẾT</a>
+                            <a href="./detailFind.html" class="blog-slider__button" onclick="handle_detail_page(${tour.id})" >CHI TIẾT</a>
                         </div>
                         <div class="profile-action">
-                            <a href="./createTrip.html">
+                            <a href="./createTrip.html" onclick="handleUpdateTour(${tour.id})">
                                 <i class="fa-solid fa-pencil"></i>
                             </a>
                             <i class="fa-solid fa-trash-can btn-delete" onclick="handle_delete(${tour.id},${tour.owner_id})"></i>
@@ -457,6 +457,12 @@ createGroup.onclick = () => {
     window.location.href = "http://localhost:3000/group.html";
 }
 
+
+
+// ------------------------ update PS tour ------------------------------------
+function handleUpdateTour(data){
+    console.log(data);
+}
 
 
 // ----------------------- toást message --------------------------------

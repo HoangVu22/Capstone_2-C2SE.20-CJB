@@ -1,4 +1,4 @@
-const renderNav = document.getElementById("render-nav");
+const renderNav = document.querySelector("#render-nav");
 
 const navbar = () => {
   const socket = io("http://localhost:3002/room", {
