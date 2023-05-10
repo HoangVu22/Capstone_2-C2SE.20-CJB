@@ -11,6 +11,7 @@ const destinationSuggestList = $(".destination-location-suggestion");
 const currentLocationInupt = $('.diemxuatphat')
 const currentLocationSuggestList = $('.current-location-suggestion')
 
+
 const createTourState = {
   name: "",
   owner_id: "",
@@ -27,7 +28,7 @@ const createTourState = {
 const mapDOM = $(".form-map");
 const map = L.map(mapDOM).setView([51.505, -0.09], 13);
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  maxZoom: 19,
+  maxZoom: 10,
   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 }).addTo(map);
 
@@ -47,7 +48,7 @@ const handleDestinationSuggestItemClick = (doms, parent) => {
       const { lat, lon } = item.dataset
       // gán lat, lon cho biến bất kỳ để có thể ném vào trong call api create-tour, ví dụ: a = lat; b = lon
       const marker = L.marker([lat, lon], { draggable: true }).addTo(map)
-      map.flyTo([lat, lon], 19)
+      map.flyTo([lat, lon], 10)
       marker.on('dragend', (e) => {
 
       })
@@ -56,7 +57,7 @@ const handleDestinationSuggestItemClick = (doms, parent) => {
   })
 }
 
-const handleCurrentLocationSuggestItemClick = (doms) => {
+const handleCurrentLocationSuggestItemClick = (doms,parent) => {
   doms.forEach(item => {
     item.onclick = () => {
       const { lat, lon } = item.dataset
@@ -64,23 +65,22 @@ const handleCurrentLocationSuggestItemClick = (doms) => {
       console.log(name)
       // gán name của điểm xuất phát, ví dụ: a = name
       const marker = L.marker([lat, lon], { draggable: true }).addTo(map)
-      map.flyTo([lat, lon], 19)
+      map.flyTo([lat, lon], 10)
       marker.on('dragend', (e) => {
 
       })
-      doms.innerHTML = null
+      parent.innerHTML = null
     }
   })
 }
 let aborter = null
 const searching = (value, listdom, itemclass, func) => {
-  if (aborter) {
-    aborter.abort()
-  }
+  // if (aborter) {
+  //   aborter.abort()
+  // }
   aborter = new AbortController()
   const NOMINATIM_BASE_URL = "https://nominatim.openstreetmap.org/search?";
   const params = {
-    limit: 5,
     q: value,
     format: "json",
     addressdetails: 1,
@@ -90,7 +90,6 @@ const searching = (value, listdom, itemclass, func) => {
   const requestOptions = {
     method: "get",
     redirect: "follow",
-    signal: aborter.signal,
   };
   fetch(`${NOMINATIM_BASE_URL}${queryString}`, requestOptions)
     .then((response) => response.text())
@@ -233,6 +232,57 @@ if (login) {
 //   tab1.style.marginTop = "102px";
 // };
 
+
+const notifications = document.querySelector(".notifications"),
+    buttons = document.querySelectorAll(".buttons .btn");
+// Object containing details for different types of toasts
+const toastDetails = {
+    timer: 5000,
+    success: {
+        icon: 'fa-circle-check',
+        text: 'Success: Create Group Chat Success...',
+    },
+    error: {
+        icon: 'fa-circle-xmark',
+        text: 'Error: Create Group Chat....',
+    },
+    warning: {
+        icon: 'fa-triangle-exclamation',
+        text: 'Warning: This is a warning toast.',
+    },
+    info: {
+        icon: 'fa-circle-info',
+        text: 'Info: This is an information toast.',
+    }
+}
+const removeToast = (toast) => {
+    toast.classList.add("hide");
+    if (toast.timeoutId) clearTimeout(toast.timeoutId); // Clearing the timeout for the toast
+    setTimeout(() => toast.remove(), 500); // Removing the toast after 500ms
+}
+const createToast = (id) => {
+    // Getting the icon and text for the toast based on the id passed
+    const { icon, text } = toastDetails[id];
+    const toast = document.createElement("li"); // Creating a new 'li' element for the toast
+    toast.className = `toast ${id}`; // Setting the classes for the toast
+    // Setting the inner HTML for the toast
+    toast.innerHTML = `<div class="column">
+                         <i class="fa-solid ${icon}"></i>
+                         <span>${text}</span>
+                      </div>
+                      <i class="fa-solid fa-xmark" onclick="removeToast(this.parentElement)"></i>`;
+    notifications.appendChild(toast); // Append the toast to the notification ul
+    // Setting a timeout to remove the toast after the specified duration
+    toast.timeoutId = setTimeout(() => removeToast(toast), toastDetails.timer);
+}
+// // Adding a click event listener to each button to create a toast when clicked
+buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+        createToast(btn.id)
+        console.log(btn.id);
+    });
+});
+
 const button1 = document.querySelector(".button1 button");
 const button2 = document.querySelector(".button2 button");
 const formTrip1 = document.querySelector(".form-trip-1");
@@ -290,10 +340,16 @@ btnCreateTrip.onclick = () => {
         },
     })
         .then((response) => response.json())
-        .then((data) => {
-            console.log(data)
-            window.location.href = "http://127.0.0.1:5500/CAPSTONE2/FrontEnd/HTML/profile.html";
-        });
+        .then(data => {
+          createToast("success");
+          setTimeout(()=>{
+              window.location.reload(true);
+          },5000);
+      })
+      .catch(error => {
+          createToast("error")
+
+      })
 
 };
 
@@ -312,6 +368,11 @@ uploadImage.onclick = () => {
     uploadImage.style.backgroundImage = `url('${objImage}')`;
   };
 };
+
+setTimeout(()=>{
+  console.log(objImage);
+},10000)
+
 
 
 if(!login)

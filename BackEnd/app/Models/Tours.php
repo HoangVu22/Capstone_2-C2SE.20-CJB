@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\TSProfile;
+use App\Models\TripPlan;
 use App\Models\Images;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 
@@ -24,8 +25,6 @@ class Tours extends Model
         'to_date',
         'price',
         'slot',
-        'lat',
-        'lon',
     ];
 
     protected $hidden = [
@@ -53,5 +52,9 @@ class Tours extends Model
     
     public function images(){
         return $this->hasMany(Images::class, 'tour_id');
+    }
+
+    public function tripPlans(){
+        return $this->hasMany(TripPlan::class, 'tour_id');
     }
 }

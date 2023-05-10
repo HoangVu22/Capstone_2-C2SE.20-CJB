@@ -104,7 +104,7 @@ function renderListTour() {
                             <a href="./createTrip.html">
                                 <i class="fa-solid fa-pencil"></i>
                             </a>
-                            <i class="fa-solid fa-trash-can" onclick="handle_detail_page(${tour.id})"></i>
+                            <i class="fa-solid fa-trash-can" onclick="handle_detail_page(${tour.id},${tour.ts_id})"></i>
                         </div>
                     </div>
                 </div>
@@ -131,7 +131,7 @@ function renderListTour() {
 }
 
 // const handle_detail_page = $(".blog-slider__button");
-
+// -------------------------- delete ----------------------------------------------
 function handle_detail_page(e) {
     window.localStorage.setItem("page-detail", e)
     console.log(window.localStorage.getItem("page-detail"));
@@ -158,9 +158,12 @@ if (!login) {
     headerFormLogout.style.display = "block";;
     headerFormLogin.style.display = "none";
 }
-const names = $('#header-name1');
-const avatarUser = $('#avatar_user');
+const names = $('.header-name1');
+const avatarUser = $('.avatar_user');
 const avatarUser1 = $('.avatar_user_header');
+
+console.log(names);
+console.log(avatarUser1);
 
 headerNavForm.onclick = function () {
     if (headerForm.style.display === "none") {
@@ -235,7 +238,7 @@ logout.onclick = () => {
     alert('Bạn chắc chắn muốn thoát ?')
     window.localStorage.clear();
     window.location.reload(true);
-    window.location.href = 'http://127.0.0.1:5500/CAPSTONE2/FrontEnd/HTML/home.html';
+    window.location.href = 'http://localhost:3000/home.html';
 }
 
 
@@ -357,11 +360,11 @@ btnUpdate.onclick = () => {
 // }
 // inputEmail.disabled = true;
 
-// if (login.msg === "Update thành công" || login.status === 200) {
-//     inputEmail.value = login.user_info.email;
-// } else {
-//     inputEmail.value = login.user_info.email;
-// }
+if (login.msg === "Update thành công" || login.status === 200) {
+    inputEmail.value = login.user_info.email;
+} else {
+    inputEmail.value = login.user_info.email;
+}
 
 // inputGender.onchange = (e) => {
 //     console.log(e.target.value);
@@ -404,8 +407,8 @@ tourNames.forEach((tourr) => {
 })
 
 
-// const createGroup = $(".create-group");
-// createGroup.onclick = () => {
-//     window.location.href = "http://127.0.0.1:5500/CAPSTONE2/FrontEnd/HTML/group.html";
-// }
+const createGroup = $(".create-group");
+createGroup.onclick = () => {
+    window.location.href = "http://localhost:3000/TS-postTour.html";
+}
 

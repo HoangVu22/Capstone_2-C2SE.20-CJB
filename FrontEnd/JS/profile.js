@@ -71,15 +71,15 @@ function renderListTour() {
         .then(data => {
             const tours = data.all_tour;
             window.localStorage.setItem("dataPersonTour", JSON.stringify(data.all_tour));
-            const listTour = JSON.parse(window.localStorage.getItem("dataPersonTour"));
+
             const tourNames = document.querySelectorAll('.blog-slider__item .blog-slider__content .profile-control .blog-slider__button')
             tourNames.forEach(tourr => {
                 tourr.onclick = (e) => {
                     localStorage.setItem('targetTourId', e.target.dataset.tourr)
-                    window.location.href = 'http://127.0.0.1:5500/CAPSTONE2/FrontEnd/HTML/detailFind.html'
+                    window.location.href = 'http://localhost:3000/detailFind.html'
                 }
             })
-            htmls = tours.map((tour, index) => {
+            htmls = tours.map((tour) => {
                 return `
                 <div class="blog-slider__item swiper-slide data-id='${tour.id}'">
                 
@@ -98,13 +98,13 @@ function renderListTour() {
                     <div class="blog-slider__text"> ${tour.description} </div>
                     <div class="profile-control">
                         <div class="">
-                            <a href="../HTML/detailFind.html" class="blog-slider__button" onclick="handle_detail_page(${tour.id})">CHI TIẾT</a>
+                            <a href="./detailFind.html" class="blog-slider__button" onclick="handle_detail_page(${tour.id},${tour.owner_id})" >CHI TIẾT</a>
                         </div>
                         <div class="profile-action">
                             <a href="./createTrip.html">
                                 <i class="fa-solid fa-pencil"></i>
                             </a>
-                            <i class="fa-solid fa-trash-can btn-delete"></i>
+                            <i class="fa-solid fa-trash-can btn-delete" onclick="handle_delete(${tour.id},${tour.owner_id})"></i>
                         </div>
                     </div>
                 </div>
@@ -128,24 +128,51 @@ function renderListTour() {
                 });
             }
         })
+    // window.location.reload(true)
 }
 
 // const handle_detail_page = $(".blog-slider__button");
 
-function handle_detail_page(e) {
+
+function handle_delete(e, v) {
+    console.log(e);
+    console.log(v);
+    const listTour = JSON.parse(window.localStorage.getItem("dataPersonTour"));
     window.localStorage.setItem("page-detail", e)
     console.log(window.localStorage.getItem("page-detail"));
+    fetch("http://127.0.0.1:8000/api/personal/tour/delete/" + e + "?owner_id=" + v,
+        {
+            method: 'DELETE',
+        }
+    )
+        .then(res => res.json())
+        .then(data => {
+            createToast("success")
+            setTimeout(() => {
+                window.location.reload(true)
+            }, 3000)
+        })
+        .catch(error => {
+            createToast("error")
+        })
+
 }
 
-const tourNames = document.querySelectorAll('.blog-slider__item .blog-slider__content .profile-control .btn-delete')
-console.log(tourNames);
-tourNames.forEach((tourr) => {
-    tourr.onclick = (e) => {
-        alert(e.target.dataset.tourr);
-        localStorage.setItem('targetTourId', e.target.dataset.tourr)
-        // e.href = 'http://127.0.0.1:5500/CAPSTONE2/FrontEnd/HTML/detailFind.html'
-    }
-})
+function handle_detail_page(e) {
+    const listTour = JSON.parse(window.localStorage.getItem("dataPersonTour"));
+    window.localStorage.setItem("page-detail", e)
+    console.log(window.localStorage.getItem("page-detail"));
+    e.href = 'http://localhost:3000/detailFind.html';
+}
+
+// const tourNames = document.querySelectorAll('.blog-slider__item .blog-slider__content .profile-control .btn-delete')
+// tourNames.forEach((tourr) => {
+//     tourr.onclick = (e) => {
+//         alert(e.target.dataset.tourr);
+//         localStorage.setItem('targetTourId', e.target.dataset.tourr)
+//         e.href = 'http://localhost:3000/detailFind.html'
+//     }
+// })
 
 
 function start() {
@@ -233,60 +260,53 @@ if (login.status === 200) {
 
 
 // // ------------------- logout -----------------------------
+console.log(login);
 const logout = $('.form-logout');
 logout.onclick = () => {
     alert('Bạn chắc chắn muốn thoát ?')
     window.localStorage.clear();
     window.location.reload(true);
-    window.location.href = 'http://127.0.0.1:5500/CAPSTONE2/FrontEnd/HTML/home.html';
+    window.location.href = 'http://localhost:3000/home.html';
 }
 
 
 // // -----------------------  update profile user ------------------------------------
 
 const apiUserProfile = "http://127.0.0.1:8000/api/user/profile/update";
-
-console.log(login.user_info.user_roles);
-console.log(inputAbout);
-
 function getInfoUser() {
-     
-        fetch("http://127.0.0.1:8000/api/user/profile/update", {
-            method: 'PUT',
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                id: login.user_info.user_profile[0].id,
-                name: inputUserName.value,
-                phone_number: inputPhoneNumber.value,
-                avatar: login.user_info.user_profile[0].avatar,
-                gender: inputGender.value,
-                about: inputAbout.value,
-            }),
-            data: ({
-                id: login.user_info.user_profile[0].id,
-                name: inputUserName.value,
-                phone_number: inputPhoneNumber.value,
-                avatar: login.user_info.user_profile[0].avatar,
-                gender: inputGender.value,
-                about: inputAbout.value,
-            }),
+    fetch(apiUserProfile, {
+        method: 'PUT',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            id: login.user_info.user_profile[0].user_id,
+            name: inputUserName.value,
+            phone_number: inputPhoneNumber.value,
+            avatar: login.user_info.user_profile[0].avatar,
+            gender: inputGender.value,
+            about: inputAbout.value,
+        }),
+        data: ({
+            id: login.user_info.user_profile[0].user_id,
+            name: inputUserName.value,
+            phone_number: inputPhoneNumber.value,
+            avatar: login.user_info.user_profile[0].avatar,
+            gender: inputGender.value,
+            about: inputAbout.value,
+        }),
+    })
+        .then(response => response.json())
+        .then(data => {
+            window.localStorage.setItem("login", JSON.stringify(data));
+            const profile = JSON.parse(window.localStorage.getItem("login"));
+            alert("Cập nhật thông tin thành công");
+            createToast("success")
+            window.location.reload(true);
+            renderUserInfo(profile);
         })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                window.localStorage.removeItem("login");
-                window.localStorage.setItem("login", JSON.stringify(data));
-                const profile = JSON.parse(window.localStorage.getItem("login"));
-                renderUserInfo(profile);
-                alert("Cập nhật thông tin thành công");
-                window.location.reload(true);
-            })
-            .catch(error)(
-                alert(error)
-            )
-    }
+        .catch(error => alert(error))
+}
 
 var html_UserInfo = $('.profile-genaral');
 
@@ -346,14 +366,12 @@ function renderUserInfo(obj) {
     return html_UserInfo.innerHTML = html;
 }
 
-console.log(login);
-
-if (login.status === 200) {
-    btnUpdate.onclick = () => {
-        getInfoUser();
-        window.location.reload(true);
-    }
+// if (login.status === 200) {
+btnUpdate.onclick = () => {
+    getInfoUser();
+    window.location.reload(true);
 }
+// }
 
 // ------------------------------------------------------------------
 
@@ -407,6 +425,51 @@ const newLocal = historyTour.onclick = function () {
 
 const createGroup = $(".create-group");
 createGroup.onclick = () => {
-    window.location.href = "http://127.0.0.1:5500/CAPSTONE2/FrontEnd/HTML/group.html";
+    window.location.href = "http://localhost:3000/group.html";
 }
 
+
+
+// ----------------------- toást message --------------------------------
+const notifications = document.querySelector(".notifications"),
+    buttons = document.querySelectorAll(".buttons .btn");
+// Object containing details for different types of toasts
+const toastDetails = {
+    timer: 5000,
+    success: {
+        icon: 'fa-circle-check',
+        text: 'Success: Delete tour success...',
+    },
+    error: {
+        icon: 'fa-circle-xmark',
+        text: 'Error: Delete tour error....',
+    },
+    warning: {
+        icon: 'fa-triangle-exclamation',
+        text: 'Warning: This is a warning toast.',
+    },
+    info: {
+        icon: 'fa-circle-info',
+        text: 'Info: This is an information toast.',
+    }
+}
+const removeToast = (toast) => {
+    toast.classList.add("hide");
+    if (toast.timeoutId) clearTimeout(toast.timeoutId); // Clearing the timeout for the toast
+    setTimeout(() => toast.remove(), 500); // Removing the toast after 500ms
+}
+const createToast = (id) => {
+    // Getting the icon and text for the toast based on the id passed
+    const { icon, text } = toastDetails[id];
+    const toast = document.createElement("li"); // Creating a new 'li' element for the toast
+    toast.className = `toast ${id}`; // Setting the classes for the toast
+    // Setting the inner HTML for the toast
+    toast.innerHTML = `<div class="column">
+                         <i class="fa-solid ${icon}"></i>
+                         <span>${text}</span>
+                      </div>
+                      <i class="fa-solid fa-xmark" onclick="removeToast(this.parentElement)"></i>`;
+    notifications.appendChild(toast); // Append the toast to the notification ul
+    // Setting a timeout to remove the toast after the specified duration
+    toast.timeoutId = setTimeout(() => removeToast(toast), toastDetails.timer);
+}

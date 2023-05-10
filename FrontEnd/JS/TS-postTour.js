@@ -4,6 +4,38 @@ const headerFormLogin = headerNavForm.querySelector(".header-form-login");
 const headerFormLogout = document.querySelector(".header-form-logout");
 const login = JSON.parse(window.localStorage.getItem("login"));
 
+const requestInputs = document.querySelectorAll('.request')
+const createTourButton = document.querySelector('.create-tour-submit')
+console.log(login)
+createTourButton.onclick = () => {
+  const request = {
+    name: "",
+    ts_id: 1,
+    description: "",
+    address: "",
+    from_date: "",
+    to_date: "",
+    price: "",
+    slot: ""
+  }
+  requestInputs.forEach(input => {
+    const { key } = input.dataset
+    request[key] = input.value
+  })
+  fetch('http://127.0.0.1:8000/api/ts/tour/create', {
+    method: 'post',
+    headers: {
+      'Content-Type': "application/json"
+    },
+    body: JSON.stringify(request)
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+    })
+    .catch(error => console.log(error))
+}
+
 headerNavForm.onclick = function () {
   if (headerForm.style.display === "none") {
     headerForm.style.display = "block";
@@ -60,12 +92,6 @@ const array = [
   }
 ];
 
-function renerList () {
-  console.log(array);
-}
-
-renerList()
-
 postSchedualAdd.onclick = () => {
   id++;
   array.push({
@@ -102,3 +128,13 @@ postSchedualAdd.onclick = () => {
       };
     });
 };
+
+
+const z = document.querySelector.bind(document);
+const logout = z('.form-logout');
+logout.onclick = () => {
+  alert('Bạn chắc chắn muốn thoát ?')
+  window.localStorage.clear();
+  window.location.reload(true);
+  window.location.href = 'http://localhost:3000/home.html';
+}

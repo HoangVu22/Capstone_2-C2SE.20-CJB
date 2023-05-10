@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tours;
+use App\Models\TripPlan;
 use Illuminate\Http\Request;
 use App\Http\Resources\HomepageToursResource;
+use App\Http\Resources\TourDetailResource;
+
 
 class ToursController extends Controller
 {
@@ -16,12 +19,51 @@ class ToursController extends Controller
         return response()->json(Tours::all());
     }
 
+    /*
+    ** Create a array Trip Schedlue with string 'schedule' get in form
+    */
+    public function arrayTripPlan($schedule)
+    {
+        $schedule = preg_replace('/[}\[\]\n\t\"]/', '', trim($schedule));
+        $schedule = explode('{', $schedule);
+        $tripPlan = [];
+        foreach($schedule as $value){
+            if(!$value == ""){
+                array_push($tripPlan, explode(',', $value));
+            }
+        }
+        return $tripPlan;
+    }
+
+    /*
+    ** Create trip schedule for a insert tour
+    */
+    public function createTripPlanForTour($tripPlan, $tourId)
+    {
+        $result = [];
+        foreach($tripPlan as $tripPlanItem){
+            foreach ($tripPlanItem as $value) {
+                $split = explode(': ', $value);
+                $key = $split[0];
+                $value = isset($split[1]) ? $split[1] : '';
+                $result[$key] = $value;
+            }
+            TripPlan::create([
+                'name' => $result['name'],
+                'description' => $result['desc'],
+                'tour_id' => $tourId,
+                'lat' => $result['lat'],
+                'lon' => $result['lon'],
+            ]);
+        }
+    }
+
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        Tours::create([
+        $tourId = Tours::insertGetId([
             'ts_id' => $request->ts_id,
             'name' => $request->name,
             'address' => $request->address,
@@ -30,9 +72,12 @@ class ToursController extends Controller
             'to_date' => $request->to_date,
             'price' => $request->price,
             'slot' => $request->slot,
-            'lat' => $request->lat,
-            'lon' => $request->lon,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
+
+        $tripPlan = $this->arrayTripPlan($request->schedule);
+        $this->createTripPlanForTour($tripPlan, $tourId);
 
         return response()->json(['msg' => "Tạo tour thành công", 'status' => 200], 200);
     }
@@ -42,7 +87,10 @@ class ToursController extends Controller
      */
     public function show($id)
     {
-        return response()->json(Tours::find($id));
+        if(Tours::find($id) == null){
+            return response()->json(['msg' => "Tour không tồn tại", 'status' => 404], 404);
+        }
+        return new TourDetailResource(Tours::find($id));
     }
 
     /**
@@ -58,6 +106,7 @@ class ToursController extends Controller
                 return response()->json(['msg' => "Đây không phải là tour của bạn", 'status' => 403], 403);
             }
             else{
+                // dd($request->schedule);
                 Tours::find($request->id)->update([
                     'ts_id' => $request->ts_id,
                     'name' => $request->name,
@@ -67,9 +116,11 @@ class ToursController extends Controller
                     'to_date' => $request->to_date,
                     'price' => $request->price,
                     'slot' => $request->slot,
-                    'lat' => $request->lat,
-                    'lon' => $request->lon,
                 ]);
+
+                $tripPlan = $this->arrayTripPlan($request->schedule);
+                TripPlan::where('tour_id', $request->id)->delete();
+                $this->createTripPlanForTour($tripPlan, $request->id);
                 return response()->json(['msg' => "Update tour thành công", 'status' => 200], 200);
             }
         } 
@@ -99,9 +150,21 @@ class ToursController extends Controller
         return HomepageToursResource::collection(Tours::where('from_date', '>=', date('y-m-d'))->get());
     }
 
-    public function allTour(Request $request){
+    public function allTourOfTS(Request $request){
         return response()->json([
             'all_tour' => Tours::where('ts_id', $request->id)->get(),
+            'status' => 200,
+        ]);
+    }
+
+    public function search(Request $request)
+    {
+        return response()->json([
+            'tours' => Tours::where('tours.name', 'like', "%$request->name%")
+            ->join('ts_profiles', 'tours.ts_id', '=', 'ts_profiles.id')
+            ->join('users', 'ts_profiles.user_id', '=', 'users.id')
+            ->select('tours.*', 'users.name as travel_supplier_name')
+            ->get(),
             'status' => 200,
         ]);
     }

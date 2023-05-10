@@ -9,11 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="../CSS/createTrip.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
-    crossorigin=""/>
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
-     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
-     crossorigin=""></script>
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
     <title>CJB</title>
 </head>
 
@@ -90,70 +88,75 @@
 
             <div class="form-trip">
                 <div class="form-trip-1">
-                   <form action="">
-                    <div class="form-1">
-                        <div class="trip-2-img upload_image">
-                            Upload ảnh
-                            <input name="img" class="input_image" type="file" accept="image/png, image/jpg" hidden class="form-control">
-                        </div>
-                        <div class="form-content">
-                            <div class="form-info-wrap">
-                                <div class="form-info">
-                                    <label for="">Tên chuyến đi</label>
-                                    <div class="form-input">
-                                        <input name="name" type="text" placeholder="Nhập tên chuyến đi của bạn" class="form-control tenchuyendi">
-                                    </div>
-                                </div>
+                    <form action="">
+                        <div class="form-1">
+                            <div class="trip-2-img upload_image">
+                                Upload ảnh
+                                <input name="img" class="input_image" type="file" accept="image/png, image/jpg" hidden
+                                    class="form-control">
                             </div>
-                            <div class="form-info-wrap1">
-                                <div class="form-info form-info-0">
-                                  <label for="">Từ ngày</label>
-                                  <div class="form-input">
-                                    <input name="from_date" type="date" class="form-control tungay">
-                                  </div>
-                                </div>
-                                <div class="form-info">
-                                  <label for="">Đến ngày</label>
-                                  <div class="form-input">
-                                    <input name="to_date" type="date" class="form-control denngay">
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="form-info-wrap1">
-                                  <div class="form-info form-info-0">
-                                      <label for="">Điểm xuất phát</label>
-                                      <div class="form-input">
-                                          <input name="from_where" type="text" placeholder="Nhập điểm xuất phát" class="form-control diemxuatphat">
-                                      </div>
-                                      <div>
-                                        <ul class="destination-list current-location-suggestion"></ul>
-                                      </div>
-                                  </div>
-                                  <div class="form-info">
-                                      <label for="">Điểm đến</label>
-                                      <div class="form-input">
-                                          <input name="to_where" type="text" placeholder="Nhập điểm đến" class="form-control diemden">
-                                      </div>
-                                      <div>
-                                        <ul class="destination-list destination-location-suggestion">
-                                        </ul>
-                                      </div>
-                                  </div>
-                              </div>
-                        </div>
-                    </div>
-                    <div class="form-trip-2">
-                        <div class="form-2">
-                            <div class="form-content-2">
-                                <div class="trip-2-content">
-                                    <div class="form-info form-info1">
-                                        <label for="">Số người</label>
-                                        <div class="form-input1">
-                                            <input name="people" type="number" placeholder="Nhập số người" class="form-control songuoi"> 
+                            <div class="form-content">
+                                <div class="form-info-wrap">
+                                    <div class="form-info">
+                                        <label for="">Tên chuyến đi</label>
+                                        <div class="form-input">
+                                            <input name="name" type="text" placeholder="Nhập tên chuyến đi của bạn"
+                                                class="form-control tenchuyendi">
                                         </div>
                                     </div>
                                 </div>
-                                <!-- <div class="form-info-wrap1">
+                                <div class="form-info-wrap1">
+                                    <div class="form-info form-info-0">
+                                        <label for="">Từ ngày</label>
+                                        <div class="form-input">
+                                            <input name="from_date" type="date" class="form-control tungay">
+                                        </div>
+                                    </div>
+                                    <div class="form-info">
+                                        <label for="">Đến ngày</label>
+                                        <div class="form-input">
+                                            <input name="to_date" type="date" class="form-control denngay">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-info-wrap1">
+                                    <div class="form-info form-info-0">
+                                        <label for="">Điểm xuất phát</label>
+                                        <div class="form-input">
+                                            <input name="from_where" type="text" placeholder="Nhập điểm xuất phát"
+                                                class="form-control diemxuatphat">
+                                        </div>
+                                        <div>
+                                            <ul class="destination-list current-location-suggestion"></ul>
+                                        </div>
+                                    </div>
+                                    <div class="form-info">
+                                        <label for="">Điểm đến</label>
+                                        <div class="form-input">
+                                            <input name="to_where" type="text" placeholder="Nhập điểm đến"
+                                                class="form-control diemden">
+                                        </div>
+                                        <div>
+                                            <ul class="destination-list destination-location-suggestion">
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-trip-2">
+                            <div class="form-2">
+                                <div class="form-content-2">
+                                    <div class="trip-2-content">
+                                        <div class="form-info form-info1">
+                                            <label for="">Số người</label>
+                                            <div class="form-input1">
+                                                <input name="people" type="number" placeholder="Nhập số người"
+                                                    class="form-control songuoi">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="form-info-wrap1">
                                     <div class="form-info form-info-0">
                                         <label for="">Kinh độ</label>
                                         <div class="form-input form-input-0">
@@ -167,30 +170,39 @@
                                         </div>
                                     </div>
                                 </div> -->
-                                <div class="form-info form-info1">
-                                    <label for="">Mô tả ngắn về chuyến đi</label>
-                                    <div class="form-input1">
-                                        <textarea name="description" id="" cols="30" rows="11" placeholder="Mô tả chuyến đi của bạn" class="form-control description"></textarea>
+                                    <div class="form-info form-info1">
+                                        <label for="">Mô tả ngắn về chuyến đi</label>
+                                        <div class="form-input1">
+                                            <textarea name="description" id="" cols="30" rows="11"
+                                                placeholder="Mô tả chuyến đi của bạn"
+                                                class="form-control description"></textarea>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-map" id="form-map">
-                                <!-- <iframe
+                                <div class="form-map" id="form-map">
+                                    <!-- <iframe
                                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d245427.202253111!2d108.07605262450348!3d16.02392166225702!2m3!1f0!2f0!3f0!3m2!
                                     1i1024!2i768!4f13.1!3m3!1m2!1s0x314219c792252a13%3A0x1df0cb4b86727e06!2zxJDDoCBO4bq1bmcsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1679646974460!5m2!1svi!2s"
                                     allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                                 </iframe> -->
+                                </div>
+                            </div>
+                            <div class="form-back-start">
+                                <button type="button" class="create-trip">Tạo chuyến đi</button>
+                                <!-- <button class="goBack">Quay lại</button>
+                            <button class="startCreateTrip">Bắt đầu</button> -->
                             </div>
                         </div>
-                        <div class="form-back-start">
-                            <button type="button" class="create-trip">Tạo chuyến đi</button>
-                            <!-- <button class="goBack">Quay lại</button>
-                            <button class="startCreateTrip">Bắt đầu</button> -->
-                        </div>
-                    </div>
-                   </form>
+                    </form>
                 </div>
             </div>
+        </div>
+        <ul class="notifications"></ul>
+        <div class="buttons">
+            <button class="btn" id="success">Success</button>
+            <button class="btn" id="error">Error</button>
+            <button class="btn" id="warning">Warning</button>
+            <button class="btn" id="info">Info</button>
         </div>
     </div>
 

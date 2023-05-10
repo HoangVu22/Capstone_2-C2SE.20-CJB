@@ -10,8 +10,8 @@ use App\Http\Controllers\TSProfileController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\RoomsController;
 use App\Http\Controllers\CheckoutController;
-use App\Models\Rooms;
-
+use App\Http\Controllers\NotificationsController;
+use App\Models\Notifications;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +34,9 @@ Route::controller(AuthController::class)->prefix('auth')->group(function(){
     Route::post('/tsRegister', 'tsRegister');
 
 });
+Route::group(['middleware' => 'jwt.auth'], function () {
+    Route::get('token/userinfo', [AuthController::class, 'getUserInfo']);
+});
 
 Route::controller(UserProfileController::class)->prefix('user/profile')->group(function(){
     Route::put('/update', 'update');
@@ -54,15 +57,17 @@ Route::prefix('homepage')->group(function(){
 
 Route::prefix('ts/tour')->group(function(){
     Route::get('/', [ToursController::class, 'index']);
+    Route::get('/search', [ToursController::class, 'search']);
     Route::get('/{id}', [ToursController::class, 'show']);
     Route::post('/create', [ToursController::class, 'store']);
     Route::put('/update/{id}', [ToursController::class, 'update']);
     Route::delete('/delete/{id}', [ToursController::class, 'destroy']);
-    Route::get('/all/{id}', [ToursController::class, 'allTour']);
+    Route::get('/all/{id}', [ToursController::class, 'allTourOfTS']);
 });
 
 Route::prefix('personal/tour')->group(function(){
     Route::get('/', [PersonalToursController::class, 'index']);
+    Route::get('/search', [PersonalToursController::class, 'search']);
     Route::post('/create', [PersonalToursController::class, 'store']);
     Route::get('/show/{id}', [PersonalToursController::class, 'show']);
     Route::put('/update/{id}', [PersonalToursController::class, 'update']);
@@ -92,4 +97,10 @@ Route::prefix('payment')->group(function(){
     Route::get('/', [CheckoutController::class, 'payment'])->name('payment');
     Route::post('/', [CheckoutController::class, 'checkout']);
     Route::get('/done', [CheckoutController::class, 'done'])->name('done');
+});
+
+Route::prefix('notification')->group(function(){
+    Route::post('/send', [NotificationsController::class, 'send']);
+    Route::get('/read', [NotificationsController::class, 'read']);
+    Route::get('/getNotification', [NotificationsController::class, 'getNotification']);
 });

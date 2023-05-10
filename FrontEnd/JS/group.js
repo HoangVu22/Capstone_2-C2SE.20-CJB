@@ -9,61 +9,91 @@ const $$ = document.querySelectorAll.bind(document);
 
 if (login) {
     headerNavForm.onclick = function () {
-      if (headerForm.style.display === "none") {
-        headerForm.style.display = "block";
-        headerFormLogout.style.display = "block";
-        headerFormLogin.style.display = "none";
-      } else {
-        headerForm.style.display = "none";
-        headerFormLogout.style.display = "none";
-      }
+        if (headerForm.style.display === "none") {
+            headerForm.style.display = "block";
+            headerFormLogout.style.display = "block";
+            headerFormLogin.style.display = "none";
+        } else {
+            headerForm.style.display = "none";
+            headerFormLogout.style.display = "none";
+        }
     };
-  } else {
+} else {
     headerNavForm.onclick = function () {
-      if (headerForm.style.display === "none") {
-        headerForm.style.display = "block";
-        headerFormLogin.style.display = "block";
-        headerFormLogout.style.display = "none";
-      } else {
-        headerForm.style.display = "none";
-        headerFormLogin.style.display = "none";
-      }
+        if (headerForm.style.display === "none") {
+            headerForm.style.display = "block";
+            headerFormLogin.style.display = "block";
+            headerFormLogout.style.display = "none";
+        } else {
+            headerForm.style.display = "none";
+            headerFormLogin.style.display = "none";
+        }
     };
-  }
-
-
-const names = $('.header-name1');
-const avatarUser = $("#avatar_user");
-console.log(avatarUser);
-if (login) {
-  names.innerText = login.user_info.name;
-  avatarUser.src = login.user_info.user_profile[0].avatar;
 }
+
+
+const z = document.querySelector.bind(document);
+const logout = z('.form-logout');
+logout.onclick = () => {
+    alert('Bạn chắc chắn muốn thoát ?')
+    window.localStorage.clear();
+    window.location.reload(true);
+    window.location.href = 'http://localhost:3000/home.html';
+}
+
+
+const goBackProfile = z(".group-icon");
+console.log(goBackProfile);
+
+goBackProfile.onclick = () => {
+    window.location.href = "http://localhost:3000/profile.html";
+}
+
+const names = document.getElementsByClassName(' header-name1');
+const avatarUser = document.getElementById("avatar_user");
+if (login) {
+    names[0].innerText = login.user_info.name;
+    avatarUser.src = login.user_info.user_profile[0].avatar;
+}
+
+// if (login) {
+//   names.innerText = login.user_info.name;
+//   avatarUser.src = login.user_info.user_profile[0].avatar;
+// }
 
 // ----------- ẩn hiện create group-----------
 const group = document.querySelector('.group')
+console.log(group);
 const CRBody = document.querySelector('#CR-body')
 const roomClose = document.querySelector('.room-close i')
-group.onclick = function () {
-    CRBody.style.display = 'block'
-}
+const classC = document.querySelector('.class')
+console.log(roomClose);
 roomClose.onclick = function () {
+    console.log(2);
     CRBody.style.display = 'none'
+    classC.style.display = 'none'
+}
+group.onclick = function () {
+    console.log(1);
+    CRBody.style.display = 'block'
+    classC.style.display = 'block'
 }
 
 // --------------- create room ------------------
 
-const createRoom = $('.create-room');
+const createRoom = $('.btn-create');
 const roomName = $("#name-room");
+roomName.onchange = (e) => {
+    console.log(e.target.value);
+}
 const roomDescription = $("#description-room");
 console.log(login);
-if(login)
-{
+if (login) {
     createRoom.onclick = (e) => {
         e.preventDefault();
         const inputs = document.querySelectorAll('.form-control');
         const requestValues = {};
-    
+
         inputs.forEach(item => {
             requestValues[item.attributes.name.value] = item.value;
         });
@@ -85,17 +115,18 @@ if(login)
             }),
         })
             .then(response => response.json())
-            .then(data => {
-                console.log(data.status);
-                if (data.status === 200) {
-                    alert("Create room success ... !!!")
-                    console.log(data);
-                } else {
-                    alert(data.msg)
-                }
+            .then(val => {
+                console.log(val)
+                createToast("success")
+                setTimeout(()=>{
+                    window.location.reload(true);
+                },5000)
+            })
+            .catch(error => {
+                createToast("error")
             })
     }
-    
+
 }
 
 // ------------------------- render room --------------------------------------
@@ -114,19 +145,93 @@ function getTours() {
             const tours = data.allRoom;
             console.log(data.allRoom);
             htmls = tours.map((tour) => {
-           return `<div class="group-item">
+                return `<div class="group-item">
            <div class="group-img">
                <img src="../IMAGES/slides/slide-5.png" alt="">
            </div>
            <div class="group-info">
                <h4 class="group-info-name">${tour.name}</h4>
                <p>30 thành viên</p>
-               <button>Tham gia</button>
+               <button onclick="joinRoom(${tour.id})">Tham gia</button>
            </div>
        </div>`
-        });
-    return sliderFind.innerHTML = htmls.join("");
-    })}
+            });
+            return sliderFind.innerHTML = htmls.join("");
+        })
+}
 
 
 getTours();
+
+function joinRoom(idRoom) {
+    console.log("caiDauBuoi: " + idRoom);
+    fetch("http://127.0.0.1:8000/api/personal/room/join", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            user_id: login.user_info.user_profile[0].user_id,
+            room_id: idRoom
+        }),
+        data: {
+            user_id: login.user_info.user_profile[0].user_id,
+            room_id: idRoom
+        }
+    })
+        .then(response => response.json())
+        .then(val => {
+            console.log(val)
+            createToast("success")
+            window.location.reload(true);
+        })
+        .catch(error => {
+            createToast("error")
+        })
+}
+
+
+
+// -=-------------------- message toast ----------------------------
+const notifications = document.querySelector(".notifications"),
+    buttons = document.querySelectorAll(".buttons .btn");
+// Object containing details for different types of toasts
+const toastDetails = {
+    timer: 5000,
+    success: {
+        icon: 'fa-circle-check',
+        text: 'Success: Create Room success...',
+    },
+    error: {
+        icon: 'fa-circle-xmark',
+        text: 'Error: Create Room error....',
+    },
+    warning: {
+        icon: 'fa-triangle-exclamation',
+        text: 'Warning: This is a warning toast.',
+    },
+    info: {
+        icon: 'fa-circle-info',
+        text: 'Info: This is an information toast.',
+    }
+}
+const removeToast = (toast) => {
+    toast.classList.add("hide");
+    if (toast.timeoutId) clearTimeout(toast.timeoutId); // Clearing the timeout for the toast
+    setTimeout(() => toast.remove(), 500); // Removing the toast after 500ms
+}
+const createToast = (id) => {
+    // Getting the icon and text for the toast based on the id passed
+    const { icon, text } = toastDetails[id];
+    const toast = document.createElement("li"); // Creating a new 'li' element for the toast
+    toast.className = `toast ${id}`; // Setting the classes for the toast
+    // Setting the inner HTML for the toast
+    toast.innerHTML = `<div class="column">
+                         <i class="fa-solid ${icon}"></i>
+                         <span>${text}</span>
+                      </div>
+                      <i class="fa-solid fa-xmark" onclick="removeToast(this.parentElement)"></i>`;
+    notifications.appendChild(toast); // Append the toast to the notification ul
+    // Setting a timeout to remove the toast after the specified duration
+    toast.timeoutId = setTimeout(() => removeToast(toast), toastDetails.timer);
+}
