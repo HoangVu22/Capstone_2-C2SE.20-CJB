@@ -22,13 +22,13 @@ const btnUpload = document.querySelector(".btn_upload")
 
 const btn = document.querySelector(".d");
 btn.onclick = () => {
-    fetch("http://localhost:3000/firebase/" + "278580945_668189734255632_8649391358758399598_n.jpg" + "?folder=user_images", {
+    fetch("http://localhost:3000/firebase/images.png?folder=user_images", {
         mode: "no-cors",
         headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
+            "Content-Type": "application/json",
         },
     })
-        // .then(res => res.text())
+        .then(res => res.json())
         .then(data => {
             console.log(data)
         });

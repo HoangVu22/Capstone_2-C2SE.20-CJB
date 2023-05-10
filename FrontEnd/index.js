@@ -11,5 +11,5 @@ app.get("/firebase/:fileName", firebaseController.getLink);
 app.post("/firebase/:folder", upload.single("filename"), firebaseController.upload);
 
 app.listen(port, () => {
-  console.log(`Example app listening on port http://localhost:${port}`)
-})
+  console.log(`Example app listening on port http://localhost:${port}`);
+});

@@ -8,8 +8,6 @@ const findSlickNext = document.getElementsByClassName(" find-slick-right");
 const pre1 = document.getElementsByClassName(" slick-prev");
 const next1 = document.getElementsByClassName(" slick-next");
 
-// console.log(login);
-
 // const becomeSupplier = document.getElementsByClassName("become-supplier");
 // console.log(becomeSupplier);
 // const apiTSProfile = "http://127.0.0.1:8000/api/user/profile/update";
